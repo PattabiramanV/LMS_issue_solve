@@ -1,11 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>LMS WEBSITE</title>
+  <link rel="stylesheet" href="CSS/style.css">
 </head>
+
 <body>
-    
+  <!-- navbar -->
+  <nav class="navbar">
+    <div class="logo_item">
+      <i class="bx bx-menu" id="sidebarOpen"></i>
+      <img src="Assests/Dckap Logo.png" alt="" class="DCKAPlOGO"></i>
+    </div>
+
+    <div class="search_bar">
+      <input type="text" placeholder="Search" />
+      <i class="fas fa-search"></i>
+    </div>
+
+    <div class="navbar_content">
+      <i class="bi bi-grid"></i>
+      <i class='bx bx-sun' id="darkLight"></i>
+      <img src="Assests/236831.png" alt="" class="profile" />
+    </div>
+    <div class="profile_bar_list">
+      <div class="profile_down">
+        <i class="fa fa-user" aria-hidden="true" class="profile-icon" style="color: black;"></i>
+        <P class="profile-name">profile</P>
+      </div>
+      <div class="Course_Down">
+        <i class="fa-solid fa-book"></i>
+        <P class="profile-name">My Courses</P>
+      </div>
+      <div class="Drop_Down">
+        <i class="fa-solid fa-award" class="profile-icon"></i>
+        <P class="profile-name">certificate</P>
+      </div>
+      <div class="Drop_Down">
+        <i class="fa-solid fa-right-from-bracket" class="profile-icon"></i>
+        <P class="profile-name">Logout</P>
+      </div>
+    </div>
+  </nav>
+
+  <!-- sidebar -->
+  <nav class="sidebar" style="display: flex;">
+    <div class="menu_content">
+      <ul class="menu_items">
+        <li class="item">
+          <div href="#" class="nav_link submenu_item">
+            <span class="navlink_icon">
+              <i class="bx bx-home-alt"></i>
+            </span>
+            <span class="navlink">Home</span>
+          </div>
+
+        </li>
+        <li class="item">
+          <div href="#" class="nav_link submenu_item">
+            <span class="navlink_icon">
+              <i class="bx bx-grid-alt"></i>
+            </span>
+            <span class="navlink">learning</span>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="menu_items">
+        <li class="item">
+          <a href="#" class="nav_link">
+            <span class="navlink_icon">
+              <i class="bx bxs-magic-wand"></i>
+            </span>
+            <span class="navlink">DashBoard</span>
+          </a>
+        </li>
+
+
+        <li class="item">
+          <a href="#" class="nav_link">
+            <span class="navlink_icon">
+              <i class="bx bx-loader-circle"></i>
+            </span>
+            <span class="navlink">RoadMap</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="set_items">
+        <li class="item">
+          <a href="#" class="nav_link">
+            <span class="navlink_icon">
+              <i class="bx bx-cog"></i>
+            </span>
+            <span class="navlink">Setting</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="bottom_content">
+        <div class="bottom expand_sidebar">
+          <span> Expand</span>
+          <i class='bx bx-log-in'></i>
+        </div>
+        <div class="bottom collapse_sidebar">
+          <span> Collapse</span>
+          <i class='bx bx-log-out'></i>
+        </div>
+      </div>
+    </div>
+
+  </nav>
+
+
+
+                                <!-- quiz addd -->
+
+          
+                                <div class="quiz_contion">
+                                  <div class="container">
+                                    <div class="heading_name">
+                                      <h1>Quiz</h1>
+                                    </div>
+                                    <div class="question">
+                                      <div id="quiz"></div>
+                            
+                                    </div>
+                                    <div class="add_result">
+                                      <div id="result" class="result">
+                                        <div id="resu2">
+                      
+                                        </div>
+                                      </div>
+                                    </div>
+                      <div id="diva">
+                      </div>
+                                    <div class="butlist">
+                                      <div class="rey">
+                                        <button id="retry" class="button hide">Retry</button>
+                                      </div>
+                                      <div class="show-rey">
+                                        <button id="retry2" class="button hide">Retry</button>
+                      
+                                      </div>
+                                      <div class="show">
+                                        <button id="showAnswer" class="button hide">Show Answer</button>
+                                      </div>
+                                    </div>
+                            
+                                    <div class="butlist2">
+                                      <div class="back_btn">
+                                        <button id="submit_btn" class="button">Back</button>
+                                      </div>
+                                      <div class="sumbit_btn">
+                                        <button id="submit" class="button">Next</button>
+                                      </div>
+                                    </div>
+                            
+                                  </div>
+                                </div>
+                              </div>
+  <!-- Your Content paste here -->
+ 
 </body>
+<!-- Javascript -->
+<script  type="module"  src="JS/index.js"></script> 
+
+
 </html>

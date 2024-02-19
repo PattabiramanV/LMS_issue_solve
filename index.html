@@ -3,15 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="CSS/learning.css">
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Home page </title>
+    <link rel="stylesheet" href="CSS/home.css">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
 </head>
 <body>
+    <div class="main_container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="Assests/LMS_Logo.webp" alt="">
+            </div>
+            <div class="nav_list">
+                <li><a href="#" class="nav_home">Home</a></li>
+                <li><a href="#" class="nav_learning">Learning</a></li>
+                <li><a href="#" class="nav_dashboard">Dashboard</a></li>
+                <li><a href="#" class="nav_roadmap">RoadMap</a></li>
+            </div>
+            <div class="nav_login">
+                <button class="login">Login</button>
+                <button class="sign_up">Sign Up</button>
+                <!-- <button id="Sign_up">
+                    Sign up
+                    <div class="arrow-wrapper">
+                        <div class="arrow"></div>
+                    </div>
+                </button> -->
+            </div>
+            <!-- <div class="profile">
+                <img src="" alt="">
+            </div> -->
+        </div>
+        <div class="container_1" style="display: flex;">
+            <div class="content_1">
+                <p id="para_1">Best courses <span>are</span></p>
+                <p id="para_2"><span>waiting to enrich</span></p>
+                <p id="para_3"><span>your skill</span></p>
+                <p id="para_4">Provides you with the latest online learning system and material that help your knowledge growing.</p>
+            </div>
+            <div class="container_1_image">
+                <img src="Assests/Group 1000015014.png" alt="">
+            </div>
+        </div>    
+        <div class="search_bar_container">
+            <div class="search_bar">
+                <input type="text" class="search" placeholder="Want to learn?">
+                <!-- <button class="explore">Explore</button> -->
+                <button class="button_explore">
+                    <svg class="svgIcon" viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm50.7-186.9L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path></svg>
+                   Explore
+                 </button>
+            </div>
+        </div>
+        <div class="container_2">
+            <div class="course">
+                <h1>Courses</h1>
+            </div>
+            <div class="sub_container_2">
+                <div class="content_2">
+                    <div class="sub_content_2">
+                        <div class="html_img">
+                            <img src="Assests/html.png" alt="">
+                        </div>
+                        <div class="html_para">
+                            <p>The Html is the Hypertext</p>
+                            <p>markup language</p>
+                        </div>
+                        <hr>
+                        <div class="html_heading">
+                            <h2>HTML</h2>
+                        </div>
+                        <hr>
+                        <div class="html_btn">
+                            <!-- <button class="enroll_btn">Enroll Now</button> -->
+                            <button class="enroll_btn">
+                                <span>Enroll Now</span>
+                                <svg width="34" height="34" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="37" cy="37" r="35.5" stroke="black" stroke-width="3"></circle>
+                                    <path d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z" fill="black"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="content_3">
+                    <div class="sub_content_3">
+                        <div class="css_img">
+                            <img src="Assests/css.png" alt="">
+                        </div>
+                        <div class="css_para">
+                            <p>The Css is the Cascading</p>
+                            <p>style steet go  throw</p>
+                        </div>
+                        <hr>
+                        <div class="css_heading">
+                            <h2>CSS</h2>
+                        </div>
+                        <hr>
+                        <div class="css_btn">
+                            <!-- <button class="enroll_btn">Enroll Now</button>           -->
+                            <button class="enroll_btn">
+                                <span>Enroll Now</span>
+                                <svg width="34" height="34" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="37" cy="37" r="35.5" stroke="black" stroke-width="3"></circle>
+                                    <path d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z" fill="black"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="content_4">
+                    <div class="sub_content_4">
+                        <div class="js_img">
+                            <img src="Assests/js.png" alt="">
+                        </div>
+                        <div class="js_para">
+                            <p>The Js  is the mangement</p>
+                            <p>style steet go  throw</p>
+                        </div>
+                        <hr>
+                        <div class="js_heading">
+                            <h2>Javascript</h2>
+                        </div>
+                        <hr>
+                        <div class="js_btn">
+                            <!-- <button class="enroll_btn">Enroll Now</button> -->
+                            <button class="enroll_btn">
+                                <span>Enroll Now</span>
+                                <svg width="34" height="34" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="37" cy="37" r="35.5" stroke="black" stroke-width="3"></circle>
+                                    <path d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z" fill="black"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container_3">
+            <div class="sub_container_3">
+                <div class="content_5">
+                    <div class="sub_content_5">
+                        <div class="mysql_img">
+                            <img src="Assests/mysql.png" alt="">
+                        </div>
+                        <div class="mysql_para">
+                            <p> Mysql is the database</p>
+                            <p>storage to store data</p>
+                        </div>
+                        <hr>
+                        <div class="mysql_heading">
+                            <h2>MYSQL</h2>
+                        </div>
+                        <hr>
+                        <div class="mysql_btn">
+                            <!-- <button class="enroll_btn">Enroll Now</button> -->
+                            <button class="enroll_btn">
+                                <span>Enroll Now</span>
+                                <svg width="34" height="34" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="37" cy="37" r="35.5" stroke="black" stroke-width="3"></circle>
+                                    <path d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z" fill="black"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="content_6">
+                    <div class="sub_content_6">
+                        <div class="php_img">
+                            <img src="Assests/php.png" alt="">
+                        </div>
+                        <div class="php_para">
+                            <p>The PHP is s hypertext</p>
+                            <p>markup language</p>
+                        </div>
+                        <hr>
+                        <div class="php_heading">
+                            <h2>PHP</h2>
+                        </div>
+                        <hr>
+                        <div class="php_btn">
+                            <!-- <button class="enroll_btn">Enroll Now</button> --><button class="enroll_btn">
+                                <span>Enroll Now</span>
+                                <svg width="34" height="34" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="37" cy="37" r="35.5" stroke="black" stroke-width="3"></circle>
+                                    <path d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z" fill="black"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container_4">
+            <div class="content_7">
+                <h1 id="head">What is our</h1>
+                <h1 id="head">Websites Focus </h1>
+                <div class="para">
+                    <p>It is a lms learning site we providing web development</p>
+                    <p>languages and we focus to intract the user we have </p>
+                    <p>flowchart also in that we providing the way of flow in</p>
+                    <p>DCKAP Palli and dashboard also its contains points and</p>
+                    <p>games its is totally learning platfdorm.</p>
+                </div>
+            </div>
+            <div class="content_8">
+                <img src="Assests/down.png" alt="">
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer_logo">
+                <img src="Assests/LMS_Logo.webp" alt="">
+            </div>
+            <div class="contact">
+                <div class="number">
+                    <img src="Assests/8666632_phone_icon 1.png" alt="">
+                    <p>(209) 555-0104</p>
+                </div>
+                <div class="mail">
+                    <img src="Assests/Group 13186.png" alt="">
+                    <p>dckap@example.com</p>
+                </div>
+            </div>
+            <div class="location">
+                <img src="Assests/4200473_address_location_map_navigation_icon 1.png" alt="">
+                <p>DCKAP, L76A, L Block, 21st Street, Anna Nagar, L Block</p>
+                <p>Annanagar East, Chennai, Tamil Nadu 600102, India</p>
+            </div>
+        </div>
+    </div>
+    <!-- <button id="Sign_up">
+        Sign up
+        <div class="arrow-wrapper">
+            <div class="arrow"></div>
     
-
-<script type="module" src="JS/learning.js"></script>
+        </div>
+    </button> -->
+    
+    <script src="JS/home.js"></script>
 </body>
 </html>
-

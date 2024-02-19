@@ -469,15 +469,14 @@ h1
   transform: translateX(0);
   transition: .3s transform linear, .3s height linear .5s;
 }
-/* --------------------- Display Piechart ---------------- */
+/* ------------------ Display Piechart ------------------------- */
 .display_chart
 {
   position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #12160a;
-  height: 190%;
-  width: 150%;
+  left: 20%;
+  background-color: #87A96B;
+  height: 45%;
+  width: 48%;
   z-index: 100;
   display: none;
   opacity: 0.9;
@@ -488,25 +487,24 @@ h1
   position: absolute;
   top: 0;
   right: 10px;
-  font-size: 60px;
-  font-weight: bolder;
+  font-size: 40px;
+  font-weight: bold;
   color: #fff;
   cursor: pointer;
   z-index: 100;
 }
-
 .heading_chart
 {
   font-family: "Roboto";
-  color: #cdd5da;
-  font-size: 24px;
+  color: #00693E;
+  font-size: 180%;
   text-align: center;
 }
 .chart_container
 {
   width: 200px;
 }
-.programming_stats
+.programming_status
 {
   font-family: "Roboto";
   display: flex;
@@ -520,27 +518,27 @@ h1
   color: #dae2e6;
   transition: all 400ms ease;
 }
-.programming_stats:hover
+.programming_status:hover
 {
   transform: scale(1.02);
   box-shadow: 0 4px 16px -7px rgba(0, 0, 0, 0.3);
 }
-.programming_stats .details ul
+.programming_status .details ul
 {
   list-style: none;
   padding: 0;
 }
-.programming_stats .details ul li
+.programming_status .details ul li
 {
   font-size: 16px;
   margin: 12px 0;
 
 }
-.programming_stats .details .percentage
+.programming_status .details .percentage
 {
   font-weight: 700;
   color: #e63946;
-}
+} 
 
 
 

@@ -1,4 +1,4 @@
-// "use strict"
+"use strict"
 
 const body = document.querySelector("body");
 const darkLight = document.querySelector("#darkLight");
@@ -84,27 +84,29 @@ Course_navigate.addEventListener("click",()=>{
       window.location.href="/Profile_main_page/Courses.html"
 })
 
-// ------------------ Pie chart -------------------------
-const chartData = {
+// ------------------HTML Pie chart -------------------------
+const chartData_html = {
   labels: ["Completed", "Not Completed"],
-  data: [50, 50]
+  data: [50, 50],
 };
 
-const myChart = document.querySelector(".my_chart").getContext('2d');
+const myChart_html = document.querySelector(".my_chart_html");
 
-const ul = document.querySelector(".programming_status .details .list");
+const ul_html = document.querySelector(".programming_status_html .details_html ul");
 
-const ch = new Chart(myChart, {
+new Chart(myChart_html, {
   type: "doughnut",
   data: {
-    labels: chartData.labels,
-    datasets: [{
-      label: "Percentage",
-      data: chartData.data,
-    }],
-  },
+    labels: chartData_html.labels,
+    datasets: [
+                {
+                    label: "Percentage",
+                    data: chartData_html.data,
+                },
+                ],
+             },
   options: {
-    borderWidth: 8,
+    borderWidth: 4,
     borderRadius: 2,
     hoverBorderWidth: 0,
     plugins: {
@@ -112,29 +114,204 @@ const ch = new Chart(myChart, {
         display: false,
       },
     },
-  }
+  },
 });
 
 const populateUl = () => {
-  chartData.labels.forEach((l, i) => {
-    const li = document.createElement("li");
-    li.innerHTML = `${l}: <span class = "percentage">${chartData.data[i]}%</span>`
-    ul.appendChild(li);
+  chartData_html.labels.forEach((l, i) => {
+    let li = document.createElement("li");
+    li.innerHTML = `${l}: <span class = "percentage">${chartData_html.data[i]} % </span>`
+    ul_html.appendChild(li);
   });
 };
 
 populateUl();
 
-var cross = document.querySelector(".cross");
-var display_chart = document.querySelector(".display_chart");
-var html_btn = document.querySelector(".html");
+var cross_html = document.querySelector(".cross_html");
+var display_chart_html = document.querySelector(".display_chart_html");
+var html_btn = document.querySelector("#html_btn");
 
 html_btn.addEventListener("click", () => {
-  console.log("hi");
-  display_chart.style.display = "block";
+  display_chart_html.style.display = "block";
+  display_chart_css.style.display = "none";
+  display_chart_js.style.display = "none";
+  display_chart_mysql.style.display = "none";
 });
 
-cross.addEventListener("click", () => {
-  display_chart.style.display = "none";
+cross_html.addEventListener("click", () => {
+  display_chart_html.style.display = "none";
 })
+
+// ------------------ CSS Pie chart -------------------------
+const chartData_css = {
+    labels: ["Completed", "Not Completed"],
+    data: [60, 40],
+  };
+  
+  const myChart_css = document.querySelector(".my_chart_css");
+  
+  const ul_css = document.querySelector(".programming_status_css .details_css ul");
+  
+  new Chart(myChart_css, {
+    type: "doughnut",
+    data: {
+      labels: chartData_css.labels,
+      datasets: [
+                  {
+                      label: "Percentage",
+                      data: chartData_css.data,
+                  },
+                  ],
+               },
+    options: {
+      borderWidth: 4,
+      borderRadius: 2,
+      hoverBorderWidth: 0,
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+    },
+  });
+  
+  const populateUl2 = () => {
+    chartData_css.labels.forEach((l, i) => {
+      let li = document.createElement("li");
+      li.innerHTML = `${l}: <span class = "percentage">${chartData_css.data[i]} % </span>`
+      ul_css.appendChild(li);
+    });
+  };
+  
+  populateUl2();
+  
+  var cross_css = document.querySelector(".cross_css");
+  var display_chart_css = document.querySelector(".display_chart_css");
+  var css_btn = document.querySelector("#css_btn");
+  
+  css_btn.addEventListener("click", () => {
+    display_chart_css.style.display = "block";
+    display_chart_html.style.display = "none";
+    display_chart_js.style.display = "none";
+    display_chart_mysql.style.display = "none";
+  });
+  
+  cross_css.addEventListener("click", () => {
+    display_chart_css.style.display = "none";
+  });
+
+// ------------------- Javascript Piechart ----------------------
+const chartData_js = {
+    labels: ["Completed", "Not Completed"],
+    data: [70, 30],
+  };
+  
+  const myChart_js = document.querySelector(".my_chart_js");
+  
+  const ul_js = document.querySelector(".programming_status_js .details_js ul");
+  
+  new Chart(myChart_js, {
+    type: "doughnut",
+    data: {
+      labels: chartData_js.labels,
+      datasets: [
+                  {
+                      label: "Percentage",
+                      data: chartData_js.data,
+                  },
+                  ],
+               },
+    options: {
+      borderWidth: 4,
+      borderRadius: 2,
+      hoverBorderWidth: 0,
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+    },
+  });
+  
+  const populateUl3 = () => {
+    chartData_js.labels.forEach((l, i) => {
+      let li = document.createElement("li");
+      li.innerHTML = `${l}: <span class = "percentage">${chartData_js.data[i]} % </span>`
+      ul_js.appendChild(li);
+    });
+  };
+  
+  populateUl3();
+  
+  var cross_js = document.querySelector(".cross_js");
+  var display_chart_js = document.querySelector(".display_chart_js");
+  var js_btn = document.querySelector("#js_btn");
+  
+  js_btn.addEventListener("click", () => {
+    display_chart_js.style.display = "block";
+    display_chart_html.style.display = "none";
+    display_chart_css.style.display = "none";
+    display_chart_mysql.style.display = "none";
+  });
+  
+  cross_js.addEventListener("click", () => {
+    display_chart_js.style.display = "none";
+  });
+// ------------------- MySQL Piechart ----------------------
+const chartData_mysql = {
+    labels: ["Completed", "Not Completed"],
+    data: [80, 20],
+  };
+  
+  const myChart_mysql = document.querySelector(".my_chart_mysql");
+  
+  const ul_mysql = document.querySelector(".programming_status_mysql .details_mysql ul");
+  
+  new Chart(myChart_mysql, {
+    type: "doughnut",
+    data: {
+      labels: chartData_mysql.labels,
+      datasets: [
+                  {
+                      label: "Percentage",
+                      data: chartData_mysql.data,
+                  },
+                  ],
+               },
+    options: {
+      borderWidth: 4,
+      borderRadius: 2,
+      hoverBorderWidth: 0,
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+    },
+  });
+  
+  const populateUl4 = () => {
+    chartData_mysql.labels.forEach((l, i) => {
+      let li = document.createElement("li");
+      li.innerHTML = `${l}: <span class = "percentage">${chartData_mysql.data[i]} % </span>`
+      ul_mysql.appendChild(li);
+    });
+  };
+  
+  populateUl4();
+  
+  var cross_mysql = document.querySelector(".cross_mysql");
+  var display_chart_mysql = document.querySelector(".display_chart_mysql");
+  var mysql_btn = document.querySelector("#mysql_btn");
+  
+  mysql_btn.addEventListener("click", () => {
+    display_chart_mysql.style.display = "block";
+    display_chart_html.style.display = "none";
+    display_chart_css.style.display = "none";
+    display_chart_js.style.display = "none";
+  });
+  
+  cross_mysql.addEventListener("click", () => {
+    display_chart_mysql.style.display = "none";
+  });
 

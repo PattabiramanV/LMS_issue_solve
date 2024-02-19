@@ -1,25 +1,124 @@
 "use strict"
 
-//   // Import the functions you need from the SDKs you need
-//   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-//   // TODO: Add SDKs for Firebase products that you want to use
-//   // https://firebase.google.com/docs/web/setup#available-libraries
+// //   // Import the functions you need from the SDKs you need
+// //   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+// //   // TODO: Add SDKs for Firebase products that you want to use
+// //   // https://firebase.google.com/docs/web/setup#available-libraries
 
-//   // Your web app's Firebase configuration
-//   const firebaseConfig = {
+// //   // Your web app's Firebase configuration
+// //   const firebaseConfig = {
+// //     apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
+// //     authDomain: "dckap-lms-project.firebaseapp.com",
+// //     projectId: "dckap-lms-project",
+// //     storageBucket: "dckap-lms-project.appspot.com",
+// //     messagingSenderId: "1022626638467",
+// //     appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
+// //   };
+
+// //   // Initialize Firebase
+// //   const app = initializeApp(firebaseConfig);
+
+// //   import {  getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection  } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+
+// // Import the functions you need from the Firebase SDKs
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+// import { getFirestore, collection, addDoc,setDoc,doc,getDoc,getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+// // Your web app's Firebase configuration
+// const firebaseConfig = {
 //     apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
 //     authDomain: "dckap-lms-project.firebaseapp.com",
 //     projectId: "dckap-lms-project",
 //     storageBucket: "dckap-lms-project.appspot.com",
 //     messagingSenderId: "1022626638467",
 //     appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
-//   };
+// };
 
-//   // Initialize Firebase
-//   const app = initializeApp(firebaseConfig);
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
 
-//   import {  getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection  } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+// // Get a reference to the Firestore database service
+// const db = getFirestore(app);
+// let id=0;
+// // Define the cssquizData array
+// let cssquizData = [
+//     {
+//         question: '1.What does CSS stand for?',
+//         options: [    
+//             'Creative Style Sheets',
+//             'Computer Style Sheets',
+//             'Cascading Style Sheets',
+//             'Colorful Style Sheets',
+//         ],
+//         answer: 'Cascading Style Sheets'
+//     },
+//     {
+//         question: '2.Which property is used to change the text color of an element?',
+//         options: [
+//             'color',
+//             'text-color',
+//             'font-color',
+//             'text-style',
+//         ],
+//         answer: 'color'
+//     },
+//     // Add other quiz data objects here...
+// ];
 
+// // Function to store quiz data in Firestore
+// // function storeDataInFirestore() {
+// //     cssquizData.forEach((quiz, index) => {
+// //         setDoc(collection(db, "cssQuizzes",`${id++}`))
+// //         .then((docRef) => {
+// //             console.log("Document written with ID: ", docRef.id);
+// //         })
+// //         .catch((error) => {
+// //             console.error("Error adding document: ", error);
+// //         });
+// //     });
+// // }
+
+// // Call the function to store quiz data
+// // storeDataInFirestore();
+
+// let get_size=collection(db,'Quiz');
+// let set_size= await getDocs(get_size);
+// console.log(set_size.size);
+// id=set_size.size;
+// // console.log(get_size.size)
+
+
+// --------------------------------------------------------------------
+
+
+
+// let id = 1;
+
+// (async () => {
+//     try {
+//         let ref = doc(db, "cssquizData", `${id++}`);
+//         let dataReference = await setDoc(ref, { id: ref.id }); // Using ref.id to access the ID
+//         console.log("Data Added Successfully");
+//     } catch (err) {
+//         console.log(err);
+//     }
+// })();
+
+
+// function storeDataInFirestore() {
+//     cssquizData.forEach((quiz, index) => {
+//         addDoc(collection(db, "cssQuizzes"), quiz)
+//         .then((docRef) => {
+//             console.log("Document written with ID: ", docRef.id);
+//         })
+//         .catch((error) => {
+//             console.error("Error adding document: ", error);
+//         });
+//     });
+// }
+
+// storeDataInFirestore();
 
 
 //----------------------------------- navbar_sidebar
@@ -54,7 +153,7 @@ sidebar.addEventListener("mouseleave", () => {
   }
 });
 
-darkLight.addEventListener("click", () => {
+darkLight.addEventListener("click",() => {
   body.classList.toggle("dark");
   if (body.classList.contains("dark")) {
     document.setI;
@@ -128,249 +227,257 @@ Course_navigate.addEventListener("click",()=>{
 
 
 
-// // ---------------------Quiz----------------------------------
-let cssquizData = [
-    {
-        question: '1.What does CSS stand for?',
-        options: [    
-            'Creative Style Sheets',
-            'Computer Style Sheets',
-            'Cascading Style Sheets',
-            'Colorful Style Sheets',
-        ],
-        answer: 'Cascading Style Sheets'
-    },
-    {
-        question: '2.Which property is used to change the text color of an element?',
-        options: [
-            'color',
-            'text-color',
-            'font-color',
-            'text-style',
-        ],
-        answer: 'color'
-    },
-    {
-        question: '3.What is the correct CSS syntax to select an element by its id?',
-        options: [
-            '#elementID {}',
-            '.elementID {}',
-            'elementID {}',
-            '<elementID> {}',
-        ],
-        answer: '#elementID {}'
-    },
-    {
-        question: '4.Which CSS property is used to control the spacing between elements?',
-        options: [
-            'margin',
-            'padding',
-            'spacing',
-            'gap',
-        ],
-        answer: 'margin'
-    },
-    {
-        question: '5.Which CSS property is used to make text bold?',
-        options: [
-            'text-weight',
-            'font-weight',
-            'bold',
-            'text-bold',
-        ],
-        answer: 'font-weight'
-    },
-    {
-        question: '6.What does the "float" property in CSS do?',
-        options: [
-            'It makes an element float to the left',
-            'It makes an element float to the right',
-            'It clears the floated elements',
-            'It has no effect on elements',
-        ],
-        answer: 'It makes an element float to the left'
-    },
-    {
-        question: '7.Which CSS property is used to create rounded corners?',
-        options: [
-            'corner-radius',
-            'border-radius',
-            'rounded-corners',
-            'corner-style',
-        ],
-        answer: 'border-radius'
-    },
-    {
-        question: '8.What does the "display: none;" CSS property do?',
-        options: [
-            'It hides an element',
-            'It shows an element',
-            'It changes the element\'s display to inline-block',
-            'It has no effect on elements',
-        ],
-        answer: 'It hides an element'
-    },
-    {
-        question: '9.Which CSS property is used to control the size of text?',
-        options: [
-            'text-size',
-            'font-size',
-            'size',
-            'text-scale',
-        ],
-        answer: 'font-size'
-    },
-  ];
-  
-  
-  let quizContainer = document.getElementById('quiz');
-  let resultContainer = document.getElementById('result');
-  let submitButton = document.getElementById('submit');
-  let backButton = document.getElementById('submit_btn');
-  let retryButton = document.getElementById('retry');
-  let retryButton2 = document.getElementById('retry2');
-  let showAnswerButton = document.getElementById('showAnswer');
-  
-  
-  let div_get = document.getElementById('diva');
-  let marks = document.createElement("p");
-  marks.className = "marks";
-  div_get.appendChild(marks);
-  
-  
-  
-  
-  let currentQuestion = 0;
-  let score = 0;
-  let incorrectAnswers = [];
-  
-  function displayQuestion() {
-      let questionData = cssquizData[currentQuestion];
-  
-      let questionElement = document.createElement('div');
-      questionElement.className = 'question';
-      questionElement.innerHTML = questionData.question;
-  
-      let optionsElement = document.createElement('div');
-      optionsElement.className = 'options';
-  
-      for (let i = 0; i < questionData.options.length; i++) {
-          let option = document.createElement('label');
-          option.className = 'option';
-  
-          let radio = document.createElement('input');
-          radio.type = 'radio';
-          radio.name = 'quiz';
-          radio.value = questionData.options[i];
-  
-          let optionText = document.createTextNode(questionData.options[i]);
-  
-          option.appendChild(radio);
-          option.appendChild(optionText);
-          optionsElement.appendChild(option);
-      }
-  
-      quizContainer.innerHTML = '';
-      quizContainer.appendChild(questionElement);
-      quizContainer.appendChild(optionsElement);
-  
-      // Show back button after first question
-      if (currentQuestion > 0) {
-          backButton.style.display = "block";
-      }
-      else{
-          backButton.style.display = "none";
-      }
-  }
-  
-  function checkAnswer() {
-      let selectedOption = document.querySelector('input[name="quiz"]:checked');
-      if (selectedOption) {
-          let answer = selectedOption.value;
-          if (answer === cssquizData[currentQuestion].answer) {
-              score++;
-          } else {
-              incorrectAnswers.push({
-                  question: cssquizData[currentQuestion].question,
-                  incorrectAnswer: answer,
-                  correctAnswer: cssquizData[currentQuestion].answer,
-              });
-          }
-          currentQuestion++;
-          selectedOption.checked = false;
-          if (currentQuestion < cssquizData.length) {
-              displayQuestion();
-          } else {
-              displayResult();
-          }
-      }
-  }
-  
-  function goBack() {
-      if (currentQuestion > 0) {
-          currentQuestion--;
-          displayQuestion();
-      }
-  }
-  
-  function displayResult() {
-      quizContainer.style.display = 'none';
-      submitButton.style.display = 'none';
-      backButton.style.display = 'none';
-      retryButton.style.display = 'inline-block';
-      showAnswerButton.style.display = 'inline-block';
-      marks.style.display="block";
-      marks.innerHTML = `You scored ${score} out of ${cssquizData.length}!`;
-  }
-  
-  function retryQuiz() {
-      currentQuestion = 0;
-      score = 0;
-      incorrectAnswers = [];
-      quizContainer.style.display = 'block';
-      submitButton.style.display = 'inline-block';
-      backButton.style.display = 'inline-block';
-      retryButton.style.display = 'none';
-      retryButton2.style.display = 'none';
-      showAnswerButton.style.display = 'none';
-      marks.style.display="none";
-      resultContainer.innerHTML = '';
-      displayQuestion();
-  }
-  
-  function showAnswer() {
-      quizContainer.style.display = 'none';
-      submitButton.style.display = 'none';
-      backButton.style.display = 'none';
-      retryButton2.style.display = 'inline-block';
-      retryButton.style.display = 'none';
-      showAnswerButton.style.display = 'none';
-      marks.style.display="none";
-  
-      let incorrectAnswersHtml = '';
-      for (let i = 0; i < incorrectAnswers.length; i++) {
-          incorrectAnswersHtml += `
-              <p>
-                  <strong>Question:</strong> ${incorrectAnswers[i].question}<br>
-                  <strong>Your Answer:</strong> ${incorrectAnswers[i].incorrectAnswer}<br>
-                  <strong>Correct Answer:</strong> ${incorrectAnswers[i].correctAnswer}
-              </p>
-          `;
-      }
-  
-      resultContainer.innerHTML = `
-          <p>You scored ${score} out of ${cssquizData.length}!</p>
-          <p>Incorrect Answers:</p>
-          ${incorrectAnswersHtml}
-      `;
-  }
-  
-  
-  submitButton.addEventListener('click', checkAnswer);
-  backButton.addEventListener('click', goBack);
-  retryButton.addEventListener('click', retryQuiz);
-  retryButton2.addEventListener('click', retryQuiz);
-  showAnswerButton.addEventListener('click', showAnswer);
-  
-  displayQuestion();
-  
+    // // ---------------------Quiz----------------------------------
+    let cssquizData = [
+        {
+            question: '1.What does CSS stand for?',
+            options: [    
+                'Creative Style Sheets',
+                'Computer Style Sheets',
+                'Cascading Style Sheets',
+                'Colorful Style Sheets',
+            ],
+            answer: 'Cascading Style Sheets'
+        },
+        {
+            question: '2.Which property is used to change the text color of an element?',
+            options: [
+                'color',
+                'text-color',
+                'font-color',
+                'text-style',
+            ],
+            answer: 'color'
+        },
+        {
+            question: '3.What is the correct CSS syntax to select an element by its id?',
+            options: [
+                '#elementID {}',
+                '.elementID {}',
+                'elementID {}',
+                '<elementID> {}',
+            ],
+            answer: '#elementID {}'
+        },
+        {
+            question: '4.Which CSS property is used to control the spacing between elements?',
+            options: [
+                'margin',
+                'padding',
+                'spacing',
+                'gap',
+            ],
+            answer: 'margin'
+        },
+        {
+            question: '5.Which CSS property is used to make text bold?',
+            options: [
+                'text-weight',
+                'font-weight',
+                'bold',
+                'text-bold',
+            ],
+            answer: 'font-weight'
+        },
+        {
+            question: '6.What does the "float" property in CSS do?',
+            options: [
+                'It makes an element float to the left',
+                'It makes an element float to the right',
+                'It clears the floated elements',
+                'It has no effect on elements',
+            ],
+            answer: 'It makes an element float to the left'
+        },
+        {
+            question: '7.Which CSS property is used to create rounded corners?',
+            options: [
+                'corner-radius',
+                'border-radius',
+                'rounded-corners',
+                'corner-style',
+            ],
+            answer: 'border-radius'
+        },
+        {
+            question: '8.What does the "display: none;" CSS property do?',
+            options: [
+                'It hides an element',
+                'It shows an element',
+                'It changes the element\'s display to inline-block',
+                'It has no effect on elements',
+            ],
+            answer: 'It hides an element'
+        },
+        {
+            question: '9.Which CSS property is used to control the size of text?',
+            options: [
+                'text-size',
+                'font-size',
+                'size',
+                'text-scale',
+            ],
+            answer: 'font-size'
+        },
+    ];
+    
+    
+    let quizContainer = document.getElementById('quiz');
+    let resultContainer = document.getElementById('result');
+    let submitButton = document.getElementById('submit');
+    let backButton = document.getElementById('submit_btn');
+    let retryButton = document.getElementById('retry');
+    let retryButton2 = document.getElementById('retry2');
+    let showAnswerButton = document.getElementById('showAnswer');
+    
+    
+    let div_get = document.getElementById('diva');
+    let marks = document.createElement("p");
+    marks.className = "marks";
+    div_get.appendChild(marks);
+    
+    
+    
+    
+    let currentQuestion = 0;
+    let score = 0;
+    let incorrectAnswers = [];
+    
+    function displayQuestion() {
+        let questionData = cssquizData[currentQuestion];
+    
+        let questionElement = document.createElement('div');
+        questionElement.className = 'question';
+        questionElement.innerHTML = questionData.question;
+    
+        let optionsElement = document.createElement('div');
+        optionsElement.className = 'options';
+    
+        for (let i = 0; i < questionData.options.length; i++) {
+            let option = document.createElement('label');
+            option.className = 'option';
+    
+            let radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = 'quiz';
+            radio.value = questionData.options[i];
+    
+            let optionText = document.createTextNode(questionData.options[i]);
+    
+            option.appendChild(radio);
+            option.appendChild(optionText);
+            optionsElement.appendChild(option);
+        }
+    
+        quizContainer.innerHTML = '';
+        quizContainer.appendChild(questionElement);
+        quizContainer.appendChild(optionsElement);
+    
+        // Show back button after first question
+        if (currentQuestion > 0) {
+            backButton.style.display = "block";
+        }
+        else{
+            backButton.style.display = "none";
+        }
+    }
+    
+    function checkAnswer() {
+        let selectedOption = document.querySelector('input[name="quiz"]:checked');
+        if (selectedOption) {
+            let answer = selectedOption.value;
+            if (answer === cssquizData[currentQuestion].answer) {
+                score++;
+            } else {
+                incorrectAnswers.push({
+                    question: cssquizData[currentQuestion].question,
+                    incorrectAnswer: answer,
+                    correctAnswer: cssquizData[currentQuestion].answer,
+                });
+            }
+            currentQuestion++;
+            selectedOption.checked = false;
+            if (currentQuestion < cssquizData.length) {
+                displayQuestion();
+            } else {
+                displayResult();
+            }
+        }
+    }
+    
+    function goBack() {
+        if (currentQuestion > 0) {
+            currentQuestion--;
+            displayQuestion();
+        }
+    }
+    
+    function displayResult() {
+        quizContainer.style.display = 'none';
+        submitButton.style.display = 'none';
+        backButton.style.display = 'none';
+        retryButton.style.display = 'inline-block';
+        showAnswerButton.style.display = 'inline-block';
+        marks.style.display="block";
+        marks.innerHTML = `You scored ${score} out of ${cssquizData.length}!`;
+    }
+    
+    function retryQuiz() {
+        currentQuestion = 0;
+        score = 0;
+        incorrectAnswers = [];
+        quizContainer.style.display = 'block';
+        submitButton.style.display = 'inline-block';
+        backButton.style.display = 'inline-block';
+        retryButton.style.display = 'none';
+        retryButton2.style.display = 'none';
+        showAnswerButton.style.display = 'none';
+        marks.style.display="none";
+        resultContainer.innerHTML = '';
+        displayQuestion();
+    }
+    
+    function showAnswer() {
+        quizContainer.style.display = 'none';
+        submitButton.style.display = 'none';
+        backButton.style.display = 'none';
+        retryButton2.style.display = 'inline-block';
+        retryButton.style.display = 'none';
+        showAnswerButton.style.display = 'none';
+        marks.style.display="none";
+    
+        let incorrectAnswersHtml = '';
+        for (let i = 0; i < incorrectAnswers.length; i++) {
+            incorrectAnswersHtml += `
+                <p>
+                    <strong>Question:</strong> ${incorrectAnswers[i].question}<br>
+                    <strong>Your Answer:</strong> ${incorrectAnswers[i].incorrectAnswer}<br>
+                    <strong>Correct Answer:</strong> ${incorrectAnswers[i].correctAnswer}
+                </p>
+            `;
+        }
+    
+        resultContainer.innerHTML = `
+            <p>You scored ${score} out of ${cssquizData.length}!</p>
+            <p>Incorrect Answers:</p>
+            ${incorrectAnswersHtml}
+        `;
+    }
+    
+    
+    submitButton.addEventListener('click', checkAnswer);
+    backButton.addEventListener('click', goBack);
+    retryButton.addEventListener('click', retryQuiz);
+    retryButton2.addEventListener('click', retryQuiz);
+    showAnswerButton.addEventListener('click', showAnswer);
+    
+    displayQuestion();
+    
+//     submitButton.addEventListener("click",()=>{
+//         let ref=doc(db,'Quiz',`${id++}`);
+// let set_data=setDoc(
+//     ref,{
+//         Quiz:cssquizData[0]
+//     }
+// );
+//     })

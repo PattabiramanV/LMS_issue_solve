@@ -27,6 +27,7 @@ roadmap.addEventListener("click",()=>{
 })
 
 navlogin.addEventListener("click",()=>{
+
 window.location.href='login.html';
     // alert("login button clicked")
 })
@@ -34,6 +35,11 @@ window.location.href='login.html';
 navsign.addEventListener("click",()=>{
     // alert("sign_up button clicked")
     window.location.href='signup.html';
+
+=======
+   
+})
+
 
 })
 

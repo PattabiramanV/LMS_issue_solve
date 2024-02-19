@@ -36,9 +36,7 @@ navsign.addEventListener("click",()=>{
     // alert("sign_up button clicked")
     window.location.href='signup.html';
 
-=======
-   
-})
+
 
 
 })

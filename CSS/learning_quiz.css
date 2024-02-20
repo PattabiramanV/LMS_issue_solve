@@ -1,0 +1,472 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+:root {
+  --white-color: #fff;
+  --blue-color: #4070f4;
+  --grey-color: #707070;
+  --grey-color-light: #aaa;
+  --background:rgb(255, 255, 255);
+  --background-color-hover: rgba(30, 245, 2, 0.986);
+  --background-color-btn: #49a843;
+  --background-color-li: #99ecae75 !important;
+}
+body {
+  background-color: #e7f2fd;
+  transition: all 0.5s ease;
+}
+body.dark {
+  background-color: #333;
+}
+body.dark {
+  --white-color: #333;
+  --blue-color: #fff;
+  --grey-color: #f2f2f2;
+  --grey-color-light: #aaa;
+}
+
+/* navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+  background-color: var(--white-color);
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  z-index: 1000;
+  box-shadow: 0 0 2px var(--grey-color-light);
+  justify-content: space-evenly;
+  gap: 18%;
+}
+.logo_item {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--blue-color);
+}
+img.DCKAPlOGO {
+  position: absolute;
+  left: 2rem;
+}
+.navbar img {
+  height: 35px;
+  object-fit: cover;
+}
+.search_bar {
+  height: 47px;
+  max-width: 430px;
+  width: 100%;
+}
+.search_bar input {
+  height: 100%;
+  width: 100%;
+  border-radius: 25px;
+  font-size: 18px;
+  outline: none;
+  background-color: var(--white-color);
+  color: var(--grey-color);
+  border: 1px solid var(--grey-color-light);
+  padding: 0 20px;
+  position: relative;
+  left: -8rem;
+}
+i.fas.fa-search {
+  position: absolute;
+  top: 2rem;
+  left: 44rem;
+}
+.navbar_content {
+  display: flex;
+  align-items: center;
+  column-gap: 25px;
+}
+.navbar_content i {
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--grey-color);
+}
+
+/* sidebar */
+.sidebar {
+  background-color: var(--white-color);
+  width: 224px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 63px 0px;
+  z-index: 100;
+  overflow-y: scroll;
+  box-shadow: 0 0 1px var(--grey-color-light);
+  transition: all 0.5s ease;
+}
+.sidebar.close {
+  padding: 60px 0;
+  width: 80px;
+}
+ul.set_items {
+  position: relative;
+  top: 14rem;
+}
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+.menu_content {
+  position: relative;
+}
+.menu_title {
+  margin: 15px 0;
+  padding: 0 20px;
+  font-size: 18px;
+}
+.sidebar.close .menu_title {
+  padding: 6px 30px;
+}
+.menu_title::before {
+  color: var(--grey-color);
+  white-space: nowrap;
+}
+.menu_items, .set_items {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+.navlink_icon {
+  position: relative;
+  font-size: 22px;
+  min-width: 50px;
+  line-height: 40px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 6px;
+}
+.sidebar .nav_link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 4px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--grey-color);
+  margin-left: 4%;
+}
+.sidebar.close .navlink {
+  display: none;
+}
+.nav_link:hover {
+  color: #333;
+  background: var(--background-color-li);
+}
+.sidebar.close .nav_link:hover {
+  background: var(--background-color-li);
+  color: #333;
+}
+.submenu_item {
+  cursor: pointer;
+}
+.menu_content {
+  position: relative;
+  top: 8%;
+}
+.submenu {
+  display: none;
+}
+.submenu_item .arrow-left {
+  position: absolute;
+  right: 10px;
+  display: inline-block;
+  margin-right: auto;
+}
+.sidebar.close .submenu {
+  display: none;
+}
+.show_submenu ~ .submenu {
+  display: block;
+}
+.submenu .sublink {
+  padding: 15px 15px 15px 52px;
+}
+.bottom_content {
+  position: fixed;
+  bottom: 60px;
+  left: 0;
+  width: 260px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.bottom {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 0;
+  justify-content: space-around;
+  padding: 18px 0;
+  text-align: center;
+  width: 100%;
+  color: var(--grey-color);
+  border-top: 1px solid var(--grey-color-light);
+  background-color: var(--white-color);
+  width: 86%;
+}
+.bottom i {
+  font-size: 20px;
+}
+.bottom span {
+  font-size: 18px;
+}
+.sidebar.close .bottom_content {
+  width: 50px;
+  left: 15px;
+}
+.sidebar.close .bottom span {
+  display: none;
+}
+.sidebar.hoverable .collapse_sidebar {
+  display: none;
+}
+#sidebarOpen {
+  display: none;
+}
+
+/* Profile DropDown */
+
+.profile_bar_list {
+  top: 72px;
+  width: 16%;
+  background: rgb(255 255 255 / 78%);
+  border-radius: 8px;
+  color: rgb(18, 22, 10);
+  position: absolute;
+  right: 3%;
+  display: none;
+  border: 1px solid lightgray;
+  cursor: pointer;
+}
+
+.Drop_Down,
+.profile_down,
+.Course_Down {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.Drop_Down:hover,
+.profile_down:hover,.Course_Down:hover {
+  background-color: rgba(91, 231, 35, 0.226);
+  border-radius: 8px;
+}
+
+p.profile-name {
+  width: 50%;
+  align-items: flex-start;
+  display: flex;
+}
+
+i.fa.fa-user,
+i.fa-solid.fa-book,
+i.fa-solid.fa-award,
+i.fa-solid.fa-right-from-bracket {
+  width: 50%;
+}
+
+
+
+/* Your Content paste here ....................................................*/
+
+
+.bottom_content_quiz {
+  padding: 10px 20px;
+  width: 60%;
+  height: 315px;
+  margin: 151px auto 0px 360px;
+  /* text-align: center; */
+  background-color: lightsalmon;
+  margin-top: 140px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  gap: 30px;
+  /* display: none; */
+}
+
+.bottom_quiz_btn button{
+
+  height: 30px;
+  width: 100px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px gray;
+  background-color: rgba(170, 62, 226, 1);
+  font-size: 14px;
+  font-weight: bolder;
+  cursor: pointer;
+
+}
+button:hover{
+  transform: scale(1.05);
+
+}
+
+.bottom_quiz_btn {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+}
+.options_4>*,label:hover{
+  cursor: pointer;
+}
+
+/* button.previous_btn {
+  background-color: lightsalmon;
+  color: lightsalmon;
+  border: none;
+  box-shadow: 0px 0px;
+} */
+.previous_btn{
+  display: none;
+}
+.quiz_sunmit_btn{
+
+  display: none;
+}
+
+/*........................................Quiz Result....................*/
+
+.Answer_show_page {
+  width: 52%;
+  background-color: #FFFFFF;
+  box-shadow: 0px 0px 12px 0px grey;
+  margin: 0 auto;
+  margin-top: 140px;
+  /* height: 350px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 45px;
+  display: none;
+}
+
+/* .Answer_show_page {
+  width: 70%;
+  background-color: #d3d3d3c9;
+  margin: 0 auto;
+  margin-top: 50px;
+} */
+.top_thumsup_and_content {
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
+  height: 50%;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.left_content {
+  width: 60%;
+}
+
+.right_thumsup {
+  width: 30%;
+  text-align: center;
+  border-radius: 50%;
+  height: 149px;
+  /* background-color: darkgreen; */
+  /* display: flex; */
+}
+
+.bottom_score_board {
+  display: flex;
+  justify-content: space-evenly;
+  height: 20%;
+  align-items: center;
+  border-top: 1px solid rgba(128, 128, 128, 0.405);
+ 
+}
+
+
+
+.bottom_score_board>* {
+  width: 20%;
+  border-right: 2px solid #0064006b;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+
+}
+
+.bottom_score_board h5{
+  margin: 0;
+  font-size: 16px;
+}
+.two_btn button {
+  height: 30px;
+  border: none;
+  border-radius: 7px;
+  background-color: #9C27B0;
+  font-weight: bolder;
+}
+
+#retry_btn{
+  display: none;
+}
+.two_btn{
+  border:none;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+.Answer_show_page img {
+  /* position: relative;
+  top: 41px; */
+  height: 149px;
+  width: 100%;
+}
+
+.Answer_show_page p {
+  font-size: 16px;
+  color: gray;
+}
+.Answer_show_page span {
+  font-size: 26px;
+  font-weight: bolder;
+}
+strong{
+  font-size: 20px;
+}
+/*...................classList..............*/
+.Answer_show_page_classlist{
+
+  display: block;
+  display: flex;
+flex-direction: column;
+gap: 20px;
+}
+.bootm_content_quiz_classlist{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  display: none;
+ 
+}

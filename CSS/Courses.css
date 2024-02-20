@@ -1,0 +1,544 @@
+/* Import Google font - Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+:root {
+  --white-color: #fff;
+  --blue-color: #4070f4;
+  --grey-color: #707070;
+  --grey-color-light: #aaa;
+  --background: rgb(255, 255, 255);
+  --background-color-hover: rgba(30, 245, 2, 0.986);
+  --background-color-btn: #49a843;
+  --background-color-li: #99ecae75 !important;
+}
+
+body {
+  background-color: #e0ffe4;
+}
+
+body.dark {
+  background-color: #333;
+}
+
+body.dark {
+  --white-color: #333;
+  --blue-color: #fff;
+  --grey-color: #f2f2f2;
+  --grey-color-light: #aaa;
+}
+
+/* navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0px;
+  background-color: var(--white-color);
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  z-index: 1000;
+  box-shadow: 0 0 2px var(--grey-color-light);
+  justify-content: space-evenly;
+  gap: 18%;
+}
+
+.logo_item {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--blue-color);
+}
+
+img.DCKAPlOGO {
+  position: absolute;
+  left: 2rem;
+}
+
+.navbar img {
+  height: 35px;
+  object-fit: cover;
+}
+
+.search_bar {
+  height: 47px;
+  max-width: 430px;
+  width: 100%;
+}
+
+.search_bar input {
+  height: 100%;
+  width: 100%;
+  border-radius: 25px;
+  font-size: 18px;
+  outline: none;
+  background-color: var(--white-color);
+  color: var(--grey-color);
+  border: 1px solid var(--grey-color-light);
+  padding: 0 20px;
+  position: relative;
+  left: -8rem;
+}
+
+i.fas.fa-search {
+  position: absolute;
+  top: 2rem;
+  left: 44rem;
+}
+
+.navbar_content {
+  display: flex;
+  align-items: center;
+  column-gap: 25px;
+}
+
+.navbar_content i {
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--grey-color);
+}
+
+/* sidebar */
+.sidebar {
+  background-color: var(--white-color);
+  width: 224px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 63px 0px;
+  z-index: 100;
+  overflow-y: scroll;
+  box-shadow: 0 0 1px var(--grey-color-light);
+  transition: all 0.5s ease;
+}
+
+.sidebar.close {
+  padding: 60px 0;
+  width: 80px;
+}
+
+ul.set_items {
+  position: relative;
+  top: 12rem;
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.menu_content {
+  position: relative;
+}
+
+.menu_title {
+  margin: 15px 0;
+  padding: 0 20px;
+  font-size: 18px;
+}
+
+.sidebar.close .menu_title {
+  padding: 6px 30px;
+}
+
+.menu_title::before {
+  color: var(--grey-color);
+  white-space: nowrap;
+}
+
+.menu_items,
+.set_items {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.navlink_icon {
+  position: relative;
+  font-size: 22px;
+  min-width: 50px;
+  line-height: 40px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.sidebar .nav_link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 4px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--grey-color);
+  margin-left: 4%;
+}
+
+.sidebar.close .navlink {
+  display: none;
+}
+
+.nav_link:hover {
+  color: #333;
+  background: var(--background-color-li);
+}
+
+.sidebar.close .nav_link:hover {
+  background: var(--background-color-li);
+  color: #333;
+}
+
+.submenu_item {
+  cursor: pointer;
+}
+
+.menu_content {
+  position: relative;
+  top: 8%;
+}
+
+.submenu {
+  display: none;
+}
+
+.submenu_item .arrow-left {
+  position: absolute;
+  right: 10px;
+  display: inline-block;
+  margin-right: auto;
+}
+
+.sidebar.close .submenu {
+  display: none;
+}
+
+.show_submenu~.submenu {
+  display: block;
+}
+
+.submenu .sublink {
+  padding: 15px 15px 15px 52px;
+}
+
+.bottom_content {
+  position: fixed;
+  bottom: 60px;
+  left: 0;
+  width: 260px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.bottom {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 0px;
+  justify-content: space-around;
+  padding: 18px 0;
+  text-align: center;
+  width: 100%;
+  color: var(--grey-color);
+  border-top: 1px solid var(--grey-color-light);
+  background-color: var(--white-color);
+  width: 86%;
+}
+
+.bottom i {
+  font-size: 20px;
+}
+
+.bottom span {
+  font-size: 18px;
+}
+
+.sidebar.close .bottom_content {
+  width: 50px;
+  left: 15px;
+}
+
+.sidebar.close .bottom span {
+  display: none;
+}
+
+.sidebar.hoverable .collapse_sidebar {
+  display: none;
+}
+
+#sidebarOpen {
+  display: none;
+}
+
+
+
+/* Main_Content */
+#Main_Content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  margin-left: 18%;
+  width: 80%;
+}
+
+.progressing_bar {
+  width: 100%;
+}
+
+p.Enroll_heading {
+  text-align: center;
+  font-size: 23px;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  font-weight: 600;
+  font-family: Roboto;
+  border-bottom: 4px solid transparent;
+  border-image: linear-gradient(to right, rgb(130, 255, 52), transparent) 1 / 1 / 0 stretch;
+  width: 13%;
+  justify-content: center;
+  margin: 6rem auto auto;
+  position: relative;
+  left: 3rem;
+}
+
+p.Enroll_heading_course {
+  left: 1rem;
+  text-align: center;
+  font-size: 22px;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  font-weight: 600;
+  font-family: "Roboto";
+  border-bottom: 4px solid transparent;
+  border-image: linear-gradient(to right, #82ff34, transparent) 1;
+  width: 16%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  left: 3rem;
+  position: relative;
+}
+
+
+.Progress_container {
+  width: 80%;
+  display: flex;
+  /* justify-content: space-around; */
+  margin-left: 6rem;
+  padding: 1%;
+  /* gap: 1%; */
+  margin-left: 2;
+  justify-content: start;
+  position: relative;
+  left: 10%;
+}
+
+.progress_langauge {
+  width: 100%;
+}
+
+img.enroll_img {
+  border-radius: 100%;
+  width: 40%;
+  margin: auto;
+  display: flex;
+}
+
+.Progress_bar {
+  width: 25%;
+  padding: 1%;
+  border-radius: 1rem;
+  background: #f9f9fa;
+  border: 1.8px solid #dce2e5;
+  box-sizing: border-box;
+  border-radius: 7px;
+  font-family: "Fira Sans", sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 0 rgba(107, 127, 153, .5);
+}
+
+.Progress_bar:hover {
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) .2s;
+  transform: scale(.99);
+}
+
+p.enroll_language {
+  text-align: center;
+}
+
+.percentage {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+p.progress {
+  color: darkslategray;
+}
+
+.List.Courses {
+  width: 94%;
+  margin-top: 2rem;
+  margin-left: 3rem;
+}
+
+p.Free_course {
+  margin: 0px;
+  width: 96%;
+  background: #6ce938a6;
+  border-radius: 3px;
+  padding: 2%;
+}
+
+.Progress_bar_Course,
+.Progress_bar_Course2 {
+  width: 25%;
+  border-radius: 1rem;
+  background: #f9f9fa;
+  border: 1.8px solid #dce2e5;
+  box-sizing: border-box;
+  border-radius: 7px;
+  font-family: "Fira Sans", sans-serif;
+  cursor: pointer;
+
+
+}
+
+.Course_point {
+  padding: 2%;
+
+}
+
+.Progress_bar_Course:hover,
+.Progress_bar_Course2:hover {
+  transform: translateY(-4px);
+  box-shadow: -6px 2px 4px rgba(138, 211, 96, 0.397), 3px 6px 8px rgba(50, 255, 67, 0.281);
+  /* Added left green shadow */
+  position: relative;
+  border: 1.8px solid #dce2e5;
+  padding: 0px;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+p.friendly {
+  font-size: x-small;
+  display: flex;
+  gap: 12px;
+}
+
+img.Courseimg {
+  width: 30%;
+  border-radius: 100%;
+}
+
+.Course_description {
+  width: 100%;
+  display: flex;
+  text-align: start;
+  align-items: center;
+}
+
+img.Courseimg {
+  height: 18%;
+  width: 18%;
+  border-radius: 100%;
+  position: relative;
+  bottom: 57px;
+}
+
+.Course_footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+hr.footer_line {
+  border: none;
+  border-top: 1px dashed black;
+}
+
+.course_card {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  width: 90%;
+  padding: 1rem 0rem;
+  margin-left: 9rem;
+}
+
+span {
+  color: black;
+}
+
+
+
+/* Dropdown Profile */
+
+.profile_bar_list {
+  top: 77px;
+  width: 13%;
+  background: rgb(255 255 255 / 78%);
+  border-radius: 8px;
+  color: rgb(18, 22, 10);
+  position: absolute;
+  right: 5%;
+  display: none;
+  border: 1px solid lightgray;
+  cursor: pointer;
+}
+
+.Drop_Down,
+.profile_down,.Course_Down {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.Drop_Down:hover,
+.profile_down:hover {
+  background-color: rgba(91, 231, 35, 0.226);
+
+}
+
+p.profile-name {
+  width: 100%;
+  align-items: flex-start;
+  display: flex;
+}
+
+i.fa.fa-user,
+i.fa-solid.fa-book,
+i.fa-solid.fa-award,
+i.fa-solid.fa-right-from-bracket {
+  width: 50%;
+}
+
+
+.Progress_bar_Course2 {
+  width: 25%;
+}
+
+.Second_progress_bar {
+  display: flex;
+  width: 92%;
+  justify-content: center;
+  gap: 3%;
+  margin-left: 7rem;
+}

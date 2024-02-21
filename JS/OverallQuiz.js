@@ -442,17 +442,6 @@ async function initializeQuiz() {
 
 
 
-// it use display the resut of Score and button
-
-  function displayResult() {
-    quizContainer.style.display = 'none';
-    submitButton.style.display = 'none';
-    backButton.style.display = 'none';
-    retryButton.style.display = 'inline-block';
-    showAnswerButton.style.display = 'inline-block';
-    marks.style.display = "block";
-    marks.textContent = `You scored ${score} out of ${cssquizData.length}!`;
-  }
 
 // it is retry_quiz
 
@@ -471,6 +460,17 @@ async function initializeQuiz() {
     resultContainer.innerHTML = '';
     displayQuestion();
   }
+// it use display the resut of Score and button
+
+function displayResult() {
+  quizContainer.style.display = 'none';
+  submitButton.style.display = 'none';
+  backButton.style.display = 'none';
+  retryButton.style.display = 'inline-block';
+  showAnswerButton.style.display = 'inline-block';
+  marks.style.display = "block";
+  marks.textContent = `You scored ${score} out of ${cssquizData.length}!`;
+}
 
 
 
@@ -483,6 +483,9 @@ async function initializeQuiz() {
   showAnswerButton.addEventListener('click', showAnswer);
 
   displayQuestion();
+
+
+
 }
 
 initializeQuiz();

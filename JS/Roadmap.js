@@ -1,14 +1,15 @@
 const body = document.querySelector("body");
 
 const darkLight = document.querySelector("#darkLight");
-console.log(darkLight);
+
 const sidebar = document.querySelector(".sidebar");
-console.log(sidebar);
+
 const submenuItems = document.querySelectorAll(".submenu_item");
-console.log(submenuItems);
+
 const sidebarOpen = document.querySelector("#sidebarOpen");
+
 const sidebarClose = document.querySelector(".collapse_sidebar");
-console.log(sidebarClose);
+
 const sidebarExpand = document.querySelector(".expand_sidebar");
 sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
 
@@ -32,12 +33,23 @@ sidebar.addEventListener("mouseleave", () => {
   }
 });
 
+
+
+let searchicon=document.querySelector(".fas")
+console.log(searchicon);
+
 darkLight.addEventListener("click", () => {
   body.classList.toggle("dark");
   if (body.classList.contains("dark")) {
+    // Change the logo source for dark mode
+    Dckaplogo.src = '../Assests/Dckapwhite.png'; // Adjust the file extension as needed
     darkLight.classList.replace("bx-sun", "bx-moon");
+    searchicon.style="color:white";
   } else {
+    // Change the logo source for light mode
+    Dckaplogo.src = '../Assests/Dckap Logo.png'; // Adjust the file extension as needed
     darkLight.classList.replace("bx-moon", "bx-sun");
+    searchicon.style="color:black";
   }
 });
 
@@ -62,10 +74,10 @@ document.addEventListener("click", (event) => {
 
 let profile_page=document.querySelector(".profile_down")
  profile_page.addEventListener("click",()=>{
-        window.location.href="/profile_user_page/profile.html"
+        window.location.href="profile.html"
 })
 
 let Course_navigate=document.querySelector(".Course_Down")
 Course_navigate.addEventListener("click",()=>{
-      window.location.href="/Profile_main_page/Courses.html"
+      window.location.href="Courses.html"
 })

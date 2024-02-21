@@ -25,13 +25,23 @@ sidebar.addEventListener("mouseleave", () => {
   }
 });
 
+
+
+let searchicon=document.querySelector(".fas")
+console.log(searchicon);
+
 darkLight.addEventListener("click", () => {
   body.classList.toggle("dark");
   if (body.classList.contains("dark")) {
-    document.setI;
+    // Change the logo source for dark mode
+    Dckaplogo.src = '../Assests/Dckapwhite.png'; // Adjust the file extension as needed
     darkLight.classList.replace("bx-sun", "bx-moon");
+    searchicon.style="color:white";
   } else {
+    // Change the logo source for light mode
+    Dckaplogo.src = '../Assests/Dckap Logo.png'; // Adjust the file extension as needed
     darkLight.classList.replace("bx-moon", "bx-sun");
+    searchicon.style="color:black";
   }
 });
 

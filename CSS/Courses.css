@@ -38,6 +38,9 @@ body.dark {
   --grey-color: #f2f2f2;
   --grey-color-light: #aaa;
 }
+.dark {
+  background-color: black;
+}
 
 /* navbar */
 .navbar {
@@ -160,11 +163,11 @@ ul.set_items {
   white-space: nowrap;
 }
 
-.menu_items,
-.set_items {
+.menu_items, .set_items {
   padding: 0;
   list-style: none;
   margin: 0;
+  margin-left: -9%;
 }
 
 .navlink_icon {
@@ -180,12 +183,15 @@ ul.set_items {
 .sidebar .nav_link {
   display: flex;
   align-items: center;
-  width: 100%;
-  padding: 4px 15px;
+  width: 85%;
+  /* padding: 4px 15px; */
   border-radius: 8px;
   text-decoration: none;
   color: var(--grey-color);
   margin-left: 4%;
+  margin: 1rem;
+  padding: 0rem;
+  margin-left: 2rem;
 }
 
 .sidebar.close .navlink {
@@ -208,7 +214,7 @@ ul.set_items {
 
 .menu_content {
   position: relative;
-  top: 8%;
+  top: 3%;
 }
 
 .submenu {
@@ -340,7 +346,7 @@ p.Enroll_heading_course {
   /* justify-content: space-around; */
   margin-left: 6rem;
   padding: 1%;
-  /* gap: 1%; */
+  gap: 1%;
   margin-left: 2;
   justify-content: start;
   position: relative;
@@ -479,6 +485,7 @@ hr.footer_line {
   width: 90%;
   padding: 1rem 0rem;
   margin-left: 9rem;
+  flex-wrap: wrap;
 }
 
 

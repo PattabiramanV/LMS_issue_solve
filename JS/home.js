@@ -14,17 +14,17 @@ let jsbtn=document.querySelector(".js_btn")
 let mysqlbtn=document.querySelector(".mysql_btn")
 let phpbtn=document.querySelector(".php_btn")
 
-learning.addEventListener("click",()=>{
-    alert("learning menu clicked")
-})
+// learning.addEventListener("click",()=>{
+//     alert("learning menu clicked")
+// })
 
-dashboard.addEventListener("click",()=>{
-    alert("dashboard menu clicked")
-})
+// dashboard.addEventListener("click",()=>{
+//     alert("dashboard menu clicked")
+// })
 
-roadmap.addEventListener("click",()=>{
-    alert("roadmap menu clicked")
-})
+// roadmap.addEventListener("click",()=>{
+//     alert("roadmap menu clicked")
+// })
 
 navlogin.addEventListener("click",()=>{
 

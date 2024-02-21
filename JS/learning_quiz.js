@@ -303,3 +303,23 @@ next_module_btn.addEventListener("click",()=>{
     window.location.href="learning_content.html";
 });
 
+
+
+let left_side_bar=document.querySelectorAll(".navlink");
+
+left_side_bar[0].addEventListener("click",()=>{
+  window.location.href='index.html  '
+});
+
+left_side_bar[1].addEventListener("click",()=>{
+
+  window.location.href='Learning.html  '
+});
+left_side_bar[2].addEventListener("click",()=>{
+
+  window.location.href='Dashboard.html';
+});
+left_side_bar[3].addEventListener("click",()=>{
+
+  window.location.href='Roadmap.html';
+});

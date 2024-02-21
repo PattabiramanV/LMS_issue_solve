@@ -1,4 +1,3 @@
-/* Import Google font - Roboto */
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
@@ -594,14 +593,6 @@ p.Heading_p {
   transform-origin: left bottom;
 }
 
-#checklist input[type="checkbox"]:checked::before {
-  animation: check-01 0.4s ease forwards;
-}
-
-#checklist input[type="checkbox"]:checked::after {
-  animation: check-02 0.4s ease forwards;
-}
-
 #checklist input[type="checkbox"]:checked+label {
   color: var(--disabled);
 }
@@ -638,26 +629,32 @@ p.Heading_p {
     padding-left: 0;
   }
 }
+/* Adjusted CSS for checkbox animations */
+#checklist input[type="checkbox"]:checked::before {
+  animation: check-01 0.4s ease forwards;
+}
 
+#checklist input[type="checkbox"]:checked::after {
+  animation: check-02 0.4s ease forwards;
+}
+
+/* Adjusted Keyframes */
 @keyframes check-01 {
   0% {
     width: 4px;
     top: auto;
     transform: rotate(0);
   }
-
   50% {
     width: 0px;
     top: auto;
     transform: rotate(0);
   }
-
   51% {
     width: 0px;
     top: 8px;
     transform: rotate(45deg);
   }
-
   100% {
     width: 5px;
     top: 8px;
@@ -671,106 +668,20 @@ p.Heading_p {
     top: auto;
     transform: rotate(0);
   }
-
   50% {
     width: 0px;
     top: auto;
     transform: rotate(0);
   }
-
   51% {
     width: 0px;
     top: 8px;
     transform: rotate(-45deg);
   }
-
   100% {
     width: 10px;
     top: 8px;
     transform: rotate(-45deg);
-  }
-}
-
-
-@keyframes check-03 {
-  0% {
-    width: 4px;
-    top: auto;
-    transform: rotate(0);
-  }
-
-  50% {
-    width: 0px;
-    top: auto;
-    transform: rotate(0);
-  }
-
-  51% {
-    width: 0px;
-    top: 8px;
-    transform: rotate(45deg);
-  }
-
-  100% {
-    width: 5px;
-    top: 8px;
-    transform: rotate(45deg);
-  }
-}
-
-
-
-@keyframes check-04 {
-  0% {
-    width: 4px;
-    top: auto;
-    transform: rotate(0);
-  }
-
-  50% {
-    width: 0px;
-    top: auto;
-    transform: rotate(0);
-  }
-
-  51% {
-    width: 0px;
-    top: 8px;
-    transform: rotate(45deg);
-  }
-
-  100% {
-    width: 5px;
-    top: 8px;
-    transform: rotate(45deg);
-  }
-}
-
-
-
-@keyframes check-05 {
-  0% {
-    width: 4px;
-    top: auto;
-    transform: rotate(0);
-  }
-
-  50% {
-    width: 0px;
-    top: auto;
-    transform: rotate(0);
-  }
-
-  51% {
-    width: 0px;
-    top: 8px;
-    transform: rotate(45deg);
-  }
-
-  100% {
-    width: 5px;
-    top: 8px;
-    transform: rotate(45deg);
   }
 }
 
@@ -791,4 +702,3 @@ p.Heading_p {
     box-shadow: 0 -15px 0 0px #4f29f0, 14px -8px 0 0px #4f29f0, 14px 8px 0 0px #4f29f0, 0 15px 0 0px #4f29f0, -14px 8px 0 0px #4f29f0, -14px -8px 0 0px #4f29f0;
   }
 }
-

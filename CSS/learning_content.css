@@ -302,7 +302,17 @@ i.fa-solid.fa-right-from-bracket {
   left: 220px;
   /* z-index: -1; */
 }
-
+/* .left_heading_content {
+  width: 17%;
+  line-height: 60px;
+  margin-top: -32px;
+  background-color: #E7E9EB;
+  overflow: hidden scroll;
+  padding-top: 20px;
+  max-height: 35em;
+  position: fixed;
+  margin-right: 63%;
+} */
 
 .left_heading_content {
   display: grid;
@@ -356,7 +366,7 @@ h3#language_title {
   margin: 0;
 }
 
-.bottom_learning_content_parent p{
+.left_heading_content p{
 
   margin: 0;
  
@@ -450,4 +460,18 @@ button:hover{
 
 .red_color{
   color: red;
+}
+
+h3{
+  margin: 10px;
+}
+.heading_tag h2{
+  margin: 10px 0px;
+}
+b {
+  color: #137213;
+}
+
+.content_heading{
+  text-align: center;
 }

@@ -1,8 +1,5 @@
 body{
     max-width: 1837px;
-    /* background-color: #92bf7b78;;/ */
-    /* background-color: #D9EEE1!important; */
-    /* background-color: #DAF7A6; */
     background-color: #82b76d;
     margin: 0;
     font-family: "Roboto";
@@ -27,24 +24,97 @@ li {
     /* text-decoration: none; */
     list-style: none;
 }
-a {
+.nav_list a {
     text-decoration: none;
     color: #23313E;
 }
-a:hover{
+.nav_list a:hover{
     color: #c84e2a;
 }
-a:hover{
+.nav_list a:hover{
     text-decoration: underline;
     text-decoration-color: #82b76d;
 }
-.nav_login {
+.slide-controls{
+    position: relative;
+    display: flex;
+    height: 35px;
+    width: 9em;
+    overflow: hidden;
+    margin-top: 18px;
+    justify-content: space-between;
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+    bottom: 16px;
+    border: none;
+  }
+  .slide-controls .slide{
+    height: 100%;
+    width: 100%;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 48px;
+    cursor: pointer;
+    z-index: 1;
+    transition: all 0.6s ease;
+  }
+  .slide-controls label.signup{
+    color: #000;
+  }
+  .slide-controls .slider-tab{
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    left: 0;
+    z-index: 0;
+    border-radius: 15px;
+    background-color: #82b76d;
+    transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+  }
+  input[type="radio"]{
+    display: none;
+  }
+  #signup:checked ~ .slider-tab{
+    left: 50%;
+  }
+  #signup:checked ~ label.signup{
+    color: #fff;
+    cursor: default;
+    user-select: none;
+  }
+  #signup:checked ~ label.login{
+    color: #000;
+  }
+  #login:checked ~ label.signup{
+    color: #000;
+  }
+  #login:checked ~ label.login{
+    cursor: default;
+    user-select: none;
+  }
+
+  
+
+label.slide.login {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+label.slide.signup {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ .nav_login {
     width: 15%;
     margin-top: 9px;
     display: flex;
     gap: 12px;
     justify-content: center;
-    /* margin-right: 40px; */
 }
 button.login {
     border: 1px solid lightgray;
@@ -53,23 +123,28 @@ button.login {
     width: 52%;
     height: 30px;
     background: none;
-}
+    cursor: pointer;
+} 
 button.login:hover{
     background-color: #4abf48b3;
     color: white;
 }
+.login:hover +.sign_up{
+    background: none;
+    color: black;
+}
+
 button.sign_up {
     border-radius: 15px;
     border: none;
     width: 52%;
     height: 30px;
-    /* background-color: rgb(186, 143, 226); */
     background-color: #4abf48b3;
     color: white;
 }
 button.sign_up:hover{
     background-color: #c84e2a;
-}
+} */
 .container_1 {
     width: 95%;
     padding: 2%;
@@ -279,75 +354,3 @@ h1#head {
     width: 100%;
     gap: 2.7em;
 }
-
-
-
-
-
-
-
-
-
-
-/* #Sign_up {
-    --primary-color: #645bff;
-    --secondary-color: #fff;
-    --hover-color: #111;
-    --arrow-width: 8px;
-    --arrow-stroke: 2px;
-    box-sizing: border-box;
-    border: 0;
-    border-radius: 20px;
-    color: var(--secondary-color);
-    padding: 1em 1.8em;
-    background: var(--primary-color);
-    display: flex;
-    transition: 0.2s background;
-    align-items: center;
-    gap: 0.6em;
-    font-weight: bold;
-    width: 25%;
-    height: 3px;
-  }
-  
-  #Sign_up .arrow-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  #Sign_up .arrow {
-    margin-top: 1px;
-    width: var(--arrow-width);
-    background: var(--primary-color);
-    height: var(--arrow-stroke);
-    position: relative;
-    transition: 0.2s;
-  }
-  
-  #Sign_up .arrow::before {
-    content: "";
-    box-sizing: border-box;
-    position: absolute;
-    border: solid var(--secondary-color);
-    border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
-    display: inline-block;
-    top: -3px;
-    right: 3px;
-    transition: 0.2s;
-    padding: 3px;
-    transform: rotate(-45deg);
-  }
-  
-  #Sign_up:hover {
-    background-color: var(--hover-color);
-  }
-  
-   #Sign_up:hover .arrow {
-    background: var(--secondary-color);
-  }
-  
-  #Sign_up:hover .arrow:before {
-    right: 0;
-  }
-   */

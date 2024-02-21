@@ -134,7 +134,7 @@ i.fas.fa-search {
 
 ul.set_items {
   position: relative;
-  top: 12rem;
+  top: 15rem;
 }
 
 .sidebar::-webkit-scrollbar {
@@ -481,9 +481,6 @@ hr.footer_line {
   margin-left: 9rem;
 }
 
-span {
-  color: black;
-}
 
 
 

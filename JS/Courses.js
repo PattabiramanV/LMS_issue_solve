@@ -1,32 +1,41 @@
 "use strict"
 
-const exploreCoursesContainer = document.querySelector('.List.Courses .course_card');
-console.log(exploreCoursesContainer);
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-exploreCoursesContainer.addEventListener('click', function(event) {
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
+  authDomain: "dckap-lms-project.firebaseapp.com",
+  projectId: "dckap-lms-project",
+  storageBucket: "dckap-lms-project.appspot.com",
+  messagingSenderId: "1022626638467",
+  appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getFirestore(app);
+
+const exploreCoursesContainer = document.querySelector('.course_card');
+
+exploreCoursesContainer.addEventListener('click', async function(event) {
     try {
-      
         const clickedCourseContainer = event.target.closest('.Progress_bar_Course');
-
-    
         const courseContainers = exploreCoursesContainer.querySelectorAll('.Progress_bar_Course');
-
-  
         let index = Array.from(courseContainers).findIndex(container => container === clickedCourseContainer);
 
-      
         const enrolledCourseContainer = document.createElement('div');
         enrolledCourseContainer.classList.add('Progress_bar');
 
- 
         const courseDetails = [
-            { name: 'HTML', imgSrc: '/Assests/html.webp' },
-            { name: 'CSS', imgSrc: '/Assests/css.webp' },
-            { name: 'JavaScript', imgSrc: '/Assests/js.webp' },
-            { name: 'MySQL', imgSrc: '/Assests/7723d1592a0b454cb59a32cf5ab35642-SQL2.webp' },
-            { name:'PHP', imgSrc:'/Assests/php.webp'}
+            { name: 'HTML', imgSrc: '/DCKAP_LMS_Project/Assests/html.webp' },
+            { name: 'CSS', imgSrc: '/DCKAP_LMS_Project/Assests/css.webp' },
+            { name: 'JavaScript', imgSrc: '/DCKAP_LMS_Project/Assests/js.webp' },
+            { name: 'MySQL', imgSrc: '/DCKAP_LMS_Project/Assests/7723d1592a0b454cb59a32cf5ab35642-SQL2.webp' },
+            { name:'PHP', imgSrc:'/DCKAP_LMS_Project/Assests/php.webp'}
         ];
-      
+
         enrolledCourseContainer.innerHTML = `
             <div class="progress_language">
                 <img src="${courseDetails[index].imgSrc}" alt="" class="enroll_img">
@@ -40,12 +49,51 @@ exploreCoursesContainer.addEventListener('click', function(event) {
                 </div>
             </div>
         `;
+
         const enrolledCoursesContainer = document.querySelector('.progressing_bar .Progress_container');
         enrolledCoursesContainer.appendChild(enrolledCourseContainer);
+
+        // Save data to Firestore
+        await addDoc(collection(database, "enrolledCourses"), {
+            name: courseDetails[index].name,
+            imgSrc: courseDetails[index].imgSrc
+        });
+
     } catch (error) {
         console.error('Error:', error.message);
     }
 });
+
+// Retrieve data from Firestore on page load
+window.addEventListener('load', async function() {
+    try {
+        const querySnapshot = await getDocs(collection(database, "enrolledCourses"));
+        querySnapshot.forEach(doc => {
+            const enrolledCourseContainer = document.createElement('div');
+            enrolledCourseContainer.classList.add('Progress_bar');
+
+            enrolledCourseContainer.innerHTML = `
+                <div class="progress_language">
+                    <img src="${doc.data().imgSrc}" alt="" class="enroll_img">
+                </div>
+                <hr>
+                <div class="progress_status">
+                    <p class="enroll_language">${doc.data().name}</p>
+                    <div class="percentage">
+                        <p class="progress">In progress</p>
+                        <span></span>
+                    </div>
+                </div>
+            `;
+
+            const enrolledCoursesContainer = document.querySelector('.progressing_bar .Progress_container');
+            enrolledCoursesContainer.appendChild(enrolledCourseContainer);
+        });
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+});
+
 
 
 

@@ -67,28 +67,31 @@ let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");
 
 profile_navigate.addEventListener("click", (event) => {
-    event.stopPropagation();
-    profile_Dropdown.style.display = "block";
+  event.stopPropagation();
+  profile_Dropdown.style.display = "block";
 });
 
 document.addEventListener("click", (event) => {
-    if (!profile_navigate.contains(event.target) && !profile_Dropdown.contains(event.target)) {
-        profile_Dropdown.style.display = "none"; 
-    }
+  if (
+    !profile_navigate.contains(event.target) &&
+    !profile_Dropdown.contains(event.target)
+  ) {
+    profile_Dropdown.style.display = "none";
+  }
 });
+
 
 // profile_drop
 
-let profile_page=document.querySelector(".profile_down")
- profile_page.addEventListener("click",()=>{
-        window.location.href="/profile_user_page/profile.html"
-})
+let profile_page = document.querySelector(".profile_down");
+profile_page.addEventListener("click", () => {
+  window.location.href = "profile.html";
+});
 
-let Course_navigate=document.querySelector(".Course_Down")
-Course_navigate.addEventListener("click",()=>{
-      window.location.href="/Profile_main_page/Courses.html"
-})
-
+let Course_navigate = document.querySelector(".Course_Down");
+Course_navigate.addEventListener("click", () => {
+  window.location.href = "Courses.html";
+});
 
 
 
@@ -323,3 +326,6 @@ left_side_bar[3].addEventListener("click",()=>{
 
   window.location.href='Roadmap.html';
 });
+
+
+

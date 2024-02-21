@@ -213,9 +213,13 @@ Course_navigate.addEventListener("click",()=>{
 
     // // ---------------------Quiz----------------------------------
 
+// Quiz_page
 
-// Import the functions you need from the SDKs you need/
+
+
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -229,236 +233,261 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+let db = getFirestore(); // Create a Firestore instance
 
-// Import necessary Firebase Firestore functions
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-// Create a Firestore instance
-const db = getFirestore();
-
-// Function to fetch quiz data from Firestore
 async function fetchQuizData() {
   try {
-    const quizDataCollection = collection(db, 'Quiz'); // Assuming your collection is named 'Quiz'
-    const quizDataSnapshot = await getDocs(quizDataCollection);
+    let quizDataCollection = collection(db, 'Quiz');
+    let quizDataSnapshot = await getDocs(quizDataCollection);
     
-    const quizData = [];
-    quizDataSnapshot.forEach(doc => {
-      quizData.push(doc.data()); // Assuming each document contains quiz data
-    });
-
-    return quizData;
+    return quizDataSnapshot.docs.map(doc => doc.data());
   } catch (error) {
     console.error('Error fetching quiz data:', error);
-    return []; // Return an empty array in case of error
+    return [];
   }
 }
-
-// Use the fetched quiz data to populate your quiz application
 
 async function initializeQuiz() {
-  const cssquizData = await fetchQuizData();
+
+
+  let cssquizData = await fetchQuizData();
   console.log('Fetched Quiz Data:', cssquizData);
 
-let quizContainer = document.getElementById('quiz');
-let resultContainer = document.getElementById('result');
-let submitButton = document.getElementById('submit');
-let backButton = document.getElementById('submit_btn');
-let retryButton = document.getElementById('retry');
-let retryButton2 = document.getElementById('retry2');
-let showAnswerButton = document.getElementById('showAnswer');
+  let quizContainer = document.getElementById('quiz');
+  let resultContainer = document.getElementById('result');
+  let submitButton = document.getElementById('submit');
+  let backButton = document.getElementById('submit_btn');
+  let retryButton = document.getElementById('retry');
+  let retryButton2 = document.getElementById('retry2');
+  let showAnswerButton = document.getElementById('showAnswer');
+  let div_get = document.getElementById('diva');
+  let marks = document.createElement("p");
+  marks.className = "marks";
+  div_get.appendChild(marks);
 
-let div_get = document.getElementById('diva');
-let marks = document.createElement("p");
-marks.className = "marks";
-div_get.appendChild(marks);
+  let currentQuestion = 0;
+  let score = 0;
+  let incorrectAnswers = [];
 
-let currentQuestion = 0;
-let score = 0;
-let incorrectAnswers = [];
+// session storage set_up
 
-// Function to save quiz state to session storage
-function saveQuizState() {
-  sessionStorage.setItem('currentQuestion', currentQuestion);
-  sessionStorage.setItem('score', score);
-  sessionStorage.setItem('incorrectAnswers', JSON.stringify(incorrectAnswers));
-}
-
-// Function to retrieve quiz state from session storage
-function retrieveQuizState() {
-  const storedQuestion = sessionStorage.getItem('currentQuestion');
-  const storedScore = sessionStorage.getItem('score');
-  const storedIncorrectAnswers = JSON.parse(sessionStorage.getItem('incorrectAnswers'));
-
-  if (storedQuestion !== null && storedScore !== null && storedIncorrectAnswers !== null) {
-    currentQuestion = parseInt(storedQuestion);
-    score = parseInt(storedScore);
-    incorrectAnswers = storedIncorrectAnswers;
-  }
-}
-
-// Function to clear quiz state from session storage
-function clearQuizState() {
-  sessionStorage.removeItem('currentQuestion');
-  sessionStorage.removeItem('score');
-  sessionStorage.removeItem('incorrectAnswers');
-}
-
-function displayQuestion() {
-  let questionData = cssquizData[currentQuestion];
-
-  let questionElement = document.createElement('div');
-  questionElement.className = 'question';
-  questionElement.innerHTML = questionData.question;
-
-  let optionsElement = document.createElement('div');
-  optionsElement.className = 'options';
-
-  for (let i = 0; i < questionData.options.length; i++) {
-    let option = document.createElement('label');
-    option.className = 'option';
-
-    let radio = document.createElement('input');
-    radio.type = 'radio';
-    radio.name = 'quiz';
-    radio.value = questionData.options[i];
-
-    // Check if the current option was previously selected
-
-  let wasIncorrectlySelected = incorrectAnswers.some(answer => {
-      return answer.question === questionData.question && answer.incorrectAnswer === questionData.options[i];
-    });
-  
-    if (wasIncorrectlySelected) {
-      radio.checked = true;
-    }
-
-    let optionText = document.createTextNode(questionData.options[i]);
-
-    option.appendChild(radio);
-    option.appendChild(optionText);
-    optionsElement.appendChild(option);
-  }
-
-  quizContainer.innerHTML = '';
-  quizContainer.appendChild(questionElement);
-  quizContainer.appendChild(optionsElement);
-
-  // Show back button after first question
-  if (currentQuestion > 0) {
-    backButton.style.display = "block";
-  } else {
-    backButton.style.display = "none";
-  }
-}
-
-
-function checkAnswer() {
-  let selectedOption = document.querySelector('input[name="quiz"]:checked');
-  if (selectedOption) {
-    let answer = selectedOption.value;
-    if (answer === cssquizData[currentQuestion].answer) {
-      score++;
-    } else {
-      incorrectAnswers.push({
-        question: cssquizData[currentQuestion].question,
-        incorrectAnswer: answer,
-        correctAnswer: cssquizData[currentQuestion].answer,
-      });
-    }
-    currentQuestion++;
-    selectedOption.checked = false;
-    if (currentQuestion < cssquizData.length) {
-      displayQuestion();
-    } else {
-      displayResult();
-    }
-    // Save quiz state to session storage
-    saveQuizState();
-  }
-}
-
-function goBack() {
-  if (currentQuestion > 0) {
-    currentQuestion--;
-    // Save current question index to session storage when going back
+  function saveQuizState() {
     sessionStorage.setItem('currentQuestion', currentQuestion);
+    sessionStorage.setItem('score', score);
+    sessionStorage.setItem('incorrectAnswers', JSON.stringify(incorrectAnswers));
+  }
+
+  function retrieveQuizState() {
+    let storedQuestion = sessionStorage.getItem('currentQuestion');
+    let storedScore = sessionStorage.getItem('score');
+    let storedIncorrectAnswers = JSON.parse(sessionStorage.getItem('incorrectAnswers'));
+  
+    if (storedQuestion !== null && storedScore !== null && storedIncorrectAnswers !== null) {
+      currentQuestion = parseInt(storedQuestion);
+      score = parseInt(storedScore);
+      incorrectAnswers = storedIncorrectAnswers;
+    }
+  }
+  
+
+  function clearQuizState() {
+    sessionStorage.removeItem('currentQuestion');
+    sessionStorage.removeItem('score');
+    sessionStorage.removeItem('incorrectAnswers');
+  }
+
+
+
+// it is use to display_a_question
+
+  function displayQuestion() {
+    let questionData = cssquizData[currentQuestion];
+
+    let questionElement = document.createElement('div');
+    questionElement.className = 'question';
+    questionElement.innerHTML = questionData.question;
+
+    let optionsElement = document.createElement('div');
+    optionsElement.className = 'options';
+
+    for (let i = 0; i < questionData.options.length; i++) {
+      let option = document.createElement('label');
+      option.className = 'option';
+
+      let radio = document.createElement('input');
+      radio.type = 'radio';
+      radio.name = 'quiz';
+      radio.value = questionData.options[i];
+
+      radio.checked = false;
+      for (let j = 0; j < incorrectAnswers.length; j++) {
+        if (incorrectAnswers[j].question === questionData.question && incorrectAnswers[j].incorrectAnswer === questionData.options[i]) {
+          radio.checked = true;
+          break;
+        }
+      }
+
+      let optionText = document.createTextNode(questionData.options[i]);
+
+      option.appendChild(radio);
+      option.appendChild(optionText);
+      optionsElement.appendChild(option);
+    }
+
+    quizContainer.innerHTML = '';
+    quizContainer.appendChild(questionElement);
+    quizContainer.appendChild(optionsElement);
+
+    if (currentQuestion > 0) {
+      backButton.style.display = "block";
+    } else {
+      backButton.style.display = "none";
+    }
+  }
+
+
+// it is use to check_answer
+
+  function checkAnswer() {
+    let selectedOption = document.querySelector('input[name="quiz"]:checked');
+    if (selectedOption) {
+      let answer = selectedOption.value;
+      if (answer === cssquizData[currentQuestion].answer) {
+        score++;
+      } else {
+        incorrectAnswers.push({
+          question: cssquizData[currentQuestion].question,
+          incorrectAnswer: answer,
+          correctAnswer: cssquizData[currentQuestion].answer,
+        });
+      }
+      currentQuestion++;
+      selectedOption.checked = false;
+      if (currentQuestion < cssquizData.length) {
+        displayQuestion();
+      } else {
+        displayResult();
+        if (score === cssquizData.length) {
+          let submitButton = document.createElement('button');
+          submitButton.textContent = 'certificate';
+          retryButton.style.display = 'none';
+          retryButton2.style.display = 'none';
+          showAnswerButton.style.display = 'none';
+          submitButton.addEventListener('click', function() {
+            console.log('Submit button clicked');
+          });
+          let certificate_button = document.querySelector('.butlist');
+          certificate_button.appendChild(submitButton);
+        }
+      }
+
+      // score = cssquizData.length - incorrectAnswers.length;
+      score = Math.max(cssquizData.length - incorrectAnswers.length, 0);
+      saveQuizState();
+    }
+  }
+
+// it is use to goback button 
+
+  function goBack() {
+    if (currentQuestion > 0) {
+      if (cssquizData[currentQuestion - 1].answer === cssquizData[currentQuestion - 1].options.find(option => option === cssquizData[currentQuestion - 1].answer)) {
+        score--;
+      }
+      currentQuestion--;
+      sessionStorage.setItem('currentQuestion', currentQuestion);
+      sessionStorage.setItem('score', score);
+      displayQuestion();
+    }
+  }
+
+
+  
+// it is use to show_the_answer 
+
+  function showAnswer() {
+    quizContainer.style.display = 'none';
+    submitButton.style.display = 'none';
+    backButton.style.display = 'none';
+    retryButton2.style.display = 'inline-block';
+    retryButton.style.display = 'none';
+    showAnswerButton.style.display = 'none';
+    marks.style.display="none";
+
+
+    let displayedIncorrectAnswers = [];
+    let incorrectAnswersHtml = '';
+
+
+    for (let i = 0; i < incorrectAnswers.length; i++) {
+      if (!displayedIncorrectAnswers.includes(incorrectAnswers[i].question)) {
+        incorrectAnswersHtml += `
+          <p>
+            <strong>Question:</strong> ${incorrectAnswers[i].question}<br>
+            <strong>Your Answer:</strong> ${incorrectAnswers[i].incorrectAnswer}<br>
+            <strong>Correct Answer:</strong> ${incorrectAnswers[i].correctAnswer}
+          </p>
+        `;
+        displayedIncorrectAnswers.push(incorrectAnswers[i].question);
+      }
+    }
+    resultContainer.innerHTML = `
+      <p>You scored ${score} out of ${cssquizData.length}!</p>
+      <p>Incorrect Answers:</p>
+      ${incorrectAnswersHtml}
+    `;
+    
+  }
+
+
+
+
+// it use display the resut of Score and button
+
+  function displayResult() {
+    quizContainer.style.display = 'none';
+    submitButton.style.display = 'none';
+    backButton.style.display = 'none';
+    retryButton.style.display = 'inline-block';
+    showAnswerButton.style.display = 'inline-block';
+    marks.style.display = "block";
+    marks.textContent = `You scored ${score} out of ${cssquizData.length}!`;
+  }
+
+// it is retry_quiz
+
+  function retryQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    incorrectAnswers = [];
+    clearQuizState();
+    quizContainer.style.display = 'block';
+    submitButton.style.display = 'inline-block';
+    backButton.style.display = 'inline-block';
+    retryButton.style.display = 'none';
+    retryButton2.style.display = 'none';
+    showAnswerButton.style.display = 'none';
+    marks.style.display="none";
+    resultContainer.innerHTML = '';
     displayQuestion();
   }
-}
-
-function displayResult() {
-  quizContainer.style.display = 'none';
-  submitButton.style.display = 'none';
-  backButton.style.display = 'none';
-  retryButton.style.display = 'inline-block';
-  showAnswerButton.style.display = 'inline-block';
-  marks.style.display="block";
-  marks.innerHTML = `You scored ${score} out of ${cssquizData.length}!`;
-}
-
-function retryQuiz() {
-  currentQuestion = 0;
-  score = 0;
-  incorrectAnswers = [];
 
 
 
-  // Clear quiz state from session storage
-  clearQuizState();
-  quizContainer.style.display = 'block';
-  submitButton.style.display = 'inline-block';
-  backButton.style.display = 'inline-block';
-  retryButton.style.display = 'none';
-  retryButton2.style.display = 'none';
-  showAnswerButton.style.display = 'none';
-  marks.style.display="none";
-  resultContainer.innerHTML = '';
+  retrieveQuizState();
+
+  submitButton.addEventListener('click', checkAnswer);
+  backButton.addEventListener('click', goBack);
+  retryButton.addEventListener('click', retryQuiz);
+  retryButton2.addEventListener('click', retryQuiz);
+  showAnswerButton.addEventListener('click', showAnswer);
+
   displayQuestion();
 }
 
-function showAnswer() {
-  quizContainer.style.display = 'none';
-  submitButton.style.display = 'none';
-  backButton.style.display = 'none';
-  retryButton2.style.display = 'inline-block';
-  retryButton.style.display = 'none';
-  showAnswerButton.style.display = 'none';
-  marks.style.display="none";
-
-  let displayedIncorrectAnswers = []; // Array to store displayed incorrect answers
-  let incorrectAnswersHtml = '';
-  for (let i = 0; i < incorrectAnswers.length; i++) {
-    // Check if the current incorrect answer has not been displayed before
-    if (!displayedIncorrectAnswers.includes(incorrectAnswers[i].question)) {
-      incorrectAnswersHtml += `
-        <p>
-          <strong>Question:</strong> ${incorrectAnswers[i].question}<br>
-          <strong>Your Answer:</strong> ${incorrectAnswers[i].incorrectAnswer}<br>
-          <strong>Correct Answer:</strong> ${incorrectAnswers[i].correctAnswer}
-        </p>
-      `;
-      displayedIncorrectAnswers.push(incorrectAnswers[i].question); // Add the question to the displayed list
-    }
-  }
-
-  resultContainer.innerHTML = `
-    <p>You scored ${score} out of ${cssquizData.length}!</p>
-    <p>Incorrect Answers:</p>
-    ${incorrectAnswersHtml}
-  `;
-}
-
-// Retrieve quiz state from session storage
-retrieveQuizState();
-
-submitButton.addEventListener('click', checkAnswer);
-backButton.addEventListener('click', goBack);
-retryButton.addEventListener('click', retryQuiz);
-retryButton2.addEventListener('click', retryQuiz);
-showAnswerButton.addEventListener('click', showAnswer);
-
-displayQuestion();
-}
-// Call initializeQuiz() to start the quiz after fetching quiz data
 initializeQuiz();
+
+
+
+
+

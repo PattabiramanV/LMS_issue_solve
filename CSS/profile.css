@@ -408,7 +408,7 @@ textarea {
 
 button.editbtn,
 .editbtnn,
-.editbtngit {
+.editbtngit,.editbtnName {
   color: white;
   border: none;
   padding: 10px 20px;

@@ -134,4 +134,5 @@ let profile_page=document.querySelector(".profile_down")
 let Course_navigate=document.querySelector(".Course_Down")
 Course_navigate.addEventListener("click",()=>{
       window.location.href="Courses.html"
-})
+});
+

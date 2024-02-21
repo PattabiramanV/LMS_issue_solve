@@ -362,7 +362,7 @@ async function initializeQuiz() {
         });
       }
       currentQuestion++;
-      selectedOption.checked = false;
+      // selectedOption.checked = false;
       if (currentQuestion < cssquizData.length) {
         displayQuestion();
       } else {
@@ -469,6 +469,7 @@ function displayResult() {
   retryButton.style.display = 'inline-block';
   showAnswerButton.style.display = 'inline-block';
   marks.style.display = "block";
+  score = Math.min(score, cssquizData.length);
   marks.textContent = `You scored ${score} out of ${cssquizData.length}!`;
 }
 

@@ -4,7 +4,7 @@ backtosignup.addEventListener("click", signup_page);
 function signup_page() {
     document.getElementById('loadingOverlay').style.visibility = 'visible';
     setTimeout(() => {
-        window.location.href = 'http://127.0.0.1:5501/signup.html';
+        window.location.href = './signup.html';
     }, 2000);
 }
 
@@ -30,3 +30,22 @@ else if (log_password.type =='text') {
     
 }
 }
+
+// login_button.addEventListener("click",login)
+
+// function login()
+// {
+    
+//   let getRef = collection(db, "user_id_data");
+
+//   let getData = await getDocs(getref);
+
+//   console.log(getdata.size);
+ 
+//   getdata.forEach((record)=>{
+//       let email=record.email
+      
+//       let password=record.password
+//       console.log(record.data());
+//   });
+// }

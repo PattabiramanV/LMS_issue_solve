@@ -161,6 +161,21 @@ darkLight.addEventListener("click",() => {
   } else {
     darkLight.classList.replace("bx-moon", "bx-sun");
   }
+  let searchicon = document.querySelector(".fas");
+console.log(searchicon);
+
+let Dckaplogo = document.querySelector(".DCKAPlOGO");
+
+darkLight.addEventListener("click", () => {
+  body.classList.toggle("dark");
+  searchicon.style.color = body.classList.contains("dark") ? "white" : "black";
+  headings.forEach((heading) => {
+    heading.style.color = body.classList.contains("dark") ? "white" : "black";
+  });
+  Dckaplogo.src = body.classList.contains("dark")
+    ? "../Assests/Dckapwhite.png"
+    : "../Assests/Dckap Logo.png";
+});
 });
 
 submenuItems.forEach((item, index) => {
@@ -374,7 +389,9 @@ async function initializeQuiz() {
           retryButton2.style.display = 'none';
           showAnswerButton.style.display = 'none';
           submitButton.addEventListener('click', function() {
-            console.log('Submit button clicked');
+            // console.log('Submit button clicked');
+            let generate_certificate = document.querySelector(".generating_certificate");
+            generate_certificate.style.display = "block";
           });
           let certificate_button = document.querySelector('.butlist');
           certificate_button.appendChild(submitButton);
@@ -491,7 +508,40 @@ function displayResult() {
 
 initializeQuiz();
 
+// ------------------- Generate Certificate -----------------------
+const canvas = document.getElementById("canva"); 
+const ctx = canvas.getContext('2d');
+const name_input = document.getElementById("name");
+const downloadBtn = document.getElementById("download_btn");
 
+
+
+const image = new Image()
+image.src = "/Assets/CERTIFICATE.jpg";
+image.className = "gen_cer"
+image.onload = () => {
+    drawImage()
+}
+
+function drawImage()
+{
+    ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
+    ctx.font = '30px HK Grotesk'
+    ctx.fillStyle = '#070F2B'
+    ctx.fillText(name_input.value, 142, 191)
+}
+
+
+name_input.addEventListener("input", () => {
+    // const name_value = name_input.value
+    drawImage()
+})
+
+
+downloadBtn.addEventListener("click", () => {
+    downloadBtn.href = canvas.toDataURL('image/jpg')
+    downloadBtn.download = "Certificate"
+})
 
 
 

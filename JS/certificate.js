@@ -104,9 +104,3 @@ const css_quiz = document.querySelector("#css_btn");
 css_quiz.addEventListener("click", () => {
   window.location.href = "./OverallQuiz.html";
 });
-
-
-
-
-
-

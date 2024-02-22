@@ -15,16 +15,18 @@ let mysqlbtn=document.querySelector(".mysql_btn")
 let phpbtn=document.querySelector(".php_btn")
 
 learning.addEventListener("click",()=>{
-    alert("learning menu clicked")
+    window.location.href="Learning.html"
 })
 
 dashboard.addEventListener("click",()=>{
-    alert("dashboard menu clicked")
+    window.location.href="dashboard.html"
 })
 
 roadmap.addEventListener("click",()=>{
-    alert("roadmap menu clicked")
+    window.location.href="Roadmap.html"
 })
+
+
 
 navlogin.addEventListener("click",()=>{
 
@@ -66,3 +68,23 @@ mysqlbtn.addEventListener("click",()=>{
 phpbtn.addEventListener("click",()=>{
     alert("php button clicked")
 })
+
+
+let left_side_bar=document.querySelectorAll(".navlink");
+
+left_side_bar[0].addEventListener("click",()=>{
+  window.location.href='index.html'
+});
+
+left_side_bar[1].addEventListener("click",()=>{
+
+  window.location.href='Learning.html'
+});
+left_side_bar[2].addEventListener("click",()=>{
+
+  window.location.href='Dashboard.html';
+});
+left_side_bar[3].addEventListener("click",()=>{
+
+  window.location.href='Roadmap.html';
+});

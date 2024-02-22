@@ -4,9 +4,18 @@ backtosignup.addEventListener("click", signup_page);
 function signup_page() {
     document.getElementById('loadingOverlay').style.visibility = 'visible';
     setTimeout(() => {
-        window.location.href = 'http://127.0.0.1:5501/signup.html';
+        window.location.href = 'signup.html';
     }, 2000);
 }
+
+let login = document.querySelector("#login_btn");
+
+login.addEventListener("click", (e) => {
+   e.preventDefault(e)
+     console.log("hi");
+    window.location.href = "index.html";
+});
+
 
 // ---------password icon--------
 let log_username=document.getElementById("log")

@@ -76,7 +76,7 @@ button.sign_up:hover{
     padding: 2%;
 }
 .content_1 {
-    width: 50%;
+    width: 54%;
 }
 .container_1_image {
     width: 45%;
@@ -135,7 +135,7 @@ button.explore:hover{
     font-weight: 600;
     border: none;
     margin-top: -57px;
-    margin-left: 412px;
+    margin-left: 324px;
     position: relative;
     cursor: pointer;
     transition-duration: .2s;
@@ -143,7 +143,11 @@ button.explore:hover{
     padding-left: 8px;
     transition-duration: .5s;
 }
-  
+
+img.dckapimg {
+    position: relative;
+    bottom: 2rem;
+}
   .svgIcon {
     height: 25px;
     transition-duration: 1.5s;

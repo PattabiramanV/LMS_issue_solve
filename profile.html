@@ -7,7 +7,8 @@
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <title>LMS WEBSITE</title>
-  <link rel="stylesheet" href="/CSS/profile.css">
+  <link rel="stylesheet" href="./CSS/profile.css">
+  <link rel="icon"  type="image/x-icon" href="./Assests/icons8-learning-50.png" />
 </head>
 
 <body>
@@ -15,7 +16,7 @@
   <nav class="navbar">
     <div class="logo_item">
       <i class="bx bx-menu" id="sidebarOpen"></i>
-      <img src="" alt="" class="DCKAPlOGO"></i>
+      <img src="/Assests/Dckap Logo.png" alt="" class="DCKAPlOGO"></i>
     </div>
 
     <div class="search_bar">
@@ -26,7 +27,7 @@
     <div class="navbar_content">
       <i class="bi bi-grid"></i>
       <i class='bx bx-sun' id="darkLight"></i>
-      <img src="/Assests/Dckap Logo.png" alt="" class="profile" />
+      <img src="/Assests/236831.png" alt="" class="profile" />
     </div>
     <div class="profile_bar_list">
       <div class="profile_down">
@@ -139,7 +140,7 @@
             <input type="text" id="fullNameInput" style="display: none;">
           </div>
           <div class="edit_button">
-            <button class="editbtn" onclick="toggleNameEdit()">Edit</button>
+            <button class="editbtnName" >Edit</button>
           </div>
         </div>
         <div class="User_name_details">
@@ -158,7 +159,7 @@
             <input type="text" id="gitinput" style="display: none;">
           </div>
           <div class="edit_button">
-            <button class="editbtngit" onclick="showGitUsername()">Edit</button>
+            <button class="editbtngit">Edit</button>
           </div>
         </div>
         <div class="User_name_details">
@@ -168,16 +169,15 @@
             <textarea id="bioInput" rows="2" cols="50" style="display: none;"></textarea>
           </div>
           <div class="edit_button">
-            <button class="editbtnn" onclick="toggleBioEdit()">Edit</button>
+            <button class="editbtnn">Edit</button>
           </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
-  </div>
+ 
 </body>
 <!-- Javascript -->
-<script src="/JS/profile.js"></script>
+<script src="./JS/profile.js" type="module"></script>
 
 </html>

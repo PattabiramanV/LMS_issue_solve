@@ -1,14 +1,15 @@
 const body = document.querySelector("body");
 
 const darkLight = document.querySelector("#darkLight");
-console.log(darkLight);
+
 const sidebar = document.querySelector(".sidebar");
-console.log(sidebar);
+
 const submenuItems = document.querySelectorAll(".submenu_item");
-console.log(submenuItems);
+
 const sidebarOpen = document.querySelector("#sidebarOpen");
+
 const sidebarClose = document.querySelector(".collapse_sidebar");
-console.log(sidebarClose);
+
 const sidebarExpand = document.querySelector(".expand_sidebar");
 sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
 
@@ -31,16 +32,22 @@ sidebar.addEventListener("mouseleave", () => {
     sidebar.classList.add("close");
   }
 });
+let Dckaplogo = document.querySelector(".DCKAPlOGO");
+
+
+let searchicon = document.querySelector(".fas");
+console.log(searchicon);
 
 darkLight.addEventListener("click", () => {
   body.classList.toggle("dark");
-  if (body.classList.contains("dark")) {
-    darkLight.classList.replace("bx-sun", "bx-moon");
-  } else {
-    darkLight.classList.replace("bx-moon", "bx-sun");
-  }
+  searchicon.style.color = body.classList.contains("dark") ? "white" : "black";
+  headings.forEach((heading) => {
+    heading.style.color = body.classList.contains("dark") ? "white" : "black";
+  });
+  Dckaplogo.src = body.classList.contains("dark")
+    ? "./Assests/Dckapwhite.png"
+    : "./Assests/Dckap Logo.png";
 });
-
 
 // Profile
 
@@ -62,10 +69,31 @@ document.addEventListener("click", (event) => {
 
 let profile_page=document.querySelector(".profile_down")
  profile_page.addEventListener("click",()=>{
-        window.location.href="/profile_user_page/profile.html"
+        window.location.href="profile.html"
 })
 
 let Course_navigate=document.querySelector(".Course_Down")
 Course_navigate.addEventListener("click",()=>{
-      window.location.href="/Profile_main_page/Courses.html"
+      window.location.href="Courses.html"
 })
+
+
+
+let left_side_bar=document.querySelectorAll(".navlink");
+
+left_side_bar[0].addEventListener("click",()=>{
+  window.location.href='index.html  '
+});
+
+left_side_bar[1].addEventListener("click",()=>{
+
+  window.location.href='Learning.html  '
+});
+left_side_bar[2].addEventListener("click",()=>{
+
+  window.location.href='Dashboard.html';
+});
+left_side_bar[3].addEventListener("click",()=>{
+
+  window.location.href='Roadmap.html';
+});

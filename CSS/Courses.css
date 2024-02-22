@@ -38,6 +38,9 @@ body.dark {
   --grey-color: #f2f2f2;
   --grey-color-light: #aaa;
 }
+.dark {
+  background-color: black;
+}
 
 /* navbar */
 .navbar {
@@ -134,7 +137,7 @@ i.fas.fa-search {
 
 ul.set_items {
   position: relative;
-  top: 12rem;
+  top: 15rem;
 }
 
 .sidebar::-webkit-scrollbar {
@@ -160,11 +163,11 @@ ul.set_items {
   white-space: nowrap;
 }
 
-.menu_items,
-.set_items {
+.menu_items, .set_items {
   padding: 0;
   list-style: none;
   margin: 0;
+  margin-left: -9%;
 }
 
 .navlink_icon {
@@ -180,12 +183,15 @@ ul.set_items {
 .sidebar .nav_link {
   display: flex;
   align-items: center;
-  width: 100%;
-  padding: 4px 15px;
+  width: 85%;
+  /* padding: 4px 15px; */
   border-radius: 8px;
   text-decoration: none;
   color: var(--grey-color);
   margin-left: 4%;
+  margin: 1rem;
+  padding: 0rem;
+  margin-left: 2rem;
 }
 
 .sidebar.close .navlink {
@@ -208,7 +214,7 @@ ul.set_items {
 
 .menu_content {
   position: relative;
-  top: 8%;
+  top: 3%;
 }
 
 .submenu {
@@ -340,7 +346,7 @@ p.Enroll_heading_course {
   /* justify-content: space-around; */
   margin-left: 6rem;
   padding: 1%;
-  /* gap: 1%; */
+  gap: 1%;
   margin-left: 2;
   justify-content: start;
   position: relative;
@@ -479,15 +485,10 @@ hr.footer_line {
   width: 90%;
   padding: 1rem 0rem;
   margin-left: 9rem;
-}
-
-span {
-  color: black;
+  flex-wrap: wrap;
 }
 
 
-
-/* Dropdown Profile */
 
 .profile_bar_list {
   top: 77px;
@@ -503,7 +504,8 @@ span {
 }
 
 .Drop_Down,
-.profile_down,.Course_Down {
+.profile_down,
+.Course_Down {
   display: flex;
   align-items: center;
   width: 100%;
@@ -512,9 +514,9 @@ span {
 }
 
 .Drop_Down:hover,
-.profile_down:hover {
-  background-color: rgba(91, 231, 35, 0.226);
-
+.profile_down:hover,
+.Course_Down:hover {
+  background-color: rgba(162, 247, 128, 0.226);
 }
 
 p.profile-name {
@@ -522,13 +524,13 @@ p.profile-name {
   align-items: flex-start;
   display: flex;
 }
-
 i.fa.fa-user,
 i.fa-solid.fa-book,
 i.fa-solid.fa-award,
 i.fa-solid.fa-right-from-bracket {
   width: 50%;
 }
+
 
 
 .Progress_bar_Course2 {

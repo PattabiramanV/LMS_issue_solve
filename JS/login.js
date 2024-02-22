@@ -31,21 +31,45 @@ else if (log_password.type =='text') {
 }
 }
 
-// login_button.addEventListener("click",login)
 
-// function login()
-// {
-    
-//   let getRef = collection(db, "user_id_data");
+// -----login validation----
 
-//   let getData = await getDocs(getref);
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
-//   console.log(getdata.size);
- 
-//   getdata.forEach((record)=>{
-//       let email=record.email
-      
-//       let password=record.password
-//       console.log(record.data());
-//   });
-// }
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
+    authDomain: "dckap-lms-project.firebaseapp.com",
+    projectId: "dckap-lms-project",
+    storageBucket: "dckap-lms-project.appspot.com",
+    messagingSenderId: "1022626638467",
+    appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+
+  import { getFirestore,getDocs,setDoc,doc,collection,getDoc,addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+
+let db=getFirestore(app);
+let getref=collection(db,"SignUp_details");
+let getdata =await  getDocs(getref);
+// let id=getdata.size;
+
+login_button.addEventListener("click",login)
+
+function login(event)
+{
+  event.preventdefault();
+  console.log("hi");
+// getdata.forEach((record)=>{
+//     console.log(record.username);
+//     console.log(record.data());
+// });
+
+}

@@ -216,11 +216,6 @@ document.addEventListener("click", (event) => {
   }
 });
 
-let Cancel_btn=document.querySelector(".cancel_btn")
-
-Cancel_btn.addEventListener("click", () => {
-    window.location.href="Roadmap.html";
-});
 
 // profile_drop
 

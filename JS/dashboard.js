@@ -35,6 +35,19 @@ darkLight.addEventListener("click", () => {
   } else {
     darkLight.classList.replace("bx-moon", "bx-sun");
   }
+  let searchicon = document.querySelector(".fas");
+  console.log(searchicon);
+  let Dckaplogo = document.querySelector(".DCKAPlOGO");
+  darkLight.addEventListener("click", () => {
+    body.classList.toggle("dark");
+    searchicon.style.color = body.classList.contains("dark") ? "white" : "black";
+    headings.forEach((heading) => {
+      heading.style.color = body.classList.contains("dark") ? "white" : "black";
+    });
+    Dckaplogo.src = body.classList.contains("dark")
+    ? "../Assests/Dckapwhite.png"
+    : "../Assests/Dckap Logo.png";
+  });
 });
 
 submenuItems.forEach((item, index) => {

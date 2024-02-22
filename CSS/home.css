@@ -135,7 +135,11 @@ button.explore:hover{
     font-weight: 600;
     border: none;
     margin-top: -57px;
+<<<<<<< HEAD
     margin-left: 324px;
+=======
+    margin-left: 328px;
+>>>>>>> 30229f7dd61239cbaaef85bdb5f48b4d28d2705a
     position: relative;
     cursor: pointer;
     transition-duration: .2s;

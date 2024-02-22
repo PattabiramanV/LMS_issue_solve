@@ -21,21 +21,50 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
 
-const exploreCoursesContainer = document.querySelector(".course_card");
+const exploreCoursesContainer = document.querySelector('.course_card');
 
+exploreCoursesContainer.addEventListener('click', async function(event) {
+    try {
+        const clickedCourseContainer = event.target.closest('.Progress_bar_Course');
+        const courseContainers = exploreCoursesContainer.querySelectorAll('.Progress_bar_Course');
+        let index = Array.from(courseContainers).findIndex(container => container === clickedCourseContainer);
 
-const enrolledCourses = [];
+        const enrolledCourseContainer = document.createElement('div');
+        enrolledCourseContainer.classList.add('Progress_bar');
 
-exploreCoursesContainer.addEventListener("click", async function (event) {
-  try {
-    const clickedCourseContainer = event.target.closest(".Progress_bar_Course");
-    const courseContainers = exploreCoursesContainer.querySelectorAll(".Progress_bar_Course");
-    let index = Array.from(courseContainers).findIndex((container) => container === clickedCourseContainer);
+        const courseDetails = [
+            { name: 'HTML', imgSrc: '/DCKAP_LMS_Project/Assests/html.webp' },
+            { name: 'CSS', imgSrc: '/DCKAP_LMS_Project/Assests/css.webp' },
+            { name: 'JavaScript', imgSrc: '/DCKAP_LMS_Project/Assests/js.webp' },
+            { name: 'MySQL', imgSrc: '/DCKAP_LMS_Project/Assests/7723d1592a0b454cb59a32cf5ab35642-SQL2.webp' },
+            { name:'PHP', imgSrc:'/DCKAP_LMS_Project/Assests/php.webp'}
+        ];
 
+        enrolledCourseContainer.innerHTML = `
+            <div class="progress_language">
+                <img src="${courseDetails[index].imgSrc}" alt="" class="enroll_img">
+            </div>
+            <hr>
+            <div class="progress_status">
+                <p class="enroll_language">${courseDetails[index].name}</p>
+                <div class="percentage">
+                    <p class="progress">In progress</p>
+                    <span></span>
+                </div>
+            </div>
+        `;
 
-    if (enrolledCourses.includes(index)) {
-      console.log("Course already enrolled");
-      return; 
+        const enrolledCoursesContainer = document.querySelector('.progressing_bar .Progress_container');
+        enrolledCoursesContainer.appendChild(enrolledCourseContainer);
+
+        // Save data to Firestore
+        await addDoc(collection(database, "enrolledCourses"), {
+            name: courseDetails[index].name,
+            imgSrc: courseDetails[index].imgSrc
+        });
+
+    } catch (error) {
+        console.error('Error:', error.message);
     }
 
     enrolledCourses.push(index); 
@@ -73,10 +102,38 @@ exploreCoursesContainer.addEventListener("click", async function (event) {
       name: courseDetails[index].name,
       imgSrc: courseDetails[index].imgSrc,
     });
-  } catch (error) {
-    console.error("Error:", error.message);
-  }
+  } )
+
+// Retrieve data from Firestore on page load
+window.addEventListener('load', async function() {
+    try {
+        const querySnapshot = await getDocs(collection(database, "enrolledCourses"));
+        querySnapshot.forEach(doc => {
+            const enrolledCourseContainer = document.createElement('div');
+            enrolledCourseContainer.classList.add('Progress_bar');
+
+            enrolledCourseContainer.innerHTML = `
+                <div class="progress_language">
+                    <img src="${doc.data().imgSrc}" alt="" class="enroll_img">
+                </div>
+                <hr>
+                <div class="progress_status">
+                    <p class="enroll_language">${doc.data().name}</p>
+                    <div class="percentage">
+                        <p class="progress">In progress</p>
+                        <span></span>
+                    </div>
+                </div>
+            `;
+
+            const enrolledCoursesContainer = document.querySelector('.progressing_bar .Progress_container');
+            enrolledCoursesContainer.appendChild(enrolledCourseContainer);
+        });
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
 });
+
 
 
 // Retrieve data 
@@ -179,32 +236,43 @@ document.addEventListener("click", (event) => {
 
 let profile_page = document.querySelector(".profile_down");
 profile_page.addEventListener("click", () => {
-  window.location.href = "profile.html";
+  window.location.href = "./profile.html";
 });
 
 // Course Drop
 
-let Course_navigate = document.querySelector(".Course_Down");
-Course_navigate.addEventListener("click", () => {
-  window.location.href = "Courses.html";
-});
+let Course_navigate=document.querySelector(".Course_Down")
+Course_navigate.addEventListener("click",()=>{
+      window.location.href="./Courses.html"
+})
+
+
+let Certi_page=document.querySelector(".profile-certicate");
+
+Certi_page.addEventListener("click",()=>{
+         window.location.href="./certificate.html"
+})
+
+
 
 
 let left_side_bar=document.querySelectorAll(".navlink");
 
 left_side_bar[0].addEventListener("click",()=>{
-  window.location.href='index.html  '
+  window.location.href='./index.html  '
 });
 
 left_side_bar[1].addEventListener("click",()=>{
 
-  window.location.href='Learning.html  '
+  window.location.href='./Learning.html  '
 });
 left_side_bar[2].addEventListener("click",()=>{
 
-  window.location.href='dashboard.html';
+  window.location.href='./dashboard.html';
 });
 left_side_bar[3].addEventListener("click",()=>{
 
-  window.location.href='Roadmap.html';
+  window.location.href='./Roadmap.html';
 });
+
+

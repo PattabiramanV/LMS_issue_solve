@@ -36,7 +36,6 @@ let Dckaplogo = document.querySelector(".DCKAPlOGO");
 
 
 let searchicon = document.querySelector(".fas");
-console.log(searchicon);
 
 darkLight.addEventListener("click", () => {
   body.classList.toggle("dark");
@@ -69,31 +68,42 @@ document.addEventListener("click", (event) => {
 
 let profile_page=document.querySelector(".profile_down")
  profile_page.addEventListener("click",()=>{
-        window.location.href="profile.html"
+        window.location.href="./profile.html"
 })
 
 let Course_navigate=document.querySelector(".Course_Down")
 Course_navigate.addEventListener("click",()=>{
-      window.location.href="Courses.html"
+      window.location.href="./Courses.html"
 })
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  let Certipage = document.querySelector(".profilecerticate");
+  Certipage.addEventListener("click", () => {
+      window.location.href = "./certificate.html";
+  });
+});
+
 
 
 
 let left_side_bar=document.querySelectorAll(".navlink");
 
 left_side_bar[0].addEventListener("click",()=>{
-  window.location.href='index.html  '
+  window.location.href='./index.html  '
 });
 
 left_side_bar[1].addEventListener("click",()=>{
-
-  window.location.href='Learning.html  '
+  window.location.href='./Learning.html'
 });
 left_side_bar[2].addEventListener("click",()=>{
 
-  window.location.href='Dashboard.html';
+  window.location.href='./dashboard.html';
 });
 left_side_bar[3].addEventListener("click",()=>{
 
-  window.location.href='Roadmap.html';
+  window.location.href='./Roadmap.html';
 });
+
+
+

@@ -41,6 +41,23 @@ darkLight.addEventListener("click", () => {
     : "./Assests/Dckap Logo.png";
 });
 
+submenuItems.forEach((item, index) => {
+  item.addEventListener("click", () => {
+    item.classList.toggle("show_submenu");
+    submenuItems.forEach((item2, index2) => {
+      if (index !== index2) {
+        item2.classList.remove("show_submenu");
+      }
+    });
+  });
+});
+
+if (window.innerWidth < 768) {
+  sidebar.classList.add("close");
+} else {
+  sidebar.classList.remove("close");
+}
+
 // Profile
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
@@ -60,16 +77,44 @@ document.addEventListener("click", (event) => {
   }
 });
 
+let Cancel_btn=document.querySelector(".cancel_btn")
+
+Cancel_btn.addEventListener("click", () => {
+    window.location.href="Roadmap.html";
+});
+
 // profile_drop
 
 let profile_page = document.querySelector(".profile_down");
 profile_page.addEventListener("click", () => {
-  window.location.href = "./profile.html";
+  window.location.href = "profile.html";
 });
 
 let Course_navigate = document.querySelector(".Course_Down");
 Course_navigate.addEventListener("click", () => {
-  window.location.href = "./Courses.html";
+  window.location.href = "Courses.html";
+});
+
+let Certi_page=document.querySelector(".profile-certicate");
+
+Certi_page.addEventListener("click",()=>{
+         window.location.href="Certificate.html"
+})
+
+// Firebase store Name
+window.addEventListener("DOMContentLoaded", async (event) => {
+  try {
+    const NameRef = collection(database, "user_Name_Information");
+    const querySnapshot = await getDocs(NameRef);
+    querySnapshot.forEach((doc) => {
+      const NameData = doc.data();
+      const nameSpan = document.getElementById("fullName");
+      nameSpan.textContent = NameData.name;
+    });
+    console.log("Name data fetched from Firebase");
+  } catch (error) {
+    console.error("Error fetching Name data from Firebase: ", error);
+  }
 });
 
 // Firebase store Name
@@ -219,11 +264,6 @@ async function SaveGitnameInFirebase(gitname) {
   }
 }
 
-// Navigate to home page
-let cancel_navigate = document.querySelector(".cancel_btn");
-cancel_navigate.addEventListener("click", () => {
-  window.location.href = "profile.html";
-});
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -286,7 +326,6 @@ uploadInput.addEventListener("change", async function () {
         console.error("Error adding document: ", error);
       }
     };
-
     reader.readAsDataURL(file);
   }
 });
@@ -299,14 +338,15 @@ left_side_bar[0].addEventListener("click",()=>{
 });
 
 left_side_bar[1].addEventListener("click",()=>{
-
-  window.location.href='Learning.html  '
+  window.location.href='Learning.html'
 });
 left_side_bar[2].addEventListener("click",()=>{
 
-  window.location.href='Dashboard.html';
+  window.location.href='dashboard.html';
 });
 left_side_bar[3].addEventListener("click",()=>{
 
   window.location.href='Roadmap.html';
 });
+
+

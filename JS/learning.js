@@ -31,8 +31,7 @@ all_learn_more_btn.forEach((btn,index)=>{
 
     btn.addEventListener("click",()=>{
 if(index==0){
-console.log("pattabi");
-    window.location.href='learning_content.html';
+    window.location.href='./learning_content.html';
 }
     })
 });
@@ -167,8 +166,24 @@ CSS:{
 
 
 
+let left_side_bar=document.querySelectorAll(".navlink");
 
+left_side_bar[0].addEventListener("click",()=>{
+  window.location.href='index.html  '
+});
 
+left_side_bar[1].addEventListener("click",()=>{
+
+  window.location.href='Learning.html  '
+});
+left_side_bar[2].addEventListener("click",()=>{
+
+  window.location.href='dashboard.html';
+});
+left_side_bar[3].addEventListener("click",()=>{
+
+  window.location.href='Roadmap.html';
+});
 
 
 
@@ -227,48 +242,39 @@ darkLight.addEventListener("click", () => {
 
 
 
-
 // Profile
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");
 
 profile_navigate.addEventListener("click", (event) => {
-    event.stopPropagation();
-    profile_Dropdown.style.display = "block";
+  event.stopPropagation();
+  profile_Dropdown.style.display = "block";
 });
 
 document.addEventListener("click", (event) => {
-    if (!profile_navigate.contains(event.target) && !profile_Dropdown.contains(event.target)) {
-        profile_Dropdown.style.display = "none"; 
-    }
+  if (
+    !profile_navigate.contains(event.target) &&
+    !profile_Dropdown.contains(event.target)
+  ) {
+    profile_Dropdown.style.display = "none";
+  }
+});
+
+let Cancel_btn=document.querySelector(".cancel_btn")
+
+Cancel_btn.addEventListener("click", () => {
+    window.location.href="Roadmap.html";
 });
 
 // profile_drop
 
-let profile_page=document.querySelector(".profile_down")
- profile_page.addEventListener("click",()=>{
-        window.location.href="./profile.html"
-})
-
-let Course_navigate=document.querySelector(".Course_Down")
-Course_navigate.addEventListener("click",()=>{
-      window.location.href="./Courses.html"
-})
-let left_side_bar=document.querySelectorAll(".navlink");
-
-left_side_bar[0].addEventListener("click",()=>{
-  window.location.href='index.html'
+let profile_page = document.querySelector(".profile_down");
+profile_page.addEventListener("click", () => {
+  window.location.href = "profile.html";
 });
 
-left_side_bar[1].addEventListener("click",()=>{
-  window.location.href='Learning.html'
-});
-left_side_bar[2].addEventListener("click",()=>{
-
-  window.location.href='Dashboard.html';
-});
-left_side_bar[3].addEventListener("click",()=>{
-
-  window.location.href='Roadmap.html';
+let Course_navigate = document.querySelector(".Course_Down");
+Course_navigate.addEventListener("click", () => {
+  window.location.href = "Courses.html";
 });

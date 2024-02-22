@@ -100,6 +100,10 @@ Course_navigate.addEventListener("click",()=>{
 
 // --------------- CSS Quiz -------------------
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> Overall_Quiz
 const html_btn =document.querySelector("#html_btn");
 html_btn.addEventListener("click", () => {
   localStorage.setItem('selectedQuiz', 'HTML_Overall_Quiz');
@@ -115,6 +119,25 @@ css_quiz.addEventListener("click", () => {
 
   // console.log('CSS quiz button clicked');
   // console.log('selectedQuiz in localStorage:', localStorage.getItem('selectedQuiz'));
+<<<<<<< HEAD
+=======
+
+  window.location.href = 'OverallQuiz.html';
+
+});
+
+const js_btn =document.querySelector("#js_btn");
+js_btn.addEventListener("click", () => {
+  localStorage.setItem('selectedQuiz', 'JavaScript_Overall_Quiz');
+  window.location.href = 'OverallQuiz.html';
+});
+
+const mysql_btn =document.querySelector("#mysql_btn");
+mysql_btn.addEventListener("click", () => {
+  localStorage.setItem('selectedQuiz', 'MySql_Overall_Quiz');
+  window.location.href = 'OverallQuiz.html';
+});
+>>>>>>> Overall_Quiz
 
   window.location.href = 'OverallQuiz.html';
 

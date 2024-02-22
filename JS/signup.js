@@ -146,8 +146,7 @@ otp_btn.addEventListener("click", verified)
   }
   
  }
-  // -----login validation-----
-
+  
 
 
 

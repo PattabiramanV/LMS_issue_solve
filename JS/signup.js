@@ -119,12 +119,9 @@ otp_btn.addEventListener("click", verified)
   {
    
 
-        console.log(id);
+        // console.log(id);
 
     let ref=doc(db,"SignUp_details",`${id++}`)
-
-  // console.log(id,typeof(id));
-
 
     let dataReference =  setDoc(
       ref,{
@@ -140,7 +137,7 @@ otp_btn.addEventListener("click", verified)
   document.getElementById('loadingOverlay').style.visibility = 'visible';
 
   setTimeout(() => {
-      window.location.href = 'http://127.0.0.1:5501/login.html';
+      window.location.href = './login.html';
   }, 2000);
         
   }
@@ -149,6 +146,10 @@ otp_btn.addEventListener("click", verified)
   }
   
  }
+  
+
+
+
 
    
 // --------password icon-----------

@@ -1,3 +1,662 @@
+Madhan Kumar P
+madhan_kumar
+Idle
+
+Madhan Kumar P — 11/03/2023 5:04 PM
+document.addEventListener("DOMContentLoaded", function() {
+    var button1 = document.getElementById("btn1");
+    var button2 = document.getElementById("btn2");
+    var button3 = document.getElementById("btn3");
+
+    var box1 = document.getElementById("box3-1");
+    var box2 = document.getElementById("box4-2");
+    var box3 = document.getElementById("box5-3");
+
+    var currentlyOpenBox = null; // Track the currently open box
+
+    button1.addEventListener("click", function() {
+        toggle(box1, button1);
+    });
+
+    button2.addEventListener("click", function() {
+        toggle(box2, button2);
+    });
+
+    button3.addEventListener("click", function() {
+        toggle(box3, button3);
+    });
+
+    function toggle(box, button) {
+        if (box === currentlyOpenBox) {
+            // If the clicked button corresponds to the open box, close it
+            box.style.display = "none";
+            button.innerText = "+";
+            currentlyOpenBox = null;
+        } else {
+            // If a different button is clicked, close the currently open box (if any)
+            if (currentlyOpenBox) {
+                currentlyOpenBox.style.display = "none";
+                currentlyOpenBox.previousButton.innerText = "+";
+            }
+            // Open the new box and update the currently open box
+            box.style.display = "block";
+            button.innerText = "-";
+            currentlyOpenBox = box;
+            currentlyOpenBox.previousButton = button;
+        }
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ---------------------------------------------------------
+
+
+
+// document.addEventListener("DOMContentLoaded", function() {
+//     var button1 = document.getElementById("btn1");
+//     var button2 = document.getElementById("btn2");
+//     var button3 = document.getElementById("btn3");
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+Expand
+sampl.html
+3 KB
+#cen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+Expand
+sample.css
+1 KB
+// document.addEventListener("DOMContentLoaded", function() {
+//     var button1 = document.getElementById("btn1");
+//     var button2 = document.getElementById("btn2");
+//     var button3 = document.getElementById("btn3");
+  
+//     var box1 = document.getElementById("box3-1");
+Expand
+sample.js
+5 KB
+Madhan Kumar P — 11/04/2023 9:15 AM
+Dale Carnegie's book, "How to Win Friends and Influence People," is a classic self-help book that provides valuable insights into building relationships and improving interpersonal skills. Although I can't provide the first 16 pages verbatim, I can offer a brief summary of the key points from the early chapters of the book:
+
+Fundamental Techniques in Handling People:
+
+The book begins by emphasizing the importance of avoiding criticism and condemnation.
+It highlights the idea that people have an innate desire to feel important and appreciated.
+Six Ways to Make People Like You:
+
+Smile more often, as it makes you more approachable and creates a positive first impression.
+Remember people's names and use them in conversations.
+Show a genuine interest in others, their concerns, and their opinions.
+How to Win People to Your Way of Thinking:
+
+Avoid arguments and instead, encourage others to express their opinions and listen actively.
+Begin conversations in a friendly manner to create a more receptive atmosphere.
+Let the other person feel that the idea is theirs; don't force your viewpoint.
+Be a Leader: How to Change People Without Giving Offense or Arousing Resentment:
+
+Start with praise and honest appreciation.
+Call attention to people's mistakes indirectly and encourage them to self-correct.
+Ask questions that allow others to save face.
+These principles are the foundation of Carnegie's approach to building positive relationships and influencing people effectively. The book elaborates on these concepts in more detail throughout its pages. To fully grasp the wisdom it offers, it's advisable to read the entire book, as it provides numerous real-life examples and practical advice to help you apply these principles in your daily interactions.
+I apologize for any confusion, but I can't provide verbatim excerpts from copyrighted texts, such as the first 22 pages of "How to Win Friends and Influence People" by Dale Carnegie. However, I can provide a general overview of the themes and concepts you might find in those initial pages to help with your book discussion:
+
+The Power of Interpersonal Skills: In the early pages of the book, Dale Carnegie emphasizes the idea that interpersonal skills are vital for success in both personal and professional life. He argues that these skills are often more important than technical expertise.
+
+The Magic of a Smile: Carnegie discusses the impact of a genuine smile in creating a positive first impression and making others feel comfortable and welcomed.
+Expand
+message.txt
+3 KB
+Asha K — 11/04/2023 2:22 PM
+Page Not Found
+Looks like you've followed a broken link or entered a URL that doesn't exist on this site.
+
+<Back to page
+followed a broken link or entered a URL that doesn't exist on this site.
+Asha K — 11/04/2023 2:50 PM
+let maindiv=document.createElement("div")
+maindiv.className="div0"
+document.body.append(maindiv)
+
+let subdiv=document.createElement("div")
+subdiv.className="div1"
+Expand
+navbar.js
+1 KB
+nav{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        background-color: whitesmoke;
+Expand
+navbar.css
+2 KB
+Asha K — 11/04/2023 4:48 PM
+function openNav() {
+    document.getElementById("mySidenav").classList.add("open");
+
+  }
+  function closeNav() {
+    document.getElementById("mySidenav").classList.remove("open");
+  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+Expand
+navtask4.html
+2 KB
+body{
+    padding: 0;
+    margin: 0;
+}
+nav{
+    background-color: rgb(250, 251, 252);
+    font-size: 16px;
+    width: 100%;
+    /* display: flex;
+    align-items: center;
+    justify-content: space-around; /
+    display: none;
+}
+ nav li{
+    display: inline-block;
+    margin: 0 8px;
+ }
+ nav a{
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+ }
+ nav a:hover{
+    color: red;
+ }
+ img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: -69px;
+  right: 29px;
+}
+ .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+ }
+ / #icon{
+   width:50;
+ } /
+ .navbar1{
+   background-color: rgb(250, 251, 252);
+   font-size: 16px;
+   width: 50%;
+   display: grid;
+   margin-right: 527px;
+   display: flex;
+   flex-direction: column;
+   / display: flex;
+   align-items: center;
+   justify-content: space-around;
+    /
+   / display: block; /
+
+ }
+ .list1{
+   display: flex;
+   flex-direction: column;
+   / display: grid; /
+ 
+
+ }
+ .navicon{
+   float: right;
+   color: aqua;
+
+ }
+
+ .totalicon{
+
+  color: rgb(143, 244, 244);
+  position: relative;
+  / bottom: -136px; /
+  display: flex;
+  top: 384px;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+ }
+ .totalicon i:hover{
+
+  color: rgb(97, 211, 77);
+ }
+ 
+ 
+
+.sidenav {
+   height: 100%;
+   width: 0;
+   position: fixed;
+   z-index: 1;
+   top: 0;
+   left: 0;
+   background-color: #c9c7c7;
+   overflow-x: hidden;
+   / transition: 0.5s; /
+   padding-top: 60px;
+ }
+ 
+ .sidenav a {
+   padding: 8px 8px 8px 32px;
+   text-decoration: none;
+   font-size: 25px;
+   color: #818181;
+   display: block;
+   / transition: 0.3s; */
+ }
+ 
+ .sidenav a:hover {
+   color: #f1f1f1;
+ }
+ 
+ .sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 3px;
+  font-size: 26px;
+  margin-left: 50px;
+  border: none;
+  color: red;
+ }
+ .open{
+   width: 250px;
+ }
+Madhan Kumar P — 11/04/2023 5:01 PM
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="SideNavBar.css">
+    <title>Document</title>
+</head>
+<body>
+    <span  class="navicon"style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+
+
+    <div id="mySidenav" class="sidenav">
+
+
+        <button class="closebtn" onclick="closeNav()">X</button>
+        <div class="dckap lo">
+            <img src="Dckap-removebg-preview.png">
+        </div>
+        <div class="page-link">
+            <a href="#">Home</a>
+            <a href="nav1.html">About</a>
+            <a href="nav2.html">Help</a>
+            <a href="nav3.html">Contact</a>
+        </div>
+
+
+        <div class=" totalicon">
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-linkedin"></i> 
+        </div>
+
+      </div>
+
+
+
+
+
+    <script src="SideNavBar.css"></script>
+</body>
+</html>
+Asha K — 11/06/2023 11:45 AM
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer testimonial</title>
+Expand
+index_1.html
+1 KB
+"use strict"
+
+let left_arrow=document.createElement("button");
+left_arrow.innerText="<"
+left_arrow.id="left_btn"
+Expand
+script.js
+3 KB
+
+.container
+{
+    width: 400px;
+    height: 100%;
+    margin: 0 auto;
+Expand
+style.css
+1 KB
+Madhan Kumar P — 11/07/2023 2:34 PM
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+Expand
+sampl.html
+3 KB
+#cen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+Expand
+sample.css
+1 KB
+// var button1 = document.getElementById("btn1");
+// var button2 = document.getElementById("btn2");
+// var button3 = document.getElementById("btn3");
+
+// var box1 = document.getElementById("box3-1");
+// var box2 = document.getElementById("box4-2");
+Expand
+sample.js
+3 KB
+Madhan Kumar P — 11/08/2023 8:58 AM
+https://youtu.be/Wh1zhRck-Wg?si=1gOpNR5YTyyewEKF
+YouTube
+TED Audio Collective
+How to Love Criticism | WorkLife with Adam Grant
+Image
+Asha K — 11/08/2023 11:13 AM
+https://www.ted.com/talks/worklife_with_adam_grant_how_to_love_criticism?utm_campaign=tedspread&utm_medium=referral&utm_source=tedcomshare
+TED
+WorkLife with Adam Grant
+How to love criticism
+What if you could tell your co-workers what you really think of them? At the world's most successful hedge fund, everyone is rated and ranked constantly -- in front of everyone. They've figured out how to embrace negative feedback, and they swear it's essential to their success. Adam Grant shows how you can learn to take criticism well -- and ge...
+Image
+03/08/2018 9:19 PM
+Madhan Kumar P — 11/16/2023 4:59 PM
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+Expand
+button.html
+3 KB
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+Expand
+index.html
+2 KB
+body{
+  text-align:center;
+}
+.toggle {
+  position: relative;
+  display: block;
+Expand
+pubile.css
+2 KB
+let add = document.querySelector("button");
+// console.log(add)
+let video = document.getElementById("myVideo");
+
+add.addEventListener("click", play_and_pause);
+function play_and_pause() {
+Expand
+script.js
+1 KB
+/* html {
+    width: 100%;
+    height: 100%;
+}
+body {
+    width: 98%;
+Expand
+style.css
+2 KB
+Asha K — 12/09/2023 12:52 PM
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+Expand
+index.html
+3 KB
+"use strict"
+
+let images=document.querySelectorAll(".picture");
+let container=document.querySelector(".container");
+let main=document.querySelector(".main");
+let main2=document.querySelector(".main2");
+Expand
+script.js
+3 KB
+img{
+    width: 100%;
+    height: 150px;
+}
+body{
+    max-width: 1440px;
+Expand
+stye.css
+2 KB
+Madhan Kumar P — 12/10/2023 1:22 PM
+hi google g
+Asha K — 12/10/2023 2:47 PM
+hi g
+Madhan Kumar P — 12/15/2023 3:24 PM
+Asha K — 12/15/2023 3:44 PM
+Madhan Kumar P — 12/15/2023 3:44 PM
+Asha K — 12/15/2023 3:45 PM
+Madhan Kumar P — 12/15/2023 3:46 PM
+Asha K — 12/15/2023 4:37 PM
+Madhan Kumar P — 12/15/2023 4:38 PM
+Asha K — 12/15/2023 4:38 PM
+Madhan Kumar P — 12/15/2023 4:39 PM
+Asha K — 12/15/2023 5:01 PM
+paithiyam
+Madhan Kumar P — 12/16/2023 5:04 PM
+Madhan Kumar P — 12/30/2023 9:28 AM
+https://discord.gg/Qk2V8zKU
+Madhan Kumar P — 01/10/2024 9:42 PM
+https://discord.com/invite/sv4WyfMc
+Madhan Kumar P — 01/11/2024 9:28 AM
+https://discord.gg/yYfBrSTc
+Madhan Kumar P — 01/29/2024 9:31 AM
+https://madhankumarp1.github.io/Signup-regex-validation/
+Madhan Kumar P — 01/30/2024 10:54 AM
+/[ ""!"#$%&'()*+,-./:;<=>?@^_`~{}|]/g;
+//-------------------------form valid
+
+let form = document.getElementById("signUpForm");
+
+form.addEventListener('submit', validateForm);
+
+function validateForm(event) {
+    event.preventDefault();
+
+    let inputName = document.getElementById("name").value;
+    let inputEmail = document.getElementById("email").value;
+    let inputMobile = document.getElementById("number").value;
+    let inputPassword = document.querySelector(".password").value;
+    let inputConPassword = document.getElementById("confirmPassword").value;
+    let inputUsername = document.querySelector(".username").value;
+
+    let emailRegex = /([a-z0-9.+-]+)@[a-zA-z0-9.+]+/g;
+    let nameRegex = /[a-z]{3,}/g;
+    let mobileRegex = /^\d{10}$/;
+    let usernameRegex = /^[a-zA-Z0-9]{3,20}$/;
+
+    if (!nameRegex.test(inputName)) {
+        alert("Invalid Name.");
+        return;
+    }
+    if (!emailRegex.test(inputEmail)) {
+        alert("Invalid email address.");
+        return;
+    }
+    if (!mobileRegex.test(inputMobile)) {
+        alert("Invalid Mobile number.");
+        return;
+    }
+    if (!usernameRegex.test(inputUsername)) {
+        alert("Invalid username.");
+        return;
+    }
+
+    if (inputPassword !== inputCon_Password) {
+        alert("Confirm Passwords do not match.");
+        return;
+    }
+
+    alert("Form submitted");
+
+    newFunction();
+
+}
+function newFunction(){
+  let rest = document.getElementById("signUpForm");
+   rest.reset()
+}
+Madhan Kumar P — 01/31/2024 9:30 AM
+"use strict"
+
+let inputName = document.querySelector(".name");
+let inputEmail = document.querySelector(".email");
+let inputMobile = document.querySelector(".number");
+let inputUsername = document.querySelector(".username");
+Expand
+message.txt
+7 KB
+Attachment file type: code
+app.js
+6.10 KB
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+Expand
+index.html
+5 KB
+html{
+    width: 100%;
+    height: 100%;
+}
+body {
+    width: 99%;
+Expand
+style.css
+6 KB
+Madhan Kumar P — 02/07/2024 4:49 PM
+https://www.figma.com/community/file/1332995868767327189/login-page-design
+Figma
+Login Page Design | Figma Community
+Login Page Design | Figma Community
+Madhan Kumar P — 02/14/2024 12:48 PM
+if (!nameRegex.test(inputName)) {
+        Invalid_Name.textContent = "Invalid_Name."; 
+        setTimeout(() => {
+            Invalid_Name.textContent = ""; 
+        }, 2000);
+        return;
+    }
+Madhan Kumar P — 02/14/2024 3:22 PM
+Attachment file type: code
+app.js
+6.10 KB
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+Expand
+index.html
+6 KB
+html{
+    width: 100%;
+    height: 100%;
+}
+body {
+    width: 99%;
+Expand
+style.css
+6 KB
+Madhan Kumar P — 02/14/2024 4:12 PM
+#DAF7A6
+Madhan Kumar P — 02/15/2024 4:52 PM
+
+
+<?php
+
+// question 1
+Expand
+five_problem.php
+3 KB
+Asha K — 02/17/2024 12:51 PM
+72c972
+#72c972
+Asha K — Today at 4:51 PM
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+Expand
+login.html
+4 KB
+let backtosignup=document.getElementById("backto_signup")
+backtosignup.addEventListener("click", signup_page);
+
+function signup_page() {
+    document.getElementById('loadingOverlay').style.visibility = 'visible';
+    setTimeout(() => {
+Expand
+login.js
+3 KB
+﻿
+Asha K
+ashak4059
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,3 +719,5 @@
     <script type="module"src="JS/login.js"></script>
 </body>
 </html>
+login.html
+4 KB

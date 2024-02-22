@@ -185,6 +185,13 @@ Course_navigate.addEventListener("click",()=>{
 })
 
 
+let Certi_page=document.querySelector(".profile-certicate");
+
+Certi_page.addEventListener("click",()=>{
+         window.location.href="Certificate.html"
+})
+
+
 
 
 let left_side_bar=document.querySelectorAll(".navlink");

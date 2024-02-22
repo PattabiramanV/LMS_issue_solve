@@ -89,6 +89,13 @@ Course_navigate.addEventListener("click", () => {
   window.location.href = "Courses.html";
 });
 
+let Certi_page=document.querySelector(".profile-certicate");
+
+Certi_page.addEventListener("click",()=>{
+         window.location.href="Certificate.html"
+})
+
+
 // Firebase store Name
 window.addEventListener("DOMContentLoaded", async (event) => {
   try {

@@ -89,12 +89,12 @@ document.addEventListener("click", (event) => {
 
 let profile_page=document.querySelector(".profile_down")
  profile_page.addEventListener("click",()=>{
-        window.location.href="/profile_user_page/profile.html"
+        window.location.href="./profile.html"
 })
 
 let Course_navigate=document.querySelector(".Course_Down")
 Course_navigate.addEventListener("click",()=>{
-      window.location.href="/Profile_main_page/Courses.html"
+      window.location.href="./Courses.html"
 })
 
 // ------------------HTML Pie chart -------------------------

@@ -1,131 +1,4 @@
 "use strict"
-
-// //   // Import the functions you need from the SDKs you need
-// //   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-// //   // TODO: Add SDKs for Firebase products that you want to use
-// //   // https://firebase.google.com/docs/web/setup#available-libraries
-
-// //   // Your web app's Firebase configuration
-// //   const firebaseConfig = {
-// //     apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
-// //     authDomain: "dckap-lms-project.firebaseapp.com",
-// //     projectId: "dckap-lms-project",
-// //     storageBucket: "dckap-lms-project.appspot.com",
-// //     messagingSenderId: "1022626638467",
-// //     appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
-// //   };
-
-// //   // Initialize Firebase
-// //   const app = initializeApp(firebaseConfig);
-
-// //   import {  getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection  } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-
-// // Import the functions you need from the Firebase SDKs
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-// import { getFirestore, collection, addDoc,setDoc,doc,getDoc,getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-// // Your web app's Firebase configuration
-// const firebaseConfig = {
-//     apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
-//     authDomain: "dckap-lms-project.firebaseapp.com",
-//     projectId: "dckap-lms-project",
-//     storageBucket: "dckap-lms-project.appspot.com",
-//     messagingSenderId: "1022626638467",
-//     appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
-// };
-
-// // Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-
-// // Get a reference to the Firestore database service
-// const db = getFirestore(app);
-// let id=0;
-// // Define the cssquizData array
-// let cssquizData = [
-//     {
-//         question: '1.What does CSS stand for?',
-//         options: [    
-//             'Creative Style Sheets',
-//             'Computer Style Sheets',
-//             'Cascading Style Sheets',
-//             'Colorful Style Sheets',
-//         ],
-//         answer: 'Cascading Style Sheets'
-//     },
-//     {
-//         question: '2.Which property is used to change the text color of an element?',
-//         options: [
-//             'color',
-//             'text-color',
-//             'font-color',
-//             'text-style',
-//         ],
-//         answer: 'color'
-//     },
-//     // Add other quiz data objects here...
-// ];
-
-// // Function to store quiz data in Firestore
-// // function storeDataInFirestore() {
-// //     cssquizData.forEach((quiz, index) => {
-// //         setDoc(collection(db, "cssQuizzes",`${id++}`))
-// //         .then((docRef) => {
-// //             console.log("Document written with ID: ", docRef.id);
-// //         })
-// //         .catch((error) => {
-// //             console.error("Error adding document: ", error);
-// //         });
-// //     });
-// // }
-
-// // Call the function to store quiz data
-// // storeDataInFirestore();
-
-// let get_size=collection(db,'Quiz');
-// let set_size= await getDocs(get_size);
-// console.log(set_size.size);
-// id=set_size.size;
-// // console.log(get_size.size)
-
-
-// --------------------------------------------------------------------
-
-
-
-// let id = 1;
-
-// (async () => {
-//     try {
-//         let ref = doc(db, "cssquizData", `${id++}`);
-//         let dataReference = await setDoc(ref, { id: ref.id }); // Using ref.id to access the ID
-//         console.log("Data Added Successfully");
-//     } catch (err) {
-//         console.log(err);
-//     }
-// })();
-
-
-// function storeDataInFirestore() {
-//     cssquizData.forEach((quiz, index) => {
-//         addDoc(collection(db, "cssQuizzes"), quiz)
-//         .then((docRef) => {
-//             console.log("Document written with ID: ", docRef.id);
-//         })
-//         .catch((error) => {
-//             console.error("Error adding document: ", error);
-//         });
-//     });
-// }
-
-// storeDataInFirestore();
-
-
-//----------------------------------- navbar_sidebar
-
-
-
-
 const body = document.querySelector("body");
 const darkLight = document.querySelector("#darkLight");
 const sidebar = document.querySelector(".sidebar");
@@ -221,12 +94,12 @@ document.addEventListener("click", (event) => {
 
 let profile_page = document.querySelector(".profile_down");
 profile_page.addEventListener("click", () => {
-  window.location.href = "profile.html";
+  window.location.href = "./profile.html";
 });
 
 let Course_navigate = document.querySelector(".Course_Down");
 Course_navigate.addEventListener("click", () => {
-  window.location.href = "Courses.html";
+  window.location.href = "./Courses.html";
 });
 
 

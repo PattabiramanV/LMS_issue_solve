@@ -178,7 +178,7 @@ left_side_bar[1].addEventListener("click",()=>{
 });
 left_side_bar[2].addEventListener("click",()=>{
 
-  window.location.href='Dashboard.html';
+  window.location.href='dashboard.html';
 });
 left_side_bar[3].addEventListener("click",()=>{
 

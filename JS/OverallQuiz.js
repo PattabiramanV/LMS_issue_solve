@@ -231,8 +231,6 @@ Course_navigate.addEventListener("click",()=>{
 // Quiz_page
 
 
-
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
@@ -250,23 +248,28 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 let db = getFirestore(); // Create a Firestore instance
 
-async function fetchQuizData() {
+async function fetchQuizData(databaseName) {
   try {
-    let quizDataCollection = collection(db, 'Quiz');
+    let quizDataCollection = collection(db, databaseName);
     let quizDataSnapshot = await getDocs(quizDataCollection);
-    
     return quizDataSnapshot.docs.map(doc => doc.data());
   } catch (error) {
-    console.error('Error fetching quiz data:', error);
+    console.error(`Error fetching ${databaseName} quiz data:`, error);
     return [];
   }
 }
 
 async function initializeQuiz() {
+  let selectedQuiz = localStorage.getItem('selectedQuiz');
+  let allQuizData;
 
-
-  let cssquizData = await fetchQuizData();
-  console.log('Fetched Quiz Data:', cssquizData);
+  if (selectedQuiz === 'HTML_Overall_Quiz' || selectedQuiz === 'CSS_Overall_Quiz' ||
+      selectedQuiz === 'JavaScript_Overall_Quiz' || selectedQuiz === 'PHP_Overall_Quiz' || selectedQuiz === 'MySql_Overall_Quiz' ) {
+    allQuizData = await fetchQuizData(selectedQuiz);
+  } else {
+    console.error('Invalid or missing selectedQuiz in localStorage');
+    return;
+  }
 
   let quizContainer = document.getElementById('quiz');
   let resultContainer = document.getElementById('result');
@@ -284,8 +287,6 @@ async function initializeQuiz() {
   let score = 0;
   let incorrectAnswers = [];
 
-// session storage set_up
-
   function saveQuizState() {
     sessionStorage.setItem('currentQuestion', currentQuestion);
     sessionStorage.setItem('score', score);
@@ -296,14 +297,13 @@ async function initializeQuiz() {
     let storedQuestion = sessionStorage.getItem('currentQuestion');
     let storedScore = sessionStorage.getItem('score');
     let storedIncorrectAnswers = JSON.parse(sessionStorage.getItem('incorrectAnswers'));
-  
+
     if (storedQuestion !== null && storedScore !== null && storedIncorrectAnswers !== null) {
       currentQuestion = parseInt(storedQuestion);
       score = parseInt(storedScore);
       incorrectAnswers = storedIncorrectAnswers;
     }
   }
-  
 
   function clearQuizState() {
     sessionStorage.removeItem('currentQuestion');
@@ -311,20 +311,10 @@ async function initializeQuiz() {
     sessionStorage.removeItem('incorrectAnswers');
   }
 
-
-
-// it is use to display_a_question
-
-  // function displayQuestion() {
-  //   let questionData = cssquizData[currentQuestion];
-
-  //   let questionElement = document.createElement('div');
-  //   questionElement.className = 'question';
-  //   questionElement.innerHTML = questionData.question;
   function displayQuestion() {
-    let questionData = cssquizData[currentQuestion];
+    let questionData = allQuizData[currentQuestion];
     let questionId = questionData.questionId;
-  
+
     let questionElement = document.createElement('div');
     questionElement.className = 'question';
     questionElement.innerHTML = `Question ID: ${questionId} : ${questionData.question}`;
@@ -367,36 +357,31 @@ async function initializeQuiz() {
     }
   }
 
-
-// it is use to check_answer
-
   function checkAnswer() {
     let selectedOption = document.querySelector('input[name="quiz"]:checked');
     if (selectedOption) {
       let answer = selectedOption.value;
-      if (answer === cssquizData[currentQuestion].answer) {
+      if (answer === allQuizData[currentQuestion].answer) {
         score++;
       } else {
         incorrectAnswers.push({
-          question: cssquizData[currentQuestion].question,
+          question: allQuizData[currentQuestion].question,
           incorrectAnswer: answer,
-          correctAnswer: cssquizData[currentQuestion].answer,
+          correctAnswer: allQuizData[currentQuestion].answer,
         });
       }
       currentQuestion++;
-      // selectedOption.checked = false;
-      if (currentQuestion < cssquizData.length) {
+      if (currentQuestion < allQuizData.length) {
         displayQuestion();
       } else {
         displayResult();
-        if (score === cssquizData.length) {
+        if (score === allQuizData.length) {
           let submitButton = document.createElement('button');
           submitButton.textContent = 'certificate';
           retryButton.style.display = 'none';
           retryButton2.style.display = 'none';
           showAnswerButton.style.display = 'none';
           submitButton.addEventListener('click', function() {
-            // console.log('Submit button clicked');
             let generate_certificate = document.querySelector(".generating_certificate");
             generate_certificate.style.display = "block";
           });
@@ -404,18 +389,14 @@ async function initializeQuiz() {
           certificate_button.appendChild(submitButton);
         }
       }
-
-      // score = cssquizData.length - incorrectAnswers.length;
-      score = Math.max(cssquizData.length - incorrectAnswers.length, 0);
+      score = Math.max(allQuizData.length - incorrectAnswers.length, 0);
       saveQuizState();
     }
   }
 
-// it is use to goback button 
-
   function goBack() {
     if (currentQuestion > 0) {
-      if (cssquizData[currentQuestion - 1].answer === cssquizData[currentQuestion - 1].options.find(option => option === cssquizData[currentQuestion - 1].answer)) {
+      if (allQuizData[currentQuestion - 1].answer === allQuizData[currentQuestion - 1].options.find(option => option === allQuizData[currentQuestion - 1].answer)) {
         score--;
       }
       currentQuestion--;
@@ -424,10 +405,6 @@ async function initializeQuiz() {
       displayQuestion();
     }
   }
-
-
-  
-// it is use to show_the_answer 
 
   function showAnswer() {
     quizContainer.style.display = 'none';
@@ -438,10 +415,8 @@ async function initializeQuiz() {
     showAnswerButton.style.display = 'none';
     marks.style.display="none";
 
-
     let displayedIncorrectAnswers = [];
     let incorrectAnswersHtml = '';
-
 
     for (let i = 0; i < incorrectAnswers.length; i++) {
       if (!displayedIncorrectAnswers.includes(incorrectAnswers[i].question)) {
@@ -456,18 +431,11 @@ async function initializeQuiz() {
       }
     }
     resultContainer.innerHTML = `
-      <p>You scored ${score} out of ${cssquizData.length}!</p>
+      <p>You scored ${score} out of ${allQuizData.length}!</p>
       <p>Incorrect Answers:</p>
       ${incorrectAnswersHtml}
     `;
-    
   }
-
-
-
-
-
-// it is retry_quiz
 
   function retryQuiz() {
     currentQuestion = 0;
@@ -484,20 +452,17 @@ async function initializeQuiz() {
     resultContainer.innerHTML = '';
     displayQuestion();
   }
-// it use display the resut of Score and button
 
-function displayResult() {
-  quizContainer.style.display = 'none';
-  submitButton.style.display = 'none';
-  backButton.style.display = 'none';
-  retryButton.style.display = 'inline-block';
-  showAnswerButton.style.display = 'inline-block';
-  marks.style.display = "block";
-  score = Math.min(score, cssquizData.length);
-  marks.textContent = `You scored ${score} out of ${cssquizData.length}!`;
-}
-
-
+  function displayResult() {
+    quizContainer.style.display = 'none';
+    submitButton.style.display = 'none';
+    backButton.style.display = 'none';
+    retryButton.style.display = 'inline-block';
+    showAnswerButton.style.display = 'inline-block';
+    marks.style.display = "block";
+    score = Math.min(score, allQuizData.length);
+    marks.textContent = `You scored ${score} out of ${allQuizData.length}!`;
+  }
 
   retrieveQuizState();
 
@@ -508,12 +473,10 @@ function displayResult() {
   showAnswerButton.addEventListener('click', showAnswer);
 
   displayQuestion();
-
-
-
 }
 
 initializeQuiz();
+
 
 // ------------------- Generate Certificate -----------------------
 const canvas = document.getElementById("canva"); 

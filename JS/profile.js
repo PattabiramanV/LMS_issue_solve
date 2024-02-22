@@ -27,40 +27,19 @@ sidebar.addEventListener("mouseleave", () => {
 
 
 
-let searchicon=document.querySelector(".fas")
+let searchicon = document.querySelector(".fas");
 console.log(searchicon);
+let profilehead=document.querySelector(".profile_hdg")
+let Dckaplogo = document.querySelector(".DCKAPlOGO");
 
 darkLight.addEventListener("click", () => {
   body.classList.toggle("dark");
-  if (body.classList.contains("dark")) {
-    // Change the logo source for dark mode
-    Dckaplogo.src = '../Assests/Dckapwhite.png'; // Adjust the file extension as needed
-    darkLight.classList.replace("bx-sun", "bx-moon");
-    searchicon.style="color:white";
-  } else {
-    // Change the logo source for light mode
-    Dckaplogo.src = '../Assests/Dckap Logo.png'; // Adjust the file extension as needed
-    darkLight.classList.replace("bx-moon", "bx-sun");
-    searchicon.style="color:black";
-  }
+  searchicon.style.color = body.classList.contains("dark") ? "white" : "black";
+  profilehead.style.color = body.classList.contains("dark") ? "white" : "black";
+  Dckaplogo.src = body.classList.contains("dark")
+    ? "../Assests/Dckapwhite.png"
+    : "../Assests/Dckap Logo.png";
 });
-
-submenuItems.forEach((item, index) => {
-  item.addEventListener("click", () => {
-    item.classList.toggle("show_submenu");
-    submenuItems.forEach((item2, index2) => {
-      if (index !== index2) {
-        item2.classList.remove("show_submenu");
-      }
-    });
-  });
-});
-
-if (window.innerWidth < 768) {
-  sidebar.classList.add("close");
-} else {
-  sidebar.classList.remove("close");
-}
 
 // Profile
 
@@ -85,12 +64,12 @@ document.addEventListener("click", (event) => {
 
 let profile_page = document.querySelector(".profile_down");
 profile_page.addEventListener("click", () => {
-  window.location.href = "/profile_user_page/profile.html";
+  window.location.href = "profile.html";
 });
 
 let Course_navigate = document.querySelector(".Course_Down");
 Course_navigate.addEventListener("click", () => {
-  window.location.href = "/Profile_main_page/Courses.html";
+  window.location.href = "Courses.html";
 });
 
 // Firebase store Name

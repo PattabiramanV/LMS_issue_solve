@@ -490,9 +490,6 @@ hr.footer_line {
 
 
 
-
-/* Dropdown Profile */
-
 .profile_bar_list {
   top: 77px;
   width: 13%;
@@ -507,7 +504,8 @@ hr.footer_line {
 }
 
 .Drop_Down,
-.profile_down,.Course_Down {
+.profile_down,
+.Course_Down {
   display: flex;
   align-items: center;
   width: 100%;
@@ -516,9 +514,9 @@ hr.footer_line {
 }
 
 .Drop_Down:hover,
-.profile_down:hover {
-  background-color: rgba(91, 231, 35, 0.226);
-
+.profile_down:hover,
+.Course_Down:hover {
+  background-color: rgba(162, 247, 128, 0.226);
 }
 
 p.profile-name {
@@ -526,13 +524,13 @@ p.profile-name {
   align-items: flex-start;
   display: flex;
 }
-
 i.fa.fa-user,
 i.fa-solid.fa-book,
 i.fa-solid.fa-award,
 i.fa-solid.fa-right-from-bracket {
   width: 50%;
 }
+
 
 
 .Progress_bar_Course2 {

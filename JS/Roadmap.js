@@ -32,27 +32,22 @@ sidebar.addEventListener("mouseleave", () => {
     sidebar.classList.add("close");
   }
 });
+let Dckaplogo = document.querySelector(".DCKAPlOGO");
 
 
-
-let searchicon=document.querySelector(".fas")
+let searchicon = document.querySelector(".fas");
 console.log(searchicon);
 
 darkLight.addEventListener("click", () => {
   body.classList.toggle("dark");
-  if (body.classList.contains("dark")) {
-    // Change the logo source for dark mode
-    Dckaplogo.src = '../Assests/Dckapwhite.png'; // Adjust the file extension as needed
-    darkLight.classList.replace("bx-sun", "bx-moon");
-    searchicon.style="color:white";
-  } else {
-    // Change the logo source for light mode
-    Dckaplogo.src = '../Assests/Dckap Logo.png'; // Adjust the file extension as needed
-    darkLight.classList.replace("bx-moon", "bx-sun");
-    searchicon.style="color:black";
-  }
+  searchicon.style.color = body.classList.contains("dark") ? "white" : "black";
+  headings.forEach((heading) => {
+    heading.style.color = body.classList.contains("dark") ? "white" : "black";
+  });
+  Dckaplogo.src = body.classList.contains("dark")
+    ? "../Assests/Dckapwhite.png"
+    : "../Assests/Dckap Logo.png";
 });
-
 
 // Profile
 

@@ -315,12 +315,19 @@ async function initializeQuiz() {
 
 // it is use to display_a_question
 
+  // function displayQuestion() {
+  //   let questionData = cssquizData[currentQuestion];
+
+  //   let questionElement = document.createElement('div');
+  //   questionElement.className = 'question';
+  //   questionElement.innerHTML = questionData.question;
   function displayQuestion() {
     let questionData = cssquizData[currentQuestion];
-
+    let questionId = questionData.questionId;
+  
     let questionElement = document.createElement('div');
     questionElement.className = 'question';
-    questionElement.innerHTML = questionData.question;
+    questionElement.innerHTML = `Question ID: ${questionId} : ${questionData.question}`;
 
     let optionsElement = document.createElement('div');
     optionsElement.className = 'options';

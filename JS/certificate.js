@@ -102,5 +102,17 @@ Course_navigate.addEventListener("click",()=>{
 
 const css_quiz = document.querySelector("#css_btn");
 css_quiz.addEventListener("click", () => {
-  window.location.href = "./OverallQuiz.html";
+  // Store the selected quiz type in localStorage
+  localStorage.setItem('selectedQuiz', 'CSS_Overall_Quiz');
+  // localStorage.setItem('selectedQuiz', 'HTML_Overall_Quiz');
+  // localStorage.setItem('selectedQuiz', 'JavaScript_Overall_Quiz');
+  // localStorage.setItem('selectedQuiz', 'PHP_Overall_Quiz');
+  // localStorage.setItem('selectedQuiz', 'MySql_Overall_Quiz');
+
+
+  // console.log('CSS quiz button clicked');
+  // console.log('selectedQuiz in localStorage:', localStorage.getItem('selectedQuiz'));
+
+  window.location.href = 'index.html';
+
 });

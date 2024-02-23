@@ -271,6 +271,7 @@ const chartData_js = {
     display_chart_js.style.display = "none";
   });
 // ------------------- MySQL Piechart ----------------------
+
 const chartData_mysql = {
     labels: ["Completed", "Not Completed"],
     data: [80, 20],
@@ -328,6 +329,27 @@ const chartData_mysql = {
     display_chart_mysql.style.display = "none";
   });
 
+
+//-------------------- Dashboard Points ------------------------------------
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
+  authDomain: "dckap-lms-project.firebaseapp.com",
+  projectId: "dckap-lms-project",
+  storageBucket: "dckap-lms-project.appspot.com",
+  messagingSenderId: "1022626638467",
+  appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 
   

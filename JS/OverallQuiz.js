@@ -126,6 +126,32 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 let db = getFirestore(); // Create a Firestore instance
 
+
+
+// async function fetchQuizData(databaseName) {
+//   try {
+//     let quizDataCollection = collection(db, databaseName);
+//     let quizDataSnapshot = await getDocs(quizDataCollection);
+//     let quizData = quizDataSnapshot.docs.map(doc => doc.data());
+    
+//     // Sorting the quiz data 
+//     for (let i = 0; i < quizData.length - 1; i++) {
+//       for (let j = i + 1; j < quizData.length; j++) {
+//         if (parseInt(quizData[i].questionId) > parseInt(quizData[j].questionId)) {
+//           let temp = quizData[i];
+//           quizData[i] = quizData[j];
+//           quizData[j] = temp;
+//         }
+//       }
+//     }
+
+//     return quizData;
+//   } catch (error) {
+//     console.error(`Error fetching ${databaseName} quiz data:`, error);
+//     return [];
+//   }
+// }
+
 async function fetchQuizData(databaseName) {
   try {
     let quizDataCollection = collection(db, databaseName);
@@ -137,6 +163,8 @@ async function fetchQuizData(databaseName) {
   }
 }
 
+
+
 async function initializeQuiz() {
   let selectedQuiz = localStorage.getItem('selectedQuiz');
   let allQuizData;
@@ -144,6 +172,8 @@ async function initializeQuiz() {
   if (selectedQuiz === 'HTML_Overall_Quiz' || selectedQuiz === 'CSS_Overall_Quiz' ||
       selectedQuiz === 'JavaScript_Overall_Quiz' || selectedQuiz === 'PHP_Overall_Quiz' || selectedQuiz === 'MySql_Overall_Quiz' ) {
     allQuizData = await fetchQuizData(selectedQuiz);
+    allQuizData.sort((a, b) => a.questionId - b.questionId);
+
   } else {
     console.error('Invalid or missing selectedQuiz in localStorage');
     return;
@@ -195,8 +225,10 @@ async function initializeQuiz() {
 
     let questionElement = document.createElement('div');
     questionElement.className = 'question';
-    questionElement.innerHTML = `Question ID: ${questionId} : ${questionData.question}`;
+    // questionElement.innerHTML = `Question ID: ${questionId} : ${questionData.question}`;
+    questionElement.innerHTML = `Question ID: ${questionId} : ${questionData.question.replace(/[""]/g, '')}`; // Removing double quotes
 
+    Removing
     let optionsElement = document.createElement('div');
     optionsElement.className = 'options';
 
@@ -208,6 +240,8 @@ async function initializeQuiz() {
       radio.type = 'radio';
       radio.name = 'quiz';
       radio.value = questionData.options[i];
+      // radio.value = questionData.options[i].replace(/[" "]/g, ''); // Removing double quotes
+
 
       radio.checked = false;
       for (let j = 0; j < incorrectAnswers.length; j++) {

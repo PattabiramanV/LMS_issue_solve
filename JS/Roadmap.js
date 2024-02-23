@@ -14,24 +14,33 @@ const sidebarExpand = document.querySelector(".expand_sidebar");
 sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
 
 
+let content=document.querySelector(".menu_content")
+
 sidebarClose.addEventListener("click", () => {
   sidebar.classList.add("close", "hoverable");
+  content.style.left = "1rem";
 });
 
 sidebarExpand.addEventListener("click", () => {
   sidebar.classList.remove("close", "hoverable");
+  content.style.left = "1rem";
 });
 
 sidebar.addEventListener("mouseenter", () => {
   if (sidebar.classList.contains("hoverable")) {
     sidebar.classList.remove("close");
+    content.style.left = "1rem";
   }
 });
+
 sidebar.addEventListener("mouseleave", () => {
-  if (sidebar.classList.contains("hoverable")) {
-    sidebar.classList.add("close");
+  if (sidebar.classList.contains("hoverable") && sidebar.classList.contains("close")) {
+    content.style.left = "0rem"; // Adjust the left position when sidebar is closed and not hovered
   }
 });
+
+
+
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
 
 
@@ -69,10 +78,10 @@ document.addEventListener("click", (event) => {
 
 let profile_page=document.querySelector(".profile_down")
  profile_page.addEventListener("click",()=>{
-        window.location.href="profile.html"
+        window.location.href="./profile.html"
 })
 
 let Course_navigate=document.querySelector(".Course_Down")
 Course_navigate.addEventListener("click",()=>{
-      window.location.href="Courses.html"
+      window.location.href="./Courses.html"
 })

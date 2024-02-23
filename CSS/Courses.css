@@ -181,15 +181,14 @@ ul.set_items {
 .sidebar .nav_link {
   display: flex;
   align-items: center;
-  width: 85%;
-  /* padding: 4px 15px; */
+  width: 100%;
+  padding: 4px 15px;
   border-radius: 8px;
   text-decoration: none;
   color: var(--grey-color);
   margin-left: 4%;
   margin: 1rem;
   padding: 0rem;
-  margin-left: 2rem;
 }
 
 .sidebar.close .navlink {
@@ -213,6 +212,7 @@ ul.set_items {
 .menu_content {
   position: relative;
   top: 3%;
+  left: 1rem;
 }
 
 .submenu {

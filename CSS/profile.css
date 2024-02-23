@@ -211,6 +211,7 @@ ul.set_items {
 .menu_content {
   position: relative;
   top: 8%;
+  left: 1rem;
 }
 
 .submenu {

@@ -228,7 +228,6 @@ async function initializeQuiz() {
     // questionElement.innerHTML = `Question ID: ${questionId} : ${questionData.question}`;
     questionElement.innerHTML = `Question ID: ${questionId} : ${questionData.question.replace(/[""]/g, '')}`; // Removing double quotes
 
-    Removing
     let optionsElement = document.createElement('div');
     optionsElement.className = 'options';
 

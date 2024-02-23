@@ -4,7 +4,6 @@
 * {
   font-family: 'Roboto', sans-serif;
 }
-
 body,
 html {
   margin: 0;
@@ -12,7 +11,6 @@ html {
   box-sizing: border-box;
 
 }
-
 :root {
   --white-color: #fff;
   --blue-color: #4070f4;
@@ -23,11 +21,9 @@ html {
   --background-color-btn: #49a843;
   --background-color-li: #99ecae75 !important;
 }
-
 body {
   background-color: #e0ffe4;
 }
-
 body.dark {
   background-color: #333;
 }
@@ -38,6 +34,7 @@ body.dark {
   --grey-color: #f2f2f2;
   --grey-color-light: #aaa;
 }
+
 .dark {
   background-color: black;
 }
@@ -163,7 +160,8 @@ ul.set_items {
   white-space: nowrap;
 }
 
-.menu_items, .set_items {
+.menu_items,
+.set_items {
   padding: 0;
   list-style: none;
   margin: 0;
@@ -183,15 +181,14 @@ ul.set_items {
 .sidebar .nav_link {
   display: flex;
   align-items: center;
-  width: 85%;
-  /* padding: 4px 15px; */
+  width: 100%;
+  padding: 4px 15px;
   border-radius: 8px;
   text-decoration: none;
   color: var(--grey-color);
   margin-left: 4%;
   margin: 1rem;
   padding: 0rem;
-  margin-left: 2rem;
 }
 
 .sidebar.close .navlink {
@@ -215,6 +212,7 @@ ul.set_items {
 .menu_content {
   position: relative;
   top: 3%;
+  left: 1rem;
 }
 
 .submenu {
@@ -343,7 +341,6 @@ p.Enroll_heading_course {
 .Progress_container {
   width: 80%;
   display: flex;
-  /* justify-content: space-around; */
   margin-left: 6rem;
   padding: 1%;
   gap: 1%;
@@ -402,16 +399,8 @@ p.progress {
   margin-left: 3rem;
 }
 
-p.Free_course {
-  margin: 0px;
-  width: 96%;
-  background: #6ce938a6;
-  border-radius: 3px;
-  padding: 2%;
-}
 
-.Progress_bar_Course,
-.Progress_bar_Course2 {
+.Progress_bar_Course {
   width: 25%;
   border-radius: 1rem;
   background: #f9f9fa;
@@ -420,8 +409,6 @@ p.Free_course {
   border-radius: 7px;
   font-family: "Fira Sans", sans-serif;
   cursor: pointer;
-
-
 }
 
 .Course_point {
@@ -429,27 +416,13 @@ p.Free_course {
 
 }
 
-.Progress_bar_Course:hover,
-.Progress_bar_Course2:hover {
+.Progress_bar_Course:hover {
   transform: translateY(-4px);
-  box-shadow: -6px 2px 4px rgba(138, 211, 96, 0.397), 3px 6px 8px rgba(50, 255, 67, 0.281);
-  /* Added left green shadow */
   position: relative;
   border: 1.8px solid #dce2e5;
   padding: 0px;
   overflow: hidden;
-  border-radius: 3px;
-}
-
-p.friendly {
-  font-size: x-small;
-  display: flex;
-  gap: 12px;
-}
-
-img.Courseimg {
-  width: 30%;
-  border-radius: 100%;
+  border-radius: 2rem;
 }
 
 .Course_description {
@@ -467,29 +440,17 @@ img.Courseimg {
   bottom: 57px;
 }
 
-.Course_footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-hr.footer_line {
-  border: none;
-  border-top: 1px dashed black;
-}
-
 .course_card {
   display: flex;
   justify-content: space-around;
   gap: 1rem;
-  width: 90%;
+  width: 77%;
   padding: 1rem 0rem;
-  margin-left: 9rem;
+  margin-left: 10rem;
   flex-wrap: wrap;
 }
 
-
-
+/* Profile Bar Navigation Css */
 .profile_bar_list {
   top: 77px;
   width: 13%;
@@ -524,6 +485,7 @@ p.profile-name {
   align-items: flex-start;
   display: flex;
 }
+
 i.fa.fa-user,
 i.fa-solid.fa-book,
 i.fa-solid.fa-award,
@@ -531,16 +493,120 @@ i.fa-solid.fa-right-from-bracket {
   width: 50%;
 }
 
+/* Course container styles */
 
 
-.Progress_bar_Course2 {
-  width: 25%;
+.Progress_bar_Course,
+.back {
+  width: 240px;
+  height: 224px;
+  border-radius: 1rem;
+
 }
 
-.Second_progress_bar {
+.card {
+  height: 100%;
+  width: 100%;
+  background-color: aliceblue;
+  position: relative;
+  transition: transform 1500ms;
+  transform-style: preserve-3d;
+  border-radius: 1rem;
+}
+
+.Progress_bar_Course:hover>.card {
+  cursor: pointer;
+  transform: rotateY(180deg) rotateZ(180deg);
+
+}
+
+.front,
+.back {
+  height: 100%;
+  width: 100%;
+
+  position: absolute;
+
+  backface-visibility: hidden;
+  color: aliceblue;
+  background: linear-gradient(-135deg, #00f7a74f, #bbf80a47);
+}
+
+
+.front,
+.back {
   display: flex;
-  width: 92%;
   justify-content: center;
-  gap: 3%;
-  margin-left: 7rem;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.back {
+  transform: rotateY(180deg) rotateZ(180deg);
+}
+
+.des_lan {
+  color: black;
+  padding: 10px;
+}
+
+.back-heading,
+.front-heading {
+  font-size: 20px;
+  font-family: "Roboto";
+  font-weight: bold;
+  color: #000000c4;
+}
+
+.back-heading {
+  font-size: 12px;
+}
+
+img.html,
+img.css,
+img.js {
+  width: 50%;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button.enroolbtn {
+  --green: #fd6e1b;
+  font-size: 15px;
+  padding: 0.7em 2.7em;
+  letter-spacing: 0.06em;
+  position: relative;
+  font-family: inherit;
+  border-radius: 0.6em;
+  overflow: hidden;
+  transition: all 0.3s;
+  line-height: 1.4em;
+  color: var(--green);
+  box-shadow: inset 0 0 10px rgba(46, 141, 100, 0.4), 0 0 9px 3px rgba(27, 253, 156, 0.1);
+  border: none;
+}
+
+button.enroolbtn:hover {
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.6), 0 0 9px 3px rgba(253, 136, 27, 0.2);
+  cursor: pointer;
+  border: none;
+}
+
+button.enroolbtn:before {
+  content: "";
+  position: absolute;
+  left: -4em;
+  width: 7em;
+  height: 100%;
+  top: 0;
+  transition: transform .4s ease-in-out;
+  cursor: pointer;
+  background: linear-gradient(to right, transparent 1%, rgba(134, 228, 187, 0.596) 40%, rgb(0, 255, 128) 60%, transparent 100%);
+}
+
+button.enroolbtn:hover:before {
+  transform: translateX(15em);
 }

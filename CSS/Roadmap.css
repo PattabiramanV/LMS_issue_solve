@@ -20,7 +20,7 @@ html {
   --background: rgb(255, 255, 255);
   --background-color-hover: rgba(30, 245, 2, 0.986);
   --background-color-btn: #49a843;
-  --background-color-li: #99ecae75 !important;
+  --background-color-li: #66f0891e !important;
 }
 
 body {
@@ -97,7 +97,7 @@ img.DCKAPlOGO {
 i.fas.fa-search {
   position: absolute;
   top: 2rem;
-  left: 44rem;
+  left: 53%;
 }
 
 .navbar_content {
@@ -209,6 +209,7 @@ ul.set_items {
 .menu_content {
   position: relative;
   top: 8%;
+  left: 1rem;
 }
 
 .submenu {
@@ -308,7 +309,7 @@ h1 {
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-top: 89px;
-  background-color: #f2f9e4;
+  background: linear-gradient(100deg, #ffa5004f, #0080001f);
   margin-left: 14rem;
 }
 
@@ -332,7 +333,7 @@ h1 {
 .step h2 {
   color: #333;
   display: flex;
-  padding: 8px;
+  padding: 12px;
   border-radius: 10px;
   background: #e9592d45;
   gap: 6%;
@@ -489,16 +490,19 @@ i.fa-solid.fa-right-from-bracket {
   width: 50%;
 }
 
-
 p.Heading_p {
   position: absolute;
   bottom: 186px;
+  left: 1%;
   text-align: center;
-  align-items: center;
+  color: black;
+  /* font-family: 'FontAwesome'; */
+  width: 100%;
   display: flex;
-  left: 7%;
-  color: cadetblue;
+  justify-content: center;
+  font-family: 'Roboto';
 }
+
 
 
 /* Effcets  for li checkbox*/

@@ -183,21 +183,28 @@ sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
 
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
 
+let content=document.querySelector(".menu_content")
+
 sidebarClose.addEventListener("click", () => {
   sidebar.classList.add("close", "hoverable");
+  content.style.left = "1rem";
 });
+
 sidebarExpand.addEventListener("click", () => {
   sidebar.classList.remove("close", "hoverable");
+  content.style.left = "1rem";
 });
 
 sidebar.addEventListener("mouseenter", () => {
   if (sidebar.classList.contains("hoverable")) {
     sidebar.classList.remove("close");
+    content.style.left = "1rem";
   }
 });
+
 sidebar.addEventListener("mouseleave", () => {
-  if (sidebar.classList.contains("hoverable")) {
-    sidebar.classList.add("close");
+  if (sidebar.classList.contains("hoverable") && sidebar.classList.contains("close")) {
+    content.style.left = "0rem"; // Adjust the left position when sidebar is closed and not hovered
   }
 });
 
@@ -241,25 +248,9 @@ profile_page.addEventListener("click", () => {
 
 // Course Drop
 
-let Course_navigate=document.querySelector(".Course_Down")
-Course_navigate.addEventListener("click",()=>{
-      window.location.href="./Courses.html"
-})
-
-
-let Certi_page=document.querySelector(".profile-certicate");
-
-Certi_page.addEventListener("click",()=>{
-         window.location.href="./certificate.html"
-})
-
-
-
-
-let left_side_bar=document.querySelectorAll(".navlink");
-
-left_side_bar[0].addEventListener("click",()=>{
-  window.location.href='./index.html  '
+let Course_navigate = document.querySelector(".Course_Down");
+Course_navigate.addEventListener("click", () => {
+  window.location.href = "./Courses.html";
 });
 
 left_side_bar[1].addEventListener("click",()=>{

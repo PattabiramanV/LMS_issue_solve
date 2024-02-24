@@ -302,11 +302,8 @@ i.fa-solid.fa-right-from-bracket {
 /* ------------------Dashboard--------------- */
 .body
 {
-  /* background-color: #49a843; */
   margin: 6% 17.4%;
   font-family: 'Roboto', sans-serif;
-  /* width: 82%;
-  height: 80vh; */
 }
 .dashboard_profile
 {
@@ -387,6 +384,26 @@ i.fa-solid.fa-right-from-bracket {
   padding: 0%;
 }
 /* ---------------- Pie Chart ------------ */
+.html
+{
+  margin-left: 4px;
+  width: 80px;
+}
+.css
+{
+  margin-left: 4px;
+  width: 80px;
+}
+.js
+{
+  margin-left: 4px;
+  width: 80px;
+}
+.mysql
+{
+  margin-left: 4px;
+  width: 80px;
+}
 .pie_chart
 {
   margin-left: 2%;

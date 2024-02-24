@@ -89,6 +89,14 @@ document.addEventListener("click", (event) => {
   }
 });
 
+<<<<<<< HEAD
+=======
+// let Cancel_btn=document.querySelector(".cancel_btn")
+
+// Cancel_btn.addEventListener("click", () => {
+//     window.location.href="Roadmap.html";
+// });
+>>>>>>> Dashboard_Certificate
 
 // profile_drop
 

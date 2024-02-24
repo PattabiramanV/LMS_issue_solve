@@ -42,6 +42,7 @@ let Dckaplogo = document.querySelector(".DCKAPlOGO");
 
 darkLight.addEventListener("click", () => {
   body.classList.toggle("dark");
+  
   searchicon.style.color = body.classList.contains("dark") ? "white" : "black";
   headings.forEach((heading) => {
     heading.style.color = body.classList.contains("dark") ? "white" : "black";
@@ -226,7 +227,7 @@ async function initializeQuiz() {
     let questionElement = document.createElement('div');
     questionElement.className = 'question';
     // questionElement.innerHTML = `Question ID: ${questionId} : ${questionData.question}`;
-    questionElement.innerHTML = `Question ID: ${questionId} : ${questionData.question.replace(/[""]/g, '')}`; // Removing double quotes
+    questionElement.innerHTML = `Question No: ${questionId} : ${questionData.question.replace(/[""]/g, '')}`; // Removing double quotes
 
     let optionsElement = document.createElement('div');
     optionsElement.className = 'options';
@@ -333,7 +334,7 @@ async function initializeQuiz() {
       if (!displayedIncorrectAnswers.includes(incorrectAnswers[i].question)) {
         incorrectAnswersHtml += `
           <p>
-            <strong>Question:</strong> ${incorrectAnswers[i].question}<br>
+            <strong>Question No ${i + 1}:</strong> ${incorrectAnswers[i].question}<br>
             <strong>Your Answer:</strong> ${incorrectAnswers[i].incorrectAnswer}<br>
             <strong>Correct Answer:</strong> ${incorrectAnswers[i].correctAnswer}
           </p>
@@ -389,6 +390,26 @@ async function initializeQuiz() {
 initializeQuiz();
 
 
+
+// // Get the dark mode toggle button
+// const darkModeToggle = document.getElementById('darkLight');
+
+// Function to toggle between dark mode and light mode
+function toggleDarkMode() {
+  // Toggle dark mode class on body
+  document.body.classList.toggle('dark-mode');
+}
+
+// Get the dark mode toggle button
+const darkModeToggle = document.getElementById('darkLight');
+
+// Add event listener to the dark mode toggle button
+darkModeToggle.addEventListener('click', toggleDarkMode);
+
+
+
+
+
 // ------------------- Generate Certificate -----------------------
 const canvas = document.getElementById("canva"); 
 const ctx = canvas.getContext('2d');
@@ -398,7 +419,7 @@ const downloadBtn = document.getElementById("download_btn");
 
 
 const image = new Image()
-image.src = "/Assets/CERTIFICATE.jpg";
+image.src = "/Assests/without_username_html_certificate.png";
 image.className = "gen_cer"
 image.onload = () => {
     drawImage()
@@ -409,7 +430,7 @@ function drawImage()
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
     ctx.font = '30px HK Grotesk'
     ctx.fillStyle = '#070F2B'
-    ctx.fillText(name_input.value, 142, 191)
+    ctx.fillText(name_input.value, 40, 176);
 }
 
 

@@ -18,8 +18,8 @@
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  import { getFirestore,getDoc,getDocs,setDoc,updateDoc,doc,addDoc,collection,deleteDoc, deleteField } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
+  import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+  
 let db=getFirestore(app);
 let find_language=0;
 
@@ -29,29 +29,45 @@ let all_learn_more_btn=document.querySelectorAll(".learn_more_btn");
 
 all_learn_more_btn.forEach((btn,index)=>{
 
-    btn.addEventListener("click",()=>{
-if(index==0){
-console.log("pattabi");
+    btn.addEventListener("click",async()=>{
+
+find_language=btn.previousElementSibling.firstElementChild.innerHTML;
+let id=0;
+let ref_data=doc(db,"Learning",`${id}`);
+ let data_set=await updateDoc(
+    ref_data,{
+        Find_Language_type:find_language,
+        find_index:id,
+        Html_Complete_Module:0,
+        Html_Total_Percentage:0,
+        Css_Complete_Module:0,
+        Css_Total_Percentage:0,
+        Javascript_Complete_Module:0,
+        Javascript_Total_Percentage:0,
+        Mysql_Complete_Module:0,
+        Mysql_Total_Percentage:0
+    }
+).then(()=>{
+    alert("sucessfully");
+}).catch((err)=>{
+    console.log(err);
+});
     window.location.href='learning_content.html';
-}
+
+ 
+
     })
 });
 
-// all_learn_more_btn[0].addEventListener("click",async()=>{
+// all_learn_more_btn[0].addEventListener("click",async(event)=>{
 
-//     let ref_data=collection(db,"Learning");
-//     let data_set=await addDoc(
-//         ref_data,{
-//             Find_Language_type:find_language
-//         }
-//     ).then(()=>{
-//         alert("sucessfully");
-//     }).catch((err)=>{
-//         console.log(err);
-//     });
-//     // window.location.href='/DCKAP_LMS/Learn_study_page/learning_content.html/';
+//   console.log(event);
+   
 // })
 
+// let ref_data=collection(db,"Learning");
+// let get_data=await getDocs(ref_data);
+// console.log(get_data.size);
 
 let Quiz_object={
 
@@ -170,7 +186,8 @@ CSS:{
 let left_side_bar=document.querySelectorAll(".navlink");
 
 left_side_bar[0].addEventListener("click",()=>{
-  window.location.href='index.html  '
+  
+  window.location.href='index.html'
 });
 
 left_side_bar[1].addEventListener("click",()=>{

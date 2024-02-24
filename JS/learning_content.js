@@ -1,5 +1,333 @@
 "use strict";
 
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
+    authDomain: "dckap-lms-project.firebaseapp.com",
+    projectId: "dckap-lms-project",
+    storageBucket: "dckap-lms-project.appspot.com",
+    messagingSenderId: "1022626638467",
+    appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+  
+let db=getFirestore(app);
+
+
+
+
+
+
+//.....................................Content_JS...................................//
+
+        // let getRef = doc(db, "Learning", "0");
+
+        // let getData = await getDoc(getRef);
+
+        // console.log(getData.data().Find_Language_type);
+
+
+
+
+
+
+let quiz_btn=document.querySelector(".quiz_btn");
+
+quiz_btn.addEventListener("click",()=>{
+
+  
+
+    window.location.href='learning_quiz.html';
+})
+
+
+
+let content=[
+
+  [
+    `
+    <h1 class=heading_tag>Introduction:</h1>
+    <h2 class=heading_tag> This is HTML Structure:</h2>
+        &lt;!DOCTYPE html&gt;<br>
+        &lt;html lang=\"en\"&gt;<br>
+        &lt;head&gt;<br>
+        &lt;title&gt;Title of the document</title&gt;<br>
+        &lt;/head&gt;<br>
+        &lt;body&gt;<br>
+        &lt;h1&gt;This is a heading&lt;/h1&gt;<br>
+        &lt;p&gt;This is a paragraph.&lt;/p&gt;<br>
+       
+        &lt;/body&gt;<br>
+        &lt;/html&gt;<br>`,
+     'https://www.youtube.com/embed/aICsCVyY1ZM?si=Ns5_mVi9oAxwv6Gk ',
+`
+<h2 class=heading_tag> Example Explained:</h2>
+<li>The  <span class=red_color>&lt;!DOCTYPE html&gt;</span>declaration defines that this document is an HTML5 document.</li>
+<li>The <span class=red_color>&lt;html&gt;</span> element is the root element of an HTML page</li>
+<li>The<span class=red_color> &lt;head&gt;</span> element contains meta information about the HTML page</li>
+<li>The <span class=red_color>&lt;title&gt;</span> element specifies a title for the HTML page (which is shown in the browser's title bar or in the page's tab)</li>
+<li>The <span class=red_color>&lt;body&gt;</span> element defines the document's body, and is a container for all the visible contents, such as headings, paragraphs, images, hyperlinks, tables, lists, etc.</li>
+
+    
+        
+
+  `
+  ]
+,
+
+
+    
+    [
+      `
+      <h2 class='heading_tag content_heading' >HTML Text Formatting:</h2>
+      <h2 class=heading_tag>HTML Formatting Elements:</h2>
+      Formatting elements were designed to display special types of text:<br>
+    <li> <span class=red_color>&lt;b&gt;</span>      - Bold text<br></li>
+    <li> <span class=red_color>&lt;strong&gt;</span> - Important text<br></li>
+    <li> <span class=red_color>&lt;i&gt;</span>       - Italic text<br></li>
+    <li> <span class=red_color>&lt;em&gt;</span>     - Emphasized text<br></li>
+    <li> <span class=red_color>&lt;mark&gt;</span>   - Marked text<br></li>
+    <li> <span class=red_color>&lt;small&gt;</span>  - Smaller text<br></li>
+     <li> <span class=red_color>&lt;del&gt;</span> - Deleted text<br></li>
+     <li> <span class=red_color>&lt;ins&gt;</span> - Inserted text<br></li>
+     <li> <span class=red_color>&lt;sub&gt;</span>  - Subscript text<br></li>
+     <li> <span class=red_color>&lt;sup&gt;</span> - Superscript text<br></li>
+      
+      `,
+      "https://www.youtube.com/embed/J0RlsXVpw6Y?si=UwZWiR4Kg7fnT7m8" ,
+
+
+`
+
+<h2 class=heading_tag>HTML  <span >&lt;b&gt;</span> and  <span>&lt;strong&gt;</span> Elements:<br></h2>
+<p>The HTML <span class=red_color>&ltb&gt;</span> element defines bold text, without any extra importance.</p>
+<h3>Example:</h3>
+<li>&lt;b&gt;<strong>This text is bold </strong>&lt;b&gt;<br></li>
+
+<li>The HTML <span class=red_color>&ltstrong&gt;</span> element defines text with strong importance. The content inside is typically displayed in bold.</li>
+
+<li><span class=red_color>&ltstrong&gt;</span> This text is important!<span class=red_color>&ltstrong&gt;</span> </li><br>
+
+
+<h2 class=heading_tag>HTML &lt;i&gt; and &lt;em&gt; Elements:</h2>
+<li>The HTML <span class=red_color>&lti&gt;</span> element defines a part of text in an alternate voice or mood. The content inside is typically displayed in italic.</li>
+<li>The HTML <span class=red_color>&ltem&gt;</span>  element defines emphasized text. The content inside is typically displayed in italic.</li>
+<h3>Example:</h3>
+<li><span class=red_color>&lti&gt;</span> This text is italic<span class=red_color>&lt/i&gt;</span><br> </li>
+<li><span class=red_color>&ltem&gt;</span> This text is emphasized<span class=red_color>&lt/em&gt;</span> <br></li><br>
+
+
+
+<h2 class=heading_tag>HTML <span >&ltsmall&gt;</span> Element:</h2>
+
+The HTML<span class=red_color>&ltsmall&gt;</span>  element defines smaller text:
+<h3>Example:</h3>
+<span class=red_color>&ltsmall&gt;</span> This is some smaller text.<span class=red_color>&lt/small&gt;</span> <br><br>
+
+<h2 class=heading_tag>HTML<span> &ltmark&gt; </span>Element:</h2>
+The HTML<span class=red_color>&ltmark&gt;</span>  element defines text that should be marked or highlighted:
+<h3>Example:</h3>
+&lt;p&gt;Do not forget to buy <span class=red_color>&ltmarkl&gt;</span> milk<span class=red_color>&ltmark&gt;</span> today.&lt;/p&gt;<br>
+
+
+<h2 class=heading_tag>HTML<span> &ltdel&gt; </span>Element:</h2>
+The HTML<span class=red_color>&ltdel&gt;</span>  element defines text that has been deleted from a document. Browsers will usually strike a line through deleted text:
+<h3>Example:</h3>
+&lt;p&gt;My favorite color is <span class=red_color>&ltdel&gt;</span> blue<span class=red_color>&lt/del&gt;</span>  red.&lt;/p&gt;<br>
+
+
+  `
+
+
+
+
+
+
+               ]
+        
+    
+]
+
+
+let all_heading_title=0;
+let left_heading_content=document.querySelector(".left_heading_content");
+let content_top=document.querySelector(".content_top");
+
+let iframe=document.querySelector("iframe");
+
+let bottom_content=document.querySelector(".bottom_content1");
+
+// all_heading_title.forEach((heading,index)=>{
+
+// heading.addEventListener("click",()=>{
+ 
+content_top.innerHTML=content[1][0];
+iframe.src=content[1][1];
+bottom_content.innerHTML=content[1][2]
+
+// });
+
+// });
+
+
+//..................DataSet in Firebase.....................//
+
+// document.querySelector("#intoduction").addEventListener("click",async()=>{
+// // //     console.log("pattabi");
+
+// let id=0;
+
+// let ref_data=doc(db,"Html_Content",`${id}`);
+// let data_set=await updateDoc(
+//     ref_data,{
+//         top_content:content[0][0],
+//         iframe:content[0][1],
+//         bottom_content:content[0][2],
+//         // left_headings:arr
+//     }
+// ).then(()=>{
+//     alert("sucessfully");
+// }).catch((err)=>{
+//     console.log(err);
+// });
+// });
+
+
+
+
+
+
+//.........................Left_Content_.........................//
+
+
+
+
+let get_ref=doc(db,'Learning','0');
+let get_data= await getDoc(get_ref);
+
+let find_index=get_data.data().find_index;
+let find_language=get_data.data().Find_Language_type;
+
+
+let find_complete_module=get_data.data()[find_language + '_Complete_Module'];
+
+let get_content=doc(db,`${find_language}_Content`,`0`)
+let get_content_obj=await getDoc(get_content);
+let left_headings=get_content_obj.data().left_headings;
+
+
+
+heading_append_Fun(left_headings);
+
+function heading_append_Fun(arr){
+  left_heading_content.innerHTML='';
+  arr.forEach((value,index)=>{
+
+    let content_heading_div=document.createElement("div")
+    content_heading_div.className='img_tag learnig_tile';
+    
+    let p_tag=document.createElement("p");
+    p_tag.className='content_title';
+    p_tag.innerHTML=value;
+    
+    let lock_icon=document.createElement("i");
+    lock_icon.className='fa-solid fa-lock';
+    
+    content_heading_div.append(p_tag,lock_icon);
+
+    left_heading_content.append(content_heading_div);
+    // all_heading_title.append(content_heading_div);
+    if(index<find_complete_module+1){
+      lock_icon.style.display='none';
+      p_tag.classList.add("left_heding")
+    }
+  })
+all_heading_title=document.querySelectorAll(".content_title");
+
+}
+
+//..................................Side_bar.......................//
+
+let left_side_bar=document.querySelectorAll(".navlink");
+
+left_side_bar[0].addEventListener("click",()=>{
+  window.location.href='index.html  '
+});
+
+left_side_bar[1].addEventListener("click",()=>{
+
+  window.location.href='Learning.html  '
+});
+left_side_bar[2].addEventListener("click",()=>{
+
+  window.location.href='Dashboard.html';
+});
+left_side_bar[3].addEventListener("click",()=>{
+
+  window.location.href='Roadmap.html';
+});
+
+//........................Left_heading_clickevent...............................//
+// let find_language=0;
+
+let arr=[];
+all_heading_title.forEach((title,index)=>{
+
+  content_showing_fun(find_language,find_index);
+
+ title.addEventListener("click",async()=>{
+
+  if(find_complete_module>=index ){
+    let ref_data=doc(db,"Learning",`0`);
+    let data_set=await updateDoc(
+        ref_data,{
+            find_index:index
+        }
+    )
+  
+  }
+  else{
+    alert("please complete previous module")
+  }
+ 
+ 
+  
+  let get_ref=doc(db,'Learning','0');
+  let get_data=await getDoc(get_ref);
+ 
+  //  find_language=get_data.data().Find_Language_type;
+   find_index=get_data.data().find_index;
+  //  find_language_percentage=get_data.data().Html_Total_Percentage;
+  //  find_complete_module=get_data.data().Html_Complete_Module;
+  content_showing_fun(find_language,find_index);
+   });
+
+});
+
+
+async function content_showing_fun(language,index){
+  let ref=doc(db,`${language}_Content`,`${index}`);
+  let data_ref=await getDoc(ref);
+// console.log(data_ref.data().iframe);
+
+content_top.innerHTML=data_ref.data().top_content;
+iframe.src=data_ref.data().iframe;
+bottom_content.innerHTML=data_ref.data().bottom_content;
+
+}
+
+
+
+
+
 //................................. Nav bar...................................//
 
 
@@ -87,191 +415,3 @@ Course_navigate.addEventListener("click",()=>{
       window.location.href="/Profile_main_page/Courses.html"
 })
 
-
-
-//.....................................Content_JS...................................//
-
-
-
-
-let quiz_btn=document.querySelector(".quiz_btn");
-console.log(quiz_btn);
-quiz_btn.addEventListener("click",()=>{
-console.log('pattabi');
-    window.location.href='learning_quiz.html';
-})
-
-
-
-let content=[
-
-    
-    [
-`
-        "&gt;!DOCTYPE html&lt;"
-    "<html lang=\"en\">"
-    "<head>"
-    "  <title>Title of the document</title>"
-    "</head>"
-    "<body>"
-    "<h1>This is a heading</h1>"
-    "<p>This is a paragraph.</p>"
-   
-    "</body>"
-    </html>`,
- '"https://www.youtube.com/embed/Y7S9Z26Q6tQ?si=bmK9eyMR5fpBUW8w" ',
- 'HTML stands for Hyper Text Markup Language <br>HTML is the standard markup <b>'+
-  'language for creating Web pages <br> HTML describes the structure of a <b>'+
-  'Web page<br>HTML consists of a series of elements <br>'+
- 'HTML elements tell the browser how to display the content <br>'+
- 'HTML elements label pieces of content such as "this is a heading", "this is'+
- ' a paragraph", "this is a link", etc.<br>'
-
-    ],
-    
-    [
-      `
-      <h2 class='heading_tag content_heading' >HTML Text Formatting:</h2>
-      <h2 class=heading_tag>HTML Formatting Elements</h2>
-      Formatting elements were designed to display special types of text:<br>
-     <span class=red_color>&lt;b&gt;</span>      - Bold text<br>
-     <span class=red_color>&lt;strong&gt;</span> - Important text<br>
-     <span class=red_color>&lt;i&gt;</span>       - Italic text<br>
-     <span class=red_color>&lt;em&gt;</span>     - Emphasized text<br>
-     <span class=red_color>&lt;mark&gt;</span>   - Marked text<br>
-     <span class=red_color>&lt;small&gt;</span>  - Smaller text<br>
-     <span class=red_color>&lt;del&gt;</span> - Deleted text<br>
-     <span class=red_color>&lt;ins&gt;</span> - Inserted text<br>
-     <span class=red_color>&lt;sub&gt;</span>  - Subscript text<br>
-     <span class=red_color>&lt;sup&gt;</span> - Superscript text<br>
-      
-      `,
-      "https://www.youtube.com/embed/J0RlsXVpw6Y?si=UwZWiR4Kg7fnT7m8" ,
-
-
-`
-
-HTML  <span class=red_color>&lt;b&gt;</span> and  <span class=red_color>&lt;strong&gt;</span> Elements
-The HTML <b> element defines bold text, without any extra importance.
-Example
-<b>This text is bold</b>
-The HTML <strong> element defines text with strong importance. The content inside is typically displayed in bold.
-Example
-<strong>This text is important!</strong>
-
-HTML <i> and <em> Elements
-The HTML <i> element defines a part of text in an alternate voice or mood. The content inside is typically displayed in italic.
-Tip: The <i> tag is often used to indicate a technical term, a phrase from another language, a thought, a ship name, etc.
-Example
-<i>This text is italic</i>
-The HTML <em> element defines emphasized text. The content inside is typically displayed in italic.
-Tip: A screen reader will pronounce the words in <em> with an emphasis, using verbal stress.
-Example
-<em>This text is emphasized</em>
-
-
-HTML <small> Element
-The HTML <small> element defines smaller text:
-Example
-<small>This is some smaller text.</small>
-
-HTML <mark> Element
-The HTML <mark> element defines text that should be marked or highlighted:
-Example
-<p>Do not forget to buy <mark>milk</mark> today.</p>
-
-
-HTML <del> Element
-The HTML <del> element defines text that has been deleted from a document. Browsers will usually strike a line through deleted text:
-Example
-<p>My favorite color is <del>blue</del> red.</p>
-
-HTML <ins> Element
-The HTML <ins> element defines a text that has been inserted into a document. Browsers will usually underline inserted text:
-Example
-<p>My favorite color is <del>blue</del> <ins>red</ins>.</p>
-HTML <sub> Element
-The HTML <sub> element defines subscript text. Subscript text appears half a character below the normal line, and is sometimes rendered in a smaller font. Subscript text can be used for chemical formulas, like H2O:
-Example
-<p>This is <sub>subscripted</sub> text.</p>
-HTML <sup> Element
-The HTML <sup> element defines superscript text. Superscript text appears half a character above the normal line, and is sometimes rendered in a smaller font. Superscript text can be used for footnotes, like WWW[1]:
-Example
-<p>This is <sup>superscripted</sup> text.</p>
-
-
-  `
-
-
-
-
-
-
-               ]
-        
-    
-]
-
-
-let all_heading_title=document.querySelectorAll(".content_title");
-
-
-let content_top=document.querySelector(".content_top");
-
-let iframe=document.querySelector("iframe");
-
-let bottom_content=document.querySelector(".bottom_content1");
-
-// all_heading_title.forEach((heading,index)=>{
-
-// heading.addEventListener("click",()=>{
- 
-content_top.innerHTML=content[1][0];
-iframe.src=content[1][1];
-bottom_content.innerHTML=content[1][2]
-
-// });
-
-// });
-
-// all_heading_title[0].addEventListener("click",()=>{
-
-
-// content_top.innerHTML=content[1][0];
-// iframe.src=content[1][1];
-// bottom_content.innerText=content[1][2]
-
-// })
-
-document.querySelector("#intoduction").addEventListener("click",()=>{
-    console.log("pattabi");
-});
-
-// let arr=[
-//   `pattabiiiiiiiiiiii
-//   raman nnnnnnnnnnnnn
-//   `
-// ]
-// console.log(arr[0]);
-// bottom_content.innerHTML=arr[0]
-
-
-
-let left_side_bar=document.querySelectorAll(".navlink");
-
-left_side_bar[0].addEventListener("click",()=>{
-  window.location.href='index.html  '
-});
-
-left_side_bar[1].addEventListener("click",()=>{
-
-  window.location.href='Learning.html  '
-});
-left_side_bar[2].addEventListener("click",()=>{
-
-  window.location.href='Dashboard.html';
-});
-left_side_bar[3].addEventListener("click",()=>{
-
-  window.location.href='Roadmap.html';
-});

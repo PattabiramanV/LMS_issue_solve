@@ -94,47 +94,116 @@ Course_navigate.addEventListener("click",()=>{
 
 
 
-let Quiz_object=[
-
-    {
-        Question:'1.What is Full form of HTML?',
-        Options: ['Hyper Text Markup Language','Hyper Text Makeup Language',
-        'Hyper Text Mark Language','Hyper Test Markup Language'],
-        Answers:['Hyper Text Markup Language','<href>',
-        'It defines a header for the document.','<table>','<body>']
-    
-    },
-
-    {
-        Question:'2.Which tag is used to create a hyperlink in HTML?',
-        Options:['<link>','<a>','<href>','hyper']
-     
-    },
-    {
-        Question:`3.In HTML, what is the purpose of the &lt;head&gt; element?`,
-        Options:['It contains the main content of the document.','It defines a header for the document.',
-        'It provides metadata about the document.','It creates a navigation bar.' ]
- 
-    }
-    // {
-    //     Question:'4.Which HTML tag is used to define the structure of the table?',
-    //     Options: ['<table>','<tr>','<td>','<th>']
-    // },
-    // {
-    //     Question:'5.Which HTML tag is used to define the body of the HTML document?',
-    //     Options:['<head>','<body>','<title>','<html>']
-     
-    // },
-    // {
-    //     Question:'6.Which HTML tag is used to define the body of the HTML document?',
-    //     Options:['<head>','<body>','<title>','<html>']
-     
-    // }
 
 
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
+  authDomain: "dckap-lms-project.firebaseapp.com",
+  projectId: "dckap-lms-project",
+  storageBucket: "dckap-lms-project.appspot.com",
+  messagingSenderId: "1022626638467",
+  appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
+};
+
+let arr1=[
+
+  {
+      Question:'1.What is Full form of HTML?',
+      Options: ['Hyper Text Markup Language','Hyper Text Makeup Language',
+      'Hyper Text Mark Language','Hyper Test Markup Language'],
+      Answers:['Hyper Text Markup Language','It specifies the title of the web page',
+      'It defines a header for the document.','To define the structure of a web page',
+      '<body>']
+  
+  },
+
+  {
+      Question:'2.What is the purpose of the &lt;title&gt; tag in HTML?',
+      Options:['It defines the main heading of the document','It specifies the title of the web page',
+      'It creates a hyperlink to another webpage',' It formats the text in bold']
+   
+  },
+  {
+      Question:`3.In HTML, what is the purpose of the &lt;head&gt; element?`,
+      Options:['It contains the main content of the document.','It defines a header for the document.',
+      'It provides metadata about the document.','It creates a navigation bar.' ]
+
+  },
+  {
+      Question:'4.What is the purpose of HTML elements?',
+      Options: ['To style the content','To define the structure of a web page',
+      ' To execute scripts','To interact with databases']
+  },
+  {
+      Question:'5.Which HTML tag is used to define the body of the HTML document?',
+      Options:['<head>','<body>','<title>','<html>']
+   
+  }
+   
 ]
 
-console.log(Quiz_object.length);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+let db=getFirestore(app);
+
+let get_ref=doc(db,'Learning','0');
+let get_data= await getDoc(get_ref);
+let find_index=get_data.data().find_index;
+let find_language=get_data.data().Find_Language_type;
+let find_language_percentage=get_data.data()[find_language+'_Total_Percentage'];
+let find_complete_module=get_data.data()[find_language + '_Complete_Module'];
+
+async function quiz_mark_validate_Fun(){
+//  alert("come to db")
+  let ref=doc(db,`${find_language}_Content`,`0`);
+  let data_ref=await getDoc(ref);
+  let total_title=data_ref.data().left_headings;
+
+  // console.log(find_language_percentage.Html_Total_Percentage+1);
+  // console.log(total_title.length);
+
+  let get_data= await updateDoc(
+   get_ref,{
+    [find_language+'_Total_Percentage']:Math.floor(find_language_percentage+1/total_title.length*100),
+    [find_language+'_Complete_Module']:find_complete_module+1
+   }
+  )
+
+
+}
+let get_quiz=doc(db,`${find_language}_Quiz`,`${find_index}`)
+let get_quiz_obj=await getDoc(get_quiz);
+let Quiz_object=get_quiz_obj.data().Quiz_1  ;
+// console.log(Quiz_object);
+// console.log(get_quiz_obj.data());
+// console.log(find_index);
+//......................Firebse......daat...........Set.............//
+
+// let get_quiz=doc(db,`${find_language}_Quiz`,`${find_index}`)
+// let get_quiz_obj=await getDoc(get_quiz);
+// let Quiz_object=get_quiz_obj.data().Quiz_1;
+// console.log(Quiz_object);
+// let id=0;
+// let ref=doc(db,`${find_language}_Quiz`,`${id}`);
+//  updateDoc(
+//   ref,{
+//     Quiz_1:arr1
+//   }
+// ).then(()=>{
+//   alert("updatae sucessfull")
+// })
+
+
+// console.log(Quiz_object.length);
 let quiz_options=document.querySelectorAll("label");
 let quiz_Question=document.getElementById("Quiz_question");
 let next_btn=document.querySelector(".quiz_next_btn");
@@ -149,9 +218,10 @@ previous_btn.addEventListener("click",function(){ Quiz_change_Fun(this)});
 let index=0;
 
 let arr=[];
-function Quiz_change_Fun(value){
+Quiz_content_show_Fun();
 
-   
+async function Quiz_change_Fun(value){
+
     radio_value_change_Fun();
    
 
@@ -175,11 +245,9 @@ arr.pop();
 
 }
 
-quiz_Question.innerText=Quiz_object[index].Question;
-quiz_options[0].innerText=Quiz_object[index].Options[0];
-quiz_options[1].innerText=Quiz_object[index].Options[1];
-quiz_options[2].innerText=Quiz_object[index].Options[2];
-quiz_options[3].innerText=Quiz_object[index].Options[3];
+Quiz_content_show_Fun();
+
+
 
 button_showing_Fun();
 
@@ -188,6 +256,14 @@ button_showing_Fun();
 
 }
 
+function Quiz_content_show_Fun(){
+  console.log(index);
+  quiz_Question.innerHTML=Quiz_object[index].Question;
+  quiz_options[0].innerText=Quiz_object[index].Options[0];
+  quiz_options[1].innerText=Quiz_object[index].Options[1];
+  quiz_options[2].innerText=Quiz_object[index].Options[2];
+  quiz_options[3].innerText=Quiz_object[index].Options[3];
+}
 
 function button_showing_Fun(){
 
@@ -223,7 +299,7 @@ let main_quiz_div=document.querySelector('.bottom_content_quiz');
 let Quiz_result_div=document.querySelector(".Answer_show_page");
 let next_module_btn=document.querySelector("#next_module_btn");
 let retry_btn=document.querySelector("#retry_btn");
-let all_score_content=document.querySelectorAll("span");
+let all_score_content=document.querySelectorAll(".score");
 
 submit_btn.addEventListener("click",()=>{
 
@@ -258,6 +334,8 @@ validate_quiz_fun();
 });
 
 //............................Quiz_Answer_page................................//
+let right_thumsup=document.querySelector(".right_thumsup");
+let thumsup_img=document.querySelector("#thumsup_img");
 
 function validate_quiz_fun(){
 
@@ -270,10 +348,13 @@ function validate_quiz_fun(){
     if(total_mark!=Quiz_object.length){
    next_module_btn.style.display='none';
    retry_btn.style.display='block';
+   right_thumsup.classList.add("right_thumsup_class_list");
+   thumsup_img.src="Assests/thumbs-up (2).png";
     }
     else{
         next_module_btn.style.display='block';
    retry_btn.style.display='none';
+   quiz_mark_validate_Fun();
     }
 
 }
@@ -299,7 +380,13 @@ button_showing_Fun()
 });
 
 
-next_module_btn.addEventListener("click",()=>{
+next_module_btn.addEventListener("click",async()=>{
+  let ref_data=doc(db,"Learning",`0`);
+    let data_set=await updateDoc(
+        ref_data,{
+            find_index:find_index+1
+        }
+    )
     window.location.href="learning_content.html";
 });
 
@@ -323,3 +410,4 @@ left_side_bar[3].addEventListener("click",()=>{
 
   window.location.href='Roadmap.html';
 });
+

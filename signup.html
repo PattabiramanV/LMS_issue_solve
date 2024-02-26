@@ -1,6 +1,6 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,25 +13,35 @@
     rel="stylesheet">
   <script src=" https://smtpjs.com/v3/smtp.js"></script>
   <style>
-    .container {
-      width: 41%;
-      height: 88px;
-      /* display: flex; */
-      position: relative;
-      left: 350px;
-      top: 181px;
-      /* justify-content: center; */
-    }
+  .container {
+    width: 23%;
+    height: 309px;
+    /* display: flex; */
+    position: relative;
+    left: 460px;
+    top: 100px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    font-family: "Roboto";
+
+}
 
     #otp_txt {
       position: relative;
-      left: -39px;
-      top: 5px;
+      left: 6px;
+      top: 50px;
+      color: white;
     }
+    p.otpSubheading {
+    position: relative;
+    top: 70px;
+    color: white;
+    
+}
   </style>
 </head>
 
-<body>
+<body id="body">
   <div class="loading-overlay" id="loadingOverlay">
     <div class="loading-spinner"></div>
   </div>
@@ -61,8 +71,8 @@
         </div>
 
         <div class="btn">
-          <button id="sign_up_btn">Signup</button>
-          <h5 id="exist">Already have an account?<u id="underline_btn">Login</u></h5>
+          <button id="sign_up_btn">Sign Up</button>
+          <h5 id="exist">Already have an account?<u id="underline_btn">signin</u></h5>
         </div>
         <div class="google_btn">
           <p id="option">Or</p>
@@ -91,18 +101,20 @@
 
 
       <div class="side_image">
-        <img id="pic" src="Assests/Frame.png">
+        <img id="pic" src="./Assests/Mobile login-pana.png">
       </div>
     </div>
   </div>
-  <div class="container" style="display:none; text-align: center; margin-top: 20px; background-color: #72c972;">
+  <div class="container" style="display:none; text-align: center; margin-top: 20px; background-color:#c84e2a">
     <h4 id="otp_txt">Enter an OTP</h4>
+    <p class="otpSubheading">We have sent a verification code to your Email</p>
+
     <input type="number" id="otp_value" name="otp"
-      style="padding: 8px; margin: 5px; border-radius: 5px; border: 1px solid #ccc;">
+      style="padding: 8px; margin: 5px; border-radius: 5px; border: 1px solid #ccc; position: relative; top: 80px; left: 50px;">
     <button id="otp_btn"
-      style="padding: 8px 20px; margin: 5px; border: none; border-radius: 5px; background-color:#264626 ; color: #fff; cursor: pointer;">Verify</button>
+      style="padding: 8px 20px; margin: 5px; border: none; border-radius: 5px; background-color: white; color:black; cursor: pointer; position: relative; top: 140px ;left: -100px;">Verify</button>
   </div>
-  <script type="module" src="JS/signup.js">
+  <script type="module" src="./JS/signup.js">
 
   </script>
 </body>

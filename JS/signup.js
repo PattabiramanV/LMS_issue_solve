@@ -1,4 +1,6 @@
 
+
+
 "use strict";
 
 
@@ -141,6 +143,7 @@ otp_btn.addEventListener("click", verified)
   }, 2000);
         
   }
+  
   else{
     alert("invalid")
   }

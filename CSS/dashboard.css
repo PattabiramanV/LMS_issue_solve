@@ -411,7 +411,7 @@ i.fa-solid.fa-right-from-bracket {
 h1
 {
   background: -webkit-linear-gradient(#009E60, #76FF7A);
-  -webkit-background-clip: text;
+  /* -webkit-background-clip: text; */
   -webkit-text-fill-color: transparent;
 }
 .btn

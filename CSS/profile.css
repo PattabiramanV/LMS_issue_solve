@@ -140,9 +140,10 @@ ul.set_items {
   white-space: nowrap;
 }
 .menu_items, .set_items {
-    padding: 0;
-    list-style: none;
-    margin: 0;
+  padding: 0;
+  list-style: none;
+  margin: 0;
+  margin-left: -9%;
 }
 .navlink_icon {
   position: relative;
@@ -241,16 +242,19 @@ ul.set_items {
   display: none;
 }
 
-/* Profile DropDown */
+/* Dropdown Profile */
+
+
+
 
 .profile_bar_list {
-  top: 72px;
-  width: 16%;
+  top: 77px;
+  width: 13%;
   background: rgb(255 255 255 / 78%);
   border-radius: 8px;
   color: rgb(18, 22, 10);
   position: absolute;
-  right: 3%;
+  right: 5%;
   display: none;
   border: 1px solid lightgray;
   cursor: pointer;
@@ -267,23 +271,25 @@ ul.set_items {
 }
 
 .Drop_Down:hover,
-.profile_down:hover,.Course_Down:hover {
-  background-color: rgba(91, 231, 35, 0.226);
-  border-radius: 8px;
+.profile_down:hover,
+.Course_Down:hover {
+  background-color: rgba(162, 247, 128, 0.226);
 }
 
 p.profile-name {
-  width: 50%;
+  width: 100%;
   align-items: flex-start;
   display: flex;
 }
-
 i.fa.fa-user,
 i.fa-solid.fa-book,
 i.fa-solid.fa-award,
 i.fa-solid.fa-right-from-bracket {
   width: 50%;
 }
+
+
+
 
 
 
@@ -447,51 +453,6 @@ button:hover {
 button:checked {
   background-color: rgb(210, 245, 205);
 }
-
-
-.profile_bar_list {
-  top: 72px;
-  width: 16%;
-  background: rgb(255 255 255 / 78%);
-  border-radius: 8px;
-  color: rgb(18, 22, 10);
-  position: absolute;
-  right: 3%;
-  display: none;
-  border: 1px solid lightgray;
-  cursor: pointer;
-}
-
-.Drop_Down,
-.profile_down,
-.Course_Down {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  text-align: center;
-  justify-content: space-between;
-}
-
-.Drop_Down:hover,
-.profile_down:hover,
-.Course_Down:hover {
-  background-color: rgba(91, 231, 35, 0.226);
-  border-radius: 8px;
-}
-
-p.profile-name {
-  width: 50%;
-  align-items: flex-start;
-  display: flex;
-}
-
-i.fa.fa-user,
-i.fa-solid.fa-book,
-i.fa-solid.fa-award,
-i.fa-solid.fa-right-from-bracket {
-  width: 50%;
-}
-
 
 /* Upload  */
 

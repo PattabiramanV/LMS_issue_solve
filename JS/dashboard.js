@@ -35,6 +35,19 @@ darkLight.addEventListener("click", () => {
   } else {
     darkLight.classList.replace("bx-moon", "bx-sun");
   }
+  let searchicon = document.querySelector(".fas");
+  console.log(searchicon);
+  let Dckaplogo = document.querySelector(".DCKAPlOGO");
+  darkLight.addEventListener("click", () => {
+    body.classList.toggle("dark");
+    searchicon.style.color = body.classList.contains("dark") ? "white" : "black";
+    headings.forEach((heading) => {
+      heading.style.color = body.classList.contains("dark") ? "white" : "black";
+    });
+    Dckaplogo.src = body.classList.contains("dark")
+    ? "../Assests/Dckapwhite.png"
+    : "../Assests/Dckap Logo.png";
+  });
 });
 
 submenuItems.forEach((item, index) => {
@@ -76,13 +89,46 @@ document.addEventListener("click", (event) => {
 
 let profile_page=document.querySelector(".profile_down")
  profile_page.addEventListener("click",()=>{
-        window.location.href="/profile_user_page/profile.html"
+        window.location.href="./profile.html"
 })
 
 let Course_navigate=document.querySelector(".Course_Down")
 Course_navigate.addEventListener("click",()=>{
-      window.location.href="/Profile_main_page/Courses.html"
+      window.location.href="./Courses.html"
 })
+
+let Certi_page=document.querySelector(".profile-certicate");
+
+Certi_page.addEventListener("click",()=>{
+         window.location.href="./certificate.html"
+})
+
+
+
+
+let left_side_bar=document.querySelectorAll(".navlink");
+
+left_side_bar[0].addEventListener("click",()=>{
+  window.location.href='./index.html  '
+});
+
+left_side_bar[1].addEventListener("click",()=>{
+
+  window.location.href='./Learning.html  '
+});
+left_side_bar[2].addEventListener("click",()=>{
+
+  window.location.href='./dashboard.html';
+});
+left_side_bar[3].addEventListener("click",()=>{
+
+  window.location.href='./Roadmap.html';
+});
+
+
+
+
+
 
 // ------------------HTML Pie chart -------------------------
 const chartData_html = {
@@ -258,6 +304,7 @@ const chartData_js = {
     display_chart_js.style.display = "none";
   });
 // ------------------- MySQL Piechart ----------------------
+
 const chartData_mysql = {
     labels: ["Completed", "Not Completed"],
     data: [80, 20],
@@ -315,3 +362,27 @@ const chartData_mysql = {
     display_chart_mysql.style.display = "none";
   });
 
+
+//-------------------- Dashboard Points ------------------------------------
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
+  authDomain: "dckap-lms-project.firebaseapp.com",
+  projectId: "dckap-lms-project",
+  storageBucket: "dckap-lms-project.appspot.com",
+  messagingSenderId: "1022626638467",
+  appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+
+  

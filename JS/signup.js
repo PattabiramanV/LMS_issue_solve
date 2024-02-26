@@ -1,4 +1,6 @@
 
+
+
 "use strict";
 
 
@@ -141,6 +143,7 @@ otp_btn.addEventListener("click", verified)
   }, 2000);
         
   }
+  
   else{
     alert("invalid")
   }
@@ -177,7 +180,7 @@ exist_login.addEventListener("click", login_page);
 function login_page() {
     document.getElementById('loadingOverlay').style.visibility = 'visible';
     setTimeout(() => {
-        window.location.href = 'http://127.0.0.1:5501/login.html';
+        window.location.href = './login.html';
     }, 2000);
 }
 

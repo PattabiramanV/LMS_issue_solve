@@ -160,11 +160,11 @@ ul.set_items {
   white-space: nowrap;
 }
 
-.menu_items,
-.set_items {
+.menu_items, .set_items {
   padding: 0;
   list-style: none;
   margin: 0;
+  margin-left: -9%;
 }
 
 .navlink_icon {

@@ -178,7 +178,7 @@ left_side_bar[1].addEventListener("click",()=>{
 });
 left_side_bar[2].addEventListener("click",()=>{
 
-  window.location.href='Dashboard.html';
+  window.location.href='dashboard.html';
 });
 left_side_bar[3].addEventListener("click",()=>{
 
@@ -240,22 +240,6 @@ darkLight.addEventListener("click", () => {
   }
 });
 
-submenuItems.forEach((item, index) => {
-  item.addEventListener("click", () => {
-    item.classList.toggle("show_submenu");
-    submenuItems.forEach((item2, index2) => {
-      if (index !== index2) {
-        item2.classList.remove("show_submenu");
-      }
-    });
-  });
-});
-
-if (window.innerWidth < 768) {
-  sidebar.classList.add("close");
-} else {
-  sidebar.classList.remove("close");
-}
 
 
 // Profile

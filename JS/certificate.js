@@ -35,6 +35,19 @@ darkLight.addEventListener("click", () => {
   } else {
     darkLight.classList.replace("bx-moon", "bx-sun");
   }
+  let searchicon = document.querySelector(".fas");
+  console.log(searchicon);
+  let Dckaplogo = document.querySelector(".DCKAPlOGO");
+  darkLight.addEventListener("click", () => {
+    body.classList.toggle("dark");
+    searchicon.style.color = body.classList.contains("dark") ? "white" : "black";
+    headings.forEach((heading) => {
+      heading.style.color = body.classList.contains("dark") ? "white" : "black";
+    });
+    Dckaplogo.src = body.classList.contains("dark")
+    ? "../Assests/Dckapwhite.png"
+    : "../Assests/Dckap Logo.png";
+  });
 });
 
 submenuItems.forEach((item, index) => {
@@ -76,17 +89,16 @@ document.addEventListener("click", (event) => {
 
 let profile_page=document.querySelector(".profile_down")
  profile_page.addEventListener("click",()=>{
-        window.location.href="/profile_user_page/profile.html"
+        window.location.href="./profile.html"
 })
 
 let Course_navigate=document.querySelector(".Course_Down")
 Course_navigate.addEventListener("click",()=>{
-      window.location.href="/Profile_main_page/Courses.html"
+      window.location.href="./Courses.html"
 })
 
 
 // --------------- CSS Quiz -------------------
-
 
 const html_btn =document.querySelector("#html_btn");
 html_btn.addEventListener("click", () => {
@@ -120,5 +132,3 @@ mysql_btn.addEventListener("click", () => {
   localStorage.setItem('certificate_get', 'MySql_Overall_Quiz');
   window.location.href = 'OverallQuiz.html';
 });
-
-

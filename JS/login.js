@@ -8,8 +8,17 @@ function signup_page() {
     }, 2000);
 }
 
+let login = document.querySelector("#login_btn");
+
+login.addEventListener("click", (e) => {
+   e.preventDefault(e)
+     console.log("hi");
+    window.location.href = "index.html";
+});
+
+
 // ---------password icon--------
-let log_username=document.getElementById("log")
+let log_email=document.getElementById("log")
 let log_password=document.getElementById("log_pass")
 let login_button=document.getElementById("login_btn")
 
@@ -61,15 +70,29 @@ let getref=collection(db,"SignUp_details");
 let getdata =await  getDocs(getref);
 // let id=getdata.size;
 
-login_button.addEventListener("click",login)
+login_button.addEventListener("click",login_fun)
+ function login_fun(event)
 
-function login(event)
-{
-  event.preventdefault();
-  console.log("hi");
-// getdata.forEach((record)=>{
-//     console.log(record.username);
-//     console.log(record.data());
-// });
+{ 
+      event.preventDefault()
+      getdata .forEach((record) => {
+        
+        let email_data = record.data().email
+        let password_data = record.data().password
 
+        // console.log(email_data);
+
+        if(log_email.value == email_data && log_password.value==password_data )
+        {
+          // console.log("hi");
+          document.getElementById('loadingOverlay').style.visibility = 'visible';
+          setTimeout(() => {
+              window.location.href = './index.html';
+          }, 2000);
+        }
+      });
 }
+
+
+
+

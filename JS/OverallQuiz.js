@@ -1,5 +1,4 @@
-"use strict";
-//----------------------------------- navbar_sidebar
+"use strict"
 const body = document.querySelector("body");
 const darkLight = document.querySelector("#darkLight");
 const sidebar = document.querySelector(".sidebar");
@@ -91,6 +90,12 @@ document.addEventListener("click", (event) => {
   }
 });
 
+// let Cancel_btn=document.querySelector(".cancel_btn")
+
+// Cancel_btn.addEventListener("click", () => {
+//     window.location.href="Roadmap.html";
+// });
+
 // profile_drop
 
 let profile_page = document.querySelector(".profile_down");
@@ -104,6 +109,10 @@ Course_navigate.addEventListener("click", () => {
 });
 
 let Certi_page=document.querySelector(".profile_certicate");
+
+Certi_page.addEventListener("click",()=>{
+  window.location.href="./certificate.html"
+})
 
 Certi_page.addEventListener("click",()=>{
   window.location.href="./certificate.html"

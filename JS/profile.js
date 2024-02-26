@@ -25,14 +25,20 @@ sidebar.addEventListener("mouseleave", () => {
   }
 });
 
+
+
+let searchicon = document.querySelector(".fas");
+console.log(searchicon);
+let profilehead=document.querySelector(".profile_hdg")
+let Dckaplogo = document.querySelector(".DCKAPlOGO");
+
 darkLight.addEventListener("click", () => {
   body.classList.toggle("dark");
-  if (body.classList.contains("dark")) {
-    document.setI;
-    darkLight.classList.replace("bx-sun", "bx-moon");
-  } else {
-    darkLight.classList.replace("bx-moon", "bx-sun");
-  }
+  searchicon.style.color = body.classList.contains("dark") ? "white" : "black";
+  profilehead.style.color = body.classList.contains("dark") ? "white" : "black";
+  Dckaplogo.src = body.classList.contains("dark")
+    ? "./Assests/Dckapwhite.png"
+    : "./Assests/Dckap Logo.png";
 });
 
 submenuItems.forEach((item, index) => {
@@ -87,6 +93,28 @@ profile_page.addEventListener("click", () => {
 let Course_navigate = document.querySelector(".Course_Down");
 Course_navigate.addEventListener("click", () => {
   window.location.href = "Courses.html";
+});
+
+let Certi_page=document.querySelector(".profile-certicate");
+
+Certi_page.addEventListener("click",()=>{
+         window.location.href="Certificate.html"
+})
+
+// Firebase store Name
+window.addEventListener("DOMContentLoaded", async (event) => {
+  try {
+    const NameRef = collection(database, "user_Name_Information");
+    const querySnapshot = await getDocs(NameRef);
+    querySnapshot.forEach((doc) => {
+      const NameData = doc.data();
+      const nameSpan = document.getElementById("fullName");
+      nameSpan.textContent = NameData.name;
+    });
+    console.log("Name data fetched from Firebase");
+  } catch (error) {
+    console.error("Error fetching Name data from Firebase: ", error);
+  }
 });
 
 // Firebase store Name
@@ -314,7 +342,7 @@ left_side_bar[1].addEventListener("click",()=>{
 });
 left_side_bar[2].addEventListener("click",()=>{
 
-  window.location.href='Dashboard.html';
+  window.location.href='dashboard.html';
 });
 left_side_bar[3].addEventListener("click",()=>{
 

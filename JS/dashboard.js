@@ -1,5 +1,127 @@
 "use strict"
 
+
+// fire_base
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
+  authDomain: "dckap-lms-project.firebaseapp.com",
+  projectId: "dckap-lms-project",
+  storageBucket: "dckap-lms-project.appspot.com",
+  messagingSenderId: "1022626638467",
+  appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(); // Create a Firestore instance
+
+// ------------ html firebase ---------------------
+
+async function fetchDataAndUpdateHTML() 
+{
+    try 
+    {
+        const getRef = doc(db, 'Learning', '0');
+        const getData = await getDoc(getRef);
+        const data = getData.data();
+
+        // Update HTML with fetched data
+        document.querySelector('.Total_Quiz').textContent =  data.Html_Total_Percentage|| '0';
+        document.querySelector('.Total_Ponits').textContent = data.Html_Complete_Module || '0';
+        document.querySelector('.Total_Stars').textContent = data.Html_Complete_Module*2 || '0';
+        localStorage.setItem('Total_Ponits', data.Html_Complete_Module);
+
+    } 
+    catch (error) 
+    {
+        console.error("Error fetching and updating data:", error); 
+    }
+}
+
+fetchDataAndUpdateHTML(); // Call the function to fetch data and update HTML
+
+// ------------ css firebase ---------------------
+
+async function fetchDataAndUpdateCSS() 
+{
+  try 
+  {
+      const getRef = doc(db, 'Learning', '0');
+      const getData = await getDoc(getRef);
+      const data = getData.data();
+
+      // Update HTML with fetched data
+      document.querySelector('.Total_Quiz').textContent =  data.Html_Total_Percentage + data.Css_Total_Percentage|| '0';
+      document.querySelector('.Total_Ponits').textContent = data.Html_Complete_Module + data.Css_Complete_Module|| '0';
+      document.querySelector('.Total_Stars').textContent = (data.Html_Complete_Module + data.Css_Complete_Module) * 2 || '0';
+      localStorage.setItem('Total_Ponits', data.Css_Complete_Module);
+
+  } 
+  catch (error) 
+  {
+      console.error("Error fetching and updating data:", error); 
+  }
+}
+
+fetchDataAndUpdateCSS();
+
+// ------------ js firebase ---------------------
+
+async function fetchDataAndUpdateJS() 
+{
+    try 
+    {
+        const getRef = doc(db, 'Learning', '0');
+        const getData = await getDoc(getRef);
+        const data = getData.data();
+
+        // Update HTML with fetched data
+        document.querySelector('.Total_Quiz').textContent =  data.Html_Total_Percentage + data.Css_Total_Percentage + data.Javascript_Total_Percentage|| '0';
+        document.querySelector('.Total_Ponits').textContent = data.Html_Complete_Module + data.Css_Complete_Module + data.Javascript_Complete_Module|| '0';
+        document.querySelector('.Total_Stars').textContent = (data.Html_Complete_Module + data.Css_Complete_Module + data.Javascript_Complete_Module) * 2 || '0';
+        localStorage.setItem('Total_Ponits', data.Javascript_Complete_Module);
+
+    } 
+    catch (error) 
+    {
+        console.error("Error fetching and updating data:", error); 
+    }
+}
+
+fetchDataAndUpdateJS();
+
+// ------------ mysql firebase ---------------------
+
+async function fetchDataAndUpdateSQL() 
+{
+    try 
+    {
+        const getRef = doc(db, 'Learning', '0');
+        const getData = await getDoc(getRef);
+        const data = getData.data();
+
+        // Update HTML with fetched data
+        document.querySelector('.Total_Quiz').textContent =  data.Html_Total_Percentage + data.Css_Total_Percentage + data.Javascript_Total_Percentage + data.Mysql_Total_Percentage|| '0';
+        document.querySelector('.Total_Ponits').textContent = data.Html_Complete_Module + data.Css_Complete_Module + data.Javascript_Complete_Module + data.Mysql_Complete_Module|| '0';
+        document.querySelector('.Total_Stars').textContent = (data.Html_Complete_Module + data.Css_Complete_Module + data.Javascript_Complete_Module + data.Mysql_Complete_Module) * 2 || '0';
+        localStorage.setItem('Total_Ponits', data.Javascript_Complete_Module);
+    } 
+    catch (error) 
+    {
+        console.error("Error fetching and updating data:", error); 
+    }
+}
+
+fetchDataAndUpdateSQL();
+
+// ---------------------------------
+
+
+
 const body = document.querySelector("body");
 const darkLight = document.querySelector("#darkLight");
 const sidebar = document.querySelector(".sidebar");
@@ -29,11 +151,16 @@ sidebar.addEventListener("mouseleave", () => {
 
 darkLight.addEventListener("click", () => {
   body.classList.toggle("dark");
-  if (body.classList.contains("dark")) {
+  if (body.classList.contains("dark")) 
+  {
     document.setI;
     darkLight.classList.replace("bx-sun", "bx-moon");
-  } else {
+    document.querySelector(".dashboard_profile_content").style.color = "white";
+  } 
+  else 
+  {
     darkLight.classList.replace("bx-moon", "bx-sun");
+    document.querySelector(".dashboard_profile_content").style.color = "black";
   }
   let searchicon = document.querySelector(".fas");
   console.log(searchicon);
@@ -61,9 +188,12 @@ submenuItems.forEach((item, index) => {
   });
 });
 
-if (window.innerWidth < 768) {
+if (window.innerWidth < 768) 
+{
   sidebar.classList.add("close");
-} else {
+} 
+else 
+{
   sidebar.classList.remove("close");
 }
 
@@ -126,14 +256,40 @@ left_side_bar[3].addEventListener("click",()=>{
 });
 
 
+// // Retrieve the value from localStorage
+// const totalPointsFromLocalStorage = localStorage.getItem('Total_Ponits');
 
-
-
+// // Convert the retrieved value to a number
+// const totalPoints = parseFloat(totalPointsFromLocalStorage);
 
 // ------------------HTML Pie chart -------------------------
+
+
+async function HTMLchatr() 
+{
+  try 
+  {
+      const getRef = doc(db, 'Learning', '0');
+      const getData = await getDoc(getRef);
+      const data = getData.data();
+
+      return (data.Html_Complete_Module) || '0';
+
+  } 
+  catch (error) 
+  {
+      console.error("Error fetching and updating data:", error); 
+      return 0; // Return a default value in case of error
+  }
+}
+
+// Call fetchDataAndUpdateHTML to get the total points
+HTMLchatr().then(totalPoints => {
+  console.log("",totalPoints);
+
 const chartData_html = {
   labels: ["Completed", "Not Completed"],
-  data: [50, 50],
+  data: [totalPoints , 100-totalPoints],
 };
 
 const myChart_html = document.querySelector(".my_chart_html");
@@ -187,11 +343,36 @@ html_btn.addEventListener("click", () => {
 cross_html.addEventListener("click", () => {
   display_chart_html.style.display = "none";
 })
+});
 
 // ------------------ CSS Pie chart -------------------------
+
+
+async function CSSchatr() 
+{
+  try 
+  {
+      const getRef = doc(db, 'Learning', '0');
+      const getData = await getDoc(getRef);
+      const data = getData.data();
+
+      return (data.Css_Complete_Module) || '0';
+
+  } 
+  catch (error) 
+  {
+      console.error("Error fetching and updating data:", error); 
+      return 0; // Return a default value in case of error
+  }
+}
+
+// Call fetchDataAndUpdateHTML to get the total points
+CSSchatr().then(totalPoints => {
+  console.log("",totalPoints);
+
 const chartData_css = {
     labels: ["Completed", "Not Completed"],
-    data: [60, 40],
+    data: [totalPoints, 100-totalPoints],
   };
   
   const myChart_css = document.querySelector(".my_chart_css");
@@ -245,11 +426,35 @@ const chartData_css = {
   cross_css.addEventListener("click", () => {
     display_chart_css.style.display = "none";
   });
+});
 
 // ------------------- Javascript Piechart ----------------------
+
+async function JSchatr() 
+{
+  try 
+  {
+      const getRef = doc(db, 'Learning', '0');
+      const getData = await getDoc(getRef);
+      const data = getData.data();
+
+      return (data.Javascript_Complete_Module) || '0';
+
+  } 
+  catch (error) 
+  {
+      console.error("Error fetching and updating data:", error); 
+      return 0; // Return a default value in case of error
+  }
+}
+
+// Call fetchDataAndUpdateHTML to get the total points
+JSchatr().then(totalPoints => {
+  console.log("",totalPoints);
+
 const chartData_js = {
     labels: ["Completed", "Not Completed"],
-    data: [70, 30],
+    data: [totalPoints, 100-totalPoints],
   };
   
   const myChart_js = document.querySelector(".my_chart_js");
@@ -303,11 +508,34 @@ const chartData_js = {
   cross_js.addEventListener("click", () => {
     display_chart_js.style.display = "none";
   });
+});
 // ------------------- MySQL Piechart ----------------------
+
+async function SQLchatr() 
+{
+  try 
+  {
+      const getRef = doc(db, 'Learning', '0');
+      const getData = await getDoc(getRef);
+      const data = getData.data();
+
+      return (data.Mysql_Complete_Module) || '0';
+
+  } 
+  catch (error) 
+  {
+      console.error("Error fetching and updating data:", error); 
+      return 0; // Return a default value in case of error
+  }
+}
+
+// Call fetchDataAndUpdateHTML to get the total points
+SQLchatr().then(totalPoints => {
+  console.log("",totalPoints);
 
 const chartData_mysql = {
     labels: ["Completed", "Not Completed"],
-    data: [80, 20],
+    data: [totalPoints, 100-totalPoints],
   };
   
   const myChart_mysql = document.querySelector(".my_chart_mysql");
@@ -361,28 +589,12 @@ const chartData_mysql = {
   cross_mysql.addEventListener("click", () => {
     display_chart_mysql.style.display = "none";
   });
+});
 
 
-//-------------------- Dashboard Points ------------------------------------
+  // ----------------------------------------
 
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
-  authDomain: "dckap-lms-project.firebaseapp.com",
-  projectId: "dckap-lms-project",
-  storageBucket: "dckap-lms-project.appspot.com",
-  messagingSenderId: "1022626638467",
-  appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
 
 
   

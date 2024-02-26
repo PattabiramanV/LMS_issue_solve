@@ -91,19 +91,17 @@ Course_navigate.addEventListener("click",()=>{
 const html_btn =document.querySelector("#html_btn");
 html_btn.addEventListener("click", () => {
   localStorage.setItem('selectedQuiz', 'HTML_Overall_Quiz');
+  localStorage.setItem('certificate_get', 'HTML_Overall_Quiz');
   window.location.href = 'OverallQuiz.html';
 });
 
 
 const css_quiz = document.querySelector("#css_btn");
 css_quiz.addEventListener("click", () => {
-  // Store the selected quiz type in localStorage
   localStorage.setItem('selectedQuiz', 'CSS_Overall_Quiz');
-
-
+  localStorage.setItem('certificate_get', 'CSS_Overall_Quiz');
   // console.log('CSS quiz button clicked');
   // console.log('selectedQuiz in localStorage:', localStorage.getItem('selectedQuiz'));
-
   window.location.href = 'OverallQuiz.html';
 
 });
@@ -111,12 +109,15 @@ css_quiz.addEventListener("click", () => {
 const js_btn =document.querySelector("#js_btn");
 js_btn.addEventListener("click", () => {
   localStorage.setItem('selectedQuiz', 'JavaScript_Overall_Quiz');
+  localStorage.setItem('certificate_get', 'JavaScript_Overall_Quiz');
   window.location.href = 'OverallQuiz.html';
 });
 
 const mysql_btn =document.querySelector("#mysql_btn");
 mysql_btn.addEventListener("click", () => {
+  
   localStorage.setItem('selectedQuiz', 'MySql_Overall_Quiz');
+  localStorage.setItem('certificate_get', 'MySql_Overall_Quiz');
   window.location.href = 'OverallQuiz.html';
 });
 

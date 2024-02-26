@@ -1,13 +1,9 @@
 "use strict";
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// Your web app's Firebase configuration
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
   authDomain: "dckap-lms-project.firebaseapp.com",
@@ -21,24 +17,28 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
 
-const exploreCoursesContainer = document.querySelector(".course_card");
-
-
-const enrolledCourses = [];
+const exploreCoursesContainer = document.querySelector(".articles");
+// Use Local Storage to store enrolled courses
+let enrolledCourses = JSON.parse(localStorage.getItem("enrolledCourses")) || [];
 
 exploreCoursesContainer.addEventListener("click", async function (event) {
   try {
-    const clickedCourseContainer = event.target.closest(".Progress_bar_Course");
-    const courseContainers = exploreCoursesContainer.querySelectorAll(".Progress_bar_Course");
-    let index = Array.from(courseContainers).findIndex((container) => container === clickedCourseContainer);
-
+    const clickedCourseContainer = event.target.closest(".article-wrapper");
+    const courseContainers =
+      exploreCoursesContainer.querySelectorAll(".article-wrapper");
+    let index = Array.from(courseContainers).findIndex(
+      (container) => container === clickedCourseContainer
+    );
 
     if (enrolledCourses.includes(index)) {
-      console.log("Course already enrolled");
-      return; 
+      console.log("Course already enrolled!");
+      return;
     }
 
-    enrolledCourses.push(index); 
+    if (enrolledCourses.length >= 5) {
+      console.log("You can only enroll in 5 courses.");
+      return;
+    }
 
     const enrolledCourseContainer = document.createElement("div");
     enrolledCourseContainer.classList.add("Progress_bar");
@@ -47,39 +47,46 @@ exploreCoursesContainer.addEventListener("click", async function (event) {
       { name: "HTML", imgSrc: "./Assests/html.webp" },
       { name: "CSS", imgSrc: "./Assests/css.webp" },
       { name: "JavaScript", imgSrc: "./Assests/js.webp" },
-      { name: "MySQL", imgSrc: "./Assests/7723d1592a0b454cb59a32cf5ab35642-SQL2.webp" },
+      {
+        name: "MySQL",
+        imgSrc: "./Assests/7723d1592a0b454cb59a32cf5ab35642-SQL2.webp",
+      },
       { name: "PHP", imgSrc: "./Assests/php.webp" },
     ];
 
     enrolledCourseContainer.innerHTML = `
-      <div class="progress_language">
-        <img src="${courseDetails[index].imgSrc}" alt="" class="enroll_img">
-      </div>
-      <hr>
-      <div class="progress_status">
-        <p class="enroll_language">${courseDetails[index].name}</p>
-        <div class="percentage">
-          <p class="progress">In progress</p>
-          <span></span>
-        </div>
-      </div>
-    `;
+            <div class="progress_language">
+                <img src="${courseDetails[index].imgSrc}" alt="" class="enroll_img">
+            </div>
+            <hr>
+            <div class="progress_status">
+                <p class="enroll_language">${courseDetails[index].name}</p>
+                <div class="percentage">
+                    <p class="progress">In progress</p>
+                    <span></span>
+                </div>
+            </div>
+        `;
 
-    const enrolledCoursesContainer = document.querySelector(".progressing_bar .Progress_container");
+    const enrolledCoursesContainer = document.querySelector(
+      ".progressing_bar .Progress_container"
+    );
     enrolledCoursesContainer.appendChild(enrolledCourseContainer);
 
-    // Save data to Firestore
     await addDoc(collection(database, "enrolledCourses"), {
       name: courseDetails[index].name,
       imgSrc: courseDetails[index].imgSrc,
     });
+    enrolledCourses.push(index);
+
+    // Update Local Storage
+    localStorage.setItem("enrolledCourses", JSON.stringify(enrolledCourses));
   } catch (error) {
     console.error("Error:", error.message);
   }
 });
 
-
-// Retrieve data 
+// Retrieve data
 window.addEventListener("load", async function () {
   try {
     const querySnapshot = await getDocs(
@@ -98,7 +105,7 @@ window.addEventListener("load", async function () {
                     <p class="enroll_language">${doc.data().name}</p>
                     <div class="percentage">
                         <p class="progress">In progress</p>
-                        <span></span>
+                        <span class="percentagecalculation"></span>
                     </div>
                 </div>
             `;
@@ -113,20 +120,18 @@ window.addEventListener("load", async function () {
 });
 
 // Nav bar
-const darkLight = document.getElementById("darkLight");
-const body = document.body;
-const searchIcon = document.querySelector(".fas");
-const headings = document.querySelectorAll("#headings");
+const body = document.querySelector("body");
+const darkLight = document.querySelector("#darkLight");
 const sidebar = document.querySelector(".sidebar");
 const submenuItems = document.querySelectorAll(".submenu_item");
 const sidebarOpen = document.querySelector("#sidebarOpen");
 const sidebarClose = document.querySelector(".collapse_sidebar");
 const sidebarExpand = document.querySelector(".expand_sidebar");
 sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
-
-let Dckaplogo = document.querySelector(".DCKAPlOGO");
-
-let content=document.querySelector(".menu_content")
+let content=document.querySelector(".menu_content");
+let searchIcon=document.querySelector("#Sicon");
+let headings=document.querySelectorAll("#headings")
+let Dckaplogo=document.querySelector(".DCKAPlOGO")
 
 sidebarClose.addEventListener("click", () => {
   sidebar.classList.add("close", "hoverable");
@@ -136,6 +141,7 @@ sidebarClose.addEventListener("click", () => {
 sidebarExpand.addEventListener("click", () => {
   sidebar.classList.remove("close", "hoverable");
   content.style.left = "1rem";
+  
 });
 
 sidebar.addEventListener("mouseenter", () => {
@@ -144,25 +150,27 @@ sidebar.addEventListener("mouseenter", () => {
     content.style.left = "1rem";
   }
 });
-
 sidebar.addEventListener("mouseleave", () => {
   if (sidebar.classList.contains("hoverable") && sidebar.classList.contains("close")) {
-    content.style.left = "0rem"; // Adjust the left position when sidebar is closed and not hovered
+    content.style.left = "0rem"; 
   }
 });
 
-let searchicon = document.querySelector(".fas");
-console.log(searchicon);
+
 
 darkLight.addEventListener("click", () => {
   body.classList.toggle("dark");
   searchIcon.style.color = body.classList.contains("dark") ? "white" : "black";
   headings.forEach((heading) => {
-    heading.style.color = body.classList.contains("dark") ? "white" : "black";
-  });
+    if (body.classList.contains("dark")) {
+        heading.style.color = "white";
+    } else {
+        heading.style.color = "#b95233";
+    }
+});
   Dckaplogo.src = body.classList.contains("dark")
-    ? "../Assests/Dckapwhite.png"
-    : "../Assests/Dckap Logo.png";
+    ? "./Assests/Dckapwhite.png"
+    : "./Assests/Logodk.png";
 });
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
@@ -195,3 +203,73 @@ let Course_navigate = document.querySelector(".Course_Down");
 Course_navigate.addEventListener("click", () => {
   window.location.href = "./Courses.html";
 });
+
+let Certi_page=document.querySelector(".profile_certicate");
+
+Certi_page.addEventListener("click",()=>{
+  window.location.href="./certificate.html"
+})
+
+let left_side_bar = document.querySelectorAll(".navlink");
+
+left_side_bar[0].addEventListener("click", () => {
+  window.location.href = "./index.html  ";
+});
+
+left_side_bar[1].addEventListener("click", () => {
+  window.location.href = "./Learning.html  ";
+});
+left_side_bar[2].addEventListener("click", () => {
+  window.location.href = "./dashboard.html";
+});
+left_side_bar[3].addEventListener("click", () => {
+  window.location.href = "./Roadmap.html";
+});
+
+// Button Navigation
+
+let Explorebtn = document.querySelectorAll('.read-more');
+console.log(Explorebtn[0]);
+Explorebtn.forEach(async(btn) => {
+  let ref=doc(database,"Learning",'0');
+  let get_data=await getDoc(ref);
+  // console.log(get_data.data());
+  // let find_language=get_data.data().Find_Language_type;
+  let find_language=0;
+
+ 
+  btn.addEventListener( 'click',async (e)=>{
+
+    if (btn === Explorebtn[0]) {
+      // alert("bye")
+      console.log("pattabi");
+
+find_language='Html';
+
+    } else if (btn === Explorebtn[1]) {
+// alert("hi")
+find_language='Css';
+
+    } else if (btn === Explorebtn[2]) {
+
+    }
+
+   let data_get=await updateDoc(
+      ref,{
+      Find_Language_type:find_language
+
+
+      }
+    )
+
+    window.location.href='learning_content.html'
+
+  });
+
+  
+    
+});
+
+// Percentage Calculation
+
+

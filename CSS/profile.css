@@ -21,11 +21,11 @@ html {
   --background: rgb(255, 255, 255);
   --background-color-hover: rgba(30, 245, 2, 0.986);
   --background-color-btn: #49a843;
-  --background-color-li: #99ecae75 !important;
+  --background-color-li: #8000801c !important
 }
 
 body {
-  background-color: #e7f2fd;
+  background-color: white;
   transition: all 0.5s ease;
 }
 
@@ -111,6 +111,12 @@ i.fas.fa-search {
   cursor: pointer;
   font-size: 20px;
   color: var(--grey-color);
+}
+
+img.profile {
+  border-radius: 100%;
+  width: 47px;
+  height: 44px;
 }
 
 /* sidebar */
@@ -306,7 +312,7 @@ ul.set_items {
 
 .Drop_Down,
 .profile_down,
-.Course_Down {
+.Course_Down ,.profile_certicate{
   display: flex;
   align-items: center;
   width: 100%;
@@ -316,8 +322,8 @@ ul.set_items {
 
 .Drop_Down:hover,
 .profile_down:hover,
-.Course_Down:hover {
-  background-color: rgba(162, 247, 128, 0.226);
+.Course_Down:hover,.profile_certicate:hover {
+  background-color: #8000801c;
 }
 
 p.profile-name {
@@ -337,8 +343,8 @@ i.fa-solid.fa-right-from-bracket {
 
 
 
-
-/* Your Content paste here */
+/* /* 
+Your Content paste here */
 
 #Main_Content {
   flex-grow: 1;
@@ -352,9 +358,11 @@ i.fa-solid.fa-right-from-bracket {
   width: 70%;
   margin-right: auto;
   margin-bottom: auto;
-  margin-top: 81px;
+  margin-top: 112px;
   margin-left: 25% !important;
+  position: relative; /* Set the container position to relative */
 }
+
 
 .Heading {
   font-size: x-large;
@@ -362,8 +370,7 @@ i.fa-solid.fa-right-from-bracket {
 
 .user_actions {
   display: flex;
-  /* justify-content: space-evenly; */
-  /* gap: 7%; */
+
   width: 95%;
   justify-content: center;
   align-items: center;
@@ -385,7 +392,7 @@ button.cancel_btn {
 
 h1.profile_hdg {
   font-size: 24px;
-  color: #12160a;
+  color: #b95233;
   font-family: "Roboto";
 }
 
@@ -407,21 +414,21 @@ h1.profile_hdg {
   border-radius: 50%;
 }
 
-input#fullNameInput,#gitinput,textarea#bioInput {
+input#fullNameInput, #gitinput, textarea#bioInput,input#linkedInInput {
   border: 1px solid lightgray;
   padding: 7px;
   border-radius: 3px;
   width: 20rem;
+  position: relative;
+  top: -12px;
 }
-
-
 
 .Users_img {
   display: flex;
   width: 100%;
   justify-content: space-between;
+  height: 93px;
 }
-
 .profile_img img {
   width: 100%;
   height: auto;
@@ -463,7 +470,7 @@ textarea {
 .email_details,
 .phone_details,
 .Git_details,
-.Bio_details {
+.Bio_details,.linkedin_details {
   display: grid;
   gap: 20px;
 }
@@ -471,7 +478,7 @@ textarea {
 button.editbtn,
 .editbtnn,
 .editbtngit,
-.editbtnName {
+.editbtnName,.editbtnlink {
   color: white;
   border: none;
   padding: 10px 20px;
@@ -480,14 +487,14 @@ button.editbtn,
 }
 
 label {
-  color: #969d88;
-}
+  color: #b95233;
+} 
 
 button {
-  background-color: #2de972;
+  background-color: #AA3EE2;
   border-radius: 100px;
-  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
-  color: green;
+  box-shadow: #AA3EE2 0 -25px 18px -14px inset, #AA3EE2 0 1px 2px, #AA3EE2 0 2px 4px;
+  color: white;
   cursor: pointer;
   display: inline-block;
   font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
@@ -503,13 +510,13 @@ button {
 }
 
 button:hover {
-  box-shadow: rgba(44, 187, 99, .35) 0 -25px 18px -14px inset, rgba(44, 187, 99, .25) 0 1px 2px, rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px, rgba(44, 187, 99, .25) 0 8px 16px, rgba(44, 187, 99, .25) 0 16px 32px;
+  box-shadow: #6C298E 0 -25px 18px -14px inset, #6C298E 0 1px 2px, #6C298E 0 2px 4px;
   transform: scale(1.05) rotate(-1deg);
 
 }
 
 button:checked {
-  background-color: rgb(210, 245, 205);
+  background-color: #CB4F2B;
 }
 
 /* Upload  */
@@ -531,12 +538,14 @@ button:checked {
 div#imageContainer {
   width: 25%;
 }
-
 #imageContainer img {
-  max-width: 108px;
-  border-radius: 100%;
-  max-height: 100px;
+  max-width: 98px;
+  border-radius: 70%;
+  /* max-height: 115px; */
   background-repeat: no-repeat;
   background-size: 100% 100%;
   border: 1px solid darkgray;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }

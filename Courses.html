@@ -16,7 +16,7 @@
   <nav class="navbar">
     <div class="logo_item">
       <i class="bx bx-menu" id="sidebarOpen"></i>
-      <img src="./Assests/Dckap Logo.png" alt="" class="DCKAPlOGO"></i>
+      <img src="./Assests/Logodk.png" alt="" class="DCKAPlOGO"></i>
     </div>
 
     <div class="search_bar">
@@ -38,7 +38,7 @@
         <i class="fa-solid fa-book"></i>
         <P class="profile-name">My Courses</P>
       </div>
-      <div class="Drop_Down">
+      <div class="profile_certicate">
         <i class="fa-solid fa-award" class="profile-icon"></i>
         <P class="profile-name">certificate</P>
       </div>
@@ -53,7 +53,7 @@
     <div class="menu_content">
       <ul class="menu_items">
         <li class="item">
-          <div href="#" class="nav_link submenu_item">
+          <div href="index.html" class="nav_link submenu_item">
             <span class="navlink_icon">
               <i class="bx bx-home-alt"></i>
             </span>
@@ -62,7 +62,7 @@
 
         </li>
         <li class="item">
-          <div href="#" class="nav_link submenu_item">
+          <div href="Learning.html" class="nav_link submenu_item">
             <span class="navlink_icon">
               <i class="bx bx-grid-alt"></i>
             </span>
@@ -73,7 +73,7 @@
 
       <ul class="menu_items">
         <li class="item">
-          <a href="#" class="nav_link">
+          <a href="dashboard.html" class="nav_link">
             <span class="navlink_icon">
               <i class="bx bxs-magic-wand"></i>
             </span>
@@ -82,7 +82,7 @@
         </li>
 
         <li class="item">
-          <a href="#" class="nav_link">
+          <a href="Roadmap.html" class="nav_link">
             <span class="navlink_icon">
               <i class="bx bx-loader-circle"></i>
             </span>
@@ -123,83 +123,109 @@
   </div>
   <div class="List Courses">
     <p class="Enroll_heading_course" id="headings">Explore Our Courses</p>
-    <div class="course_card">
-
-      <div class="Progress_bar_Course">
-        <div class="card">
-          <div class="front">
-            <p class="front-heading">Html language</p>
-            <img src="./Assests/html.webp" alt="" class="html">
-          </div>
-          <div class="back">
-            <p class="back-heading">Learn HTML</p>
-            <p class="des_lan">
-              Start at the beginning by learning HTML basics — an important foundation for building</p>
-            <button class="enroolbtn">Enroll course</button>
-
-          </div>
-        </div>
-      </div>
-      <div class="Progress_bar_Course">
-        <div class="card">
-          <div class="front">
-            <p class="front-heading">css language</p>
-            <img src="./Assests/css.webp" alt="" class="css">
-          </div>
-          <div class="back">
-            <p class="back-heading">Learn CSS</p>
-            <p class="des_lan">
-              In this CSS tutorial, you’ll learn how to add CSS to into eye-catching sites.</p>
-            <button class="enroolbtn">Enroll course</button>
-
+    <section class="articles">
+      <article>
+        <div class="article-wrapper">
+          <figure>
+            <img src="./Assests/html.webp" alt="" />
+          </figure>
+          <div class="article-body">
+            <h2>Html Language</h2>
+            <p>Start at the beginning by learning HTML basics important foundation for building and editing  pages.
+            </p>
+            <a href="#" class="read-more" >
+              Explore More <span class="sr-only">about this is some title</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
           </div>
         </div>
-      </div>
-      <div class="Progress_bar_Course">
-        <div class="card">
-          <div class="front">
-            <p class="front-heading">js language</p>
-            <img src="./Assests/js.webp" alt="" class="js">
-          </div>
-          <div class="back">
-            <p class="back-heading">Learn JavaScript</p>
-            <p class="des_lan">
-              Learn how to use JavaScript — a powerful and flexible programming language interactivity.</p>
-            <button class="enroolbtn">Enroll course</button>
-
-          </div>
-        </div>
-      </div>
-      <div class="Progress_bar_Course">
-        <div class="card">
-          <div class="front">
-            <p class="front-heading">mysql language</p>
-            <img src="./Assests/7723d1592a0b454cb59a32cf5ab35642-SQL2.webp" alt="" class="js">
-          </div>
-          <div class="back">
-            <p class="back-heading">Learn Mysql</p>
-            <p class="des_lan">mysql is a programing language</p>
-            <button class="enroolbtn">Enroll course</button>
-
+      </article>
+      
+      <article>
+        <div class="article-wrapper">
+          <figure>
+            <img src="./Assests/css.webp" alt="" />
+          </figure>
+          <div class="article-body">
+            <h2>Css Language</h2>
+            <p>
+              In this CSS tutorial, you’ll learn how to add CSS to visually transform HTML into eye-catching sites.
+            </p>
+            <a href="#" class="read-more" id="Exploremore">
+              Explore More <span class="sr-only">about this is some title</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
           </div>
         </div>
-      </div>
-      <div class="Progress_bar_Course">
-        <div class="card">
-          <div class="front">
-            <p class="front-heading">PHP language</p>
-            <img src="./Assests/php.webp" alt="" class="js">
-          </div>
-          <div class="back">
-            <p class="back-heading">Learn PHP</p>
-            <p class="des_lan">
-              Learn about PHP, a programming language used in modern web development.</p>
-            <button class="enroolbtn">Enroll course</button>
+      </article>
 
+      <article>
+    
+        <div class="article-wrapper">
+          <figure>
+            <img src="./Assests/js.webp" alt="" />
+          </figure>
+          <div class="article-body">
+            <h2>js Language</h2>
+            <p>
+              Learn how to use JavaScript a powerful dynamic programming language for adding website interactivity.
+            </p>
+            <a href="#" class="Explore-More" id="Exploremore">
+            Explore More <span class="sr-only">about this is some title</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
           </div>
         </div>
-      </div>
-    </div>
+      </article>
+
+      <article>
+    
+        <div class="article-wrapper">
+          <figure>
+            <img src="./Assests/7723d1592a0b454cb59a32cf5ab35642-SQL2.webp" alt="" />
+          </figure>
+          <div class="article-body">
+            <h2>Mysql Language</h2>
+            <p>
+              MySQL users to meet the database challenges generation web, cloud, and communications services.
+            </p>
+            <a href="#" class="Explore-More" id="Exploremore">
+            Explore More <span class="sr-only">about this is some title</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article>
+    
+        <div class="article-wrapper">
+          <figure>
+            <img src="./Assests/php.webp" alt="" />
+          </figure>
+          <div class="article-body">
+            <h2>Php Language</h2>
+            <p>
+              Learn the fundamentals of PHP, one of the most popular languages of modern web development.
+            </p>
+            <a href="#" class="Explore-More" id="Exploremore">
+            Explore More <span class="sr-only">about this is some title</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
   </div>
   <!-- Javascript -->
   <script src="./JS/Courses.js" type="module"></script>

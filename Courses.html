@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>LMS WEBSITE</title>
+  <link rel="stylesheet" href="./CSS/Courses.css">
+</head>
+
+<body>
+  <!-- navbar -->
+  <nav class="navbar">
+    <div class="logo_item">
+      <i class="bx bx-menu" id="sidebarOpen"></i>
+      <img src="./Assests/Logodk.png" alt="" class="DCKAPlOGO"></i>
+    </div>
+
+    <div class="search_bar">
+      <input type="text" placeholder="Search" />
+      <i class="fas fa-search" id="Sicon"></i>
+    </div>
+
+    <div class="navbar_content">
+      <i class="bi bi-grid"></i>
+      <i class='bx bx-sun' id="darkLight"></i>
+      <img src="./Assests/236831.png" alt="" class="profile" />
+    </div>
+    <div class="profile_bar_list">
+      <div class="profile_down">
+        <i class="fa fa-user" aria-hidden="true" class="profile-icon" style="color: black;"></i>
+        <P class="profile-name">profile</P>
+      </div>
+      <div class="Course_Down">
+        <i class="fa-solid fa-book"></i>
+        <P class="profile-name">My Courses</P>
+      </div>
+      <div class="profile_certicate">
+        <i class="fa-solid fa-award" class="profile-icon"></i>
+        <P class="profile-certicate">certificate</P>
+      </div>
+      <div class="log_out">
+        <i class="fa-solid fa-right-from-bracket" class="profile-icon"></i>
+        <P class="profile-name">Logout</P>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="sidebar" style="display: flex;">
+    <div class="menu_content">
+      <ul class="menu_items">
+        <li class="item">
+          <div href="index.html" class="nav_link submenu_item">
+            <span class="navlink_icon">
+              <i class="bx bx-home-alt"></i>
+            </span>
+            <span class="navlink">Home</span>
+          </div>
+
+        </li>
+        <li class="item">
+          <div href="Learning.html" class="nav_link submenu_item">
+            <span class="navlink_icon">
+              <i class="bx bx-grid-alt"></i>
+            </span>
+            <span class="navlink">learning</span>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="menu_items">
+        <li class="item">
+          <a href="dashboard.html" class="nav_link">
+            <span class="navlink_icon">
+              <i class="bx bxs-magic-wand"></i>
+            </span>
+            <span class="navlink">DashBoard</span>
+          </a>
+        </li>
+
+        <li class="item">
+          <a href="Roadmap.html" class="nav_link">
+            <span class="navlink_icon">
+              <i class="bx bx-loader-circle"></i>
+            </span>
+            <span class="navlink">RoadMap</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="set_items">
+        <li class="item">
+          <a href="#" class="nav_link">
+            <span class="navlink_icon">
+              <i class="bx bx-cog"></i>
+            </span>
+            <span class="navlink">Setting</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="bottom_content">
+        <div class="bottom expand_sidebar">
+          <span> Expand</span>
+          <i class='bx bx-log-in'></i>
+        </div>
+        <div class="bottom collapse_sidebar">
+          <span> Collapse</span>
+          <i class='bx bx-log-out'></i>
+        </div>
+      </div>
+    </div>
+    </div>
+  </nav>
+
+  <div class="progressing_bar">
+    <p class="Enroll_heading" id="headings">Enrolled Courses</p>
+    <div class="Progress_container">
+
+    </div>
+  </div>
+  <div class="List Courses">
+    <p class="Enroll_heading" id="headings">Explore Our Courses</p>
+    <section class="articles">
+      <article>
+        <div class="article-wrapper">
+          <figure>
+            <img src="./Assests/html.webp" alt="" />
+          </figure>
+          <div class="article-body">
+            <h2>Html Language</h2>
+            <p class="aboutlang">Start at the beginning by learning HTML basics important foundation for building and
+              editing pages.
+            </p>
+            <a href="#" class="read-more">
+              Explore More <span class="sr-only">about this is some title</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <div class="article-wrapper">
+          <figure>
+            <img src="./Assests/css.webp" alt="" />
+          </figure>
+          <div class="article-body">
+            <h2>Css Language</h2>
+            <p class="aboutlang">
+              In this CSS tutorial, you’ll learn how to add CSS to visually transform HTML into eye-catching sites.
+            </p>
+            <a href="#" class="read-more" id="Exploremore">
+              Explore More <span class="sr-only">about this is some title</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article>
+
+        <div class="article-wrapper">
+          <figure>
+            <img src="./Assests/js.webp" alt="" />
+          </figure>
+          <div class="article-body">
+            <h2>js Language</h2>
+            <p class="aboutlang">
+              Learn how to use JavaScript a powerful programming language for adding website interactivity.
+            </p>
+            <a href="#" class="Explore-More" id="Exploremore">
+              Explore More <span class="sr-only">about this is some title</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article>
+
+        <div class="article-wrapper">
+          <figure>
+            <img src="./Assests/7723d1592a0b454cb59a32cf5ab35642-SQL2.webp" alt="" />
+          </figure>
+          <div class="article-body">
+            <h2>Mysql Language</h2>
+            <p class="aboutlang">
+              MySQL users to meet the database challenges generation web, cloud, and communications services.
+            </p>
+            <a href="#" class="Explore-More" id="Exploremore">
+              Explore More <span class="sr-only">about this is some title</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article>
+
+        <div class="article-wrapper">
+          <figure>
+            <img src="./Assests/php.webp" alt="" />
+          </figure>
+          <div class="article-body">
+            <h2>Php Language</h2>
+            <p class="aboutlang">
+              Learn the fundamentals of PHP, one of the most popular languages of modern web development.
+            </p>
+            <a href="#" class="Explore-More" id="Exploremore">
+              Explore More <span class="sr-only">about this is some title</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+  </div>
+  <!-- Javascript -->
+  <script src="./JS/Courses.js" type="module"></script>
+</body>
+
+</html>

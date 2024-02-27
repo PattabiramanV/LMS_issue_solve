@@ -8,6 +8,15 @@ function signup_page() {
     }, 1000);
 }
 
+let login = document.querySelector("#login_btn");
+
+login.addEventListener("click", (e) => {
+   e.preventDefault(e)
+     console.log("hi");
+    window.location.href = "index.html";
+});
+
+
 // ---------password icon--------
 let log_email=document.getElementById("log")
 let log_password=document.getElementById("log_pass")

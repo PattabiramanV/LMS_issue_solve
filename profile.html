@@ -7,24 +7,16 @@
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <title>LMS WEBSITE</title>
-  <link rel="stylesheet" href="/CSS/profile.css">
+  <link rel="stylesheet" href="./CSS/profile.css">
+  <link rel="icon" type="image/x-icon" href="./Assests/icons8-learning-50.png" />
 </head>
 
-
-
-
-
-
-
-
-
-<h2></h2>
 <body>
   <!-- navbar -->
   <nav class="navbar">
     <div class="logo_item">
       <i class="bx bx-menu" id="sidebarOpen"></i>
-      <img src="/Assests/Dckap Logo.png" alt="" class="DCKAPlOGO"></i>
+      <img src="./Assests/Logodk.png" alt="" class="DCKAPlOGO"></i>
     </div>
 
     <div class="search_bar">
@@ -35,22 +27,22 @@
     <div class="navbar_content">
       <i class="bi bi-grid"></i>
       <i class='bx bx-sun' id="darkLight"></i>
-      <img src="/Assests/236831.png" alt="" class="profile" />
+      <img src="./Assests/236831.png" alt="" class="profile" />
     </div>
     <div class="profile_bar_list">
       <div class="profile_down">
-        <i class="fa fa-user" aria-hidden="true" class="profile-icon" style="color: black;"></i>
+        <i class="fa fa-user" aria-hidden="true" class="profile-icon"></i>
         <P class="profile-name">profile</P>
       </div>
       <div class="Course_Down">
         <i class="fa-solid fa-book"></i>
         <P class="profile-name">My Courses</P>
       </div>
-      <div class="Drop_Down">
+      <div class="profile_certicate">
         <i class="fa-solid fa-award" class="profile-icon"></i>
-        <P class="profile-name">certificate</P>
+        <P class="profile-certicate">certificate</P>
       </div>
-      <div class="Drop_Down">
+      <div class="log_out">
         <i class="fa-solid fa-right-from-bracket" class="profile-icon"></i>
         <P class="profile-name">Logout</P>
       </div>
@@ -62,7 +54,7 @@
     <div class="menu_content">
       <ul class="menu_items">
         <li class="item">
-          <div href="#" class="nav_link submenu_item">
+          <div href="index.html" class="nav_link submenu_item">
             <span class="navlink_icon">
               <i class="bx bx-home-alt"></i>
             </span>
@@ -71,7 +63,7 @@
 
         </li>
         <li class="item">
-          <div href="#" class="nav_link submenu_item">
+          <div href="Learning.html" class="nav_link submenu_item">
             <span class="navlink_icon">
               <i class="bx bx-grid-alt"></i>
             </span>
@@ -82,7 +74,7 @@
 
       <ul class="menu_items">
         <li class="item">
-          <a href="#" class="nav_link">
+          <a href="dashboard.html" class="nav_link">
             <span class="navlink_icon">
               <i class="bx bxs-magic-wand"></i>
             </span>
@@ -92,7 +84,7 @@
 
 
         <li class="item">
-          <a href="#" class="nav_link">
+          <a href="Roadmap.html" class="nav_link">
             <span class="navlink_icon">
               <i class="bx bx-loader-circle"></i>
             </span>
@@ -135,7 +127,7 @@
       <div class="Users_img">
         <input type="file" id="uploadInput" style="display: none;">
         <div id="imageContainer">
-          <img src="/Assests/236831.png" alt="">
+          <img src="./Assests/236831.png" alt="">
         </div>
         <button id="uploadButton">Upload Image</button>
 
@@ -144,17 +136,17 @@
         <div class="User_name_details">
           <div class="name_details">
             <label for="Name">Full Name</label>
-            <span id="fullName">Harish Sharma</span>
+            <span id="fullName"></span>
             <input type="text" id="fullNameInput" style="display: none;">
           </div>
           <div class="edit_button">
-            <button class="editbtnName" >Edit</button>
+            <button class="editbtnName">Edit</button>
           </div>
         </div>
         <div class="User_name_details">
           <div class="email_details">
             <label for="Email">Email</label>
-            <span id="emailadd">hari.sdckap@gmail.com</span>
+            <span id="emailadd"></span>
           </div>
           <div class="edit_button">
             <button class="editbtn" onclick="showEmail()">Edit</button>
@@ -163,7 +155,7 @@
         <div class="User_name_details">
           <div class="Git_details">
             <label for="Git_hub">Git_Hub Username</label>
-            <span id="gitadd">Harisdckap(Harisdckap)</span>
+            <span id="gitadd"></span>
             <input type="text" id="gitinput" style="display: none;">
           </div>
           <div class="edit_button">
@@ -173,17 +165,27 @@
         <div class="User_name_details">
           <div class="Bio_details">
             <label for="Bio">Bio Information:</label>
-            <span id="bioInfo">Hi Iam Hari Software Trainee at DCKAP Palli.</span>
+            <span id="bioInfo"></span>
             <textarea id="bioInput" rows="2" cols="50" style="display: none;"></textarea>
           </div>
           <div class="edit_button">
             <button class="editbtnn">Edit</button>
           </div>
         </div>
+        <div class="User_name_details">
+          <div class="linkedin_details">
+            <label for="linked">linkin Information:</label>
+            <span id="linked_info"></span>
+          <input  type="text" id="linkedInInput" style="display: none;">
+          </div>
+          <div class="edit_button">
+            <button class="editbtnlink">Edit</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
- 
+
 </body>
 <!-- Javascript -->
 <script src="/JS/profile.js" type="module"></script>

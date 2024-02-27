@@ -18,8 +18,8 @@
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  import { getFirestore,getDoc,getDocs,setDoc,updateDoc,doc,addDoc,collection,deleteDoc, deleteField } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
+  import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+  
 let db=getFirestore(app);
 let find_language=0;
 
@@ -29,29 +29,62 @@ let all_learn_more_btn=document.querySelectorAll(".learn_more_btn");
 
 all_learn_more_btn.forEach((btn,index)=>{
 
-    btn.addEventListener("click",()=>{
-if(index==0){
-console.log("pattabi");
+    btn.addEventListener("click",async()=>{
+
+      find_language=btn.parentElement.previousElementSibling.previousElementSibling.firstElementChild.lastElementChild.innerHTML;
+let id=0;
+let ref_data=doc(db,"Learning",`${id}`);
+ let data_set=await updateDoc(
+    ref_data,{
+        Find_Language_type:find_language,
+        find_index:id,
+        Html_Complete_Module:0,
+        Html_Total_Percentage:0,
+        Css_Complete_Module:0,
+        Css_Total_Percentage:0,
+        Javascript_Complete_Module:0,
+        Javascript_Total_Percentage:0,
+        Mysql_Complete_Module:0,
+        Mysql_Total_Percentage:0,
+        user_unlock_total_module:0
+
+    }
+).then(()=>{
+    alert("sucessfully");
+}).catch((err)=>{
+    console.log(err);
+});
     window.location.href='learning_content.html';
-}
+
+ 
+
     })
 });
 
-// all_learn_more_btn[0].addEventListener("click",async()=>{
+let all_percentage_show_tag=document.querySelectorAll("strong");
+// all_percentage_show_tag.forEach( async(percentage_tag)=>{
 
-//     let ref_data=collection(db,"Learning");
-//     let data_set=await addDoc(
-//         ref_data,{
-//             Find_Language_type:find_language
-//         }
-//     ).then(()=>{
-//         alert("sucessfully");
-//     }).catch((err)=>{
-//         console.log(err);
-//     });
-//     // window.location.href='/DCKAP_LMS/Learn_study_page/learning_content.html/';
+  let ref=doc(db,'Learning',`0`);
+  let data_ref=await getDoc(ref);
+
+//   percentage_tag.innerHTML=data_ref.data().Html_Total_Percentage;
+
+// })
+all_percentage_show_tag[0].innerHTML=data_ref.data().Html_Total_Percentage;
+all_percentage_show_tag[1].innerHTML=data_ref.data().Css_Total_Percentage;
+all_percentage_show_tag[2].innerHTML=data_ref.data().Javascript_Total_Percentage;
+all_percentage_show_tag[3].innerHTML=data_ref.data().Mysql_Total_Percentage;
+
+
+// all_learn_more_btn[0].addEventListener("click",async(event)=>{
+
+//   console.log(event);
+   
 // })
 
+// let ref_data=collection(db,"Learning");
+// let get_data=await getDocs(ref_data);
+// console.log(get_data.size);
 
 let Quiz_object={
 
@@ -167,8 +200,25 @@ CSS:{
 
 
 
+let left_side_bar=document.querySelectorAll(".navlink");
 
+left_side_bar[0].addEventListener("click",()=>{
+  
+  window.location.href='index.html'
+});
 
+left_side_bar[1].addEventListener("click",()=>{
+
+  window.location.href='Learning.html  '
+});
+left_side_bar[2].addEventListener("click",()=>{
+
+  window.location.href='dashboard.html';
+});
+left_side_bar[3].addEventListener("click",()=>{
+
+  window.location.href='Roadmap.html';
+});
 
 
 
@@ -225,23 +275,6 @@ darkLight.addEventListener("click", () => {
   }
 });
 
-submenuItems.forEach((item, index) => {
-  item.addEventListener("click", () => {
-    item.classList.toggle("show_submenu");
-    submenuItems.forEach((item2, index2) => {
-      if (index !== index2) {
-        item2.classList.remove("show_submenu");
-      }
-    });
-  });
-});
-
-if (window.innerWidth < 768) {
-  sidebar.classList.add("close");
-} else {
-  sidebar.classList.remove("close");
-}
-
 
 
 // Profile
@@ -250,24 +283,45 @@ let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");
 
 profile_navigate.addEventListener("click", (event) => {
-    event.stopPropagation();
-    profile_Dropdown.style.display = "block";
+  event.stopPropagation();
+  profile_Dropdown.style.display = "block";
 });
 
 document.addEventListener("click", (event) => {
-    if (!profile_navigate.contains(event.target) && !profile_Dropdown.contains(event.target)) {
-        profile_Dropdown.style.display = "none"; 
-    }
+  if (
+    !profile_navigate.contains(event.target) &&
+    !profile_Dropdown.contains(event.target)
+  ) {
+    profile_Dropdown.style.display = "none";
+  }
+});
+
+let Cancel_btn=document.querySelector(".cancel_btn")
+
+Cancel_btn.addEventListener("click", () => {
+    window.location.href="Roadmap.html";
 });
 
 // profile_drop
 
-let profile_page=document.querySelector(".profile_down")
- profile_page.addEventListener("click",()=>{
-        window.location.href="/profile_user_page/profile.html"
-})
+let profile_page = document.querySelector(".profile_down");
+profile_page.addEventListener("click", () => {
+  window.location.href = "./profile.html";
+});
 
-let Course_navigate=document.querySelector(".Course_Down")
-Course_navigate.addEventListener("click",()=>{
-      window.location.href="/Profile_main_page/Courses.html"
-})
+let Course_navigate = document.querySelector(".Course_Down");
+Course_navigate.addEventListener("click", () => {
+  window.location.href = "./Courses.html";
+});
+
+let Certi_page = document.querySelector(".profile_certicate");
+
+Certi_page.addEventListener("click", () => {
+  window.location.href = "./certificate.html";
+});
+
+let logout = document.querySelector(".log_out");
+
+logout.addEventListener("click", () => {
+  window.location.href = "./login.html";
+});

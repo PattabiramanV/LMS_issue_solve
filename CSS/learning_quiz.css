@@ -21,7 +21,7 @@ body, html {
   --background-color-red:rgb(207,46,46) 100%;
 }
 body {
-  background-color: #e7f2fd;
+  background-color: #F1EAFF;
   transition: all 0.5s ease;
 }
 body.dark {
@@ -291,35 +291,37 @@ i.fa-solid.fa-right-from-bracket {
 
 
 .bottom_content_quiz {
-  padding: 10px 20px;
+  padding: 10px 20px 20px 20px;
   width: 60%;
-  height: 315px;
+  /* height: 345px; */
+  max-height: 500px;
   margin: 151px auto 0px 360px;
   /* text-align: center; */
-  background-color: lightsalmon;
+  background-color: rgb(225 240 218 / 54%);
   margin-top: 140px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   gap: 30px;
   /* display: none; */
+  box-shadow: 0px 0px 9px gray;
 }
 
-.bottom_quiz_btn button{
-
-  height: 30px;
+.bottom_quiz_btn button {
+  height: 36px;
   width: 100px;
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0px 2px gray;
-  background-color: rgba(170, 62, 226, 1);
-  font-size: 14px;
+  background-color: rgb(168 47 41);
+  font-size: 16px;
   font-weight: bolder;
   cursor: pointer;
-
+  color: #FFFFFF;
 }
 button:hover{
+  background-color: rgba(168, 47, 41, 0.744);
   transform: scale(1.05);
 
 }
@@ -331,6 +333,9 @@ button:hover{
 }
 .options_4>*,label:hover{
   cursor: pointer;
+  font-size: 16px;
+    font-weight: 500;
+    color: gray;
 }
 
 /* button.previous_btn {
@@ -346,6 +351,32 @@ button:hover{
 
   display: none;
 }
+.bottom_content_quiz h2 {
+  background: -webkit-linear-gradient(#99ecae,#B784B7,rgb(168 47 41));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 30px;
+  text-align: center;
+}
+h3#Quiz_question {
+  font-size: 22px;
+}
+form.options_4 {
+  line-height: 20px;
+  font-size: 16px;
+}
+
+form input {
+  width: 20px;
+  height: 16px;
+}
+form label{
+  position: relative;
+  bottom: 3px;
+}
+.bottom_content_quiz strong {
+  font-size: 34px;
+}
 
 /*........................................Quiz Result....................*/
 
@@ -353,13 +384,14 @@ button:hover{
   width: 52%;
   background-color: #FFFFFF;
   box-shadow: 0px 0px 12px 0px grey;
-  margin: 0 auto;
-  margin-top: 140px;
+  margin: 0 428px;
+  margin-top: 170px;
   /* height: 350px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 45px;
+  border-radius: 8px;
   display: none;
 }
 
@@ -413,7 +445,7 @@ button:hover{
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-  padding: 10px;
+  padding: 14px;
 
 }
 
@@ -422,13 +454,20 @@ button:hover{
   font-size: 16px;
 }
 .two_btn button {
-  height: 30px;
+  height: 36px;
   border: none;
-  border-radius: 7px;
-  background-color: #9C27B0;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px gray;
+  background-color: rgb(168 47 41);
+  font-size: 14px;
   font-weight: bolder;
+  cursor: pointer;
+  color: #FFFFFF;
 }
-
+.two_btn button:hover{
+  background-color: rgba(168, 47, 41, 0.744);
+  transform: scale(1.05);
+}
 #retry_btn{
   display: none;
 }

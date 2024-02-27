@@ -168,13 +168,16 @@ async function quiz_mark_validate_Fun(){
   let data_ref=await getDoc(ref);
   let total_title=data_ref.data().left_headings;
 
-  // console.log(find_language_percentage.Html_Total_Percentage+1);
-  // console.log(total_title.length);
+total_title=total_title.length-1;
+if(find_complete_module==0){
+  find_complete_module=find_complete_module+1
 
+}
+// console.log(1/(total_title.length-1)*100);
   let get_data= await updateDoc(
    get_ref,{
-    [find_language+'_Total_Percentage']:Math.floor(find_language_percentage+1/total_title.length*100),
-    [find_language+'_Complete_Module']:find_complete_module+1
+    [find_language+'_Total_Percentage']:Math.floor(find_language_percentage+find_complete_module/total_title*100),
+    [find_language+'_Complete_Module']:find_complete_module
    }
   )
 
@@ -182,6 +185,7 @@ async function quiz_mark_validate_Fun(){
 }
 let get_quiz=doc(db,`${find_language}_Quiz`,`${find_index}`)
 let get_quiz_obj=await getDoc(get_quiz);
+
 let Quiz_object=get_quiz_obj.data().Quiz_1  ;
 // console.log(Quiz_object);
 // console.log(get_quiz_obj.data());
@@ -211,7 +215,8 @@ let previous_btn=document.querySelector(".previous_btn");
 let submit_btn=document.querySelector('.quiz_sunmit_btn');
 let form_radio_btn_4=document.forms.radio_4_btn_form;
 let all_radio_btn=form_radio_btn_4.radio_value_1;
-
+let Ex_no=document.querySelector("strong");
+Ex_no.innerHTML=find_index;
 next_btn.addEventListener("click",function(){ Quiz_change_Fun(this)});
 previous_btn.addEventListener("click",function(){ Quiz_change_Fun(this)});
 
@@ -341,7 +346,8 @@ function validate_quiz_fun(){
 
     Quiz_result_div.classList.add("Answer_show_page_classlist");
     main_quiz_div.classList.add("bootm_content_quiz_classlist");
-
+let all_P_tag=document.querySelectorAll(".result_show_content");
+console.log(all_P_tag);
     all_score_content[0].innerHTML=Quiz_object.length;
     all_score_content[1].innerHTML=total_mark;
     all_score_content[2].innerHTML=Math.floor(total_mark/Quiz_object.length*100);
@@ -350,10 +356,18 @@ function validate_quiz_fun(){
    retry_btn.style.display='block';
    right_thumsup.classList.add("right_thumsup_class_list");
    thumsup_img.src="Assests/thumbs-up (2).png";
+
+   all_P_tag[0].innerHTML="You don't get 100%. So you not eligible for go the next module."
+   all_P_tag[1].innerHTML='When you complete the quiz without wrong you will be move next module. '
     }
     else{
         next_module_btn.style.display='block';
    retry_btn.style.display='none';
+   right_thumsup.classList.remove("right_thumsup_class_list");
+   thumsup_img.src="Assests/thumbs-up (1).png";
+   all_P_tag[0].innerHTML='Sucessfully complete the excersize and you eligible for go the next module.'
+   all_P_tag[1].innerHTML='Congralation you unlocked the first excersize.'
+
    quiz_mark_validate_Fun();
     }
 
@@ -382,6 +396,7 @@ button_showing_Fun()
 
 next_module_btn.addEventListener("click",async()=>{
   let ref_data=doc(db,"Learning",`0`);
+  
     let data_set=await updateDoc(
         ref_data,{
             find_index:find_index+1

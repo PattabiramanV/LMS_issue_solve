@@ -349,7 +349,17 @@ button.learn_more_btn {
     position: relative;
     left: 134px;
 }
+.bottom_2_card{
+  position: relative;
+  left: 160px;
+}
 
+.card_5 span {
+  font-size: 16px;
+  font-weight: 900;
+}
 button:hover{
     cursor: pointer;
 }
+
+

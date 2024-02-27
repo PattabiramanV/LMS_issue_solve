@@ -31,7 +31,7 @@ all_learn_more_btn.forEach((btn,index)=>{
 
     btn.addEventListener("click",async()=>{
 
-find_language=btn.previousElementSibling.firstElementChild.innerHTML;
+      find_language=btn.parentElement.previousElementSibling.previousElementSibling.firstElementChild.lastElementChild.innerHTML;
 let id=0;
 let ref_data=doc(db,"Learning",`${id}`);
  let data_set=await updateDoc(
@@ -45,7 +45,9 @@ let ref_data=doc(db,"Learning",`${id}`);
         Javascript_Complete_Module:0,
         Javascript_Total_Percentage:0,
         Mysql_Complete_Module:0,
-        Mysql_Total_Percentage:0
+        Mysql_Total_Percentage:0,
+        user_unlock_total_module:0
+
     }
 ).then(()=>{
     alert("sucessfully");
@@ -58,6 +60,21 @@ let ref_data=doc(db,"Learning",`${id}`);
 
     })
 });
+
+let all_percentage_show_tag=document.querySelectorAll("strong");
+// all_percentage_show_tag.forEach( async(percentage_tag)=>{
+
+  let ref=doc(db,'Learning',`0`);
+  let data_ref=await getDoc(ref);
+
+//   percentage_tag.innerHTML=data_ref.data().Html_Total_Percentage;
+
+// })
+all_percentage_show_tag[0].innerHTML=data_ref.data().Html_Total_Percentage;
+all_percentage_show_tag[1].innerHTML=data_ref.data().Css_Total_Percentage;
+all_percentage_show_tag[2].innerHTML=data_ref.data().Javascript_Total_Percentage;
+all_percentage_show_tag[3].innerHTML=data_ref.data().Mysql_Total_Percentage;
+
 
 // all_learn_more_btn[0].addEventListener("click",async(event)=>{
 

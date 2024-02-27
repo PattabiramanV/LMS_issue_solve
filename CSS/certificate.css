@@ -311,6 +311,7 @@ i.fa-solid.fa-right-from-bracket {
 }
 .certi_img
 {
+  opacity: 0.7;
   width: 65%;
   height: 65%;
 }
@@ -346,6 +347,7 @@ i.fa-solid.fa-right-from-bracket {
 }
 .start_quiz_btn
 {
+  /* opacity: 0.5; */
   top: -10%;
   margin-left: 12%;
   width: 40%;
@@ -358,8 +360,8 @@ i.fa-solid.fa-right-from-bracket {
   font-weight: 600;
   /* letter-spacing: 2px; */
   /* background: transparent; */
-  background: #D0F0C0;
-  color: #01411C;
+  background: #EDC9AF ;
+  color: #cd5700;
   overflow: hidden;
   box-shadow: 0 0 0 0 transparent;
   -webkit-transition: all 0.2s ease-in;
@@ -368,8 +370,9 @@ i.fa-solid.fa-right-from-bracket {
 }
 .start_quiz_btn:hover
 {
-  color: #0c4101;
-  background: #DADD98;
+  color: #cd5700;
+  /* background: #FEBA4F; */
+  background: #F6CBA0;
   /* box-shadow: 0 0 10px 2px #ADFF2F; */
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
@@ -391,8 +394,8 @@ i.fa-solid.fa-right-from-bracket {
   top: 0%;
   left: 0%;
   opacity: 0;
-  background: #808000;
-  box-shadow: 0 0 50px 30px #4F7942;;
+  background: #FFA836;
+  box-shadow: 0 0 50px 30px #F2CA85;
   -webkit-transform: skewX(-20deg);
   -moz-transform: skewX(-20deg);
   -ms-transform: skewX(-20deg);
@@ -429,10 +432,27 @@ i.fa-solid.fa-right-from-bracket {
   top: -35%;
   margin-left: 30%;
   /* left: 30%; */
-  font-size: 280%;
+  font-size: 300%;
   /* color: #49a843; */
 }
 
+/* ------------- Error btn ---------------- */
+.error
+{
+  position: absolute;
+  top: 12%;
+  right: 0%;
+  background-color: #FFCEFE;
+  padding: 0% 1%;
+  border-radius: 10px;
+  box-shadow: 2px 2px 1px 1px #B1AFFF;
+  display: none;
+}
+.para_error
+{
+  color: #EE7214;
+  font-weight: 700;
+}
 
 
 

@@ -97,38 +97,181 @@ Course_navigate.addEventListener("click",()=>{
       window.location.href="./Courses.html"
 })
 
+// fire_base
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// --------------- CSS Quiz -------------------
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
+  authDomain: "dckap-lms-project.firebaseapp.com",
+  projectId: "dckap-lms-project",
+  storageBucket: "dckap-lms-project.appspot.com",
+  messagingSenderId: "1022626638467",
+  appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(); // Create a Firestore instance
+
+// --------------- HTML Quiz -------------------
+
+async function html_quiz_btn() 
+{
+  try 
+  {
+      const getRef = doc(db, 'Learning', '0');
+      const getData = await getDoc(getRef);
+      const data = getData.data();
+      localStorage.setItem('Quiz1', data.Html_Total_Percentage);
+  } 
+  catch(error) 
+  {
+      console.error("Error fetching and updating data:", error); 
+      return 0; 
+  }
+}
+// Call the quiz_btn function
+html_quiz_btn();
+// Retrieve Html_Total_Percentage from localStorage
+const Html_Total_Percentage = localStorage.getItem('Quiz1');
+console.log(Html_Total_Percentage); // Output the value to debug
 
 const html_btn =document.querySelector("#html_btn");
 html_btn.addEventListener("click", () => {
-  localStorage.setItem('selectedQuiz', 'HTML_Overall_Quiz');
-  localStorage.setItem('certificate_get', 'HTML_Overall_Quiz');
-  window.location.href = 'OverallQuiz.html';
+  if(Html_Total_Percentage === 100)
+  {
+    localStorage.setItem('selectedQuiz', 'HTML_Overall_Quiz');
+    localStorage.setItem('certificate_get', 'HTML_Overall_Quiz');
+    window.location.href = 'OverallQuiz.html';
+    document.getElementsByClassName("html_lock").style.display = "none";
+  }
+  else
+  {
+    document.getElementById("html_error").style.display = "block";
+    setInterval(() => {
+      document.getElementById("html_error").style.display = "none";
+    }, 4000);
+  }
 });
 
+// --------------- CSS Quiz -------------------
+
+async function css_quiz_btn() 
+{
+  try 
+  {
+      const getRef = doc(db, 'Learning', '0');
+      const getData = await getDoc(getRef);
+      const data = getData.data();
+      localStorage.setItem('Quiz2', data.Css_Total_Percentage);
+  } 
+  catch(error) 
+  {
+      console.error("Error fetching and updating data:", error); 
+      return 0; 
+  }
+}
+// Call the quiz_btn function
+css_quiz_btn();
+// Retrieve Html_Total_Percentage from localStorage
+const Css_Total_Percentage = localStorage.getItem('Quiz2');
+console.log(Css_Total_Percentage);
 
 const css_quiz = document.querySelector("#css_btn");
 css_quiz.addEventListener("click", () => {
-  localStorage.setItem('selectedQuiz', 'CSS_Overall_Quiz');
-  localStorage.setItem('certificate_get', 'CSS_Overall_Quiz');
-  // console.log('CSS quiz button clicked');
-  // console.log('selectedQuiz in localStorage:', localStorage.getItem('selectedQuiz'));
-  window.location.href = 'OverallQuiz.html';
+  if(Css_Total_Percentage === 100)
+  {
+    localStorage.setItem('selectedQuiz', 'CSS_Overall_Quiz');
+    localStorage.setItem('selectedQuiz', 'CSS_Overall_Quiz');
+    window.location.href = 'OverallQuiz.html';
+  }
+  else
+  {
+    document.getElementById("css_error").style.display = "block";
+    setInterval(() => {
+      document.getElementById("css_error").style.display = "none";
+    }, 4000);
+  }
 
 });
+
+// --------------- js Quiz -------------------
+
+async function js_quiz_btn() 
+{
+  try 
+  {
+      const getRef = doc(db, 'Learning', '0');
+      const getData = await getDoc(getRef);
+      const data = getData.data();
+      localStorage.setItem('Quiz3', data.Javascript_Total_Percentage);
+  }
+  catch(error) 
+  {
+      console.error("Error fetching and updating data:", error); 
+      return 0; 
+  }
+}
+// Call the quiz_btn function
+js_quiz_btn();
+// Retrieve Html_Total_Percentage from localStorage
+const Javascript_Total_Percentage = localStorage.getItem('Quiz3');
+console.log(Javascript_Total_Percentage);
+
 
 const js_btn =document.querySelector("#js_btn");
 js_btn.addEventListener("click", () => {
-  localStorage.setItem('selectedQuiz', 'JavaScript_Overall_Quiz');
-  localStorage.setItem('certificate_get', 'JavaScript_Overall_Quiz');
-  window.location.href = 'OverallQuiz.html';
+  if(Javascript_Total_Percentage === 100)
+  {
+    localStorage.setItem('selectedQuiz', 'JavaScript_Overall_Quiz');
+    window.location.href = 'OverallQuiz.html';
+  }
+  else
+  {
+    document.getElementById("js_error").style.display = "block";
+    setInterval(() => {
+      document.getElementById("js_error").style.display = "none";
+    }, 4000);
+  }
 });
+
+// --------------- mysql Quiz -------------------
+
+async function mysql_quiz_btn() 
+{
+  try 
+  {
+      const getRef = doc(db, 'Learning', '0');
+      const getData = await getDoc(getRef);
+      const data = getData.data();
+      localStorage.setItem('Quiz4', data.Mysql_Total_Percentage);
+  } 
+  catch(error) 
+  {
+      console.error("Error fetching and updating data:", error); 
+      return 0; 
+  }
+}
+// Call the quiz_btn function
+mysql_quiz_btn();
+// Retrieve Html_Total_Percentage from localStorage
+const Mysql_Total_Percentage = localStorage.getItem('Quiz4');
+console.log(Mysql_Total_Percentage);
 
 const mysql_btn =document.querySelector("#mysql_btn");
 mysql_btn.addEventListener("click", () => {
-  
-  localStorage.setItem('selectedQuiz', 'MySql_Overall_Quiz');
-  localStorage.setItem('certificate_get', 'MySql_Overall_Quiz');
-  window.location.href = 'OverallQuiz.html';
+  if(Mysql_Total_Percentage === 100)
+  {
+    localStorage.setItem('selectedQuiz', 'MySql_Overall_Quiz');
+    window.location.href = 'OverallQuiz.html';
+  }
+  else
+  {
+    document.getElementById("mysql_error").style.display = "block";
+    setInterval(() => {
+      document.getElementById("mysql_error").style.display = "none";
+    }, 4000);
+  }
 });

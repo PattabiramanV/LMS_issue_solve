@@ -68,6 +68,19 @@ document.addEventListener("click", (event) => {
   }
 });
 
+// Cancel Btn
+
+let cancel_btn = document.querySelector(".cancel_btn");
+    cancel_btn.addEventListener('click', (e) => {
+    
+      let previousLocation = localStorage.getItem('previous_location');
+      if (previousLocation) {
+        window.location.href = previousLocation;
+      } else {
+        window.location.href = './index.html';
+      }
+    });
+
 // profile_drop
 
 let profile_page = document.querySelector(".profile_down");
@@ -320,15 +333,11 @@ async function saveLinkedInToFirebase(linkedIn) {
   }
 }
 
-let cancel_navigate = document.querySelector(".cancel_btn");
-cancel_navigate.addEventListener("click", () => {
-  window.location.href = "./profile.html";
-});
-
 const uploadButton = document.getElementById("uploadButton");
 uploadButton.addEventListener("click", function () {
   fileInput.click();
 });
+
 const fileInput = document.getElementById("uploadInput");
 const imageContainer = document.getElementById("imageContainer");
 let previousImageDocId = null;

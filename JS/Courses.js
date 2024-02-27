@@ -234,7 +234,9 @@ left_side_bar[3].addEventListener("click", () => {
   window.location.href = "./Roadmap.html";
 });
 
-
+document.querySelector('.profile_down').addEventListener('click', function() {
+  localStorage.setItem('previous_location', window.location.href);
+});
 
 
 // Button Navigation

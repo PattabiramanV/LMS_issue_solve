@@ -216,7 +216,7 @@ let left_headings=get_content_obj.data().left_headings;
 
 let p_tag;
 let lock_icon;
-console.log(user_unlock_total_module);
+// console.log(user_unlock_total_module);
 heading_append_Fun(left_headings);
 
 function heading_append_Fun(arr){
@@ -237,7 +237,7 @@ function heading_append_Fun(arr){
 
     left_heading_content.append(content_heading_div);
     // all_heading_title.append(content_heading_div);
-   console.log(find_index);
+  //  console.log(find_index);
     // lock_icon_remove_Fun(index)
     if(index<find_complete_module+1 || (index<=find_complete_module+1 && find_complete_module!=0 ) ){
       lock_icon.style.display='none';
@@ -344,42 +344,35 @@ all_heading_title.forEach((title,index)=>{
 
  title.addEventListener("click",async()=>{
 
-  if(find_complete_module+1>=index){
-    let ref_data=doc(db,"Learning",`0`);
-    let get_data= await getDoc(ref_data);
-    let user_unlock_total_module=get_data.data().user_unlock_total_module;
-    let data_set=await updateDoc(
-        ref_data,{
-            find_index:index,
+//   if(find_complete_module+1>=index){
+//     let ref_data=doc(db,"Learning",`0`);
+//     let get_data= await getDoc(ref_data);
+//     let user_unlock_total_module=get_data.data().user_unlock_total_module;
+//     let data_set=await updateDoc(
+//         ref_data,{
+//             find_index:index,
             
-        }
-    )
-    if(user_unlock_total_module<index){
-      updateDoc(
-        ref_data,{
+//         }
+//     )
+//     if(user_unlock_total_module<index){
+//       updateDoc(
+//         ref_data,{
           
-            user_unlock_total_module:index
+//             user_unlock_total_module:index
             
-        }
-    )
-    }
+//         }
+//     )
+//     }
     
-all_heading_title=document.querySelectorAll(".content_title");
-    all_heading_title[index].parentElement.lastElementChild.style.display='none';
-    all_heading_title[index].classList.add("left_heding");
-quiz_btn_Change_Fun()
+// all_heading_title=document.querySelectorAll(".content_title");
+//     all_heading_title[index].parentElement.lastElementChild.style.display='none';
+//     all_heading_title[index].classList.add("left_heding");
+// quiz_btn_Change_Fun()
 
-
-    // if(value<find_complete_module+1){
-      // console.log(title.parentElement.lastElementChild);
-      // title.parentElement.lastElementChild.style.display='none';
-      // title.classList.add("left_heding")
-    // }
-  
-  }
-  else{
-    alert("please complete previous module")
-  }
+//   }
+//   else{
+//     alert("please complete previous module")
+//   }
  
  
   
@@ -397,6 +390,7 @@ quiz_btn_Change_Fun()
 
 
 async function content_showing_fun(language,index){
+  console.log("raman");
   let ref=doc(db,`${language}_Content`,`${index}`);
   let data_ref=await getDoc(ref);
 // console.log(data_ref.data().iframe);
@@ -404,6 +398,7 @@ async function content_showing_fun(language,index){
 content_top.innerHTML=data_ref.data().top_content;
 iframe.src=data_ref.data().iframe;
 bottom_content.innerHTML=data_ref.data().bottom_content;
+
 
 }
 

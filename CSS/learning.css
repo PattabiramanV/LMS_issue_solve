@@ -17,7 +17,7 @@ body, html {
   --background:rgb(255, 255, 255);
   --background-color-hover: rgba(30, 245, 2, 0.986);
   --background-color-btn: #49a843;
-  --background-color-li: #99ecae75 !important;
+  --background-color-li: #8000801c !important;
 }
 body {
   background-color: #e7f2fd;
@@ -241,15 +241,14 @@ ul.set_items {
 }
 
 /* Profile DropDown */
-
 .profile_bar_list {
-  top: 72px;
-  width: 16%;
+  top: 77px;
+  width: 13%;
   background: rgb(255 255 255 / 78%);
   border-radius: 8px;
   color: rgb(18, 22, 10);
   position: absolute;
-  right: 3%;
+  right: 5%;
   display: none;
   border: 1px solid lightgray;
   cursor: pointer;
@@ -257,7 +256,9 @@ ul.set_items {
 
 .Drop_Down,
 .profile_down,
-.Course_Down {
+.Course_Down,
+.profile_certicate,
+.log_out {
   display: flex;
   align-items: center;
   width: 100%;
@@ -266,13 +267,15 @@ ul.set_items {
 }
 
 .Drop_Down:hover,
-.profile_down:hover,.Course_Down:hover {
-  background-color: rgba(91, 231, 35, 0.226);
-  border-radius: 8px;
+.profile_down:hover,
+.Course_Down:hover,
+.profile_certicate:hover,
+.log_out:hover {
+  background-color: #ffffff1c;
 }
 
 p.profile-name {
-  width: 50%;
+  width: 100%;
   align-items: flex-start;
   display: flex;
 }
@@ -349,7 +352,17 @@ button.learn_more_btn {
     position: relative;
     left: 134px;
 }
+.bottom_2_card{
+  position: relative;
+  left: 160px;
+}
 
+.card_5 span {
+  font-size: 16px;
+  font-weight: 900;
+}
 button:hover{
     cursor: pointer;
 }
+
+

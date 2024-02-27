@@ -271,13 +271,13 @@ ul.set_items
 /* Profile DropDown */
 
 .profile_bar_list {
-  top: 72px;
-  width: 16%;
+  top: 77px;
+  width: 13%;
   background: rgb(255 255 255 / 78%);
   border-radius: 8px;
   color: rgb(18, 22, 10);
   position: absolute;
-  right: 3%;
+  right: 5%;
   display: none;
   border: 1px solid lightgray;
   cursor: pointer;
@@ -285,7 +285,9 @@ ul.set_items
 
 .Drop_Down,
 .profile_down,
-.Course_Down {
+.Course_Down,
+.profile_certicate,
+.log_out {
   display: flex;
   align-items: center;
   width: 100%;
@@ -294,13 +296,15 @@ ul.set_items
 }
 
 .Drop_Down:hover,
-.profile_down:hover,.Course_Down:hover {
-  background-color: #8000801c;
-  border-radius: 8px;
+.profile_down:hover,
+.Course_Down:hover,
+.profile_certicate:hover,
+.log_out:hover {
+  background-color: #ffffff1c;
 }
 
 p.profile-name {
-  width: 50%;
+  width: 100%;
   align-items: flex-start;
   display: flex;
 }
@@ -311,7 +315,6 @@ i.fa-solid.fa-award,
 i.fa-solid.fa-right-from-bracket {
   width: 50%;
 }
-
 /* ------------------Dashboard--------------- */
 .body
 {
@@ -366,6 +369,7 @@ i.fa-solid.fa-right-from-bracket {
   padding: 0%;
 }
 .totals {
+  color: black;
   display: flex;
   align-items: center;
   background-color: #F9B572;
@@ -389,6 +393,7 @@ i.fa-solid.fa-right-from-bracket {
 }
 .icon
 {
+  color: black;
   font-size: 160%;
 }
 .content p

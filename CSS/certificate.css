@@ -271,7 +271,9 @@ ul.set_items {
 
 .Drop_Down,
 .profile_down,
-.Course_Down ,.profile_certicate{
+.Course_Down,
+.profile_certicate,
+.log_out {
   display: flex;
   align-items: center;
   width: 100%;
@@ -281,8 +283,10 @@ ul.set_items {
 
 .Drop_Down:hover,
 .profile_down:hover,
-.Course_Down:hover,.profile_certicate:hover {
-  background-color: #8000801c;
+.Course_Down:hover,
+.profile_certicate:hover,
+.log_out:hover {
+  background-color: #ffffff1c;
 }
 
 .hoverlist{

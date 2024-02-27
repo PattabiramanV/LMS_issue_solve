@@ -487,14 +487,24 @@ document.addEventListener("click", (event) => {
 });
 
 // profile_drop
+let profile_page = document.querySelector(".profile_down");
+profile_page.addEventListener("click", () => {
+  window.location.href = "./profile.html";
+});
 
-let profile_page=document.querySelector(".profile_down")
- profile_page.addEventListener("click",()=>{
-        window.location.href="/profile_user_page/profile.html"
-})
+let Course_navigate = document.querySelector(".Course_Down");
+Course_navigate.addEventListener("click", () => {
+  window.location.href = "./Courses.html";
+});
 
-let Course_navigate=document.querySelector(".Course_Down")
-Course_navigate.addEventListener("click",()=>{
-      window.location.href="/Profile_main_page/Courses.html"
-})
+let Certi_page = document.querySelector(".profile_certicate");
 
+Certi_page.addEventListener("click", () => {
+  window.location.href = "./certificate.html";
+});
+
+let logout = document.querySelector(".log_out");
+
+logout.addEventListener("click", () => {
+  window.location.href = "./login.html";
+});

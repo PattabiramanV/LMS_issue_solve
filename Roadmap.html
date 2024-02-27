@@ -1,195 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <title>LMS WEBSITE</title>
-    <link rel="stylesheet" href="/CSS/Roadmap.css"/>
-  </head>
-  <body>
-    <!-- navbar -->
-    <nav class="navbar">
-      <div class="logo_item">
-        <i class="bx bx-menu" id="sidebarOpen"></i>
-        <img src="/Assests/Dckap Logo.png" alt="" class="DCKAPlOGO"></i>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>LMS WEBSITE</title>
+  <link rel="stylesheet" href="./CSS/Roadmap.css" />
+  <link rel="icon" type="image/x-icon" href="./Assests/icons8-learning-50.png" />
+</head>
+
+<body>
+  <!-- navbar -->
+  <nav class="navbar">
+    <div class="logo_item">
+      <i class="bx bx-menu" id="sidebarOpen"></i>
+      <img src="./Assests/Logodk.png" alt="" class="DCKAPlOGO"></i>
+    </div>
+
+    <div class="search_bar">
+      <input type="text" placeholder="Search" />
+      <i class="fas fa-search"></i>
+    </div>
+
+    <div class="navbar_content">
+      <i class="bi bi-grid"></i>
+      <i class='bx bx-sun' id="darkLight"></i>
+      <img src="./Assests/236831.png" alt="" class="profile" />
+    </div>
+    <div class="profile_bar_list">
+      <div class="profile_down">
+        <i class="fa fa-user" aria-hidden="true" class="profile-icon" style="color: black;"></i>
+        <P class="profile-name">profile</P>
       </div>
-
-      <div class="search_bar">
-        <input type="text" placeholder="Search" />
-        <i class="fas fa-search"></i>
+      <div class="Course_Down">
+        <i class="fa-solid fa-book" class="profile-icon" style="color: black;"></i>
+        <P class="profile-name">My Courses</P>
       </div>
-
-      <div class="navbar_content">
-        <i class="bi bi-grid"></i>
-        <i class='bx bx-sun' id="darkLight"></i>
-        <img src="/Assests/236831.png" alt="" class="profile" />
+      <div class="profile_certicate">
+        <i class="fa-solid fa-award" class="profile-icon" style="color: black;"></i>
+        <P class="profile-name">certificate</P>
       </div>
-      <div class="profile_bar_list">
-        <div class="profile_down">
-          <i class="fa fa-user" aria-hidden="true" class="profile-icon" style="color: black;"></i>
-          <P class="profile-name">profile</P>
-        </div>
-        <div class="Course_Down">
-          <i class="fa-solid fa-book"></i>
-          <P class="profile-name">My Courses</P>
-        </div>
-        <div class="Drop_Down">
-          <i class="fa-solid fa-award" class="profile-icon"></i>
-          <P class="profile-name">certificate</P>
-        </div>
-        <div class="Drop_Down">
-          <i class="fa-solid fa-right-from-bracket" class="profile-icon"></i>
-          <P class="profile-name">Logout</P>
-        </div>
+      <div class="log_out">
+        <i class="fa-solid fa-right-from-bracket" class="profile-icon" style="color: black;"></i>
+        <P class="profile-name">Logout</P>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <!-- sidebar -->
-    <nav class="sidebar" style="display: flex;">
-      <div class="menu_content">
-        <ul class="menu_items">
-          <li class="item">
-            <div href="#" class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class="bx bx-home-alt"></i>
-              </span>
-              <span class="navlink">Home</span>
-            </div>
-
-          </li>
-
-          <li class="item">
-            <div href="#" class="nav_link submenu_item">
-              <span class="navlink_icon">
-                <i class="bx bx-grid-alt"></i>
-              </span>
-              <span class="navlink">learning</span>
-            </div>
-          </li>
-        </ul>
-
-        <ul class="menu_items">
-          <li class="item">
-            <a href="#" class="nav_link">
-              <span class="navlink_icon">
-                <i class="bx bxs-magic-wand"></i>
-              </span>
-              <span class="navlink">DashBoard</span>
-            </a>
-          </li>
-
-          <li class="item">
-            <a href="#" class="nav_link">
-              <span class="navlink_icon">
-                <i class="bx bx-loader-circle"></i>
-              </span>
-              <span class="navlink">RoadMap</span>
-            </a>
-          </li>
-        </ul>
-        <ul class="set_items">
-          <li class="item">
-            <a href="#" class="nav_link">
-              <span class="navlink_icon">
-                <i class="bx bx-cog"></i>
-              </span>
-              <span class="navlink">Setting</span>
-            </a>
-          </li>
-        </ul>
-
-        <div class="bottom_content">
-          <div class="bottom expand_sidebar">
-            <span> Expand</span>
-            <i class='bx bx-log-in' ></i>
+  <!-- sidebar -->
+  <nav class="sidebar" style="display: flex;">
+    <div class="menu_content">
+      <ul class="menu_items">
+        <li class="item">
+          <div href="index.html" class="nav_link submenu_item">
+            <span class="navlink_icon">
+              <i class="bx bx-home-alt"></i>
+            </span>
+            <span class="navlink">Home</span>
           </div>
-          <div class="bottom collapse_sidebar">
-            <span> Collapse</span>
-            <i class='bx bx-log-out'></i>
+
+        </li>
+
+        <li class="item">
+          <div href="Learning.html" class="nav_link submenu_item">
+            <span class="navlink_icon">
+              <i class="bx bx-grid-alt"></i>
+            </span>
+            <span class="navlink">learning</span>
           </div>
+        </li>
+      </ul>
+
+      <ul class="menu_items">
+        <li class="item">
+          <a href="dashboard.html" class="nav_link">
+            <span class="navlink_icon">
+              <i class="bx bxs-magic-wand"></i>
+            </span>
+            <span class="navlink">DashBoard</span>
+          </a>
+        </li>
+
+        <li class="item">
+          <a href="Roadmap.html" class="nav_link">
+            <span class="navlink_icon">
+              <i class="bx bx-loader-circle"></i>
+            </span>
+            <span class="navlink">RoadMap</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="set_items">
+        <li class="item">
+          <a href="#" class="nav_link">
+            <span class="navlink_icon">
+              <i class="bx bx-cog"></i>
+            </span>
+            <span class="navlink">Setting</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="bottom_content">
+        <div class="bottom expand_sidebar">
+          <span> Expand</span>
+          <i class='bx bx-log-in'></i>
+        </div>
+        <div class="bottom collapse_sidebar">
+          <span> Collapse</span>
+          <i class='bx bx-log-out'></i>
         </div>
       </div>
-    </nav>
-    <div class="Content_Area">
-      <div class="container">
-        <h1>Frontend Development Roadmap</h1>
-        <hr class="centered-hr">
-        <div class="step">
-          <div class="line-connector" id="internet-html-connector"></div>
-          <p class="jobText"></p>
-          <h2 class="internet">
-            <i class="fa-solid fa-circle-check"></i>Internet
-          </h2>
-     
-          <div id="checklist">
-           <p class="Heading_p">Learn the basics of Internet</p>
-            <input value="1" name="r" type="checkbox" id="Internet-01"><label for="Internet-01">How to host website</label>
-            <input value="2" name="r" type="checkbox" id="Internet-02"><label for="Internet-02">What is domain name</label>
-            <input value="3" name="r" type="checkbox" id="Internet-03"><label for="Internet-03">What is http</label>
-            <input value="4" name="r" type="checkbox" id="Internet-04"><label for="Internet-04">Browser Basics</label>
-            <input value="5" name="r" type="checkbox" id="Internet-05"><label for="Internet-05">DNS</label>
-          </div>
-        </div>
-        <div class="step">
-          <div class="line-connector" id="html-css-connector"></div>
-          <div id="checklist">
-            <p class="Heading_p">Learn the basics of Html</p>
-             <input value="1" name="r" type="checkbox" id="Html-01"><label for="Html-01">HtmlBasics</label>
-             <input value="2" name="r" type="checkbox" id="Html-02"><label for="Html-02">Forms and validations</label>
-             <input value="3" name="r" type="checkbox" id="Html-03"><label for="Html-03">Sematic Tags</label>
-             <input value="4" name="r" type="checkbox" id="Html-04"><label for="Html-04">Flex and Grid</label>
-           </div>
-          <h2 class="html"> <i class="fa-solid fa-circle-check"></i>HTML</h2>
-        </div>
-        <div class="step">
-          <div class="line-connector" id="css-js-connector"></div>
-          <h2><i class="fa-solid fa-circle-check"></i>CSS</h2>
-          <div id="checklist">
-            <p class="Heading_p">Learn the basics of Css</p>
-             <input value="1" name="r" type="checkbox" id="Css-01"><label for="Css-01">Css Syntax</label>
-             <input value="2" name="r" type="checkbox" id="Css-02"><label for="Css-02">Responsive design</label>
-             <input value="3" name="r" type="checkbox" id="Css-03"><label for="Css-03">Media Queries</label>
-             <input value="4" name="r" type="checkbox" id="Css-04"><label for="Css-04">Making Layouts</label>
-           </div>
-        </div>
-        <div class="step">
-          <div class="line-connector" id="css-js-connector"></div>
-          <div id="checklist">
-            <p class="Heading_p">Learn the basics of js</p>
-             <input value="1" name="r" type="checkbox" id="Java-01"><label for="Java-01">Syntax and Basic</label>
-             <input value="2" name="r" type="checkbox" id="Java-02"><label for="Java-02">Dom Manipulation</label>
-             <input value="3" name="r" type="checkbox" id="Java-03"><label for="Java-03">js functions</label>
-             <input value="4" name="r" type="checkbox" id="Java-04"><label for="Java-04">Hoisting</label>
-           </div>
-          <h2 class="Js"><i class="fa-solid fa-circle-check"></i>js</h2>
-        </div>
-        <div class="step">
-          <div class="line-connector" id="css-js-connector"></div>
-          <h2 class="Figma"><i class="fa-solid fa-circle-check"></i>Figma</h2>
-          <div id="checklist">
-            <p class="Heading_p">Learn the basics of Figma</p>
-             <input value="1" name="r" type="checkbox" id="figma-01"><label for="figma-01">Designs ui && ux</label>
-             <input value="2" name="r" type="checkbox" id="figma-02"><label for="figma-02">figma plugins</label>
-             <input value="3" name="r" type="checkbox" id="figma-03"><label for="figma-03">page layouts</label>
-             <input value="4" name="r" type="checkbox" id="figma-04"><label for="figma-04">design components</label>
-           </div>
-        </div>
-        <div class="step">
-          <div class="line-connector" id="css-js-connector"></div>
-          <div id="checklist">
-            <p class="Heading_p">Learn the basics of Mysql</p>
-             <input value="1" name="r" type="checkbox" id="mysql-01"><label for="mysql-01">Mysql(DBMS)</label>
-             <input value="2" name="r" type="checkbox" id="mysql-02"><label for="mysql-02">CRUD operations</label>
-             <input value="3" name="r" type="checkbox" id="mysql-03"><label for="mysql-03">join queries.</label>
-             <input value="4" name="r" type="checkbox" id="mysql-04"><label for="mysql-04">Database</label>
-           </div>
-          <h2 class="Mysql"><i class="fa-solid fa-circle-check"></i>Mysql</h2>
+    </div>
+  </nav>
+  <div class="Content_Area">
+    <div class="container">
+      <h1>Frontend Development Roadmap</h1>
+      <hr class="centered-hr">
+      <div class="step">
+        <div class="line-connector" id="internet-html-connector"></div>
+        <p class="jobText"></p>
+        <h2 class="internet">
+          <i class="fa-solid fa-circle-check"></i>Internet
+        </h2>
+
+        <div id="checklist">
+          <p class="Heading_p">Learn the basics of Internet</p>
+          <input value="1" name="r" type="checkbox" id="Internet-01"><label for="Internet-01">How to host
+            website</label>
+          <input value="2" name="r" type="checkbox" id="Internet-02"><label for="Internet-02">What is domain
+            name</label>
+          <input value="3" name="r" type="checkbox" id="Internet-03"><label for="Internet-03">What is http</label>
+          <input value="4" name="r" type="checkbox" id="Internet-04"><label for="Internet-04">Browser Basics</label>
+          <input value="5" name="r" type="checkbox" id="Internet-05"><label for="Internet-05">DNS</label>
         </div>
       </div>
+      <div class="step">
+        <div class="line-connector" id="html-css-connector"></div>
+        <div id="checklist">
+          <p class="Heading_p">Learn the basics of Html</p>
+          <input value="1" name="r" type="checkbox" id="Html-01"><label for="Html-01">HtmlBasics</label>
+          <input value="2" name="r" type="checkbox" id="Html-02"><label for="Html-02">Forms and validations</label>
+          <input value="3" name="r" type="checkbox" id="Html-03"><label for="Html-03">Sematic Tags</label>
+          <input value="4" name="r" type="checkbox" id="Html-04"><label for="Html-04">Flex and Grid</label>
+        </div>
+        <h2 class="html"> <i class="fa-solid fa-circle-check"></i>HTML</h2>
       </div>
-    <!-- JavaScript -->
-    <script src="/JS/Roadmap.js" type="module"></script>
-  </body>
+      <div class="step">
+        <div class="line-connector" id="css-js-connector"></div>
+        <h2 class="Css"><i class="fa-solid fa-circle-check"></i>CSS</h2>
+        <div id="checklist">
+          <p class="Heading_p">Learn the basics of Css</p>
+          <input value="1" name="r" type="checkbox" id="Css-01"><label for="Css-01">Css Syntax</label>
+          <input value="2" name="r" type="checkbox" id="Css-02"><label for="Css-02">Responsive design</label>
+          <input value="3" name="r" type="checkbox" id="Css-03"><label for="Css-03">Media Queries</label>
+          <input value="4" name="r" type="checkbox" id="Css-04"><label for="Css-04">Making Layouts</label>
+        </div>
+      </div>
+      <div class="step">
+        <div class="line-connector" id="css-js-connector"></div>
+        <div id="checklist">
+          <p class="Heading_p">Learn the basics of js</p>
+          <input value="1" name="r" type="checkbox" id="Java-01"><label for="Java-01">Syntax and Basic</label>
+          <input value="2" name="r" type="checkbox" id="Java-02"><label for="Java-02">Dom Manipulation</label>
+          <input value="3" name="r" type="checkbox" id="Java-03"><label for="Java-03">js functions</label>
+          <input value="4" name="r" type="checkbox" id="Java-04"><label for="Java-04">Hoisting</label>
+        </div>
+        <h2 class="Js"><i class="fa-solid fa-circle-check"></i>JavaScript</h2>
+      </div>
+      <div class="step">
+        <div class="line-connector" id="css-js-connector"></div>
+        <h2 class="Figma"><i class="fa-solid fa-circle-check"></i>Figma</h2>
+        <div id="checklist">
+          <p class="Heading_p">Learn the basics of Figma</p>
+          <input value="1" name="r" type="checkbox" id="figma-01"><label for="figma-01">Designs ui && ux</label>
+          <input value="2" name="r" type="checkbox" id="figma-02"><label for="figma-02">figma plugins</label>
+          <input value="3" name="r" type="checkbox" id="figma-03"><label for="figma-03">page layouts</label>
+          <input value="4" name="r" type="checkbox" id="figma-04"><label for="figma-04">design components</label>
+        </div>
+      </div>
+      <div class="step">
+        <div class="line-connector" id="css-js-connector"></div>
+        <div id="checklist">
+          <p class="Heading_p">Learn the basics of Mysql</p>
+          <input value="1" name="r" type="checkbox" id="mysql-01"><label for="mysql-01">Mysql(DBMS)</label>
+          <input value="2" name="r" type="checkbox" id="mysql-02"><label for="mysql-02">CRUD operations</label>
+          <input value="3" name="r" type="checkbox" id="mysql-03"><label for="mysql-03">join queries.</label>
+          <input value="4" name="r" type="checkbox" id="mysql-04"><label for="mysql-04">Database</label>
+        </div>
+        <h2 class="Mysql"><i class="fa-solid fa-circle-check"></i>Mysql</h2>
+      </div>
+    </div>
+  </div>
+  <!-- JavaScript -->
+  <script src="./JS/Roadmap.js" type="module"></script>
+</body>
+
 </html>

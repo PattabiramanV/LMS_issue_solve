@@ -7,50 +7,47 @@ const sidebarClose = document.querySelector(".collapse_sidebar");
 const sidebarExpand = document.querySelector(".expand_sidebar");
 sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
 
+let content = document.querySelector(".menu_content");
+
 sidebarClose.addEventListener("click", () => {
   sidebar.classList.add("close", "hoverable");
+  content.style.left = "1rem";
 });
+
 sidebarExpand.addEventListener("click", () => {
   sidebar.classList.remove("close", "hoverable");
+  content.style.left = "1rem";
 });
 
 sidebar.addEventListener("mouseenter", () => {
   if (sidebar.classList.contains("hoverable")) {
     sidebar.classList.remove("close");
+    content.style.left = "1rem";
   }
 });
+
 sidebar.addEventListener("mouseleave", () => {
-  if (sidebar.classList.contains("hoverable")) {
-    sidebar.classList.add("close");
+  if (
+    sidebar.classList.contains("hoverable") &&
+    sidebar.classList.contains("close")
+  ) {
+    content.style.left = "0rem";
   }
 });
+
+let searchicon = document.querySelector(".fas");
+let profilehead = document.querySelector(".profile_hdg");
+let Dckaplogo = document.querySelector(".DCKAPlOGO");
 
 darkLight.addEventListener("click", () => {
   body.classList.toggle("dark");
-  if (body.classList.contains("dark")) {
-    document.setI;
-    darkLight.classList.replace("bx-sun", "bx-moon");
-  } else {
-    darkLight.classList.replace("bx-moon", "bx-sun");
-  }
+  document.body.classList.toggle("dark-mode");
+  searchicon.style.color = body.classList.contains("dark") ? "white" : "black";
+  profilehead.style.color = body.classList.contains("dark") ? "white" : "black";
+  Dckaplogo.src = body.classList.contains("dark")
+    ? "./Assests/Dckapwhite.png"
+    : "./Assests/Logodk.png";
 });
-
-submenuItems.forEach((item, index) => {
-  item.addEventListener("click", () => {
-    item.classList.toggle("show_submenu");
-    submenuItems.forEach((item2, index2) => {
-      if (index !== index2) {
-        item2.classList.remove("show_submenu");
-      }
-    });
-  });
-});
-
-if (window.innerWidth < 768) {
-  sidebar.classList.add("close");
-} else {
-  sidebar.classList.remove("close");
-}
 
 // Profile
 
@@ -71,39 +68,52 @@ document.addEventListener("click", (event) => {
   }
 });
 
-let Cancel_btn=document.querySelector(".cancel_btn")
-
-Cancel_btn.addEventListener("click", () => {
-    window.location.href="Roadmap.html";
-});
-
 // profile_drop
 
 let profile_page = document.querySelector(".profile_down");
 profile_page.addEventListener("click", () => {
-  window.location.href = "profile.html";
+  window.location.href = "./profile.html";
 });
 
 let Course_navigate = document.querySelector(".Course_Down");
 Course_navigate.addEventListener("click", () => {
-  window.location.href = "Courses.html";
+  window.location.href = "./Courses.html";
 });
 
-// Firebase store Name
-window.addEventListener("DOMContentLoaded", async (event) => {
-  try {
-    const NameRef = collection(database, "user_Name_Information");
-    const querySnapshot = await getDocs(NameRef);
-    querySnapshot.forEach((doc) => {
-      const NameData = doc.data();
-      const nameSpan = document.getElementById("fullName");
-      nameSpan.textContent = NameData.name;
-    });
-    console.log("Name data fetched from Firebase");
-  } catch (error) {
-    console.error("Error fetching Name data from Firebase: ", error);
-  }
+let Certi_page = document.querySelector(".profile_certicate");
+
+Certi_page.addEventListener("click", () => {
+  window.location.href = "./certificate.html";
 });
+
+let logout = document.querySelector(".log_out");
+
+logout.addEventListener("click", () => {
+  window.location.href = "./login.html";
+});
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
+  authDomain: "dckap-lms-project.firebaseapp.com",
+  projectId: "dckap-lms-project",
+  storageBucket: "dckap-lms-project.appspot.com",
+  messagingSenderId: "1022626638467",
+  appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6",
+};
+
+const app = initializeApp(firebaseConfig);
+const database = getFirestore(app);
+// Add event listener to the edit button for name
+
 
 let inputName = document.querySelector(".editbtnName");
 inputName.addEventListener("click", () => {
@@ -121,24 +131,44 @@ inputName.addEventListener("click", () => {
     nameInput.style.display = "none";
     nameSpan.style.display = "inline-block";
     editButton.textContent = "Edit";
+    SaveNametofirebase(nameSpan.textContent);
   }
-
-  SaveNametofirebase(nameSpan.textContent);
 });
 
+// Function to save the name to Firebase
 async function SaveNametofirebase(name) {
   try {
     const NameRef = collection(database, "user_Name_Information");
     await addDoc(NameRef, {
       name: name,
     });
-    console.log("Bio saved to Firebase");
+    console.log("Name saved to Firebase");
   } catch (error) {
-    console.error("Error saving bio to Firebase: ", error);
+    console.error("Error saving name to Firebase: ", error);
   }
-}
+};
 
-// Firebase store Bio
+// Load before executing JavaScript
+window.addEventListener("DOMContentLoaded", async (event) => {
+  try {
+    const NameRef = collection(database, "user_Name_Information");
+    const querySnapshot = await getDocs(NameRef);
+
+    querySnapshot.forEach((doc) => {
+      const NameData = doc.data();
+      const nameSpan = document.getElementById("fullName");
+      nameSpan.textContent = NameData.name;
+    });
+
+    console.log("Name data fetched from Firebase");
+  } catch (error) {
+    console.error("Error fetching Name data from Firebase: ", error);
+  }
+});
+
+
+
+// Bio Information
 window.addEventListener("DOMContentLoaded", async (event) => {
   try {
     const bioRef = collection(database, "user_Bio_Information");
@@ -171,7 +201,6 @@ boedit.addEventListener("click", () => {
     bioSpan.style.display = "inline-block";
     editButton.textContent = "Edit";
 
-    // Save bio to Firebase
     saveBioToFirebase(bioSpan.textContent);
   }
 });
@@ -179,16 +208,18 @@ boedit.addEventListener("click", () => {
 async function saveBioToFirebase(bio) {
   try {
     const bioRef = collection(database, "user_Bio_Information");
+
     await addDoc(bioRef, {
       bio: bio,
     });
+
     console.log("Bio saved to Firebase");
   } catch (error) {
     console.error("Error saving bio to Firebase: ", error);
   }
 }
 
-// Firebase store Githubname
+// Git hu addevent
 window.addEventListener("DOMContentLoaded", async (event) => {
   try {
     const gitnameRef = collection(database, "user_Git_Name_Information");
@@ -198,12 +229,14 @@ window.addEventListener("DOMContentLoaded", async (event) => {
       const gitSpan = document.getElementById("gitadd");
       gitSpan.textContent = gitnameData.gitname;
     });
-    console.log("gitname data fetched from Firebase");
+
+    console.log("GitHub name data fetched from Firebase");
   } catch (error) {
-    console.error("Error fetching gitname data from Firebase: ", error);
+    console.error("Error fetching GitHub name data from Firebase: ", error);
   }
 });
 
+// Add event listener to the element with the class "editbtngit"
 let inputGitHub = document.querySelector(".editbtngit");
 inputGitHub.addEventListener("click", function (e) {
   var gitSpan = document.getElementById("gitadd");
@@ -220,8 +253,9 @@ inputGitHub.addEventListener("click", function (e) {
     gitinput.style.display = "none";
     gitSpan.style.display = "inline-block";
     giteditbtn.textContent = "Edit";
+
+    SaveGitnameInFirebase(gitSpan.textContent);
   }
-  SaveGitnameInFirebase(gitSpan.textContent);
 });
 
 async function SaveGitnameInFirebase(gitname) {
@@ -230,54 +264,113 @@ async function SaveGitnameInFirebase(gitname) {
     await addDoc(GitRef, {
       gitname: gitname,
     });
-    console.log("Gitname saved to Firebase");
+
+    console.log("GitHub name saved to Firebase");
   } catch (error) {
-    console.error("Error saving Gitname to Firebase: ", error);
+    console.error("Error saving GitHub name to Firebase: ", error);
   }
 }
 
+// linked in information
+window.addEventListener("DOMContentLoaded", async (event) => {
+  try {
+    const linkedInRef = collection(database, "user_LinkedIn_Information");
+    const querySnapshot = await getDocs(linkedInRef);
 
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs
-} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    querySnapshot.forEach((doc) => {
+      const linkedInData = doc.data();
+      const linkedInSpan = document.getElementById("linked_info");
+      linkedInSpan.textContent = linkedInData.linkedin;
+    });
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
-  authDomain: "dckap-lms-project.firebaseapp.com",
-  projectId: "dckap-lms-project",
-  storageBucket: "dckap-lms-project.appspot.com",
-  messagingSenderId: "1022626638467",
-  appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6",
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const database = getFirestore(app);
-
-const uploadButton = document.getElementById("uploadButton");
-const uploadInput = document.getElementById("uploadInput");
-const imageContainer = document.getElementById("imageContainer");
-
-uploadButton.addEventListener("click", function () {
-  uploadInput.click();
+    console.log("LinkedIn data fetched from Firebase");
+  } catch (error) {
+    console.error("Error fetching LinkedIn data from Firebase: ", error);
+  }
 });
 
-uploadInput.addEventListener("change", async function () {
-  const file = this.files[0];
+let linkedInEditButton = document.querySelector(".editbtnlink");
+linkedInEditButton.addEventListener("click", () => {
+  var linkedInSpan = document.getElementById("linked_info");
+  var linkedInInput = document.getElementById("linkedInInput");
+  var editButton = document.querySelector(".editbtnlink");
+
+  if (linkedInSpan.style.display !== "none") {
+    linkedInInput.value = linkedInSpan.textContent;
+    linkedInSpan.style.display = "none";
+    linkedInInput.style.display = "inline-block";
+    editButton.textContent = "Save";
+  } else {
+    linkedInSpan.textContent = linkedInInput.value;
+    linkedInInput.style.display = "none";
+    linkedInSpan.style.display = "inline-block";
+    editButton.textContent = "Edit";
+
+    // Save the updated LinkedIn info to Firebase
+    saveLinkedInToFirebase(linkedInSpan.textContent);
+  }
+});
+
+async function saveLinkedInToFirebase(linkedIn) {
+  try {
+    const linkedInRef = collection(database, "user_LinkedIn_Information");
+    await addDoc(linkedInRef, {
+      linkedin: linkedIn,
+    });
+
+    console.log("LinkedIn info saved to Firebase");
+  } catch (error) {
+    console.error("Error saving LinkedIn info to Firebase: ", error);
+  }
+}
+
+let cancel_navigate = document.querySelector(".cancel_btn");
+cancel_navigate.addEventListener("click", () => {
+  window.location.href = "./profile.html";
+});
+
+
+
+const uploadButton = document.getElementById("uploadButton");
+uploadButton.addEventListener("click", function () {
+  fileInput.click();
+});
+const fileInput = document.getElementById("uploadInput");
+const imageContainer = document.getElementById("imageContainer");
+let previousImageDocId = null;
+
+fileInput.addEventListener("change", async function (event) {
+  const file = event.target.files[0];
 
   if (file) {
     const reader = new FileReader();
+
     reader.onload = async function (e) {
       const img = document.createElement("img");
       img.src = e.target.result;
-      imageContainer.innerHTML = "";
+
+      const profileImg = document.querySelector(".profile");
+      profileImg.src = e.target.result;
+
+      while (imageContainer.firstChild) {
+        imageContainer.removeChild(imageContainer.firstChild);
+      }
       imageContainer.appendChild(img);
+
+      try {
+        const imagesRef = collection(database, "images");
+        if (previousImageDocId) {
+          await deleteDoc(doc(database, "images", previousImageDocId));
+        }
+        const newImageDocRef = await addDoc(imagesRef, {
+          imageURL: e.target.result,
+        });
+        previousImageDocId = newImageDocRef.id;
+        alert("Successfully uploaded image and data.");
+      } catch (error) {
+        console.error("Error adding document: ", error);
+      }
+    };
 
       try {
         // Store the image URL in Firestore
@@ -300,26 +393,32 @@ uploadInput.addEventListener("change", async function () {
     };
     reader.readAsDataURL(file);
   }
-});
+);
 
+// window.addEventListener("load", async () => {
+//   const imagesRef = collection(database, "images");
+//   const imageContainer = document.getElementById('imageContainer');
+//   const profileImg = document.querySelector(".profile");
 
+//   try {
+//     const querySnapshot = await getDocs(imagesRef);
+//     imageContainer.innerHTML = '';
 
-let left_side_bar=document.querySelectorAll(".navlink");
+//     querySnapshot.forEach((doc) => {
+//       const data = doc.data();
+//       const img = document.createElement("img");
+//       img.src = data.imageURL;
 
-left_side_bar[0].addEventListener("click",()=>{
-  window.location.href='index.html  '
-});
+//       imageContainer.appendChild(img);
+//       previousImageDocId = doc.id;
+//     });
 
-left_side_bar[1].addEventListener("click",()=>{
-
-  window.location.href='Learning.html  '
-});
-left_side_bar[2].addEventListener("click",()=>{
-
-  window.location.href='Dashboard.html';
-});
-left_side_bar[3].addEventListener("click",()=>{
-
-  window.location.href='Roadmap.html';
-});
-
+//     if (querySnapshot.docs.length > 0) {
+//       const lastDoc = querySnapshot.docs[querySnapshot.docs.length - 1];
+//       const lastImageURL = lastDoc.data().imageURL;
+//       profileImg.src = lastImageURL; // Set the profile image to the last uploaded image
+//     }
+//   } catch (error) {
+//     console.error("Error getting documents: ", error);
+//   }
+// });

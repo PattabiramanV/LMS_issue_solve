@@ -18,13 +18,19 @@ let phpbtn=document.querySelector(".php_btn")
 //     alert("learning menu clicked")
 // })
 
-// dashboard.addEventListener("click",()=>{
-//     alert("dashboard menu clicked")
-// })
+dashboard.addEventListener("click",()=>{
+    window.location.href="./dashboard.html";
+})
 
-// roadmap.addEventListener("click",()=>{
-//     alert("roadmap menu clicked")
-// })
+roadmap.addEventListener("click",()=>{
+    window.location.href="./Roadmap.html";
+})
+
+learning.addEventListener("click",()=>{
+    window.location.href="./Learning.html";
+})
+
+
 
 navlogin.addEventListener("click",()=>{
 
@@ -66,3 +72,23 @@ mysqlbtn.addEventListener("click",()=>{
 phpbtn.addEventListener("click",()=>{
     alert("php button clicked")
 })
+
+
+let left_side_bar=document.querySelectorAll(".navlink");
+
+left_side_bar[0].addEventListener("click",()=>{
+  window.location.href='index.html'
+});
+
+left_side_bar[1].addEventListener("click",()=>{
+
+  window.location.href='Learning.html'
+});
+left_side_bar[2].addEventListener("click",()=>{
+
+  window.location.href='dashboard.html';
+});
+left_side_bar[3].addEventListener("click",()=>{
+
+  window.location.href='Roadmap.html';
+});

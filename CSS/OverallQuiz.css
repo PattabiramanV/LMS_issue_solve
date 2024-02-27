@@ -451,7 +451,7 @@ h1 {
   font-family: "Roboto";
   font-weight: bold;
   font-size: 40pt;
-  background: linear-gradient(to right, rgb(25, 76, 192), rgb(196, 26, 3) 20%, rgb(236, 190, 6) 40%, rgb(25, 76, 192) 60%, rgb(3, 116, 8) 80%, rgb(196, 26, 3));
+  background: linear-gradient(to right, #2E8B57, #55DD33, #1DB954, #76FF7A, rgb(3, 116, 8) 80%, #40a829);
   -webkit-text-fill-color: transparent;
   background-clip: text;      
 }
@@ -483,6 +483,62 @@ input[type=radio]:checked {
 }
 input[type=radio]:hover {
   cursor: pointer;
+}
+
+/* ----------- Generate Certificate ------------------- */
+.generating_certificate
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  /* display: flex; */
+  display: none;
+}
+#canva
+{
+  position: relative;
+  top: 35%;
+  left: -12%;
+}
+#name
+{
+  position: relative;
+  top: -25%;
+  left: 26%;
+  width: 250px;
+  height: 30px;
+  padding: 2px;
+  border: none;
+}
+#heading_certi
+{
+  position: absolute;
+  top: 12%;
+  left: 43%;
+  letter-spacing: 2px;
+}
+#download_btn
+{
+  position: relative;
+  top: 42%;
+  left: 10%;
+  background-color: #23c483;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 140%;
+  text-decoration: none;
+}
+.certi_name
+{
+  color: #23c483;
+  position: relative;
+  top: -25%;
+  left: 25%;
+  font-size: 160%;
 }
 
 

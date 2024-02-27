@@ -5,7 +5,7 @@ function signup_page() {
     document.getElementById('loadingOverlay').style.visibility = 'visible';
     setTimeout(() => {
         window.location.href = './signup.html';
-    }, 2000);
+    }, 1000);
 }
 
 // ---------password icon--------
@@ -79,7 +79,7 @@ login_button.addEventListener("click",login_fun)
           document.getElementById('loadingOverlay').style.visibility = 'visible';
           setTimeout(() => {
               window.location.href = './index.html';
-          }, 2000);
+          }, 1000);
         }
       });
 }

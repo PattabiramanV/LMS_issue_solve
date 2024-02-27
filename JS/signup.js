@@ -37,7 +37,7 @@ let otp_random;
 console.log(username);
 sign_up_btn.addEventListener("click", form_submit);
 
-function form_submit(event) {
+ async function form_submit(event) {
     // console.log("hi");
     event.preventDefault();
     var usernameValue = username.value; //inputbox values
@@ -69,6 +69,13 @@ function form_submit(event) {
         }, 2000);
         return;
     }
+    let emailcheckvalue=emailValue
+    let emailExists = await checkIfEmailExists(emailcheckvalue);
+    if (emailExists) {
+      alert("Email already exists. Please login instead.");
+      window.location.href="./login.html"
+      return;
+  }
 
     if (!passwordCriteria.test(createPasswordValue)) {
         invalid_password.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Invalid password.';
@@ -93,13 +100,18 @@ let username_inputbox = document.getElementById("user").value;
               SecureToken : "3530e414-b30b-4087-819e-ce07fc9da7b5",
               To : mail_id_inputbox.value,
               From : "dckaplms@gmail.com",
-              Subject : "This is the subject",
+              Subject : "Verify OTP",
               Body : mail_msg
           }).then(
             message => alert(message)
           )
           .catch(err => alert(err));
           }
+          async function checkIfEmailExists(email) {
+            const querySnapshot = await getDocs(collection(db, "SignUp_details"));
+            return querySnapshot.docs.some(doc => doc.data().email === email);
+        }
+
 
   // -------otp verify button-----
   let getref=collection(db,"SignUp_details");
@@ -125,25 +137,26 @@ otp_btn.addEventListener("click", verified)
 
     let ref=doc(db,"SignUp_details",`${id++}`)
 
-    let dataReference =  setDoc(
-      ref,{
-         username:username.value,
-         email:email_box.value,
-         password:create_password.value
-      }
-    ).then(()=>{
-      alert("Account created successfully");
-  })
+    let userData = {
+      username: username.value,
+      email: email_box.value,
+      password: create_password.value
+  };
+
+     setDoc(ref, userData)
+         .then(() => {
+             alert("Account created successfully");
+            //  window.location.href = './login.html';
+         })
     
   document.querySelector(".container").style.display = "none";
   document.getElementById('loadingOverlay').style.visibility = 'visible';
 
   setTimeout(() => {
       window.location.href = './login.html';
-  }, 2000);
+  }, 1000);
         
   }
-  
   else{
     alert("invalid")
   }

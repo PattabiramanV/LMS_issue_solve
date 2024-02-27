@@ -4,12 +4,21 @@ backtosignup.addEventListener("click", signup_page);
 function signup_page() {
     document.getElementById('loadingOverlay').style.visibility = 'visible';
     setTimeout(() => {
-        window.location.href = 'http://127.0.0.1:5501/signup.html';
+        window.location.href = './signup.html';
     }, 2000);
 }
 
+let login = document.querySelector("#login_btn");
+
+login.addEventListener("click", (e) => {
+   e.preventDefault(e)
+     console.log("hi");
+    window.location.href = "index.html";
+});
+
+
 // ---------password icon--------
-let log_username=document.getElementById("log")
+let log_email=document.getElementById("log")
 let log_password=document.getElementById("log_pass")
 let login_button=document.getElementById("login_btn")
 
@@ -30,3 +39,60 @@ else if (log_password.type =='text') {
     
 }
 }
+
+
+// -----login validation----
+
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
+    authDomain: "dckap-lms-project.firebaseapp.com",
+    projectId: "dckap-lms-project",
+    storageBucket: "dckap-lms-project.appspot.com",
+    messagingSenderId: "1022626638467",
+    appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+
+  import { getFirestore,getDocs,setDoc,doc,collection,getDoc,addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+
+let db=getFirestore(app);
+let getref=collection(db,"SignUp_details");
+let getdata =await  getDocs(getref);
+// let id=getdata.size;
+
+login_button.addEventListener("click",login_fun)
+ function login_fun(event)
+
+{ 
+      event.preventDefault()
+      getdata .forEach((record) => {
+        
+        let email_data = record.data().email
+        let password_data = record.data().password
+
+        // console.log(email_data);
+
+        if(log_email.value == email_data && log_password.value==password_data )
+        {
+          // console.log("hi");
+          document.getElementById('loadingOverlay').style.visibility = 'visible';
+          setTimeout(() => {
+              window.location.href = './index.html';
+          }, 2000);
+        }
+      });
+}
+
+
+
+

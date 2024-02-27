@@ -163,32 +163,74 @@ outline: none;
 position: relative;
 right: 16px;
 }
-.button_explore {
-width: 120px;
-height: 45px;
-display: flex;
-align-items: center;
-justify-content: flex-start;
-gap: 10px;
-background-color: #c84e2a;
-border-radius: 30px;
-color: white;
-font-weight: 600;
-border: none;
-margin-top: -57px;
-margin-left: 315px;
-position: relative;
-cursor: pointer;
-transition-duration: .2s;
-box-shadow: 5px 5px 10px rgba(2, 2, 2, 0.116);
-padding-left: 8px;
-transition-duration: .5s;
-}
 
-.svgIcon {
-height: 25px;
-transition-duration: 1.5s;
+img.dckapimg {
+    position: relative;
+    bottom: 2rem;
 }
+  .svgIcon {
+    height: 25px;
+    transition-duration: 1.5s;
+  }
+  
+  .bell path {
+    fill: rgb(17, 16, 16);
+  }
+  
+  .button_explore {
+    width: 120px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    background-color: #c84e2a;
+    border-radius: 30px;
+    color: white;
+    font-weight: 600;
+    border: none;
+    margin-top: -57px;
+    margin-left: 315px;
+    position: relative;
+    cursor: pointer;
+    transition-duration: .2s;
+    box-shadow: 5px 5px 10px rgba(2, 2, 2, 0.116);
+    padding-left: 8px;
+    transition-duration: .5s;
+  }
+  
+  .svgIcon {
+    height: 25px;
+    transition-duration: 1.5s;
+  }
+  
+  .bell path {
+    fill: rgb(17, 16, 16);
+  }
+  
+  .button_explore:hover {
+    background-color: #c84e2a;
+    color: white;
+    transition-duration: .5s;
+  }
+  
+  .button_explore:active {
+    transform: scale(0.97);
+    transition-duration: .2s;
+  }
+  
+  .button_explore:hover .svgIcon {
+    transform: rotate(250deg);
+    transition-duration: 1.5s;
+  }
+  .container_2{
+    padding: 90px;
+    background-color: #eaeaea;
+  }
+  .content_2 {
+    padding: 90px;
+    margin-top: -100px;
+  }
 
 .bell path {
 fill: rgb(17, 16, 16);

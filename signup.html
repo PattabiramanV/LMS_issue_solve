@@ -1,73 +1,122 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>signup</title>
-    <link rel="stylesheet" href="/CSS/signup.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>signup</title>
+  <link rel="stylesheet" href="./CSS/signup.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <script src=" https://smtpjs.com/v3/smtp.js"></script>
+  <style>
+  .container {
+    width: 23%;
+    height: 309px;
+    /* display: flex; */
+    position: relative;
+    left: 460px;
+    top: 100px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    font-family: "Roboto";
 
+}
+
+    #otp_txt {
+      position: relative;
+      left: 6px;
+      top: 50px;
+      color: white;
+    }
+    p.otpSubheading {
+    position: relative;
+    top: 70px;
+    color: white;
+    
+}
+  </style>
 </head>
-<body>
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="loading-spinner"></div>
+
+<body id="body">
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+  </div>
+  <div class="maincontainer">
+    <!-- <img src="dckap_project _logo.webp"> -->
+    <div class="content">
+      <form id="sign_up">
+        <h2 id="sign_up_Title">Sign Up</h2>
+        <div id="user_name">
+          <h4 id="Title_name">Username</h4>
+          <input type="text" id="user" name="username" placeholder="Enter your name">
+          <label class="invalid_name"></label>
+        </div>
+        <div id="email">
+          <h4 id="mail">Email</h4>
+          <input type="email" id="mail_id" name="email" placeholder="Enter your Email">
+          <label class="invalid_mail"></label>
+        </div>
+        <div id="create_password">
+          <h4 id="cr_pass">Password</h4>
+          <span>
+            <input type="password" id="create_ps" name="password" placeholder="Create your password">
+            <div id="icon_eye"> </div>
+            <!-- <i id="icon_eye" class="fa-solid fa-eye-slash"></i> -->
+          </span>
+          <label class="invalid_password"></label>
+        </div>
+
+        <div class="btn">
+          <button id="sign_up_btn">Sign Up</button>
+          <h5 id="exist">Already have an account?<u id="underline_btn">signin</u></h5>
+        </div>
+        <div class="google_btn">
+          <p id="option">Or</p>
+          <p id="contiue">
+            <svg id="google_icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
+              viewBox="0 0 256 262">
+              <path fill="#4285F4"
+                d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027">
+              </path>
+              <path fill="#34A853"
+                d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1">
+              </path>
+              <path fill="#FBBC05"
+                d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782">
+              </path>
+              <path fill="#EB4335"
+                d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251">
+              </path>
+            </svg>
+            <!-- continue with google -->
+          </p>
+
+        </div>
+
+      </form>
+
+
+      <div class="side_image">
+        <img id="pic" src="./Assests/Mobile login-pana.png">
       </div>
-    <div class="maincontainer">
-            <!-- <img src="dckap_project _logo.webp"> -->
-            <div class="content">
-                <form id="sign_up">
-                    <h2 id="sign_up_Title">Sign Up</h2>
-                    <div id="user_name">
-                        <h4 id="Title_name">Username</h4>
-                        <input type="text" id="user" name="username" placeholder="Enter your name">
-                        <label class="invalid_name"></label>
-                    </div>
-                    <div id="email">
-                        <h4 id="mail">Email</h4>
-                        <input type="email" id="mail_id" name="email" placeholder="Enter your Email">
-                        <label class="invalid_mail"></label>
-                    </div>
-                    <div id="create_password">
-                        <h4 id="cr_pass">Password</h4>
-                        <span>
-                            <input type="password" id="create_ps" name="password" placeholder="Create your password">
-                            <div id="icon_eye" > </div>
-                            <!-- <i id="icon_eye" class="fa-solid fa-eye-slash"></i> -->
-                        </span>
-                        <label class="invalid_password"></label>
-                    </div>
+    </div>
+  </div>
+  <div class="container" style="display:none; text-align: center; margin-top: 20px; background-color:#c84e2a">
+    <h4 id="otp_txt">Enter an OTP</h4>
+    <p class="otpSubheading">We have sent a verification code to your Email</p>
 
-                    <div class="btn">
-                        <button id="sign_up_btn">Signup</button>
-                        <h5 id="exist">Already have an account?<u id="underline_btn">Login</u></h5>
-                    </div>
-                    <div class="google_btn">
-                        <p id="option">Or</p>
-                        <p id="contiue">
-                            <svg id="google_icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" viewBox="0 0 256 262">
-                                <path fill="#4285F4" d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027"></path>
-                                <path fill="#34A853" d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1"></path>
-                                <path fill="#FBBC05" d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782"></path>
-                                <path fill="#EB4335" d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251"></path>
-                              </svg>
-                              <!-- continue with google -->
-                            </p>
-                            
-                    </div>
-        
-                </form>
-               
-                <div class="side_image">
-                    <img id="pic" src="Assests/Frame.png">
-                </div>
-            </div>
-            </div>
+    <input type="number" id="otp_value" name="otp"
+      style="padding: 8px; margin: 5px; border-radius: 5px; border: 1px solid #ccc; position: relative; top: 80px; left: 50px;">
+    <button id="otp_btn"
+      style="padding: 8px 20px; margin: 5px; border: none; border-radius: 5px; background-color: white; color:black; cursor: pointer; position: relative; top: 140px ;left: -100px;">Verify</button>
+  </div>
+  <script type="module" src="./JS/signup.js">
 
-
-
-  
-    <script type="module" src="/JS/signup.js"></script>
+  </script>
 </body>
+
 </html>

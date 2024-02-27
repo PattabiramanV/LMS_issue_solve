@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>LMS WEBSITE</title>
+  <link rel="stylesheet" href="./CSS/profile.css">
+  <link rel="icon" type="image/x-icon" href="./Assests/icons8-learning-50.png" />
+</head>
+
+<body>
+  <!-- navbar -->
+  <nav class="navbar">
+    <div class="logo_item">
+      <i class="bx bx-menu" id="sidebarOpen"></i>
+      <img src="./Assests/Logodk.png" alt="" class="DCKAPlOGO"></i>
+    </div>
+
+    <div class="search_bar">
+      <input type="text" placeholder="Search" />
+      <i class="fas fa-search"></i>
+    </div>
+
+    <div class="navbar_content">
+      <i class="bi bi-grid"></i>
+      <i class='bx bx-sun' id="darkLight"></i>
+      <img src="./Assests/236831.png" alt="" class="profile" />
+    </div>
+    <div class="profile_bar_list">
+      <div class="profile_down">
+        <i class="fa fa-user" aria-hidden="true" class="profile-icon"></i>
+        <P class="profile-name">profile</P>
+      </div>
+      <div class="Course_Down">
+        <i class="fa-solid fa-book"></i>
+        <P class="profile-name">My Courses</P>
+      </div>
+      <div class="profile_certicate">
+        <i class="fa-solid fa-award" class="profile-icon"></i>
+        <P class="profile-certicate">certificate</P>
+      </div>
+      <div class="log_out">
+        <i class="fa-solid fa-right-from-bracket" class="profile-icon"></i>
+        <P class="profile-name">Logout</P>
+      </div>
+    </div>
+  </nav>
+
+  <!-- sidebar -->
+  <nav class="sidebar" style="display: flex;">
+    <div class="menu_content">
+      <ul class="menu_items">
+        <li class="item">
+          <div href="index.html" class="nav_link submenu_item">
+            <span class="navlink_icon">
+              <i class="bx bx-home-alt"></i>
+            </span>
+            <span class="navlink">Home</span>
+          </div>
+
+        </li>
+        <li class="item">
+          <div href="Learning.html" class="nav_link submenu_item">
+            <span class="navlink_icon">
+              <i class="bx bx-grid-alt"></i>
+            </span>
+            <span class="navlink">learning</span>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="menu_items">
+        <li class="item">
+          <a href="dashboard.html" class="nav_link">
+            <span class="navlink_icon">
+              <i class="bx bxs-magic-wand"></i>
+            </span>
+            <span class="navlink">DashBoard</span>
+          </a>
+        </li>
+
+
+        <li class="item">
+          <a href="Roadmap.html" class="nav_link">
+            <span class="navlink_icon">
+              <i class="bx bx-loader-circle"></i>
+            </span>
+            <span class="navlink">RoadMap</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="set_items">
+        <li class="item">
+          <a href="#" class="nav_link">
+            <span class="navlink_icon">
+              <i class="bx bx-cog"></i>
+            </span>
+            <span class="navlink">Setting</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="bottom_content">
+        <div class="bottom expand_sidebar">
+          <span> Expand</span>
+          <i class='bx bx-log-in'></i>
+        </div>
+        <div class="bottom collapse_sidebar">
+          <span> Collapse</span>
+          <i class='bx bx-log-out'></i>
+        </div>
+      </div>
+    </div>
+
+  </nav>
+
+  <!-- Your Content paste here -->
+  <div class="User_Profile">
+    <div class="user_actions">
+      <h1 class="profile_hdg">My Profile</h1>
+      <button class="cancel_btn"><i class="fa fa-times" aria-hidden="true"></i></button>
+    </div>
+    <div class="Profile_Section">
+      <div class="Users_img">
+        <input type="file" id="uploadInput" style="display: none;">
+        <div id="imageContainer">
+          <img src="./Assests/236831.png" alt="">
+        </div>
+        <button id="uploadButton">Upload Image</button>
+
+      </div>
+      <div class="Users_Details">
+        <div class="User_name_details">
+          <div class="name_details">
+            <label for="Name">Full Name</label>
+            <span id="fullName"></span>
+            <input type="text" id="fullNameInput" style="display: none;">
+          </div>
+          <div class="edit_button">
+            <button class="editbtnName">Edit</button>
+          </div>
+        </div>
+        <div class="User_name_details">
+          <div class="email_details">
+            <label for="Email">Email</label>
+            <span id="emailadd"></span>
+          </div>
+          <div class="edit_button">
+            <button class="editbtn" onclick="showEmail()">Edit</button>
+          </div>
+        </div>
+        <div class="User_name_details">
+          <div class="Git_details">
+            <label for="Git_hub">Git_Hub Username</label>
+            <span id="gitadd"></span>
+            <input type="text" id="gitinput" style="display: none;">
+          </div>
+          <div class="edit_button">
+            <button class="editbtngit">Edit</button>
+          </div>
+        </div>
+        <div class="User_name_details">
+          <div class="Bio_details">
+            <label for="Bio">Bio Information:</label>
+            <span id="bioInfo"></span>
+            <textarea id="bioInput" rows="2" cols="50" style="display: none;"></textarea>
+          </div>
+          <div class="edit_button">
+            <button class="editbtnn">Edit</button>
+          </div>
+        </div>
+        <div class="User_name_details">
+          <div class="linkedin_details">
+            <label for="linked">linkin Information:</label>
+            <span id="linked_info"></span>
+          <input  type="text" id="linkedInInput" style="display: none;">
+          </div>
+          <div class="edit_button">
+            <button class="editbtnlink">Edit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<!-- Javascript -->
+<script src="/JS/profile.js" type="module"></script>
+
+</html>

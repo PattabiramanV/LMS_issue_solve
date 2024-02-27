@@ -87,17 +87,29 @@ document.addEventListener("click", (event) => {
 
 // profile_drop
 
-let profile_page=document.querySelector(".profile_down")
- profile_page.addEventListener("click",()=>{
-        window.location.href="./profile.html"
-})
+let profile_page = document.querySelector(".profile_down");
+profile_page.addEventListener("click", () => {
+  window.location.href = "./profile.html";
+});
 
-let Course_navigate=document.querySelector(".Course_Down")
-Course_navigate.addEventListener("click",()=>{
-      window.location.href="./Courses.html"
-})
+let Course_navigate = document.querySelector(".Course_Down");
+Course_navigate.addEventListener("click", () => {
+  window.location.href = "./Courses.html";
+});
 
-// fire_base
+let Certi_page = document.querySelector(".profile_certicate");
+
+Certi_page.addEventListener("click", () => {
+  window.location.href = "./certificate.html";
+});
+
+let logout = document.querySelector(".log_out");
+
+logout.addEventListener("click", () => {
+  window.location.href = "./login.html";
+});
+
+// -------------------------------- fire_base ---------------------------------------
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 

@@ -5,7 +5,6 @@
 * {
   font-family: 'Roboto', sans-serif;
 }
-
 body,
 html {
   margin: 0;
@@ -30,11 +29,9 @@ html {
   --background-color-btn: #49a843;
   --background-color-li: #8000801c !important;
 }
-
 body {
   background-color: white;
 }
-
 body.dark {
   background-color: #333;
 }
@@ -371,20 +368,7 @@ ul.set_items {
 /* .Progress_container {
   width: 81%;
   display: flex;
-  margin-left: 4rem;
-  padding: 1%;
-  gap: 1%;
-  justify-content: start;
-  position: relative;
-  left: 10%;
-} */
-
-
-
-.Progress_container {
-  width: 79%;
-  display: flex;
-  margin-left: 8rem;
+  margin-left: 6rem;
   padding: 1%;
   gap: 1%;
   justify-content: start;

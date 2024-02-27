@@ -49,23 +49,6 @@ darkLight.addEventListener("click", () => {
     : "./Assests/Logodk.png";
 });
 
-submenuItems.forEach((item, index) => {
-  item.addEventListener("click", () => {
-    item.classList.toggle("show_submenu");
-    submenuItems.forEach((item2, index2) => {
-      if (index !== index2) {
-        item2.classList.remove("show_submenu");
-      }
-    });
-  });
-});
-
-if (window.innerWidth < 768) {
-  sidebar.classList.add("close");
-} else {
-  sidebar.classList.remove("close");
-}
-
 // Profile
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
@@ -83,12 +66,6 @@ document.addEventListener("click", (event) => {
   ) {
     profile_Dropdown.style.display = "none";
   }
-});
-
-let Cancel_btn=document.querySelector(".cancel_btn")
-
-Cancel_btn.addEventListener("click", () => {
-    window.location.href="Roadmap.html";
 });
 
 // profile_drop
@@ -136,6 +113,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
 // Add event listener to the edit button for name
+
+
 let inputName = document.querySelector(".editbtnName");
 inputName.addEventListener("click", () => {
   var nameSpan = document.getElementById("fullName");
@@ -167,7 +146,7 @@ async function SaveNametofirebase(name) {
   } catch (error) {
     console.error("Error saving name to Firebase: ", error);
   }
-}
+};
 
 // Load before executing JavaScript
 window.addEventListener("DOMContentLoaded", async (event) => {
@@ -187,6 +166,9 @@ window.addEventListener("DOMContentLoaded", async (event) => {
   }
 });
 
+
+
+// Bio Information
 window.addEventListener("DOMContentLoaded", async (event) => {
   try {
     const bioRef = collection(database, "user_Bio_Information");
@@ -196,7 +178,6 @@ window.addEventListener("DOMContentLoaded", async (event) => {
       const bioSpan = document.getElementById("bioInfo");
       bioSpan.textContent = bioData.bio;
     });
-
     console.log("Bio data fetched from Firebase");
   } catch (error) {
     console.error("Error fetching bio data from Firebase: ", error);
@@ -348,6 +329,8 @@ cancel_navigate.addEventListener("click", () => {
   window.location.href = "./profile.html";
 });
 
+
+
 const uploadButton = document.getElementById("uploadButton");
 uploadButton.addEventListener("click", function () {
   fileInput.click();
@@ -390,33 +373,5 @@ fileInput.addEventListener("change", async function (event) {
     };
 
     reader.readAsDataURL(file);
-  }
-});
-
-// window.addEventListener("load", async () => {
-//   const imagesRef = collection(database, "images");
-//   const imageContainer = document.getElementById('imageContainer');
-//   const profileImg = document.querySelector(".profile");
-
-//   try {
-//     const querySnapshot = await getDocs(imagesRef);
-//     imageContainer.innerHTML = '';
-
-//     querySnapshot.forEach((doc) => {
-//       const data = doc.data();
-//       const img = document.createElement("img");
-//       img.src = data.imageURL;
-
-//       imageContainer.appendChild(img);
-//       previousImageDocId = doc.id;
-//     });
-
-//     if (querySnapshot.docs.length > 0) {
-//       const lastDoc = querySnapshot.docs[querySnapshot.docs.length - 1];
-//       const lastImageURL = lastDoc.data().imageURL;
-//       profileImg.src = lastImageURL; // Set the profile image to the last uploaded image
-//     }
-//   } catch (error) {
-//     console.error("Error getting documents: ", error);
-//   }
-// });
+  };
+})

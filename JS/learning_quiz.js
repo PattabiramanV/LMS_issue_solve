@@ -243,7 +243,7 @@ async function Quiz_change_Fun(value){
 
 if(value.innerHTML=='Next'&& all_radio_btn.value!=''){
     index++;
-    console.log(all_radio_btn.value);
+    // console.log(all_radio_btn.value);
     arr.push(all_radio_btn.value);
     form_radio_btn_4.reset();
  
@@ -273,7 +273,7 @@ button_showing_Fun();
 }
 
 function Quiz_content_show_Fun(){
-  console.log(index);
+  // console.log(index);
   quiz_Question.innerHTML=Quiz_object[index].Question;
   quiz_options[0].innerText=Quiz_object[index].Options[0];
   quiz_options[1].innerText=Quiz_object[index].Options[1];
@@ -324,12 +324,15 @@ submit_btn.addEventListener("click",()=>{
         arr.push(all_radio_btn.value);
 
     }
+    console.log(arr);
+    console.log(Quiz_object[0].Answers);
+
 arr.forEach((user_choose_value)=>{
 
 Quiz_object[0].Answers.forEach((Excat_answer)=>{
 
 if(Excat_answer==user_choose_value){
-
+console.log(Excat_answer);
     total_mark++;
     
         }
@@ -340,8 +343,8 @@ if(Excat_answer==user_choose_value){
 })
 
 alert(`Total Mark:${total_mark}/5`);
-console.log(arr);
-console.log(total_mark);
+// console.log(arr);
+// console.log(total_mark);
 
 form_radio_btn_4.reset();
 arr=[];
@@ -417,23 +420,22 @@ next_module_btn.addEventListener("click",async()=>{
 });
 
 
-
 let left_side_bar=document.querySelectorAll(".navlink");
 
 left_side_bar[0].addEventListener("click",()=>{
-  window.location.href='index.html  '
+  
+  window.location.href='./index.html'
 });
 
 left_side_bar[1].addEventListener("click",()=>{
 
-  window.location.href='Learning.html  '
+  window.location.href='./Learning.html  '
 });
 left_side_bar[2].addEventListener("click",()=>{
 
-  window.location.href='Dashboard.html';
+  window.location.href='./Dashboard.html';
 });
 left_side_bar[3].addEventListener("click",()=>{
 
-  window.location.href='Roadmap.html';
+  window.location.href='./Roadmap.html';
 });
-

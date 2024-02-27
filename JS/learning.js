@@ -46,7 +46,10 @@ let ref_data=doc(db,"Learning",`${id}`);
         Javascript_Total_Percentage:0,
         Mysql_Complete_Module:0,
         Mysql_Total_Percentage:0,
-        user_unlock_total_module:0
+        Php_Complete_Module:0,
+        Php_Total_Percentage:0,
+        Html_unlock_total_module:0
+        
 
     }
 ).then(()=>{
@@ -204,20 +207,20 @@ let left_side_bar=document.querySelectorAll(".navlink");
 
 left_side_bar[0].addEventListener("click",()=>{
   
-  window.location.href='index.html'
+  window.location.href='./index.html'
 });
 
 left_side_bar[1].addEventListener("click",()=>{
 
-  window.location.href='Learning.html  '
+  window.location.href='./Learning.html  '
 });
 left_side_bar[2].addEventListener("click",()=>{
 
-  window.location.href='Dashboard.html';
+  window.location.href='./Dashboard.html';
 });
 left_side_bar[3].addEventListener("click",()=>{
 
-  window.location.href='Roadmap.html';
+  window.location.href='./Roadmap.html';
 });
 
 

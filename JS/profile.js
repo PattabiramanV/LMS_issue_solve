@@ -36,18 +36,26 @@ sidebar.addEventListener("mouseleave", () => {
 });
 
 let searchicon = document.querySelector(".fas");
-let profilehead = document.querySelector(".profile_hdg");
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
 
-darkLight.addEventListener("click", () => {
-  body.classList.toggle("dark");
+// Function to toggle dark mode
+
+function toggleDarkMode() {
+  const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
-  searchicon.style.color = body.classList.contains("dark") ? "white" : "black";
-  profilehead.style.color = body.classList.contains("dark") ? "white" : "black";
+  searchicon.style.color = isDarkMode ? "white" : "black";
   Dckaplogo.src = body.classList.contains("dark")
-    ? "./Assests/Dckapwhite.png"
-    : "./Assests/Logodk.png";
-});
+  ? "./Assests/Dckapwhite.png"
+  : "./Assests/Logodk.png";
+  sessionStorage.setItem("darkMode", isDarkMode);
+}
+
+const storedDarkMode = sessionStorage.getItem("darkMode");
+if (storedDarkMode === "true") {
+  toggleDarkMode();
+}
+darkLight.addEventListener("click", toggleDarkMode);
+
 
 // Profile
 

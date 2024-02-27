@@ -158,21 +158,35 @@ sidebar.addEventListener("mouseleave", () => {
 
 
 
-darkLight.addEventListener("click", () => {
-  body.classList.toggle("dark");
+
+// Function to toggle dark mode
+
+function toggleDarkMode() {
+  const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
-  searchIcon.style.color = body.classList.contains("dark") ? "white" : "black";
+  searchIcon.style.color = isDarkMode ? "white" : "black";
   headings.forEach((heading) => {
-    if (body.classList.contains("dark")) {
-        heading.style.color = "white";
-    } else {
-        heading.style.color = "#b95233";
-    }
-});
+      if (isDarkMode) {
+          heading.style.color = "white";
+      } else {
+          heading.style.color = "#b95233";
+      }
   Dckaplogo.src = body.classList.contains("dark")
-    ? "./Assests/Dckapwhite.png"
-    : "./Assests/Logodk.png";
-});
+  ? "./Assests/Dckapwhite.png"
+  : "./Assests/Logodk.png";
+  });
+
+  sessionStorage.setItem("darkMode", isDarkMode);
+}
+
+const storedDarkMode = sessionStorage.getItem("darkMode");
+if (storedDarkMode === "true") {
+  toggleDarkMode();
+}
+
+darkLight.addEventListener("click", toggleDarkMode);
+
+
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");

@@ -7,8 +7,7 @@ const sidebarClose = document.querySelector(".collapse_sidebar");
 const sidebarExpand = document.querySelector(".expand_sidebar");
 sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
 
-
-let content=document.querySelector(".menu_content")
+let content = document.querySelector(".menu_content");
 
 sidebarClose.addEventListener("click", () => {
   sidebar.classList.add("close", "hoverable");
@@ -28,23 +27,26 @@ sidebar.addEventListener("mouseenter", () => {
 });
 
 sidebar.addEventListener("mouseleave", () => {
-  if (sidebar.classList.contains("hoverable") && sidebar.classList.contains("close")) {
-    content.style.left = "0rem"; 
+  if (
+    sidebar.classList.contains("hoverable") &&
+    sidebar.classList.contains("close")
+  ) {
+    content.style.left = "0rem";
   }
 });
 
-
 let searchicon = document.querySelector(".fas");
-let profilehead=document.querySelector(".profile_hdg")
+let profilehead = document.querySelector(".profile_hdg");
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
 
 darkLight.addEventListener("click", () => {
   body.classList.toggle("dark");
+  document.body.classList.toggle("dark-mode");
   searchicon.style.color = body.classList.contains("dark") ? "white" : "black";
   profilehead.style.color = body.classList.contains("dark") ? "white" : "black";
   Dckaplogo.src = body.classList.contains("dark")
-  ? "./Assests/Dckapwhite.png"
-  : "./Assests/Logodk.png";
+    ? "./Assests/Dckapwhite.png"
+    : "./Assests/Logodk.png";
 });
 
 // Profile
@@ -78,20 +80,24 @@ Course_navigate.addEventListener("click", () => {
   window.location.href = "./Courses.html";
 });
 
-let Certi_page=document.querySelector(".profile_certicate");
+let Certi_page = document.querySelector(".profile_certicate");
 
-Certi_page.addEventListener("click",()=>{
-         window.location.href="./certificate.html"
-})
+Certi_page.addEventListener("click", () => {
+  window.location.href = "./certificate.html";
+});
 
+let logout = document.querySelector(".log_out");
 
+logout.addEventListener("click", () => {
+  window.location.href = "./login.html";
+});
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
   getFirestore,
   collection,
   addDoc,
-  getDocs
+  getDocs,
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -109,57 +115,54 @@ const database = getFirestore(app);
 // Add event listener to the edit button for name
 let inputName = document.querySelector(".editbtnName");
 inputName.addEventListener("click", () => {
-    var nameSpan = document.getElementById("fullName");
-    var nameInput = document.getElementById("fullNameInput");
-    var editButton = document.querySelector(".editbtnName");
+  var nameSpan = document.getElementById("fullName");
+  var nameInput = document.getElementById("fullNameInput");
+  var editButton = document.querySelector(".editbtnName");
 
-    if (nameSpan.style.display !== "none") {
-        nameInput.value = nameSpan.textContent;
-        nameSpan.style.display = "none";
-        nameInput.style.display = "inline-block";
-        editButton.textContent = "Save";
-    } else {
-        nameSpan.textContent = nameInput.value;
-        nameInput.style.display = "none";
-        nameSpan.style.display = "inline-block";
-        editButton.textContent = "Edit";
-        SaveNametofirebase(nameSpan.textContent);
-    }
+  if (nameSpan.style.display !== "none") {
+    nameInput.value = nameSpan.textContent;
+    nameSpan.style.display = "none";
+    nameInput.style.display = "inline-block";
+    editButton.textContent = "Save";
+  } else {
+    nameSpan.textContent = nameInput.value;
+    nameInput.style.display = "none";
+    nameSpan.style.display = "inline-block";
+    editButton.textContent = "Edit";
+    SaveNametofirebase(nameSpan.textContent);
+  }
 });
 
 // Function to save the name to Firebase
 async function SaveNametofirebase(name) {
-    try {
-        const NameRef = collection(database, "user_Name_Information");
-        await addDoc(NameRef, {
-            name: name,
-        });
-        console.log("Name saved to Firebase");
-    } catch (error) {
-        console.error("Error saving name to Firebase: ", error);
-    }
+  try {
+    const NameRef = collection(database, "user_Name_Information");
+    await addDoc(NameRef, {
+      name: name,
+    });
+    console.log("Name saved to Firebase");
+  } catch (error) {
+    console.error("Error saving name to Firebase: ", error);
+  }
 }
 
 // Load before executing JavaScript
 window.addEventListener("DOMContentLoaded", async (event) => {
-    try {
-        const NameRef = collection(database, "user_Name_Information");
-        const querySnapshot = await getDocs(NameRef);
+  try {
+    const NameRef = collection(database, "user_Name_Information");
+    const querySnapshot = await getDocs(NameRef);
 
-        querySnapshot.forEach((doc) => {
-            const NameData = doc.data();
-            const nameSpan = document.getElementById("fullName");
-            nameSpan.textContent = NameData.name;
-        });
+    querySnapshot.forEach((doc) => {
+      const NameData = doc.data();
+      const nameSpan = document.getElementById("fullName");
+      nameSpan.textContent = NameData.name;
+    });
 
-        console.log("Name data fetched from Firebase");
-    } catch (error) {
-        console.error("Error fetching Name data from Firebase: ", error);
-    }
+    console.log("Name data fetched from Firebase");
+  } catch (error) {
+    console.error("Error fetching Name data from Firebase: ", error);
+  }
 });
-
-
-
 
 window.addEventListener("DOMContentLoaded", async (event) => {
   try {
@@ -187,12 +190,12 @@ boedit.addEventListener("click", () => {
     bioInput.value = bioSpan.textContent;
     bioSpan.style.display = "none";
     bioInput.style.display = "inline-block";
-    editButton.textContent = "Save"; 
+    editButton.textContent = "Save";
   } else {
     bioSpan.textContent = bioInput.value;
     bioInput.style.display = "none";
     bioSpan.style.display = "inline-block";
-    editButton.textContent = "Edit"; 
+    editButton.textContent = "Edit";
 
     saveBioToFirebase(bioSpan.textContent);
   }
@@ -211,7 +214,6 @@ async function saveBioToFirebase(bio) {
     console.error("Error saving bio to Firebase: ", error);
   }
 }
-
 
 // Git hu addevent
 window.addEventListener("DOMContentLoaded", async (event) => {
@@ -241,17 +243,16 @@ inputGitHub.addEventListener("click", function (e) {
     gitinput.value = gitSpan.textContent;
     gitSpan.style.display = "none";
     gitinput.style.display = "inline-block";
-    giteditbtn.textContent = "Save"; 
+    giteditbtn.textContent = "Save";
   } else {
     gitSpan.textContent = gitinput.value;
     gitinput.style.display = "none";
     gitSpan.style.display = "inline-block";
-    giteditbtn.textContent = "Edit"; 
+    giteditbtn.textContent = "Edit";
 
     SaveGitnameInFirebase(gitSpan.textContent);
   }
 });
-
 
 async function SaveGitnameInFirebase(gitname) {
   try {
@@ -294,7 +295,7 @@ linkedInEditButton.addEventListener("click", () => {
     linkedInInput.value = linkedInSpan.textContent;
     linkedInSpan.style.display = "none";
     linkedInInput.style.display = "inline-block";
-    editButton.textContent = "Save"; 
+    editButton.textContent = "Save";
   } else {
     linkedInSpan.textContent = linkedInInput.value;
     linkedInInput.style.display = "none";
@@ -319,62 +320,55 @@ async function saveLinkedInToFirebase(linkedIn) {
   }
 }
 
-
-
-
 let cancel_navigate = document.querySelector(".cancel_btn");
 cancel_navigate.addEventListener("click", () => {
-  window.location.href = "profile.html";
+  window.location.href = "./profile.html";
 });
-
-
-
 
 const uploadButton = document.getElementById("uploadButton");
 uploadButton.addEventListener("click", function () {
   fileInput.click();
 });
-const fileInput = document.getElementById('uploadInput');
-const imageContainer = document.getElementById('imageContainer'); 
-let previousImageDocId = null; 
+const fileInput = document.getElementById("uploadInput");
+const imageContainer = document.getElementById("imageContainer");
+let previousImageDocId = null;
 
-fileInput.addEventListener('change', async function(event) {
-    const file = event.target.files[0];
+fileInput.addEventListener("change", async function (event) {
+  const file = event.target.files[0];
 
-    if (file) {
-        const reader = new FileReader();
+  if (file) {
+    const reader = new FileReader();
 
-        reader.onload = async function(e) {
-            const img = document.createElement("img");
-            img.src = e.target.result;
+    reader.onload = async function (e) {
+      const img = document.createElement("img");
+      img.src = e.target.result;
 
-            const profileImg = document.querySelector(".profile");
-            profileImg.src = e.target.result;
+      const profileImg = document.querySelector(".profile");
+      profileImg.src = e.target.result;
 
-            while (imageContainer.firstChild) {
-                imageContainer.removeChild(imageContainer.firstChild);
-            }
-            imageContainer.appendChild(img);
+      while (imageContainer.firstChild) {
+        imageContainer.removeChild(imageContainer.firstChild);
+      }
+      imageContainer.appendChild(img);
 
-            try {
-                const imagesRef = collection(database, "images");
-                if (previousImageDocId) {
-                    await deleteDoc(doc(database, "images", previousImageDocId));
-                }
-                const newImageDocRef = await addDoc(imagesRef, {
-                    imageURL: e.target.result 
-                });
-                previousImageDocId = newImageDocRef.id;
-                alert("Successfully uploaded image and data.");
-            } catch (error) {
-                console.error("Error adding document: ", error);
-            }
-        };
+      try {
+        const imagesRef = collection(database, "images");
+        if (previousImageDocId) {
+          await deleteDoc(doc(database, "images", previousImageDocId));
+        }
+        const newImageDocRef = await addDoc(imagesRef, {
+          imageURL: e.target.result,
+        });
+        previousImageDocId = newImageDocRef.id;
+        alert("Successfully uploaded image and data.");
+      } catch (error) {
+        console.error("Error adding document: ", error);
+      }
+    };
 
-        reader.readAsDataURL(file);
-    }
+    reader.readAsDataURL(file);
+  }
 });
-
 
 // window.addEventListener("load", async () => {
 //   const imagesRef = collection(database, "images");
@@ -403,5 +397,3 @@ fileInput.addEventListener('change', async function(event) {
 //     console.error("Error getting documents: ", error);
 //   }
 // });
-
-

@@ -5,6 +5,7 @@
 * {
   font-family: 'Roboto', sans-serif;
 }
+
 body,
 html {
   margin: 0;
@@ -12,6 +13,13 @@ html {
   box-sizing: border-box;
 
 }
+
+.dark-mode .nav_link:hover {
+  color: #fffffff3;
+  background-color: #7c15dd4d;
+  /* Your desired hover color in dark mode */
+}
+
 :root {
   --white-color: #fff;
   --blue-color: #4070f4;
@@ -22,9 +30,11 @@ html {
   --background-color-btn: #49a843;
   --background-color-li: #8000801c !important;
 }
+
 body {
   background-color: white;
 }
+
 body.dark {
   background-color: #333;
 }
@@ -79,12 +89,20 @@ img.DCKAPlOGO {
   height: 47px;
   max-width: 430px;
   width: 100%;
+  transition: border-radius 0.3s, border-color 0.3s;
+}
+
+.search_bar input:focus {
+  border-color: #AA3EE2;
+  outline: none;
+  border-radius: 20px;
+
 }
 
 .search_bar input {
   height: 100%;
   width: 100%;
-  border-radius: 25px;
+  border-radius: 20px;
   font-size: 18px;
   outline: none;
   background-color: var(--white-color);
@@ -97,9 +115,20 @@ img.DCKAPlOGO {
 
 i.fas.fa-search {
   position: absolute;
-  top: 2rem;
-  left: 39rem;
+  top: 16px;
+  left: 49%;
+  margin-right: 1rem !important;
+  margin-right: 2px solid gray;
+  border-left: 2px solid #adadad;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  color: #5448489e;
+  height: 58%;
 }
+
 .navbar_content {
   display: flex;
   align-items: center;
@@ -303,38 +332,39 @@ ul.set_items {
   width: 100%;
 }
 
-p.Enroll_heading {
+.Enroll_heading {
   text-align: center;
-  font-size: 23px;
+  font-size: 22px;
   letter-spacing: -0.03em;
   line-height: 1.2;
   font-weight: 600;
   font-family: Roboto;
-  border-bottom: 4px solid transparent;
-  width: 13%;
   justify-content: center;
   margin: 6rem auto auto;
   position: relative;
   left: 3rem;
+  cursor: pointer;
+  width: 18%;
   color: #b95233;
 }
 
-p.Enroll_heading_course {
-  left: 1rem;
-  text-align: center;
-  font-size: 23px;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-  font-weight: 600;
-  font-family: "Roboto";
-  border-bottom: 4px solid transparent;
-  width: 17%;
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  left: 3rem;
-  position: relative;
-  color: #b95233;
+.Enroll_heading::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #AA3EE2;
+  transform: scaleX(0);
+  transition: all .5s ease-in-out;
+  border-radius: 10%;
+}
+
+
+
+.Enroll_heading:hover::after {
+  transform: scaleX(1);
 }
 
 
@@ -408,8 +438,8 @@ p.progress {
 
 .List.Courses {
   width: 94%;
-  margin-top: 2rem;
   margin-left: 3rem;
+  margin-top: -4rem;
 }
 
 
@@ -479,7 +509,9 @@ img.Courseimg {
 
 .Drop_Down,
 .profile_down,
-.Course_Down ,.profile_certicate{
+.Course_Down,
+.profile_certicate,
+.log_out {
   display: flex;
   align-items: center;
   width: 100%;
@@ -489,12 +521,14 @@ img.Courseimg {
 
 .Drop_Down:hover,
 .profile_down:hover,
-.Course_Down:hover,.profile_certicate:hover {
+.Course_Down:hover,
+.profile_certicate:hover,
+.log_out:hover {
   background-color: #8000801c;
 }
 
-.hoverlist{
-  color:white ;
+.hoverlist {
+  color: white;
 }
 
 
@@ -510,7 +544,8 @@ i.fa-solid.fa-award,
 i.fa-solid.fa-right-from-bracket {
   width: 50%;
 }
-.articles > :nth-child(-n+3) {
+
+.articles> :nth-child(-n+3) {
   margin-bottom: 12px;
 }
 
@@ -530,7 +565,7 @@ article {
   transition: all 0.4s ease-in-out;
   overflow: hidden;
   width: 82%;
-  border: 2px solid lightgray;
+  border: 1px solid lightgray;
 }
 
 article a::after {
@@ -578,7 +613,7 @@ article img {
 }
 
 .article-wrapper {
-  height: 314px;
+  height: 266px;
 }
 
 article a {
@@ -602,6 +637,11 @@ article a .icon {
   transition: all 0.3s;
 }
 
+p.aboutlang {
+  font-family: 'Roboto';
+  font-size: smaller;
+}
+
 /* using the has() relational pseudo selector to update our custom properties */
 article:has(:hover, :focus) {
   --img-scale: 1.1;
@@ -621,6 +661,7 @@ Generic layout (demo looks)
 *::after {
   box-sizing: border-box;
 }
+
 /* 
 body {
   margin: 0;
@@ -655,11 +696,12 @@ body {
 
 /* Classlist */
 
-.progress_classlist{
+.progress_classlist {
   width: 81%;
   margin-left: 4rem;
 }
-.arcticle_classlist{
+
+.arcticle_classlist {
   display: grid;
   max-width: 1067px;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -672,6 +714,7 @@ body {
   article {
     container: card/inline-size;
   }
+
   .article-body p {
     display: none;
   }
@@ -683,14 +726,17 @@ body {
     grid-template-columns: 100px 1fr;
     gap: 16px;
   }
+
   .article-body {
     padding-left: 0;
   }
+
   figure {
     width: 100%;
     height: 100%;
     overflow: hidden;
   }
+
   figure img {
     height: 100%;
     aspect-ratio: 1;
@@ -699,12 +745,12 @@ body {
 }
 
 .sr-only:not(:focus):not(:active) {
-  clip: rect(0 0 0 0); 
+  clip: rect(0 0 0 0);
   clip-path: inset(50%);
   height: 1px;
   overflow: hidden;
   position: absolute;
-  white-space: nowrap; 
+  white-space: nowrap;
   width: 1px;
 }
 
@@ -718,7 +764,7 @@ body {
   input[type="text"] {
     position: relative;
     left: 20%;
-}
+  }
 
 
   .navbar {

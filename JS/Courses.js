@@ -160,6 +160,7 @@ sidebar.addEventListener("mouseleave", () => {
 
 darkLight.addEventListener("click", () => {
   body.classList.toggle("dark");
+  document.body.classList.toggle("dark-mode");
   searchIcon.style.color = body.classList.contains("dark") ? "white" : "black";
   headings.forEach((heading) => {
     if (body.classList.contains("dark")) {
@@ -210,6 +211,13 @@ Certi_page.addEventListener("click",()=>{
   window.location.href="./certificate.html"
 })
 
+
+let logout =document.querySelector(".log_out")
+     
+logout.addEventListener("click",()=>{
+    window.location.href = "./login.html"; 
+});
+
 let left_side_bar = document.querySelectorAll(".navlink");
 
 left_side_bar[0].addEventListener("click", () => {
@@ -226,6 +234,9 @@ left_side_bar[3].addEventListener("click", () => {
   window.location.href = "./Roadmap.html";
 });
 
+
+
+
 // Button Navigation
 
 let Explorebtn = document.querySelectorAll('.read-more');
@@ -233,8 +244,6 @@ console.log(Explorebtn[0]);
 Explorebtn.forEach(async(btn) => {
   let ref=doc(database,"Learning",'0');
   let get_data=await getDoc(ref);
-  // console.log(get_data.data());
-  // let find_language=get_data.data().Find_Language_type;
   let find_language=0;
 
  
@@ -261,13 +270,8 @@ find_language='Css';
 
       }
     )
-
     window.location.href='learning_content.html'
-
   });
-
-  
-    
 });
 
 // Percentage Calculation

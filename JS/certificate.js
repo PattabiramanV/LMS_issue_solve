@@ -27,45 +27,18 @@ sidebar.addEventListener("mouseleave", () => {
   }
 });
 
-darkLight.addEventListener("click", () => {
-  body.classList.toggle("dark");
-  if (body.classList.contains("dark")) {
-    document.setI;
-    darkLight.classList.replace("bx-sun", "bx-moon");
-  } else {
-    darkLight.classList.replace("bx-moon", "bx-sun");
-  }
-  let searchicon = document.querySelector(".fas");
-  console.log(searchicon);
-  let Dckaplogo = document.querySelector(".DCKAPlOGO");
-  darkLight.addEventListener("click", () => {
-    body.classList.toggle("dark");
-    searchicon.style.color = body.classList.contains("dark") ? "white" : "black";
-    headings.forEach((heading) => {
-      heading.style.color = body.classList.contains("dark") ? "white" : "black";
-    });
-    Dckaplogo.src = body.classList.contains("dark")
-    ? "../Assests/Dckapwhite.png"
-    : "../Assests/Dckap Logo.png";
-  });
-});
-
-submenuItems.forEach((item, index) => {
-  item.addEventListener("click", () => {
-    item.classList.toggle("show_submenu");
-    submenuItems.forEach((item2, index2) => {
-      if (index !== index2) {
-        item2.classList.remove("show_submenu");
-      }
-    });
-  });
-});
-
-if (window.innerWidth < 768) {
-  sidebar.classList.add("close");
-} else {
-  sidebar.classList.remove("close");
+function toggleDarkMode() {
+  const isDarkMode = body.classList.toggle("dark");
+  document.body.classList.toggle("darkMode");
+  sessionStorage.setItem("darkMode", isDarkMode);
 }
+
+const storedDarkMode = sessionStorage.getItem("darkMode");
+if (storedDarkMode === "true") {
+  toggleDarkMode();
+}
+
+darkLight.addEventListener("click", toggleDarkMode);
 
 
 
@@ -87,17 +60,29 @@ document.addEventListener("click", (event) => {
 
 // profile_drop
 
-let profile_page=document.querySelector(".profile_down")
- profile_page.addEventListener("click",()=>{
-        window.location.href="./profile.html"
-})
+let profile_page = document.querySelector(".profile_down");
+profile_page.addEventListener("click", () => {
+  window.location.href = "./profile.html";
+});
 
-let Course_navigate=document.querySelector(".Course_Down")
-Course_navigate.addEventListener("click",()=>{
-      window.location.href="./Courses.html"
-})
+let Course_navigate = document.querySelector(".Course_Down");
+Course_navigate.addEventListener("click", () => {
+  window.location.href = "./Courses.html";
+});
 
-// fire_base
+let Certi_page = document.querySelector(".profile_certicate");
+
+Certi_page.addEventListener("click", () => {
+  window.location.href = "./certificate.html";
+});
+
+let logout = document.querySelector(".log_out");
+
+logout.addEventListener("click", () => {
+  window.location.href = "./login.html";
+});
+
+// -------------------------------- fire_base ---------------------------------------
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
@@ -144,7 +129,7 @@ html_btn.addEventListener("click", () => {
   {
     localStorage.setItem('selectedQuiz', 'HTML_Overall_Quiz');
     localStorage.setItem('certificate_get', 'HTML_Overall_Quiz');
-    window.location.href = 'OverallQuiz.html';
+    window.location.href = './OverallQuiz.html';
     document.getElementsByClassName("html_lock").style.display = "none";
   }
   else
@@ -185,7 +170,7 @@ css_quiz.addEventListener("click", () => {
   {
     localStorage.setItem('selectedQuiz', 'CSS_Overall_Quiz');
     localStorage.setItem('selectedQuiz', 'CSS_Overall_Quiz');
-    window.location.href = 'OverallQuiz.html';
+    window.location.href = './OverallQuiz.html';
   }
   else
   {
@@ -226,7 +211,7 @@ js_btn.addEventListener("click", () => {
   if(Javascript_Total_Percentage === 100)
   {
     localStorage.setItem('selectedQuiz', 'JavaScript_Overall_Quiz');
-    window.location.href = 'OverallQuiz.html';
+    window.location.href = './OverallQuiz.html';
   }
   else
   {
@@ -265,7 +250,7 @@ mysql_btn.addEventListener("click", () => {
   if(Mysql_Total_Percentage === 100)
   {
     localStorage.setItem('selectedQuiz', 'MySql_Overall_Quiz');
-    window.location.href = 'OverallQuiz.html';
+    window.location.href = './OverallQuiz.html';
   }
   else
   {

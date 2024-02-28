@@ -1,7 +1,5 @@
 "use strict"
-
-
-// fire_base
+//------------------------------- fire_base -----------------------------------
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
@@ -23,23 +21,23 @@ const db = getFirestore(); // Create a Firestore instance
 
 async function fetchDataAndUpdateHTML() 
 {
-    try 
-    {
-        const getRef = doc(db, 'Learning', '0');
-        const getData = await getDoc(getRef);
-        const data = getData.data();
+  try 
+  {
+    const getRef = doc(db, 'Learning', '0');
+    const getData = await getDoc(getRef);
+    const data = getData.data();
 
         // Update HTML with fetched data
-        document.querySelector('.Total_Quiz').textContent =  data.Html_Total_Percentage|| '0';
-        document.querySelector('.Total_Ponits').textContent = data.Html_Complete_Module || '0';
-        document.querySelector('.Total_Stars').textContent = data.Html_Complete_Module*2 || '0';
-        localStorage.setItem('Total_Ponits', data.Html_Complete_Module);
+    document.querySelector('.Total_Quiz').textContent =  data.Html_Total_Percentage|| '0';
+    document.querySelector('.Total_Ponits').textContent = data.Html_Complete_Module || '0';
+    document.querySelector('.Total_Stars').textContent = data.Html_Complete_Module*2 || '0';
+    localStorage.setItem('Total_Ponits', data.Html_Complete_Module);
 
-    } 
-    catch (error) 
-    {
-        console.error("Error fetching and updating data:", error); 
-    }
+  } 
+  catch (error) 
+  {
+    console.error("Error fetching and updating data:", error); 
+  }
 }
 
 fetchDataAndUpdateHTML(); // Call the function to fetch data and update HTML
@@ -149,33 +147,22 @@ sidebar.addEventListener("mouseleave", () => {
   }
 });
 
-darkLight.addEventListener("click", () => {
-  body.classList.toggle("dark");
-  if (body.classList.contains("dark")) 
-  {
-    document.setI;
-    darkLight.classList.replace("bx-sun", "bx-moon");
-    document.querySelector(".dashboard_profile_content").style.color = "white";
-  } 
-  else 
-  {
-    darkLight.classList.replace("bx-moon", "bx-sun");
-    document.querySelector(".dashboard_profile_content").style.color = "black";
-  }
-  let searchicon = document.querySelector(".fas");
-  console.log(searchicon);
-  let Dckaplogo = document.querySelector(".DCKAPlOGO");
-  darkLight.addEventListener("click", () => {
-    body.classList.toggle("dark");
-    searchicon.style.color = body.classList.contains("dark") ? "white" : "black";
-    headings.forEach((heading) => {
-      heading.style.color = body.classList.contains("dark") ? "white" : "black";
-    });
-    Dckaplogo.src = body.classList.contains("dark")
-    ? "../Assests/Dckapwhite.png"
-    : "../Assests/Dckap Logo.png";
-  });
-});
+function toggleDarkMode() {
+  const isDarkMode = body.classList.toggle("dark");
+  document.body.classList.toggle("darkMode");
+  document.querySelector(".dashboard_profile_content p").style.color = "white";
+  document.querySelector(".dash").style.color = "white";
+  sessionStorage.setItem("darkMode", isDarkMode);
+}
+
+const storedDarkMode = sessionStorage.getItem("darkMode");
+if (storedDarkMode === "true") {
+  toggleDarkMode();
+}
+
+darkLight.addEventListener("click", toggleDarkMode);
+
+
 
 submenuItems.forEach((item, index) => {
   item.addEventListener("click", () => {
@@ -217,42 +204,26 @@ document.addEventListener("click", (event) => {
 
 // profile_drop
 
-let profile_page=document.querySelector(".profile_down")
- profile_page.addEventListener("click",()=>{
-        window.location.href="./profile.html"
-})
-
-let Course_navigate=document.querySelector(".Course_Down")
-Course_navigate.addEventListener("click",()=>{
-      window.location.href="./Courses.html"
-})
-
-let Certi_page=document.querySelector(".profile-certicate");
-
-Certi_page.addEventListener("click",()=>{
-         window.location.href="./certificate.html"
-})
-
-
-
-
-let left_side_bar=document.querySelectorAll(".navlink");
-
-left_side_bar[0].addEventListener("click",()=>{
-  window.location.href='./index.html  '
+let profile_page = document.querySelector(".profile_down");
+profile_page.addEventListener("click", () => {
+  window.location.href = "./profile.html";
 });
 
-left_side_bar[1].addEventListener("click",()=>{
-
-  window.location.href='./Learning.html  '
+let Course_navigate = document.querySelector(".Course_Down");
+Course_navigate.addEventListener("click", () => {
+  window.location.href = "./Courses.html";
 });
-left_side_bar[2].addEventListener("click",()=>{
 
-  window.location.href='./dashboard.html';
+let Certi_page = document.querySelector(".profile_certicate");
+
+Certi_page.addEventListener("click", () => {
+  window.location.href = "./certificate.html";
 });
-left_side_bar[3].addEventListener("click",()=>{
 
-  window.location.href='./Roadmap.html';
+let logout = document.querySelector(".log_out");
+
+logout.addEventListener("click", () => {
+  window.location.href = "./login.html";
 });
 
 

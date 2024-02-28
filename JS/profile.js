@@ -36,18 +36,26 @@ sidebar.addEventListener("mouseleave", () => {
 });
 
 let searchicon = document.querySelector(".fas");
-let profilehead = document.querySelector(".profile_hdg");
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
 
-darkLight.addEventListener("click", () => {
-  body.classList.toggle("dark");
+// Function to toggle dark mode
+
+function toggleDarkMode() {
+  const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
-  searchicon.style.color = body.classList.contains("dark") ? "white" : "black";
-  profilehead.style.color = body.classList.contains("dark") ? "white" : "black";
+  searchicon.style.color = isDarkMode ? "white" : "black";
   Dckaplogo.src = body.classList.contains("dark")
-    ? "./Assests/Dckapwhite.png"
-    : "./Assests/Logodk.png";
-});
+  ? "./Assests/Dckapwhite.png"
+  : "./Assests/Logodk.png";
+  sessionStorage.setItem("darkMode", isDarkMode);
+}
+
+const storedDarkMode = sessionStorage.getItem("darkMode");
+if (storedDarkMode === "true") {
+  toggleDarkMode();
+}
+darkLight.addEventListener("click", toggleDarkMode);
+
 
 // Profile
 
@@ -67,6 +75,19 @@ document.addEventListener("click", (event) => {
     profile_Dropdown.style.display = "none";
   }
 });
+
+// Cancel Btn
+
+let cancel_btn = document.querySelector(".cancel_btn");
+    cancel_btn.addEventListener('click', (e) => {
+    
+      let previousLocation = localStorage.getItem('previous_location');
+      if (previousLocation) {
+        window.location.href = previousLocation;
+      } else {
+        window.location.href = './index.html';
+      }
+    });
 
 // profile_drop
 
@@ -98,6 +119,8 @@ import {
   collection,
   addDoc,
   getDocs,
+  deleteDoc,
+  doc
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -323,21 +346,15 @@ async function saveLinkedInToFirebase(linkedIn) {
     console.error("Error saving LinkedIn info to Firebase: ", error);
   }
 }
-
-let cancel_navigate = document.querySelector(".cancel_btn");
-cancel_navigate.addEventListener("click", () => {
-  window.location.href = "./profile.html";
-});
-
-
-
 const uploadButton = document.getElementById("uploadButton");
+const fileInput = document.getElementById("uploadInput");
+const imageContainer = document.getElementById("imageContainer");
+const profileImg = document.querySelector(".profile");
+let imageDocId = "1"; // Initial image ID
+
 uploadButton.addEventListener("click", function () {
   fileInput.click();
 });
-const fileInput = document.getElementById("uploadInput");
-const imageContainer = document.getElementById("imageContainer");
-let previousImageDocId = null;
 
 fileInput.addEventListener("change", async function (event) {
   const file = event.target.files[0];
@@ -349,29 +366,66 @@ fileInput.addEventListener("change", async function (event) {
       const img = document.createElement("img");
       img.src = e.target.result;
 
-      const profileImg = document.querySelector(".profile");
       profileImg.src = e.target.result;
 
-      while (imageContainer.firstChild) {
-        imageContainer.removeChild(imageContainer.firstChild);
-      }
+      // Remove existing image
+      imageContainer.innerHTML = '';
       imageContainer.appendChild(img);
 
       try {
         const imagesRef = collection(database, "images");
-        if (previousImageDocId) {
-          await deleteDoc(doc(database, "images", previousImageDocId));
+        
+        // If an image with the same ID exists, delete it
+        if (imageDocId) {
+          await deleteDoc(doc(database, "images", imageDocId));
         }
+        
+        // Upload the new image
         const newImageDocRef = await addDoc(imagesRef, {
           imageURL: e.target.result,
+          id: imageDocId
         });
-        previousImageDocId = newImageDocRef.id;
+        
+        // Set the imageDocId to the newly uploaded image's ID
+        imageDocId = newImageDocRef.id;
+
         alert("Successfully uploaded image and data.");
+
+        // Store the imageDocId in session storage
+        sessionStorage.setItem("profileImageDocId", imageDocId);
+
+        // Store the image URL in session storage
+        storeImageURLInSessionStorage(e.target.result);
       } catch (error) {
         console.error("Error adding document: ", error);
       }
     };
 
     reader.readAsDataURL(file);
-  };
-})
+  }
+});
+
+// Check if there's a stored image URL in session storage
+window.addEventListener("load", () => {
+  const storedImageURL = sessionStorage.getItem("profileImageURL");
+  
+  if (storedImageURL) {
+    profileImg.src = storedImageURL;
+    const img = document.createElement("img");
+    img.src = storedImageURL;
+    
+    // Remove existing image
+    imageContainer.innerHTML = '';
+    imageContainer.appendChild(img);
+  }
+});
+
+// Store the uploaded image URL in session storage
+function storeImageURLInSessionStorage(imageURL) {
+  try {
+    sessionStorage.setItem("profileImageURL", imageURL);
+    console.log("Image URL stored in session storage:", imageURL);
+  } catch (error) {
+    console.error("Error storing image URL in session storage:", error);
+  }
+}

@@ -15,12 +15,12 @@
   <nav class="navbar">
     <div class="logo_item">
       <i class="bx bx-menu" id="sidebarOpen"></i>
-      <img src="./Assests/Dckap Logo.png" alt="" class="DCKAPlOGO"></i>
+      <img src="./Assests/logo-full-palli-tamil-color.png" alt="" class="DCKAPlOGO"></i>
     </div>
 
     <div class="search_bar">
-      <input type="text" placeholder="Search" />
-      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search"  />
+      <i class="fas fa-search" id="search_icon"></i>
     </div>
 
     <div class="navbar_content">
@@ -47,33 +47,79 @@
       </div>
     </div>
   </nav>
+   <!-- quiz addd -->
+
+          
+   <div class="quiz_contion">
+    <div class="container">
+      <div class="heading_name">
+        <h1>Quiz</h1>
+      </div>
+      <div class="question">
+        <div id="quiz"></div>
+
+      </div>
+      <div class="add_result">
+        <div id="result" class="result">
+          <div id="resu2">
+
+          </div>
+        </div>
+      </div>
+<div id="diva">
+</div>
+      <div class="butlist">
+        <div class="rey">
+          <button id="retry" class="button hide">Retry</button>
+        </div>
+        <div class="show-rey">
+          <button id="retry2" class="button hide">Retry</button>
+
+        </div>
+        <div class="show">
+          <button id="showAnswer" class="button hide">Show Answer</button>
+        </div>
+      </div>
+
+      <div class="butlist2">
+        <div class="back_btn">
+          <button id="submit_btn" class="button">Back</button>
+        </div>
+        <div class="sumbit_btn">
+          <button id="submit" class="button">Next</button>
+        </div>
+      </div>
+
+    </div> 
+  </div>
+</div>
 
   <!-- sidebar -->
   <nav class="sidebar" style="display: flex;">
     <div class="menu_content">
       <ul class="menu_items">
         <li class="item">
-          <div href="#" class="nav_link submenu_item">
+          <a href="./index.html" class="nav_link submenu_item">
             <span class="navlink_icon">
               <i class="bx bx-home-alt"></i>
             </span>
             <span class="navlink">Home</span>
-          </div>
+          </a>
 
         </li>
         <li class="item">
-          <div href="#" class="nav_link submenu_item">
+          <a href="./Learning.html" class="nav_link submenu_item">
             <span class="navlink_icon">
               <i class="bx bx-grid-alt"></i>
             </span>
             <span class="navlink">learning</span>
-          </div>
+          </a>
         </li>
       </ul>
 
       <ul class="menu_items">
         <li class="item">
-          <a href="#" class="nav_link">
+          <a href="./dashboard.html" class="nav_link">
             <span class="navlink_icon">
               <i class="bx bxs-magic-wand"></i>
             </span>
@@ -83,7 +129,7 @@
 
 
         <li class="item">
-          <a href="#" class="nav_link">
+          <a href="./Roadmap.html" class="nav_link">
             <span class="navlink_icon">
               <i class="bx bx-loader-circle"></i>
             </span>
@@ -118,65 +164,25 @@
 
 
 
-                                <!-- quiz addd -->
-
-          
-                                <div class="quiz_contion">
-                                  <div class="container">
-                                    <div class="heading_name">
-                                      <h1>Quiz</h1>
-                                    </div>
-                                    <div class="question">
-                                      <div id="quiz"></div>
-                            
-                                    </div>
-                                    <div class="add_result">
-                                      <div id="result" class="result">
-                                        <div id="resu2">
-                      
-                                        </div>
-                                      </div>
-                                    </div>
-                      <div id="diva">
-                      </div>
-                                    <div class="butlist">
-                                      <div class="rey">
-                                        <button id="retry" class="button hide">Retry</button>
-                                      </div>
-                                      <div class="show-rey">
-                                        <button id="retry2" class="button hide">Retry</button>
-                      
-                                      </div>
-                                      <div class="show">
-                                        <button id="showAnswer" class="button hide">Show Answer</button>
-                                      </div>
-                                    </div>
-                            
-                                    <div class="butlist2">
-                                      <div class="back_btn">
-                                        <button id="submit_btn" class="button">Back</button>
-                                      </div>
-                                      <div class="sumbit_btn">
-                                        <button id="submit" class="button">Next</button>
-                                      </div>
-                                    </div>
-                            
-                                  </div> 
-                                </div>
-                              </div>
+                               
   <!-- Your Content paste here -->
   <div class="generating_certificate">
     <h1 id="heading_certi">Certificate</h1>
     <label for="" id="enter_name">
       <span class="certi_name">Enter Your Name:</span> 
       <input type="text" name="name" id="name"></label>
-    <a href="#" id="download_btn">Download</a>
+      <div class="btn_certificate">
+        <a href="#" id="download_btn">Download</a>
+        <!-- <b class="top">click to download</b> -->
+        <b class="bottom">45.8KB .jpg</b>
+      </div>
+    <!-- <a href="#" id="download_btn">Download</a> -->
     <canvas id="canva" height="350px" width="500px"></canvas>
   </div>
  
 </body>
 <!-- Javascript -->
-<script  type="module"  src="JS/OverallQuiz.js"></script> 
+<script  type="module"  src="./JS/OverallQuiz.js"></script> 
 
 
 </html>

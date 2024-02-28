@@ -18,7 +18,7 @@ body, html {
   --background:rgb(255, 255, 255);
   --background-color-hover: rgba(30, 245, 2, 0.986);
   --background-color-btn: #49a843;
-  --background-color-li: #99ecae75 !important;
+  --background-color-li: #8000801c !important;
 }
 body {
   background-color: #e7f2fd;
@@ -240,17 +240,16 @@ ul.set_items {
 #sidebarOpen {
   display: none;
 }
-
-/* Profile DropDown */
+/* Dropdown Profile */
 
 .profile_bar_list {
-  top: 72px;
-  width: 16%;
+  top: 77px;
+  width: 13%;
   background: rgb(255 255 255 / 78%);
   border-radius: 8px;
   color: rgb(18, 22, 10);
   position: absolute;
-  right: 3%;
+  right: 5%;
   display: none;
   border: 1px solid lightgray;
   cursor: pointer;
@@ -258,7 +257,7 @@ ul.set_items {
 
 .Drop_Down,
 .profile_down,
-.Course_Down {
+.Course_Down ,.profile_certicate{
   display: flex;
   align-items: center;
   width: 100%;
@@ -267,13 +266,18 @@ ul.set_items {
 }
 
 .Drop_Down:hover,
-.profile_down:hover,.Course_Down:hover {
-  background-color: rgba(91, 231, 35, 0.226);
-  border-radius: 8px;
+.profile_down:hover,
+.Course_Down:hover,.profile_certicate:hover {
+  background-color: #8000801c;
 }
 
+.hoverlist{
+  color:white ;
+}
+
+
 p.profile-name {
-  width: 50%;
+  width: 100%;
   align-items: flex-start;
   display: flex;
 }
@@ -300,10 +304,10 @@ i.fa-solid.fa-right-from-bracket {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: #f0f0f0; */
-    background-color: #a9ba9d73;
-    /* background-color: #ACE1AF; */
-    
+    /* Light Purple Color Codes */
+    /* background-color: #CBC3E3;  */
+    background-color: #cbc3e36e;
+
   }
   
   /* .container {
@@ -416,7 +420,7 @@ p.marks {
 }
 /* ------------------------button css -----------------------*/
 
-button {
+/* button {
   padding: 1.3em 3em;
   font-size: 12px;
   text-transform: uppercase;
@@ -441,8 +445,37 @@ button:hover {
 
 button:active {
   transform: translateY(-1px);
+} */
+button {
+  padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #AA3EE2;
+  background-color: #fff;
+  /* border: none; */
+  border: 1px solid;
+  border-color: #AA3EE2;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Roboto', sans-serif;
 }
 
+button:hover {
+  background-color: #6C298E;
+  box-shadow: 0px 15px 20px #c153fc42;
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+button:active {
+  transform: translateY(-1px);
+  background-color: #C253FC;
+}
 
   /* ------------------for the color h1 ----------------- */
 h1 {
@@ -451,10 +484,48 @@ h1 {
   font-family: "Roboto";
   font-weight: bold;
   font-size: 40pt;
-  background: linear-gradient(to right, #2E8B57, #55DD33, #1DB954, #76FF7A, rgb(3, 116, 8) 80%, #40a829);
+  background: linear-gradient(to right, #643d6e, #a982b4, #c4a6cc, #9889ce, rgb(166, 68, 231) 80%, #8f36bbb6 );
   -webkit-text-fill-color: transparent;
-  background-clip: text;      
+  /* background-clip: text;       */
+  -webkit-background-clip: text;
 }
+
+
+
+/* Add dark mode styles */
+.dark-mode .quiz_contion {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.dark-mode .container {
+  background-color: #333333;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.dark-mode h1 {
+  background: linear-gradient(to right, #643d6e, #a982b4, #c4a6cc, #9889ce, rgb(166, 68, 231) 80%, #8f36bbb6);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark-mode button {
+  color: #ffffff;
+  background-color: #AA3EE2;
+  border-color: #AA3EE2;
+}
+
+.dark-mode button:hover {
+  background-color: #6C298E;
+}
+
+.dark-mode button:active {
+  background-color: #C253FC;
+}
+
+/* Add more dark mode styles as needed */
+
 
 /*----------------------------------- sample css code for color  */
 
@@ -485,6 +556,10 @@ input[type=radio]:hover {
   cursor: pointer;
 }
 
+
+
+
+
 /* ----------- Generate Certificate ------------------- */
 .generating_certificate
 {
@@ -501,13 +576,13 @@ input[type=radio]:hover {
 #canva
 {
   position: relative;
-  top: 35%;
-  left: -12%;
+  top: 31%;
+  left: -16%;
 }
 #name
 {
   position: relative;
-  top: -25%;
+  top: -30%;
   left: 26%;
   width: 250px;
   height: 30px;
@@ -521,22 +596,114 @@ input[type=radio]:hover {
   left: 43%;
   letter-spacing: 2px;
 }
-#download_btn
+.btn_certificate{
+  position: absolute;
+  top: 86%;
+  left: 80%;
+  transform: translate(-86%, -80%)
+}
+
+.btn_certificate a {
+  display: block;
+  height: 50px;
+  width: 200px;
+  background: #D0A2F7;
+  color: #5E1675;
+  font: 24px/50px Helvetica, Verdana, sans-serif;
+  text-decoration: none;
+  text-align: center;
+  /* text-transform: uppercase; */
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  -moz-box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  background: -moz-linear-gradient(top, #BC7AF9 0%, #BC7AF9 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#BC7AF9), color-stop(100%,#BC7AF9));
+  background: -webkit-linear-gradient(top, #BC7AF9 0%,#BC7AF9 100%);
+  background: -o-linear-gradient(top, #BC7AF9 0%,#BC7AF9 100%);
+  background: -ms-linear-gradient(top, #BC7AF9 0%,#BC7AF9 100%);
+  background: linear-gradient(top, #BC7AF9 0%,#BC7AF9 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b7ea', endColorstr='#009ec3',GradientType=0 );
+}
+
+b {
+  background: #222;
+  display: block;
+  height: 15px;
+  width: 180px;
+  margin: -50px 0 0 10px;
+  text-align: center;
+  font: 12px/45px Helvetica, Verdana, sans-serif;
+  color: #5E1675;
+  position: absolute;
+  z-index: -1;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  -moz-box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.btn_certificate a, b {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  -moz-box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+}
+
+/* .btn_certificate:hover .top {
+  margin: -80px 0 0 10px;
+  line-height: 35px;
+} */
+
+.btn_certificate:hover .bottom {
+  margin: -20px 0 0 10px;
+}
+
+.btn_certificate a:active {
+  background: #BC7AF9;
+  background: -moz-linear-gradient(top,  #BC7AF9 36%, #BC7AF9 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(36%,#BC7AF9), color-stop(100%,#BC7AF9));
+  background: -webkit-linear-gradient(top,  #BC7AF9 36%,#BC7AF9 100%);
+  background: -o-linear-gradient(top,  #BC7AF9 36%,#BC7AF9 100%);
+  background: -ms-linear-gradient(top,  #BC7AF9 36%,#BC7AF9 100%);
+  background: linear-gradient(top,  #BC7AF9 36%,#BC7AF9 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b7ea', endColorstr='#009ec3',GradientType=0 );
+}
+
+.btn_certificate:active .bottom {
+  margin: -10px 0 0 5px;
+}
+
+/* .btn_certificate:active .top {
+  margin: -70px 0 0 10px;
+} */
+/* #download_btn
 {
   position: relative;
-  top: 42%;
+  top: 38%;
   left: 10%;
   background-color: #23c483;
   padding: 10px;
   border-radius: 5px;
   font-size: 140%;
   text-decoration: none;
-}
+} */
 .certi_name
 {
-  color: #23c483;
+  color: #a35ecb;
   position: relative;
-  top: -25%;
+  top: -30%;
   left: 25%;
   font-size: 160%;
 }

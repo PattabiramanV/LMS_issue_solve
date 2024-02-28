@@ -158,21 +158,35 @@ sidebar.addEventListener("mouseleave", () => {
 
 
 
-darkLight.addEventListener("click", () => {
-  body.classList.toggle("dark");
+
+// Function to toggle dark mode
+
+function toggleDarkMode() {
+  const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
-  searchIcon.style.color = body.classList.contains("dark") ? "white" : "black";
+  searchIcon.style.color = isDarkMode ? "white" : "black";
   headings.forEach((heading) => {
-    if (body.classList.contains("dark")) {
-        heading.style.color = "white";
-    } else {
-        heading.style.color = "#b95233";
-    }
-});
+      if (isDarkMode) {
+          heading.style.color = "white";
+      } else {
+          heading.style.color = "#b95233";
+      }
   Dckaplogo.src = body.classList.contains("dark")
-    ? "./Assests/Dckapwhite.png"
-    : "./Assests/Logodk.png";
-});
+  ? "./Assests/Dckapwhite.png"
+  : "./Assests/Logodk.png";
+  });
+
+  sessionStorage.setItem("darkMode", isDarkMode);
+}
+
+const storedDarkMode = sessionStorage.getItem("darkMode");
+if (storedDarkMode === "true") {
+  toggleDarkMode();
+}
+
+darkLight.addEventListener("click", toggleDarkMode);
+
+
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");
@@ -234,7 +248,9 @@ left_side_bar[3].addEventListener("click", () => {
   window.location.href = "./Roadmap.html";
 });
 
-
+document.querySelector('.profile_down').addEventListener('click', function() {
+  localStorage.setItem('previous_location', window.location.href);
+});
 
 
 // Button Navigation
@@ -265,7 +281,8 @@ find_language='Css';
 
    let data_get=await updateDoc(
       ref,{
-      Find_Language_type:find_language
+      Find_Language_type:find_language,
+      find_index:0
 
 
       }
@@ -274,6 +291,20 @@ find_language='Css';
   });
 });
 
-// Percentage Calculation
+// Percentage Calculations
+
+// const percentageElements = document.querySelectorAll('.percentagecalculation');
+// console.log(percentageElements);
+
+// let ref=doc(db,'Learning',0);
+//   let data_ref=await getDoc(ref);
+
+//   percentage_tag.innerHTML=data_ref.data().Html_Total_Percentage;
+
+// // })
+// all_percentage_show_tag[0].innerHTML=data_ref.data().Html_Total_Percentage;
+// all_percentage_show_tag[1].innerHTML=data_ref.data().Css_Total_Percentage;
+// all_percentage_show_tag[2].innerHTML=data_ref.data().Javascript_Total_Percentage;
+// all_percentage_show_tag[3].innerHTML=data_ref.data().Mysql_Total_Percentage;
 
 

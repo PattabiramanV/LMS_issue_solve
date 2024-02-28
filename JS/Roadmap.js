@@ -72,14 +72,34 @@ sidebar.addEventListener("mouseleave", () => {
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
 let searchicon = document.querySelector(".fas");
 
-darkLight.addEventListener("click", () => {
-  body.classList.toggle("dark");
+// Function to toggle dark mode
+
+function toggleDarkMode() {
+  const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
-  searchicon.style.color = body.classList.contains("dark") ? "white" : "black";
+  searchicon.style.color = isDarkMode ? "white" : "black";
+  headings.forEach((heading) => {
+      if (isDarkMode) {
+          heading.style.color = "white";
+      } else {
+          heading.style.color = "#b95233";
+      }
   Dckaplogo.src = body.classList.contains("dark")
-    ? "./Assests/Dckapwhite.png"
-    : "./Assests/Logodk.png";
-});
+  ? "./Assests/Dckapwhite.png"
+  : "./Assests/Logodk.png";
+  });
+
+  sessionStorage.setItem("darkMode", isDarkMode);
+}
+
+const storedDarkMode = sessionStorage.getItem("darkMode");
+if (storedDarkMode === "true") {
+  toggleDarkMode();
+}
+
+
+darkLight.addEventListener("click", toggleDarkMode);
+
 
 // Profile
 
@@ -142,6 +162,7 @@ headingnavigate.forEach(async (links) => {
     }
     await updateDoc(ref, {
       Find_Language_type: find_language,
+      find_index:0
     });
     window.location.href = "./learning_content.html";
   });

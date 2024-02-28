@@ -39,7 +39,7 @@ body.dark
   --grey-color-light: #aaa;
 }
 
-/*---------------- navbar ----------------------*/
+/*------------------------------ navbar -------------------------------------*/
 .navbar 
 {
   position: fixed;
@@ -268,7 +268,7 @@ ul.set_items
   display: none;
 }
 
-/* Profile DropDown */
+/*-------------------------------- Profile DropDown ------------------------------------*/
 
 .profile_bar_list {
   top: 77px;
@@ -363,9 +363,6 @@ i.fa-solid.fa-right-from-bracket {
   justify-content: center;
   gap: 10%;
   margin: 0%;
-  /* width: 50%; */
-  /* width: 47%;
-  margin: 0 auto; */
   padding: 0%;
 }
 .totals {
@@ -377,12 +374,7 @@ i.fa-solid.fa-right-from-bracket {
   width: 18%;
   padding: 2%;
   border-radius: 5%;
-  box-shadow: 2px 2px 2px 2px #FEBE8C;
-  transition: 1s;
-}
-.totals:hover
-{
-  transform: scale(1.1);
+  box-shadow: 2px 2px 2px 2px #928f8d;
 }
 .content
 {

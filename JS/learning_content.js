@@ -216,7 +216,7 @@ let left_headings=get_content_obj.data().left_headings;
 
 let p_tag;
 let lock_icon;
-console.log(user_unlock_total_module);
+
 heading_append_Fun(left_headings);
 
 function heading_append_Fun(arr){
@@ -236,9 +236,11 @@ function heading_append_Fun(arr){
     content_heading_div.append(p_tag,lock_icon);
 
     left_heading_content.append(content_heading_div);
-    // all_heading_title.append(content_heading_div);
-   console.log(find_index);
-    // lock_icon_remove_Fun(index)
+  
+    let user_unlock_total_module=get_data.data()[find_language + '_unlock_total_module'];
+console.log(user_unlock_total_module);
+
+  
     if(index<find_complete_module+1 || (index<=find_complete_module+1 && find_complete_module!=0 ) ){
       lock_icon.style.display='none';
       p_tag.classList.add("left_heding");
@@ -257,36 +259,6 @@ all_heading_title=document.querySelectorAll(".content_title");
 }
 
 
-// async function lock_icon_remove_Fun(value){
-
-
-// console.log(all_heading_title);
-
-// let get_ref=doc(db,'Learning','0');
-// let get_data= await getDoc(get_ref);
-// find_index=get_data.data().find_index;
-// console.log(find_index);
-
-//  if(head_check){
-//     value++;
-// all_heading_title[value].parentElement.lastElementChild.style.display='block';
-
-//     all_heading_title[value].parentElement.lastElementChild.style.display='none';
-//     all_heading_title[value].classList.add("left_heding")
-//   }
-
-// else if(value<find_complete_module+1  ) {
-
-//   all_heading_title[value].parentElement.lastElementChild.style.display='none';
-//   all_heading_title[value].classList.add("left_heding")
-// }
-// // else if(value<=find_complete_module+1){
-//   all_heading_title[value].parentElement.lastElementChild.style.display='none';
-//   all_heading_title[value].classList.add("left_heding")
-// }
-// }
-
-
 
 let quiz_btn=document.querySelector(".quiz_btn");
 
@@ -294,9 +266,10 @@ quiz_btn_Change_Fun()
 async function quiz_btn_Change_Fun(){
   let get_ref=doc(db,'Learning','0');
 let get_data= await getDoc(get_ref);
+
 find_index=get_data.data().find_index;
   if(find_index==0){
-    console.log("patabi");
+ 
     quiz_btn.style.display='none';
     }
     else{
@@ -314,28 +287,29 @@ quiz_btn.addEventListener("click",()=>{
 
 
 //..................................Side_bar.......................//
+// let left_side_bar=document.querySelectorAll(".navlink");
 
-let left_side_bar=document.querySelectorAll(".navlink");
+// left_side_bar[0].addEventListener("click",()=>{
+  
+//   window.location.href='./index.html'
+// });
 
-left_side_bar[0].addEventListener("click",()=>{
-  window.location.href='index.html  '
-});
+// left_side_bar[1].addEventListener("click",()=>{
 
-left_side_bar[1].addEventListener("click",()=>{
+//   window.location.href='./Learning.html  '
+// });
+// left_side_bar[2].addEventListener("click",()=>{
 
-  window.location.href='Learning.html  '
-});
-left_side_bar[2].addEventListener("click",()=>{
+//   window.location.href='./dashboard.html';
+// });
+// left_side_bar[3].addEventListener("click",()=>{
 
-  window.location.href='Dashboard.html';
-});
-left_side_bar[3].addEventListener("click",()=>{
+//   window.location.href='./Roadmap.html';
+// });
 
-  window.location.href='Roadmap.html';
-});
 
 //........................Left_heading_clickevent...............................//
-// let find_language=0;
+
 
 let arr=[];
 all_heading_title.forEach((title,index)=>{
@@ -343,11 +317,12 @@ all_heading_title.forEach((title,index)=>{
   content_showing_fun(find_language,find_index);
 
  title.addEventListener("click",async()=>{
-
+// console.log(index);
   if(find_complete_module+1>=index){
+// console.log(find_language);
     let ref_data=doc(db,"Learning",`0`);
     let get_data= await getDoc(ref_data);
-    let user_unlock_total_module=get_data.data().user_unlock_total_module;
+    let user_unlock_total_module=get_data.data()[find_language + '_unlock_total_module'];
     let data_set=await updateDoc(
         ref_data,{
             find_index:index,
@@ -358,26 +333,21 @@ all_heading_title.forEach((title,index)=>{
       updateDoc(
         ref_data,{
           
-            user_unlock_total_module:index
+          [find_language + '_unlock_total_module']:index
             
         }
     )
     }
     
-all_heading_title=document.querySelectorAll(".content_title");
+    all_heading_title=document.querySelectorAll(".content_title");
     all_heading_title[index].parentElement.lastElementChild.style.display='none';
     all_heading_title[index].classList.add("left_heding");
-quiz_btn_Change_Fun()
 
+quiz_btn_Change_Fun();
 
-    // if(value<find_complete_module+1){
-      // console.log(title.parentElement.lastElementChild);
-      // title.parentElement.lastElementChild.style.display='none';
-      // title.classList.add("left_heding")
-    // }
-  
   }
   else{
+
     alert("please complete previous module")
   }
  
@@ -386,24 +356,27 @@ quiz_btn_Change_Fun()
   let get_ref=doc(db,'Learning','0');
   let get_data=await getDoc(get_ref);
  
-  //  find_language=get_data.data().Find_Language_type;
+   find_language=get_data.data().Find_Language_type;
    find_index=get_data.data().find_index;
   //  find_language_percentage=get_data.data().Html_Total_Percentage;
   //  find_complete_module=get_data.data().Html_Complete_Module;
   content_showing_fun(find_language,find_index);
+
    });
 
-});
+  });
 
 
 async function content_showing_fun(language,index){
+  console.log("raman");
   let ref=doc(db,`${language}_Content`,`${index}`);
   let data_ref=await getDoc(ref);
-// console.log(data_ref.data().iframe);
+
 
 content_top.innerHTML=data_ref.data().top_content;
 iframe.src=data_ref.data().iframe;
 bottom_content.innerHTML=data_ref.data().bottom_content;
+
 
 }
 
@@ -441,36 +414,35 @@ sidebar.addEventListener("mouseleave", () => {
   }
 });
 
-darkLight.addEventListener("click", () => {
-  body.classList.toggle("dark");
-  if (body.classList.contains("dark")) {
-    document.setI;
-    darkLight.classList.replace("bx-sun", "bx-moon");
-  } else {
-    darkLight.classList.replace("bx-moon", "bx-sun");
-  }
-});
+//............................Dark_Mode......................................//
+let Dckaplogo = document.querySelector(".DCKAPlOGO");
+let searchicon = document.querySelector(".fas");
+function toggleDarkMode() {
 
-submenuItems.forEach((item, index) => {
-  item.addEventListener("click", () => {
-    item.classList.toggle("show_submenu");
-    submenuItems.forEach((item2, index2) => {
-      if (index !== index2) {
-        item2.classList.remove("show_submenu");
-      }
-    });
-  });
-});
+  const isDarkMode = body.classList.toggle("dark");
+  document.body.classList.toggle("dark-mode");
+  searchicon.style.color = isDarkMode ? "white" : "black";
+ 
+  Dckaplogo.src = body.classList.contains("dark")
+  ? "./Assests/Dckapwhite.png"
+  : "./Assests/Logodk.png";
+ 
 
-if (window.innerWidth < 768) {
-  sidebar.classList.add("close");
-} else {
-  sidebar.classList.remove("close");
+  sessionStorage.setItem("darkMode", isDarkMode);
 }
 
+const storedDarkMode = sessionStorage.getItem("darkMode");
+if (storedDarkMode === "true") {
+  toggleDarkMode();
+}
+
+darkLight.addEventListener("click", toggleDarkMode);
 
 
-// Profile
+
+
+
+// Profile..................................................................//
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");

@@ -283,7 +283,6 @@ find_language='Css';
       ref,{
       Find_Language_type:find_language,
       find_index:0
-      
 
 
       }

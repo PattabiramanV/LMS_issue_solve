@@ -90,11 +90,6 @@ document.addEventListener("click", (event) => {
   }
 });
 
-// let Cancel_btn=document.querySelector(".cancel_btn")
-
-// Cancel_btn.addEventListener("click", () => {
-//     window.location.href="Roadmap.html";
-// });
 
 // profile_drop
 
@@ -108,11 +103,6 @@ Course_navigate.addEventListener("click", () => {
   window.location.href = "./Courses.html";
 });
 
-let Certi_page=document.querySelector(".profile_certicate");
-
-Certi_page.addEventListener("click",()=>{
-  window.location.href="./certificate.html"
-})
 
 Certi_page.addEventListener("click",()=>{
   window.location.href="./certificate.html"

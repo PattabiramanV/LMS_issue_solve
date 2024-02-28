@@ -240,6 +240,7 @@ function heading_append_Fun(arr){
     let user_unlock_total_module=get_data.data()[find_language + '_unlock_total_module'];
 console.log(user_unlock_total_module);
 
+  
     if(index<find_complete_module+1 || (index<=find_complete_module+1 && find_complete_module!=0 ) ){
       lock_icon.style.display='none';
       p_tag.classList.add("left_heding");
@@ -316,9 +317,9 @@ all_heading_title.forEach((title,index)=>{
   content_showing_fun(find_language,find_index);
 
  title.addEventListener("click",async()=>{
-console.log(index);
+// console.log(index);
   if(find_complete_module+1>=index){
-console.log(find_language);
+// console.log(find_language);
     let ref_data=doc(db,"Learning",`0`);
     let get_data= await getDoc(ref_data);
     let user_unlock_total_module=get_data.data()[find_language + '_unlock_total_module'];
@@ -342,7 +343,7 @@ console.log(find_language);
     all_heading_title[index].parentElement.lastElementChild.style.display='none';
     all_heading_title[index].classList.add("left_heding");
 
-quiz_btn_Change_Fun()
+quiz_btn_Change_Fun();
 
   }
   else{
@@ -413,36 +414,35 @@ sidebar.addEventListener("mouseleave", () => {
   }
 });
 
-darkLight.addEventListener("click", () => {
-  body.classList.toggle("dark");
-  if (body.classList.contains("dark")) {
-    document.setI;
-    darkLight.classList.replace("bx-sun", "bx-moon");
-  } else {
-    darkLight.classList.replace("bx-moon", "bx-sun");
-  }
-});
+//............................Dark_Mode......................................//
+let Dckaplogo = document.querySelector(".DCKAPlOGO");
+let searchicon = document.querySelector(".fas");
+function toggleDarkMode() {
 
-submenuItems.forEach((item, index) => {
-  item.addEventListener("click", () => {
-    item.classList.toggle("show_submenu");
-    submenuItems.forEach((item2, index2) => {
-      if (index !== index2) {
-        item2.classList.remove("show_submenu");
-      }
-    });
-  });
-});
+  const isDarkMode = body.classList.toggle("dark");
+  document.body.classList.toggle("dark-mode");
+  searchicon.style.color = isDarkMode ? "white" : "black";
+ 
+  Dckaplogo.src = body.classList.contains("dark")
+  ? "./Assests/Dckapwhite.png"
+  : "./Assests/Logodk.png";
+ 
 
-if (window.innerWidth < 768) {
-  sidebar.classList.add("close");
-} else {
-  sidebar.classList.remove("close");
+  sessionStorage.setItem("darkMode", isDarkMode);
 }
 
+const storedDarkMode = sessionStorage.getItem("darkMode");
+if (storedDarkMode === "true") {
+  toggleDarkMode();
+}
+
+darkLight.addEventListener("click", toggleDarkMode);
 
 
-// Profile
+
+
+
+// Profile..................................................................//
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");

@@ -265,7 +265,8 @@ find_language='Css';
 
    let data_get=await updateDoc(
       ref,{
-      Find_Language_type:find_language
+      Find_Language_type:find_language,
+      find_index:0
 
 
       }

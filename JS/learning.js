@@ -51,9 +51,8 @@ let ref_data=doc(db,"Learning",`${id}`);
         Html_unlock_total_module:0,
         Css_unlock_total_module:0,
         Javascript_unlock_total_module:0,
-        
-        
-
+        Php_unlock_total_module:0,
+        Mysql_unlock_total_module:0,
     }
 ).then(()=>{
     alert("sucessfully");
@@ -271,15 +270,30 @@ sidebar.addEventListener("mouseleave", () => {
   }
 });
 
-darkLight.addEventListener("click", () => {
-  body.classList.toggle("dark");
-  if (body.classList.contains("dark")) {
-    document.setI;
-    darkLight.classList.replace("bx-sun", "bx-moon");
-  } else {
-    darkLight.classList.replace("bx-moon", "bx-sun");
-  }
-});
+
+//............................Dark_Mode......................................//
+let Dckaplogo = document.querySelector(".DCKAPlOGO");
+let searchicon = document.querySelector(".fas");
+function toggleDarkMode() {
+
+  const isDarkMode = body.classList.toggle("dark");
+  document.body.classList.toggle("dark-mode");
+  searchicon.style.color = isDarkMode ? "white" : "black";
+ 
+  Dckaplogo.src = body.classList.contains("dark")
+  ? "./Assests/Dckapwhite.png"
+  : "./Assests/Logodk.png";
+ 
+
+  sessionStorage.setItem("darkMode", isDarkMode);
+}
+
+const storedDarkMode = sessionStorage.getItem("darkMode");
+if (storedDarkMode === "true") {
+  toggleDarkMode();
+}
+
+darkLight.addEventListener("click", toggleDarkMode);
 
 
 

@@ -32,36 +32,33 @@ sidebar.addEventListener("mouseleave", () => {
   }
 });
 
-darkLight.addEventListener("click", () => {
-  body.classList.toggle("dark");
-  if (body.classList.contains("dark")) {
-    document.setI;
-    darkLight.classList.replace("bx-sun", "bx-moon");
-  } else {
-    darkLight.classList.replace("bx-moon", "bx-sun");
-  }
-});
+//............................Dark_Mode......................................//
+let Dckaplogo = document.querySelector(".DCKAPlOGO");
+let searchicon = document.querySelector(".fas");
+function toggleDarkMode() {
 
-submenuItems.forEach((item, index) => {
-  item.addEventListener("click", () => {
-    item.classList.toggle("show_submenu");
-    submenuItems.forEach((item2, index2) => {
-      if (index !== index2) {
-        item2.classList.remove("show_submenu");
-      }
-    });
-  });
-});
+  const isDarkMode = body.classList.toggle("dark");
+  document.body.classList.toggle("dark-mode");
+  searchicon.style.color = isDarkMode ? "white" : "black";
+ 
+  Dckaplogo.src = body.classList.contains("dark")
+  ? "./Assests/Dckapwhite.png"
+  : "./Assests/Logodk.png";
+ 
 
-if (window.innerWidth < 768) {
-  sidebar.classList.add("close");
-} else {
-  sidebar.classList.remove("close");
+  sessionStorage.setItem("darkMode", isDarkMode);
 }
 
+const storedDarkMode = sessionStorage.getItem("darkMode");
+if (storedDarkMode === "true") {
+  toggleDarkMode();
+}
+
+darkLight.addEventListener("click", toggleDarkMode);
 
 
-// Profile
+
+// Profile.....................................................///
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");

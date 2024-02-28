@@ -290,6 +290,11 @@ ul.set_items {
   background-color: #ffffff1c;
 }
 
+.hoverlist{
+  color:white ;
+}
+
+
 p.profile-name {
   width: 100%;
   align-items: flex-start;
@@ -302,6 +307,7 @@ i.fa-solid.fa-award,
 i.fa-solid.fa-right-from-bracket {
   width: 50%;
 }
+
 /* ----------------- Certificate ------------------ */
 .body
 {

@@ -5,8 +5,8 @@ console.log(home)
 let learning=document.querySelector(".nav_learning")
 let dashboard=document.querySelector(".nav_dashboard")
 let roadmap=document.querySelector(".nav_roadmap")
-let navlogin=document.querySelector(".login")
-let navsign=document.querySelector(".sign_up")
+let navlogin=document.getElementById("login")
+let navsign=document.getElementById("signup")
 let searchbtn=document.querySelector(".button_explore")
 let htmlbtn=document.querySelector(".html_btn")
 let cssbtn=document.querySelector(".css_btn")
@@ -33,9 +33,7 @@ learning.addEventListener("click",()=>{
 
 
 navlogin.addEventListener("click",()=>{
-
-window.location.href='login.html';
-    // alert("login button clicked")
+    alert("login button clicked")
 })
 
 navsign.addEventListener("click",()=>{

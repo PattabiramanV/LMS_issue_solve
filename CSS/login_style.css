@@ -1,6 +1,7 @@
 html{
     
     height: 100%;
+    background-color: #ffffff;
 }
 
 .maincontainer2{
@@ -96,7 +97,7 @@ input#log, input#log_pass {
 #login_btn{
     width: 20%;
     position: relative;
-    top: 20%;
+    top: -1px;
     border: none;
     /* background-color:#72c972; */
     background-color:#c84e2a;
@@ -122,7 +123,7 @@ input#log, input#log_pass {
 }
 #Not_exist{
     position: relative;
-    top: 11px;
+    top: -12px;
     left: 4px;
     font-size: 12px;
 }
@@ -136,15 +137,15 @@ i#icon_eye {
 }
 p#option {
     position: relative;
-    top: -14px;
+    top: -2.8em;
     font-family: 'Roboto';
     left: 10px;
 }
 p#contiue {
     position: relative;
-    top: -17px;
+    top: -51px;
     width: 59%;
-    left: -4px;
+    left: 0px;
     /* box-shadow: 2px 2px 2px 2px gray; */
     padding: 9px;
     border-radius: 23px;

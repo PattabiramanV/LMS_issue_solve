@@ -206,25 +206,25 @@ CSS:{
 
 
 
-let left_side_bar=document.querySelectorAll(".navlink");
+// let left_side_bar=document.querySelectorAll(".navlink");
 
-left_side_bar[0].addEventListener("click",()=>{
+// left_side_bar[0].addEventListener("click",()=>{
   
-  window.location.href='./index.html'
-});
+//   window.location.href='./index.html'
+// });
 
-left_side_bar[1].addEventListener("click",()=>{
+// left_side_bar[1].addEventListener("click",()=>{
 
-  window.location.href='./Learning.html  '
-});
-left_side_bar[2].addEventListener("click",()=>{
+//   window.location.href='./Learning.html  '
+// });
+// left_side_bar[2].addEventListener("click",()=>{
 
-  window.location.href='./Dashboard.html';
-});
-left_side_bar[3].addEventListener("click",()=>{
+//   window.location.href='./dashboard.html';
+// });
+// left_side_bar[3].addEventListener("click",()=>{
 
-  window.location.href='./Roadmap.html';
-});
+//   window.location.href='./Roadmap.html';
+// });
 
 
 
@@ -283,21 +283,29 @@ darkLight.addEventListener("click", () => {
 
 
 
-
 // Profile
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");
 
 profile_navigate.addEventListener("click", (event) => {
-    event.stopPropagation();
-    profile_Dropdown.style.display = "block";
+  event.stopPropagation();
+  profile_Dropdown.style.display = "block";
 });
 
 document.addEventListener("click", (event) => {
-    if (!profile_navigate.contains(event.target) && !profile_Dropdown.contains(event.target)) {
-        profile_Dropdown.style.display = "none"; 
-    }
+  if (
+    !profile_navigate.contains(event.target) &&
+    !profile_Dropdown.contains(event.target)
+  ) {
+    profile_Dropdown.style.display = "none";
+  }
+});
+
+let Cancel_btn=document.querySelector(".cancel_btn")
+
+Cancel_btn.addEventListener("click", () => {
+    window.location.href="Roadmap.html";
 });
 
 // profile_drop

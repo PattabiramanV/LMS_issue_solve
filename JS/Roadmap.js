@@ -71,7 +71,6 @@ sidebar.addEventListener("mouseleave", () => {
 
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
 let searchicon = document.querySelector(".fas");
-console.log(searchicon);
 
 darkLight.addEventListener("click", () => {
   body.classList.toggle("dark");

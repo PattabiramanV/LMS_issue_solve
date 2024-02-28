@@ -5,8 +5,8 @@ console.log(home)
 let learning=document.querySelector(".nav_learning")
 let dashboard=document.querySelector(".nav_dashboard")
 let roadmap=document.querySelector(".nav_roadmap")
-let navlogin=document.querySelector(".login")
-let navsign=document.querySelector(".sign_up")
+let navlogin=document.getElementById("login")
+let navsign=document.getElementById("signup")
 let searchbtn=document.querySelector(".button_explore")
 let htmlbtn=document.querySelector(".html_btn")
 let cssbtn=document.querySelector(".css_btn")
@@ -18,18 +18,22 @@ let phpbtn=document.querySelector(".php_btn")
 //     alert("learning menu clicked")
 // })
 
-// dashboard.addEventListener("click",()=>{
-//     alert("dashboard menu clicked")
-// })
+dashboard.addEventListener("click",()=>{
+    window.location.href="./dashboard.html";
+})
 
-// roadmap.addEventListener("click",()=>{
-//     alert("roadmap menu clicked")
-// })
+roadmap.addEventListener("click",()=>{
+    window.location.href="./Roadmap.html";
+})
+
+learning.addEventListener("click",()=>{
+    window.location.href="./Learning.html";
+})
+
+
 
 navlogin.addEventListener("click",()=>{
-
-window.location.href='login.html';
-    // alert("login button clicked")
+    alert("login button clicked")
 })
 
 navsign.addEventListener("click",()=>{
@@ -66,3 +70,23 @@ mysqlbtn.addEventListener("click",()=>{
 phpbtn.addEventListener("click",()=>{
     alert("php button clicked")
 })
+
+
+let left_side_bar=document.querySelectorAll(".navlink");
+
+left_side_bar[0].addEventListener("click",()=>{
+  window.location.href='index.html'
+});
+
+left_side_bar[1].addEventListener("click",()=>{
+
+  window.location.href='Learning.html'
+});
+left_side_bar[2].addEventListener("click",()=>{
+
+  window.location.href='dashboard.html';
+});
+left_side_bar[3].addEventListener("click",()=>{
+
+  window.location.href='Roadmap.html';
+});

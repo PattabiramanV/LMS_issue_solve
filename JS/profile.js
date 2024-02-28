@@ -372,53 +372,6 @@ fileInput.addEventListener("change", async function (event) {
       }
     };
 
-      try {
-        // Store the image URL in Firestore
-        const imagesRef = collection(database, "images");
-        await addDoc(imagesRef, {
-          imageURL: e.target.result, // Store the URL of the image
-        });
-
-        // Also, store additional data along with the image
-        const profileImgRef = collection(database, "Profile_Img_Store");
-        await addDoc(profileImgRef, {
-          Find_Language_type: find_language, // Assuming find_language is defined elsewhere
-          imageURL: e.target.result, // Store the URL of the image
-        });
-
-        alert("Successfully uploaded image and data.");
-      } catch (error) {
-        console.error("Error adding document: ", error);
-      }
-    };
     reader.readAsDataURL(file);
-  }
-);
-
-// window.addEventListener("load", async () => {
-//   const imagesRef = collection(database, "images");
-//   const imageContainer = document.getElementById('imageContainer');
-//   const profileImg = document.querySelector(".profile");
-
-//   try {
-//     const querySnapshot = await getDocs(imagesRef);
-//     imageContainer.innerHTML = '';
-
-//     querySnapshot.forEach((doc) => {
-//       const data = doc.data();
-//       const img = document.createElement("img");
-//       img.src = data.imageURL;
-
-//       imageContainer.appendChild(img);
-//       previousImageDocId = doc.id;
-//     });
-
-//     if (querySnapshot.docs.length > 0) {
-//       const lastDoc = querySnapshot.docs[querySnapshot.docs.length - 1];
-//       const lastImageURL = lastDoc.data().imageURL;
-//       profileImg.src = lastImageURL; // Set the profile image to the last uploaded image
-//     }
-//   } catch (error) {
-//     console.error("Error getting documents: ", error);
-//   }
-// });
+  };
+})

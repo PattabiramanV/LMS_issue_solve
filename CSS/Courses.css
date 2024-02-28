@@ -115,8 +115,8 @@ i.fas.fa-search {
   top: 16px;
   left: 49%;
   margin-right: 1rem !important;
-  margin-right: 2px solid gray;
-  border-left: 2px solid #adadad;
+  margin-right: 1px solid gray;
+  border-left: 1px solid #adadad;
   height: 40%;
   display: flex;
   justify-content: center;
@@ -130,6 +130,10 @@ i.fas.fa-search {
   display: flex;
   align-items: center;
   column-gap: 25px;
+}
+img.profile {
+  height: 35px;
+  object-fit: cover;
 }
 
 .navbar_content i {

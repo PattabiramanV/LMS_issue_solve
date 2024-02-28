@@ -96,8 +96,8 @@ img.DCKAPlOGO {
 
 .search_bar input {
   height: 100%;
-  width: 100%;
-  border-radius: 25px;
+  width: 86%;
+  border-radius: 20px;
   font-size: 18px;
   outline: none;
   background-color: var(--white-color);
@@ -107,20 +107,20 @@ img.DCKAPlOGO {
   position: relative;
   left: -8rem;
 }
-
 i.fas.fa-search {
   position: absolute;
   top: 16px;
-  left: 53%;
-  margin-right: 1rem!important;
+  left: 48%;
+  margin-right: 1rem !important;
   margin-right: 2px solid gray;
-  border-left: 2px solid #adadad;
-  height: 40%;
+  border-left: 1px solid #adadad;
+  height: 36%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px;
-  color: #544848;
+  padding: 10px;
+  color: #5448489e;
+  /* height: 58%; */
 }
 .navbar_content {
   display: flex;
@@ -132,6 +132,11 @@ i.fas.fa-search {
   cursor: pointer;
   font-size: 20px;
   color: var(--grey-color);
+}
+
+img.profile {
+  height: 35px;
+  object-fit: cover;
 }
 
 /* sidebar */

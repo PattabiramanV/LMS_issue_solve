@@ -144,7 +144,7 @@ async function html_quiz_btn()
     const getRef = doc(db, 'Learning', '0');
     const getData = await getDoc(getRef);
     const data = getData.data();
-    const Html_Complete_Module = data.Html_Complete_Module;
+    const Html_Complete_Module = data.Html_Total_Percentage;
     console.log(Html_Complete_Module); // Output the value to debug
 
     const html_btn = document.querySelector("#html_btn");
@@ -185,7 +185,7 @@ async function css_quiz_btn()
     const getRef = doc(db, 'Learning', '0');
     const getData = await getDoc(getRef);
     const data = getData.data();
-    const Css_Complete_Module = data.Css_Complete_Module;
+    const Css_Complete_Module = data.Css_Total_Percentage;
     console.log(Css_Complete_Module); // Output the value to debug
 
     const css_quiz = document.querySelector("#css_btn");
@@ -263,7 +263,7 @@ async function js_quiz_btn()
     const getRef = doc(db, 'Learning', '0');
     const getData = await getDoc(getRef);
     const data = getData.data();
-    const Javascript_Complete_Module = data.Javascript_Complete_Module;
+    const Javascript_Complete_Module = data.Javascript_Total_Percentage;
     console.log(Javascript_Complete_Module); // Output the value to debug
 
     const js_btn =document.querySelector("#js_btn");
@@ -343,7 +343,7 @@ async function mysql_quiz_btn()
     const getRef = doc(db, 'Learning', '0');
     const getData = await getDoc(getRef);
     const data = getData.data();
-    const Mysql_Complete_Module = data.Mysql_Complete_Module;
+    const Mysql_Complete_Module = data.Mysql_Total_Percentage;
     console.log(Mysql_Complete_Module); // Output the value to debug
 
     const mysql_btn =document.querySelector("#mysql_btn");

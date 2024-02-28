@@ -11,43 +11,47 @@ body {
   margin: 0;
   font-family: "Roboto";
   user-select: none;
-}@media (max-width: 1336px) {
-  /* Adjust styles as needed for smaller screens */
+}
+
+@media (max-width: 1334px) {
   html,
   body {
-    min-width: 100%; /* Changed min-width to 100% */
+    min-width: 100%;
   }
 
   .button_explore {
-    margin-top: -57px; /* Adjusted margin-top */    
-    margin-left: 262px; /* Adjusted margin-left */
+    margin-top: -57px;
+    margin-left: 200px;
   }
 
   hr.line_1 {
-    bottom: 47rem;
-    right: 89%; /* Adjusted right */
+    position: absolute; /* Add position property */
+    right: 88%;
   }
 }
+
+
+
 .main_container {
   width: 100%;
 }
 .navbar {
-background-color: rgb(255, 255, 255);
-display: flex;
-justify-content: space-between;
-padding: 0 90px;
-height: 70px;
-position: sticky;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 65px;
+  height: 70px;
+  position: sticky;
 }
 .logo {
 margin-top: 10px;
 }
 .nav_list {
-font-weight: 300;
-margin-top: 20px;
-display: flex;
-gap: 80px;
-font-size: large;
+  font-weight: 300;
+  margin-top: 24px;
+  display: flex;
+  gap: 80px;
+  font-size: large;
 }
 li {
 list-style: none;
@@ -71,11 +75,11 @@ border: 1px solid lightgrey;
 border-radius: 15px;
 border: none;
 }
-.slide-controls .slide{
+.slide-controls .slide {
   height: 100%;
   width: 100%;
   color: #fff;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 300;
   text-align: center;
   line-height: 48px;
@@ -130,9 +134,9 @@ label.slide.signup {
   align-items: center;
 }
 .container_1 {
-padding: 90px;
-width: 88%;
-display: flex;
+  padding: 76px;
+  width: 88%;
+  display: flex;
 }
 .content_1 {
 width: 60%;
@@ -148,13 +152,12 @@ font-weight: 800;
 }
 
 hr.line_1 {
-right: 90%;
-transform: rotate(90deg);
-width: 0px;
-height: 113px;
-background: blanchedalmond;
-position: absolute;
-bottom: 16rem;
+  right: 89%;
+  transform: rotate(90deg);
+  width: 0px;
+  height: 123px;
+  background: blanchedalmond;
+  position: absolute;
 }
 p#para_1 {
 font-size: 28px;
@@ -211,14 +214,14 @@ img.dckapimg {
     font-weight: 600;
     border: none;
     margin-top: -57px;
-    margin-left: 315px;
+    margin-left: 253px;
     position: relative;
     cursor: pointer;
     transition-duration: .2s;
     box-shadow: 5px 5px 10px rgba(2, 2, 2, 0.116);
     padding-left: 8px;
     transition-duration: .5s;
-  }
+}
   
   .svgIcon {
     height: 25px;

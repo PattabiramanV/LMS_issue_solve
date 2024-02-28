@@ -237,6 +237,9 @@ function heading_append_Fun(arr){
 
     left_heading_content.append(content_heading_div);
   
+    let user_unlock_total_module=get_data.data()[find_language + '_unlock_total_module'];
+console.log(user_unlock_total_module);
+
     if(index<find_complete_module+1 || (index<=find_complete_module+1 && find_complete_module!=0 ) ){
       lock_icon.style.display='none';
       p_tag.classList.add("left_heding");
@@ -315,10 +318,10 @@ all_heading_title.forEach((title,index)=>{
  title.addEventListener("click",async()=>{
 console.log(index);
   if(find_complete_module+1>=index){
-    alert("pattabi")
+console.log(find_language);
     let ref_data=doc(db,"Learning",`0`);
     let get_data= await getDoc(ref_data);
-    let user_unlock_total_module=get_data.data().user_unlock_total_module;
+    let user_unlock_total_module=get_data.data()[find_language + '_unlock_total_module'];
     let data_set=await updateDoc(
         ref_data,{
             find_index:index,
@@ -329,7 +332,7 @@ console.log(index);
       updateDoc(
         ref_data,{
           
-            user_unlock_total_module:index
+          [find_language + '_unlock_total_module']:index
             
         }
     )

@@ -34,7 +34,7 @@ all_learn_more_btn.forEach((btn,index)=>{
       find_language=btn.parentElement.previousElementSibling.previousElementSibling.firstElementChild.lastElementChild.innerHTML;
 let id=0;
 let ref_data=doc(db,"Learning",`${id}`);
- let data_set=await updateDoc(
+ let data_set=await setDoc(
     ref_data,{
         Find_Language_type:find_language,
         find_index:id,
@@ -48,7 +48,10 @@ let ref_data=doc(db,"Learning",`${id}`);
         Mysql_Total_Percentage:0,
         Php_Complete_Module:0,
         Php_Total_Percentage:0,
-        Html_unlock_total_module:0
+        Html_unlock_total_module:0,
+        Css_unlock_total_module:0,
+        Javascript_unlock_total_module:0,
+        
         
 
     }

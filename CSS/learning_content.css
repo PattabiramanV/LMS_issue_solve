@@ -100,6 +100,10 @@ i.fas.fa-search {
   align-items: center;
   column-gap: 25px;
 }
+.navbar_content>* {
+  position: relative;
+  right: 26px;
+}
 .navbar_content i {
   cursor: pointer;
   font-size: 20px;
@@ -107,7 +111,7 @@ i.fas.fa-search {
 }
 img.profile {
   position: absolute;
-  left: 1468px;
+  left: 1237px;
 }
 /* sidebar */
 .sidebar {

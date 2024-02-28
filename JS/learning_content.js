@@ -20,6 +20,7 @@
   import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
   
 let db=getFirestore(app);
+let id=localStorage.getItem("UserId");
 
 
 
@@ -200,13 +201,13 @@ bottom_content.innerHTML=content[1][2]
 
 
 
-let get_ref=doc(db,'Learning','0');
+let get_ref=doc(db,'Learning',`User=${id}`);
 let get_data= await getDoc(get_ref);
 
 let find_index=get_data.data().find_index;
 let find_language=get_data.data().Find_Language_type;
 let user_unlock_total_module=get_data.data().user_unlock_total_module
-
+console.log(find_language);
 
 let find_complete_module=get_data.data()[find_language + '_Complete_Module'];
 
@@ -264,7 +265,7 @@ let quiz_btn=document.querySelector(".quiz_btn");
 
 quiz_btn_Change_Fun()
 async function quiz_btn_Change_Fun(){
-  let get_ref=doc(db,'Learning','0');
+  let get_ref=doc(db,'Learning',`User=${id}`);
 let get_data= await getDoc(get_ref);
 
 find_index=get_data.data().find_index;
@@ -319,8 +320,7 @@ all_heading_title.forEach((title,index)=>{
  title.addEventListener("click",async()=>{
 // console.log(index);
   if(find_complete_module+1>=index){
-// console.log(find_language);
-    let ref_data=doc(db,"Learning",`0`);
+    let ref_data=doc(db,"Learning",`User=${id}`);
     let get_data= await getDoc(ref_data);
     let user_unlock_total_module=get_data.data()[find_language + '_unlock_total_module'];
     let data_set=await updateDoc(
@@ -353,7 +353,7 @@ quiz_btn_Change_Fun();
  
  
   
-  let get_ref=doc(db,'Learning','0');
+  let get_ref=doc(db,'Learning',`User=${id}`);
   let get_data=await getDoc(get_ref);
  
    find_language=get_data.data().Find_Language_type;

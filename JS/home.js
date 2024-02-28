@@ -33,12 +33,12 @@ learning.addEventListener("click",()=>{
 
 
 navlogin.addEventListener("click",()=>{
-    alert("login button clicked")
+    window.location.href="./login.html";
 })
 
 navsign.addEventListener("click",()=>{
     // alert("sign_up button clicked")
-    window.location.href='signup.html';
+    window.location.href='./signup.html';
 
 
    
@@ -52,11 +52,11 @@ searchbtn.addEventListener("click",()=>{
 })
 
 htmlbtn.addEventListener("click",()=>{
-    alert("html button clicked")
+    window.location.href="./learning_content.html";
 })
 
 cssbtn.addEventListener("click",()=>{
-    alert("css button clicked")
+    window.location.href="./";
 })
 
 jsbtn.addEventListener("click",()=>{

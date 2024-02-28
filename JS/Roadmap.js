@@ -79,17 +79,9 @@ function toggleDarkMode() {
   const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
   searchicon.style.color = isDarkMode ? "white" : "black";
-  headings.forEach((heading) => {
-      if (isDarkMode) {
-          heading.style.color = "white";
-      } else {
-          heading.style.color = "#b95233";
-      }
   Dckaplogo.src = body.classList.contains("dark")
   ? "./Assests/Dckapwhite.png"
   : "./Assests/Logodk.png";
-  });
-
   sessionStorage.setItem("darkMode", isDarkMode);
 }
 

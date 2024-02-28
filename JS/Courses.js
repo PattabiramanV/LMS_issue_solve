@@ -281,7 +281,9 @@ find_language='Css';
 
    let data_get=await updateDoc(
       ref,{
-      Find_Language_type:find_language
+      Find_Language_type:find_language,
+      find_index:0
+      
 
 
       }
@@ -290,6 +292,20 @@ find_language='Css';
   });
 });
 
-// Percentage Calculation
+// Percentage Calculations
+
+// const percentageElements = document.querySelectorAll('.percentagecalculation');
+// console.log(percentageElements);
+
+// let ref=doc(db,'Learning',0);
+//   let data_ref=await getDoc(ref);
+
+//   percentage_tag.innerHTML=data_ref.data().Html_Total_Percentage;
+
+// // })
+// all_percentage_show_tag[0].innerHTML=data_ref.data().Html_Total_Percentage;
+// all_percentage_show_tag[1].innerHTML=data_ref.data().Css_Total_Percentage;
+// all_percentage_show_tag[2].innerHTML=data_ref.data().Javascript_Total_Percentage;
+// all_percentage_show_tag[3].innerHTML=data_ref.data().Mysql_Total_Percentage;
 
 

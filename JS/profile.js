@@ -119,6 +119,8 @@ import {
   collection,
   addDoc,
   getDocs,
+  deleteDoc,
+  doc
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -340,15 +342,15 @@ async function saveLinkedInToFirebase(linkedIn) {
     console.error("Error saving LinkedIn info to Firebase: ", error);
   }
 }
-
 const uploadButton = document.getElementById("uploadButton");
+const fileInput = document.getElementById("uploadInput");
+const imageContainer = document.getElementById("imageContainer");
+const profileImg = document.querySelector(".profile");
+let imageDocId = "1"; // Initial image ID
+
 uploadButton.addEventListener("click", function () {
   fileInput.click();
 });
-
-const fileInput = document.getElementById("uploadInput");
-const imageContainer = document.getElementById("imageContainer");
-let previousImageDocId = null;
 
 fileInput.addEventListener("change", async function (event) {
   const file = event.target.files[0];
@@ -360,24 +362,36 @@ fileInput.addEventListener("change", async function (event) {
       const img = document.createElement("img");
       img.src = e.target.result;
 
-      const profileImg = document.querySelector(".profile");
       profileImg.src = e.target.result;
 
-      while (imageContainer.firstChild) {
-        imageContainer.removeChild(imageContainer.firstChild);
-      }
+      // Remove existing image
+      imageContainer.innerHTML = '';
       imageContainer.appendChild(img);
 
       try {
         const imagesRef = collection(database, "images");
-        if (previousImageDocId) {
-          await deleteDoc(doc(database, "images", previousImageDocId));
+        
+        // If an image with the same ID exists, delete it
+        if (imageDocId) {
+          await deleteDoc(doc(database, "images", imageDocId));
         }
+        
+        // Upload the new image
         const newImageDocRef = await addDoc(imagesRef, {
           imageURL: e.target.result,
+          id: imageDocId
         });
-        previousImageDocId = newImageDocRef.id;
+        
+        // Set the imageDocId to the newly uploaded image's ID
+        imageDocId = newImageDocRef.id;
+
         alert("Successfully uploaded image and data.");
+
+        // Store the imageDocId in session storage
+        sessionStorage.setItem("profileImageDocId", imageDocId);
+
+        // Store the image URL in session storage
+        storeImageURLInSessionStorage(e.target.result);
       } catch (error) {
         console.error("Error adding document: ", error);
       }
@@ -387,30 +401,27 @@ fileInput.addEventListener("change", async function (event) {
   }
 });
 
-// window.addEventListener("load", async () => {
-//   const imagesRef = collection(database, "images");
-//   const imageContainer = document.getElementById('imageContainer');
-//   const profileImg = document.querySelector(".profile");
+// Check if there's a stored image URL in session storage
+window.addEventListener("load", () => {
+  const storedImageURL = sessionStorage.getItem("profileImageURL");
+  
+  if (storedImageURL) {
+    profileImg.src = storedImageURL;
+    const img = document.createElement("img");
+    img.src = storedImageURL;
+    
+    // Remove existing image
+    imageContainer.innerHTML = '';
+    imageContainer.appendChild(img);
+  }
+});
 
-//   try {
-//     const querySnapshot = await getDocs(imagesRef);
-//     imageContainer.innerHTML = '';
-
-//     querySnapshot.forEach((doc) => {
-//       const data = doc.data();
-//       const img = document.createElement("img");
-//       img.src = data.imageURL;
-
-//       imageContainer.appendChild(img);
-//       previousImageDocId = doc.id;
-//     });
-
-//     if (querySnapshot.docs.length > 0) {
-//       const lastDoc = querySnapshot.docs[querySnapshot.docs.length - 1];
-//       const lastImageURL = lastDoc.data().imageURL;
-//       profileImg.src = lastImageURL; // Set the profile image to the last uploaded image
-//     }
-//   } catch (error) {
-//     console.error("Error getting documents: ", error);
-//   }
-// });
+// Store the uploaded image URL in session storage
+function storeImageURLInSessionStorage(imageURL) {
+  try {
+    sessionStorage.setItem("profileImageURL", imageURL);
+    console.log("Image URL stored in session storage:", imageURL);
+  } catch (error) {
+    console.error("Error storing image URL in session storage:", error);
+  }
+}

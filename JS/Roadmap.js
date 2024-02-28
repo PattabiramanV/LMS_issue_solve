@@ -163,7 +163,9 @@ headingnavigate.forEach(async (links) => {
     }
     await updateDoc(ref, {
       Find_Language_type: find_language,
-    });
+        
+        find_index:0
+    });    
     window.location.href = "./learning_content.html";
   });
 });

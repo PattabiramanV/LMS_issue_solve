@@ -268,12 +268,10 @@ Explorebtn.forEach(async(btn) => {
     if (btn === Explorebtn[0]) {
       // alert("bye")
       console.log("pattabi");
-
-find_language='Html';
+    find_language='Html';
 
     } else if (btn === Explorebtn[1]) {
-// alert("hi")
-find_language='Css';
+    find_language='Css';
 
     } else if (btn === Explorebtn[2]) {
 
@@ -281,12 +279,11 @@ find_language='Css';
 
    let data_get=await updateDoc(
       ref,{
-      Find_Language_type:find_language
-
-
+      Find_Language_type:find_language,
+      find_index:0
       }
     )
-    window.location.href='learning_content.html'
+    window.location.href='./learning_content.html'
   });
 });
 

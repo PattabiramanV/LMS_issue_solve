@@ -486,41 +486,42 @@ h1 {
   font-size: 40pt;
   background: linear-gradient(to right, #643d6e, #a982b4, #c4a6cc, #9889ce, rgb(166, 68, 231) 80%, #8f36bbb6 );
   -webkit-text-fill-color: transparent;
-  /* background-clip: text;       */
-  -webkit-background-clip: text;
+  background-clip: text;      
+  -webkit-background-clip: text; /* For compatibility with older versions of Webkit browsers */
+
 }
 
 
 
 /* Add dark mode styles */
-.dark-mode .quiz_contion {
+.dark .quiz_contion {
   background-color: #1e1e1e;
   color: #ffffff;
 }
 
-.dark-mode .container {
+.dark .container {
   background-color: #333333;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
   color: #ffffff;
 }
 
-.dark-mode h1 {
+.dark h1 {
   background: linear-gradient(to right, #643d6e, #a982b4, #c4a6cc, #9889ce, rgb(166, 68, 231) 80%, #8f36bbb6);
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.dark-mode button {
+.dark button {
   color: #ffffff;
   background-color: #AA3EE2;
   border-color: #AA3EE2;
 }
 
-.dark-mode button:hover {
+.dark button:hover {
   background-color: #6C298E;
 }
 
-.dark-mode button:active {
+.dark button:active {
   background-color: #C253FC;
 }
 

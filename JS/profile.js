@@ -45,8 +45,8 @@ function toggleDarkMode() {
   document.body.classList.toggle("dark-mode");
   searchicon.style.color = isDarkMode ? "white" : "black";
   Dckaplogo.src = body.classList.contains("dark")
-  ? "./Assests/Dckapwhite.png"
-  : "./Assests/Logodk.png";
+    ? "./Assests/Dckapwhite.png"
+    : "./Assests/Logodk.png";
   sessionStorage.setItem("darkMode", isDarkMode);
 }
 
@@ -55,7 +55,6 @@ if (storedDarkMode === "true") {
   toggleDarkMode();
 }
 darkLight.addEventListener("click", toggleDarkMode);
-
 
 // Profile
 
@@ -79,15 +78,14 @@ document.addEventListener("click", (event) => {
 // Cancel Btn
 
 let cancel_btn = document.querySelector(".cancel_btn");
-    cancel_btn.addEventListener('click', (e) => {
-    
-      let previousLocation = localStorage.getItem('previous_location');
-      if (previousLocation) {
-        window.location.href = previousLocation;
-      } else {
-        window.location.href = './index.html';
-      }
-    });
+cancel_btn.addEventListener("click", (e) => {
+  let previousLocation = localStorage.getItem("previous_location");
+  if (previousLocation) {
+    window.location.href = previousLocation;
+  } else {
+    window.location.href = "./index.html";
+  }
+});
 
 // profile_drop
 
@@ -110,7 +108,7 @@ Certi_page.addEventListener("click", () => {
 let logout = document.querySelector(".log_out");
 
 logout.addEventListener("click", () => {
-  window.location.href = "./login.html";
+  windnameow.location.href = "./login.html";
 });
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -133,7 +131,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
-// Add event listener to the edit button for name
+// Add event listener to the edit button for
 let inputName = document.querySelector(".editbtnName");
 inputName.addEventListener("click", () => {
   var nameSpan = document.getElementById("fullName");
@@ -182,6 +180,14 @@ window.addEventListener("DOMContentLoaded", async (event) => {
     console.log("Name data fetched from Firebase");
   } catch (error) {
     console.error("Error fetching Name data from Firebase: ", error);
+  }
+
+  var username = localStorage.getItem("username");
+  var nameSpan = document.getElementById("fullName");
+  if (username) {
+    nameSpan.innerHTML = username;
+  } else {
+    nameSpan.innerHTML = "Guest";
   }
 });
 
@@ -234,6 +240,20 @@ async function saveBioToFirebase(bio) {
   } catch (error) {
     console.error("Error saving bio to Firebase: ", error);
   }
+}
+
+// Email fetch local storage
+
+var storedEmail = localStorage.getItem("email");
+var emailInput = document.getElementById("emailadd");
+emailInput.value = storedEmail;
+
+var username = localStorage.getItem("username");
+var nameSpan = document.getElementById("fullName");
+if (username) {
+  nameSpan.innerHTML = username;
+} else {
+  nameSpan.innerHTML = "Guest";
 }
 
 // Git hu addevent

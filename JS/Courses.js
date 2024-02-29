@@ -118,6 +118,7 @@ const firebaseConfig = {
   appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6",
 };
 
+let id=localStorage.getItem("UserId")
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
@@ -191,7 +192,7 @@ exploreCoursesContainer.addEventListener("click", async function (event) {
      localStorage.setItem("enrolledCourses", JSON.stringify(enrolledCourses));
 
      const percentageCalSpan = enrolledCourseContainer.querySelector(".percentage_cal");
-     let ref = doc(database, 'Learning', 0); // Adjust document reference based on your structure
+     let ref = doc(database, 'Learning', `${id}`); // Adjust document reference based on your structure
      let dataRef = await getDoc(ref);
      
      let percentageData;

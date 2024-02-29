@@ -444,16 +444,22 @@ h1.profile_hdg {
   border-radius: 50%;
 }
 
-input#fullNameInput,
-#gitinput,
-textarea#bioInput,
-input#linkedInInput {
+input#fullNameInput, #gitinput, textarea#bioInput, input#linkedInInput {
   border: 1px solid lightgray;
   padding: 7px;
   border-radius: 3px;
   width: 20rem;
   position: relative;
-  top: -12px;
+  top: -3px;
+  height: 1rem;
+}
+
+input#emailadd {
+  border: none;
+  font-size: 1rem;
+  padding: 0px;
+  margin: 0px;
+  outline: none;
 }
 
 .Users_img {
@@ -514,7 +520,7 @@ button.editbtn,
 .editbtnn,
 .editbtngit,
 .editbtnName,
-.editbtnlink {
+.editbtnlink,.editbtnemail {
   color: white;
   border: none;
   padding: 10px 20px;
@@ -523,7 +529,9 @@ button.editbtn,
 }
 
 label {
-  color: #b95233;
+  font-weight: 700;
+  font-size: 14px;
+  color: #82868b!important;
 }
 
 button {

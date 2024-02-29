@@ -215,7 +215,7 @@ img.dckapimg {
     font-weight: 600;
     border: none;
     margin-top: -57px;
-    margin-left: 253px;
+    margin-left: 250px;
     position: relative;
     cursor: pointer;
     transition-duration: .2s;
@@ -405,7 +405,7 @@ margin-top: 10%;
 }
 .footer {
 display: flex;
-justify-content: space-evenly;
+justify-content: space-between;
 }
 a#change {
   color: white;

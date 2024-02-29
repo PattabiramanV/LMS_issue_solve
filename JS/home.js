@@ -67,3 +67,13 @@ left_side_bar[3].addEventListener("click",()=>{
 
   window.location.href='./Roadmap.html';
 });
+
+
+
+let  Explorebtn=document.querySelectorAll(".enroll_btn")
+
+Explorebtn.forEach((btn)=>{
+          btn.addEventListener("click",()=>{
+            window.location.href='/.learning_content.html'
+          })
+})

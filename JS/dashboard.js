@@ -150,6 +150,7 @@ sidebar.addEventListener("mouseleave", () => {
 function toggleDarkMode() {
   const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("darkMode");
+  document.body.classList.toggle("dark-mode");
   document.querySelector(".dashboard_profile_content p").style.color = "white";
   document.querySelector(".dash").style.color = "white";
   sessionStorage.setItem("darkMode", isDarkMode);

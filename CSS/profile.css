@@ -16,7 +16,7 @@ html {
 .dark-mode .nav_link:hover {
   color: #fffffff3;
   background-color: #7c15dd4d;
-  /* Your desired hover color in dark mode */
+
 }
 
 :root {
@@ -353,7 +353,7 @@ ul.set_items {
 .Course_Down:hover,
 .profile_certicate:hover,
 .log_out:hover {
-  background-color: #783f9998;
+  background-color: #8000801c;
 }
 
 p.profile-name {
@@ -448,7 +448,7 @@ h1.profile_hdg {
 input#fullNameInput,
 #gitinput,
 textarea#bioInput,
-input#linkedInInput {
+input#linkedInInput,input#emailadd {
   border: 1px solid lightgray;
   padding: 7px;
   border-radius: 3px;
@@ -515,7 +515,7 @@ button.editbtn,
 .editbtnn,
 .editbtngit,
 .editbtnName,
-.editbtnlink {
+.editbtnlink,.emailadd {
   color: white;
   border: none;
   padding: 10px 20px;
@@ -524,9 +524,23 @@ button.editbtn,
 }
 
 label {
-  color: #b95233;
+  font-weight: 700;
+  font-size: 14px;
+  color: #82868b!important;
 }
 
+input#emailadd {
+  border: none;
+  font-size: 1rem;
+  padding: 0px;
+  margin: 0px;
+  outline: none;
+}
+
+input#emailadd {
+  border: none;
+  color: black;
+}
 button {
   background-color: #AA3EE2;
   border-radius: 100px;

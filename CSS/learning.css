@@ -23,6 +23,12 @@ body {
   background-color: #e7f2fd;
   transition: all 0.5s ease;
 }
+.dark-mode .nav_link:hover {
+  color: #fffffff3;
+  background-color: #7c15dd4d;
+
+}
+
 body.dark {
   background-color: #333;
 }
@@ -169,10 +175,12 @@ ul.set_items {
   color: #333;
   background: var(--background-color-li);
 }
+
 .sidebar.close .nav_link:hover {
   background: var(--background-color-li);
   color: #333;
 }
+
 .submenu_item {
   cursor: pointer;
 }
@@ -271,7 +279,7 @@ ul.set_items {
 .Course_Down:hover,
 .profile_certicate:hover,
 .log_out:hover {
-  background-color: #ffffff1c;
+  background-color: #8000801c;
 }
 
 p.profile-name {

@@ -1,7 +1,112 @@
 "use strict";
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+// import { getFirestore, getDoc, doc, collection, addDoc ,getDocs,updateDoc} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+// // Firebase configuration
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
+//   authDomain: "dckap-lms-project.firebaseapp.com",
+//   projectId: "dckap-lms-project",
+//   storageBucket: "dckap-lms-project.appspot.com",
+//   messagingSenderId: "1022626638467",
+//   appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6",
+// };
+
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const database = getFirestore(app);
+
+// const exploreCoursesContainer = document.querySelector(".articles");
+
+// let enrolledCourses = JSON.parse(localStorage.getItem("enrolledCourses")) || [];
+
+// exploreCoursesContainer.addEventListener("click", async function (event) {
+//   try {
+//     const clickedCourseContainer = event.target.closest(".article-wrapper");
+//     if (!clickedCourseContainer) return; // Ensure a valid container is clicked
+
+//     const courseContainers = exploreCoursesContainer.querySelectorAll(".article-wrapper");
+//     let index = Array.from(courseContainers).findIndex(container => container === clickedCourseContainer);
+
+//     if (enrolledCourses.includes(index)) {
+//       console.log("Course already enrolled!");
+//       return;
+//     }
+
+//     if (enrolledCourses.length >= 5) {
+//       console.log("You can only enroll in 5 courses.");
+//       return;
+//     }
+
+//     const courseDetails = [
+//       { name: "HTML", imgSrc: "./Assests/html.webp" },
+//       { name: "CSS", imgSrc: "./Assests/css.webp" },
+//       { name: "JavaScript", imgSrc: "./Assests/js.webp" },
+//       { name: "MySQL", imgSrc: "./Assests/7723d1592a0b454cb59a32cf5ab35642-SQL2.webp" },
+//       { name: "PHP", imgSrc: "./Assests/php.webp" },
+//     ];
+
+//     const enrolledCourseContainer = document.createElement("div");
+//     enrolledCourseContainer.classList.add("Progress_bar");
+
+//     // Fetch percentage data from Firestore
+//     let ref = doc(database, 'Learning', 0); // Adjust document reference based on your structure
+//     let dataRef = await getDoc(ref);
+
+//     let percentageData;
+//     switch (courseDetails[index].name) {
+//       case "HTML":
+//         percentageData = dataRef.data().Html_Total_Percentage;
+//         break;
+//       case "CSS":
+//         percentageData = dataRef.data().Css_Total_Percentage;
+//         break;
+//       case "JavaScript":
+//         percentageData = dataRef.data().Javascript_Total_Percentage;
+//         break;
+//       case "MySQL":
+//         percentageData = dataRef.data().Mysql_Total_Percentage;
+//         break;
+//       case "PHP":
+//         percentageData = dataRef.data().Php_Total_Percentage;
+//         break;
+//       default:
+//         percentageData = 0; // Set a default value if percentage data not found
+//         break;
+//     }
+
+//     enrolledCourseContainer.innerHTML = `
+//       <div class="progress_language">
+//         <img src="${courseDetails[index].imgSrc}" alt="" class="enroll_img">
+//       </div>
+//       <hr>
+//       <div class="progress_status">
+//         <p class="enroll_language">${courseDetails[index].name}</p>
+//         <div class="percentage">
+//           <p class="progress">In progress</p>
+//           <span class="percentage_cal">${percentageData}%</span>
+//         </div>
+//       </div>
+//     `;
+
+//     // Append the enrolled course container to the DOM
+//     const enrolledCoursesContainer = document.querySelector(".progressing_bar .Progress_container");
+//     enrolledCoursesContainer.appendChild(enrolledCourseContainer);
+
+//     // Update enrolled courses array and localStorage
+//     await addDoc(collection(database, "enrolledCourses"), {
+//       name: courseDetails[index].name,
+//       imgSrc: courseDetails[index].imgSrc,
+//     });
+//     enrolledCourses.push(index);
+//     localStorage.setItem("enrolledCourses", JSON.stringify(enrolledCourses));
+//   } catch (error) {
+//     console.error("Error:", error.message);
+//   }
+// });
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getFirestore, getDoc, doc,getDocs,collection,updateDoc,addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -18,7 +123,7 @@ const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
 
 const exploreCoursesContainer = document.querySelector(".articles");
-// Use Local Storage to store enrolled courses
+
 let enrolledCourses = JSON.parse(localStorage.getItem("enrolledCourses")) || [];
 
 exploreCoursesContainer.addEventListener("click", async function (event) {
@@ -30,6 +135,10 @@ exploreCoursesContainer.addEventListener("click", async function (event) {
       (container) => container === clickedCourseContainer
     );
 
+    if (enrolledCourses.includes(index)) {
+      console.log("Course already enrolled!");
+      return;
+    }
     if (enrolledCourses.includes(index)) {
       console.log("Course already enrolled!");
       return;
@@ -55,36 +164,63 @@ exploreCoursesContainer.addEventListener("click", async function (event) {
     ];
 
     enrolledCourseContainer.innerHTML = `
-            <div class="progress_language">
-                <img src="${courseDetails[index].imgSrc}" alt="" class="enroll_img">
-            </div>
-            <hr>
-            <div class="progress_status">
-                <p class="enroll_language">${courseDetails[index].name}</p>
-                <div class="percentage">
-                    <p class="progress">In progress</p>
-                    <span></span>
-                </div>
-            </div>
-        `;
+      <div class="progress_language">
+        <img src="${courseDetails[index].imgSrc}" alt="" class="enroll_img">
+      </div>
+      <hr>
+      <div class="progress_status">
+        <p class="enroll_language">${courseDetails[index].name}</p>
+        <div class="percentage">
+          <p class="progress">In progress</p>
+          <span class="percentage_cal"></span>
+        </div>
+      </div>
+    `;
 
-    const enrolledCoursesContainer = document.querySelector(
-      ".progressing_bar .Progress_container"
-    );
-    enrolledCoursesContainer.appendChild(enrolledCourseContainer);
-
-    await addDoc(collection(database, "enrolledCourses"), {
+     // Append the enrolled course container to the DOM
+     const enrolledCoursesContainer = document.querySelector(".progressing_bar .Progress_container");
+     enrolledCoursesContainer.appendChild(enrolledCourseContainer);
+ 
+     // Update enrolled courses array and localStorage
+     await addDoc(collection(database, "enrolledCourses"), {
       name: courseDetails[index].name,
       imgSrc: courseDetails[index].imgSrc,
     });
     enrolledCourses.push(index);
 
-    // Update Local Storage
-    localStorage.setItem("enrolledCourses", JSON.stringify(enrolledCourses));
-  } catch (error) {
+     localStorage.setItem("enrolledCourses", JSON.stringify(enrolledCourses));
+
+     const percentageCalSpan = enrolledCourseContainer.querySelector(".percentage_cal");
+     let ref = doc(database, 'Learning', 0); // Adjust document reference based on your structure
+     let dataRef = await getDoc(ref);
+     
+     let percentageData;
+     switch (courseDetails[index].name) {
+         case "HTML":
+             percentageData = dataRef.data().Html_Total_Percentage;
+             break;
+         case "CSS":
+             percentageData = dataRef.data().Css_Total_Percentage;
+             break;
+         case "JavaScript":
+             percentageData = dataRef.data().Javascript_Total_Percentage;
+             break;
+         case "MySQL":
+             percentageData = dataRef.data().Mysql_Total_Percentage;
+             break;
+         case "PHP":
+             percentageData = dataRef.data().Php_Total_Percentage;
+             break;
+     }
+     
+     // Set the HTML content of the single percentageCalSpan element
+     percentageCalSpan.innerHTML = percentageData;
+     
+  }
+   catch (error) {
     console.error("Error:", error.message);
   }
-});
+})
 
 // Retrieve data
 window.addEventListener("load", async function () {
@@ -288,5 +424,6 @@ Explorebtn.forEach(async(btn) => {
 });
 
 // Percentage Calculation
+
 
 

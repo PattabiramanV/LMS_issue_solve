@@ -30,7 +30,6 @@ let searchIcon=document.querySelector("#search_icon")
 let Dckaplogo=document.querySelector(".DCKAPlOGO")
 // DarkMode Function 
 
-
 function toggleDarkMode() {
   const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
@@ -68,6 +67,11 @@ document.addEventListener("click", (event) => {
   }
 });
 
+// let Cancel_btn=document.querySelector(".cancel_btn")
+
+// Cancel_btn.addEventListener("click", () => {
+//     window.location.href="Roadmap.html";
+// });
 
 // profile_drop
 
@@ -81,7 +85,12 @@ Course_navigate.addEventListener("click", () => {
   window.location.href = "./Courses.html";
 });
 
-let Certi_page=document.querySelector(".profile_certicate")
+let Certi_page=document.querySelector(".profile_certicate");
+
+Certi_page.addEventListener("click",()=>{
+  window.location.href="./certificate.html"
+})
+
 Certi_page.addEventListener("click",()=>{
   window.location.href="./certificate.html"
 })
@@ -430,7 +439,7 @@ if (certificate_get === "HTML_Overall_Quiz") {
   const downloadBtn = document.getElementById("download_btn");
 
   const image = new Image();
-  image.src = "./Assests/without_username_html_certificate.png";
+  image.src = "/Assests/without_username_html_certificate.png";
   image.className = "gen_cer";
   image.onload = () => {
     drawImage();
@@ -529,7 +538,7 @@ const name_input4 = document.getElementById("name");
 const downloadBtn4 = document.getElementById("download_btn");
 
 const image4 = new Image();
-image4.src = "./Assests/without_username_mysql_certificate.png";
+image4.src = "/Assests/without_username_mysql_certificate.png";
 image4.className = "gen_cer";
 image4.onload = () => {
   drawImage();

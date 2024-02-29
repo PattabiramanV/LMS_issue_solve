@@ -38,7 +38,7 @@ let ref_data=doc(db,"Learning",`User=${id}`);
  let data_set=await updateDoc(
     ref_data,{
         Find_Language_type:find_language,
-        find_index:id,
+        find_index:0,
         // Html_Complete_Module:0,
         // Html_Total_Percentage:0,
         // Css_Complete_Module:0,

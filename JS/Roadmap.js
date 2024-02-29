@@ -21,6 +21,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
+let id=localStorage.getItem("UserId");
+
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
 
@@ -150,7 +152,7 @@ let headingnavigate = document.querySelectorAll(".Heading_p");
 console.log(headingnavigate);
 
 headingnavigate.forEach(async (links) => {
-  let ref = doc(database, "Learning", "0");
+  let ref = doc(database, "Learning", `User=${id}`);
   let get_data = await getDoc(ref);
   let find_language = 0;
 

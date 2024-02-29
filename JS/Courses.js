@@ -16,6 +16,14 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
+let id=localStorage.getItem("UserId");
+console.log(id);
+
+let ref = doc(database, 'Learning', `User=${id}`); 
+let get_data= await getDoc(ref);
+console.log(get_data);
+console.log(get_data.data().Html_Total_Percentage);
+
 
 const exploreCoursesContainer = document.querySelector(".articles");
 // Use Local Storage to store enrolled courses
@@ -72,6 +80,7 @@ exploreCoursesContainer.addEventListener("click", async function (event) {
       ".progressing_bar .Progress_container"
     );
     enrolledCoursesContainer.appendChild(enrolledCourseContainer);
+   
 
     await addDoc(collection(database, "enrolledCourses"), {
       name: courseDetails[index].name,

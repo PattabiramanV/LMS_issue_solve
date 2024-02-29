@@ -1,5 +1,29 @@
 "use strict"
 
+// / Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
+    authDomain: "dckap-lms-project.firebaseapp.com",
+    projectId: "dckap-lms-project",
+    storageBucket: "dckap-lms-project.appspot.com",
+    messagingSenderId: "1022626638467",
+    appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+let db=getFirestore(app);
+// let find_language=0;
+
+
+
 let home=document.querySelector(".nav_home")
 console.log(home)
 let learning=document.querySelector(".nav_learning")
@@ -48,10 +72,13 @@ navsign.addEventListener("click",()=>{
 
 
 
-let id=localStorage.getItem("UserId");
+// let id=localStorage.getItem("UserId");
 let find_language = 0;
 
+var userDetailsString = localStorage.getItem("userdetails");
 
+var userDetails = JSON.parse(userDetailsString);
+let id=userDetails.user_id
 
 
 let  Explorebtn=document.querySelectorAll(".enroll_btn")

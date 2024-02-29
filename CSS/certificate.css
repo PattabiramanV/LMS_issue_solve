@@ -309,6 +309,11 @@ i.fa-solid.fa-right-from-bracket {
 }
 
 /* ----------------- Certificate ------------------ */
+.back
+{
+  background-color: #F1EAFF;
+  height: 100vh;
+}
 .body
 {
   margin: 6% 17.4%;
@@ -326,18 +331,24 @@ i.fa-solid.fa-right-from-bracket {
   justify-content: center;
   width: 100%;
   gap: 0%;
+  /* margin-top: 10%; */
   margin-left: 12%;
+  position: relative;
+  top: 20%;
   padding: 0%;
 }
-.certificate
+/* .certificate
 {
-  margin-top: 12%;
-}
+  position: relative;
+  top: 20%;
+} */
 .certify 
 {
   display: flex;
   flex-direction: column;
   margin: 0;
+  /* position: relative; */
+  margin-top: 3%;
   padding: 0;
 }
 #js_btn
@@ -448,6 +459,10 @@ i.fa-solid.fa-right-from-bracket {
 
 
 
+.class
+{
+  margin-top: 10%;
+}
 
 
 

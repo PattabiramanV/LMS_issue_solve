@@ -316,6 +316,12 @@ i.fa-solid.fa-right-from-bracket {
   width: 50%;
 }
 /* ------------------Dashboard--------------- */
+.back
+{
+  background-color: #F1EAFF;
+  height: 96vh;
+}
+
 .body
 {
   margin: 6% 17.4%;
@@ -499,8 +505,9 @@ h1
 /* ------------------ Display Piechart ------------------------- */
 .display_chart
 {
-  position: fixed;
-  left: 20%;
+  position: absolute;
+  top: 55%;
+  left: 19%;
   background-color: #F2BB7B;
   height: 45%;
   width: 48%;
@@ -566,3 +573,13 @@ h1
   font-weight: 700;
   color: #e63946;
 } 
+
+
+.active
+{
+  color: white;
+}
+.active2
+{
+  background-color: #333333;
+}

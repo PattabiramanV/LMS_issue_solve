@@ -144,20 +144,30 @@ async function html_quiz_btn()
     const getRef = doc(db, 'Learning', '0');
     const getData = await getDoc(getRef);
     const data = getData.data();
-    const Html_Complete_Module = data.Html_Total_Percentage;
-    console.log(Html_Complete_Module); // Output the value to debug
+    const Html_Complete_Percentage = data.Html_Total_Percentage;
+    console.log(Html_Complete_Percentage); // Output the value to debug
 
     const html_btn = document.querySelector("#html_btn");
 
+    if (Html_Complete_Percentage === 100) 
+    {
+      document.querySelector(".html_lock").style.display = "none";
+      html_btn.classList.add("class");
+    }
+    else
+    {
+      document.querySelector(".html_lock").style.display = "block";
+      html_btn.classList.remove("class");
+    }
     html_btn.addEventListener("click", () => {
-      if (Html_Complete_Module === 100) 
+      if (Html_Complete_Percentage === 100) 
       {
         localStorage.setItem('selectedQuiz', 'HTML_Overall_Quiz');
         localStorage.setItem('certificate_get', 'HTML_Overall_Quiz');
         window.location.href = './OverallQuiz.html';
-        document.querySelector(".html_lock").style.display = "none"; // Use querySelector or access the first element of the collection
+        // document.querySelector(".html_lock").style.display = "none"; // Use querySelector or access the first element of the collection
       } 
-      else if (Html_Complete_Module < 100) 
+      else if (Html_Complete_Percentage < 100) 
       {
         document.getElementById("html_error").style.display = "block";
         setInterval(() => {
@@ -185,20 +195,31 @@ async function css_quiz_btn()
     const getRef = doc(db, 'Learning', '0');
     const getData = await getDoc(getRef);
     const data = getData.data();
-    const Css_Complete_Module = data.Css_Total_Percentage;
-    console.log(Css_Complete_Module); // Output the value to debug
+    const Css_Complete_Percentage = data.Css_Total_Percentage;
+    console.log(Css_Complete_Percentage); // Output the value to debug
 
     const css_quiz = document.querySelector("#css_btn");
 
+    if (Css_Complete_Percentage === 100) 
+    {
+      document.querySelector(".css_lock").style.display = "none";
+      css_quiz.classList.add("class");
+    }
+    else
+    {
+      document.querySelector(".css_lock").style.display = "block";
+      css_quiz.classList.remove("class");
+    }
+
     css_quiz.addEventListener("click", () => {
-      if (Css_Complete_Module === 100) 
+      if (Css_Complete_Percentage === 100) 
       {
         localStorage.setItem('selectedQuiz', 'CSS_Overall_Quiz');
         localStorage.setItem('certificate_get', 'CSS_Overall_Quiz');
         window.location.href = './OverallQuiz.html';
         document.querySelector(".css_lock").style.display = "none"; // Use querySelector or access the first element of the collection
       } 
-      else if (Css_Complete_Module < 100) 
+      else if (Css_Complete_Percentage < 100) 
       {
         document.getElementById("css_error").style.display = "block";
         setInterval(() => {
@@ -263,20 +284,31 @@ async function js_quiz_btn()
     const getRef = doc(db, 'Learning', '0');
     const getData = await getDoc(getRef);
     const data = getData.data();
-    const Javascript_Complete_Module = data.Javascript_Total_Percentage;
-    console.log(Javascript_Complete_Module); // Output the value to debug
+    const Javascript_Complete_Percentage = data.Javascript_Total_Percentage;
+    console.log(Javascript_Complete_Percentage); // Output the value to debug
 
     const js_btn =document.querySelector("#js_btn");
 
+    if (Javascript_Complete_Percentage === 100) 
+    {
+      document.querySelector(".js_lock").style.display = "none";
+      js_btn.classList.add("class");
+    }
+    else
+    {
+      document.querySelector(".js_lock").style.display = "block";
+      js_btn.classList.remove("class");
+    }
+
     js_btn.addEventListener("click", () => {
-      if (Javascript_Complete_Module === 100) 
+      if (Javascript_Complete_Percentage === 100) 
       {
         localStorage.setItem('selectedQuiz', 'JavaScript_Overall_Quiz');
         localStorage.setItem('certificate_get', 'JavaScript_Overall_Quiz');
         window.location.href = './OverallQuiz.html';
         document.querySelector(".js_lock").style.display = "none"; // Use querySelector or access the first element of the collection
       } 
-      else if (Javascript_Complete_Module < 100) 
+      else if (Javascript_Complete_Percentage < 100) 
       {
         document.getElementById("js_error").style.display = "block";
         setInterval(() => {
@@ -284,7 +316,9 @@ async function js_quiz_btn()
         }, 4000);
       }
     });
-  } catch (error) {
+  } 
+  catch (error) 
+  {
     console.error("Error fetching and updating data:", error);
     return 0;
   }
@@ -343,20 +377,31 @@ async function mysql_quiz_btn()
     const getRef = doc(db, 'Learning', '0');
     const getData = await getDoc(getRef);
     const data = getData.data();
-    const Mysql_Complete_Module = data.Mysql_Total_Percentage;
-    console.log(Mysql_Complete_Module); // Output the value to debug
+    const Mysql_Complete_Percentage = data.Mysql_Total_Percentage;
+    console.log(Mysql_Complete_Percentage); // Output the value to debug
 
     const mysql_btn =document.querySelector("#mysql_btn");
 
+    if (Mysql_Complete_Percentage === 100) 
+    {
+      document.querySelector(".mysql_lock").style.display = "none";
+      mysql_btn.classList.add("class");
+    }
+    else
+    {
+      document.querySelector(".mysql_lock").style.display = "block";
+      mysql_btn.classList.remove("class");
+    }
+
     mysql_btn.addEventListener("click", () => {
-      if (Mysql_Complete_Module === 100) 
+      if (Mysql_Complete_Percentage === 100) 
       {
         localStorage.setItem('selectedQuiz', 'MySql_Overall_Quiz');
         localStorage.setItem('certificate_get', 'MySql_Overall_Quiz');
         window.location.href = './OverallQuiz.html';
         document.querySelector(".mysql_lock").style.display = "none"; // Use querySelector or access the first element of the collection
       } 
-      else if (Mysql_Complete_Module < 100) 
+      else if (Mysql_Complete_Percentage < 100) 
       {
         document.getElementById("mysql_error").style.display = "block";
         setInterval(() => {

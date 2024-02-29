@@ -15,22 +15,43 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(); // Create a Firestore instance
+const db = getFirestore(app); // Create a Firestore instance
 
 // ------------ html firebase ---------------------
+let Total_Quiz=document.querySelector('.Total_Quiz');
+
+let Total_Ponits = document.querySelector('.Total_Ponits');
+
+let Total_Stars = document.querySelector('.Total_Stars')
+
+const getRef = doc(db, 'Learning', '0');
+const getData = await getDoc(getRef);
+const data = getData.data();
+
+let Html_Complete_Module = data.Html_Complete_Module;
+
+let Css_Complete_Module = data.Css_Complete_Module;
+
+let Javascript_Complete_Module = data.Javascript_Complete_Module;
+
+let Mysql_Complete_Module = data.Mysql_Complete_Module;
+
+let validate_Quiz = Html_Complete_Module + Css_Complete_Module + Javascript_Complete_Module + Mysql_Complete_Module;
+// Total_Quiz.textContent = validate_Quiz*5;
+
+
 
 async function fetchDataAndUpdateHTML() 
 {
   try 
   {
-    const getRef = doc(db, 'Learning', '0');
-    const getData = await getDoc(getRef);
-    const data = getData.data();
-
+  
+// console.log( document.querySelector('.Total_Quiz'));
         // Update HTML with fetched data
-    document.querySelector('.Total_Quiz').textContent =  data.Html_Total_Percentage|| '0';
-    document.querySelector('.Total_Ponits').textContent = data.Html_Complete_Module || '0';
-    document.querySelector('.Total_Stars').textContent = data.Html_Complete_Module*2 || '0';
+
+    Total_Quiz.textContent = validate_Quiz * 5;
+    Total_Ponits.textContent = validate_Quiz;
+    Total_Stars.textContent = validate_Quiz * 2;
     localStorage.setItem('Total_Ponits', data.Html_Complete_Module);
 
   } 
@@ -44,77 +65,77 @@ fetchDataAndUpdateHTML(); // Call the function to fetch data and update HTML
 
 // ------------ css firebase ---------------------
 
-async function fetchDataAndUpdateCSS() 
-{
-  try 
-  {
-      const getRef = doc(db, 'Learning', '0');
-      const getData = await getDoc(getRef);
-      const data = getData.data();
+// async function fetchDataAndUpdateCSS() 
+// {
+//   try 
+//   {
+//       const getRef = doc(db, 'Learning', '0');
+//       const getData = await getDoc(getRef);
+//       const data = getData.data();
 
-      // Update HTML with fetched data
-      document.querySelector('.Total_Quiz').textContent =  data.Html_Total_Percentage + data.Css_Total_Percentage|| '0';
-      document.querySelector('.Total_Ponits').textContent = data.Html_Complete_Module + data.Css_Complete_Module|| '0';
-      document.querySelector('.Total_Stars').textContent = (data.Html_Complete_Module + data.Css_Complete_Module) * 2 || '0';
-      localStorage.setItem('Total_Ponits', data.Css_Complete_Module);
+//       // Update HTML with fetched data
+//       document.querySelector('.Total_Quiz').textContent =  data.Html_Total_Percentage + data.Css_Total_Percentage|| '0';
+//       document.querySelector('.Total_Ponits').textContent = data.Html_Complete_Module + data.Css_Complete_Module|| '0';
+//       document.querySelector('.Total_Stars').textContent = (data.Html_Complete_Module + data.Css_Complete_Module) * 2 || '0';
+//       localStorage.setItem('Total_Ponits', data.Css_Complete_Module);
 
-  } 
-  catch (error) 
-  {
-      console.error("Error fetching and updating data:", error); 
-  }
-}
+//   } 
+//   catch (error) 
+//   {
+//       console.error("Error fetching and updating data:", error); 
+//   }
+// }
 
-fetchDataAndUpdateCSS();
+// fetchDataAndUpdateCSS();
 
-// ------------ js firebase ---------------------
+// // ------------ js firebase ---------------------
 
-async function fetchDataAndUpdateJS() 
-{
-    try 
-    {
-        const getRef = doc(db, 'Learning', '0');
-        const getData = await getDoc(getRef);
-        const data = getData.data();
+// async function fetchDataAndUpdateJS() 
+// {
+//     try 
+//     {
+//         const getRef = doc(db, 'Learning', '0');
+//         const getData = await getDoc(getRef);
+//         const data = getData.data();
 
-        // Update HTML with fetched data
-        document.querySelector('.Total_Quiz').textContent =  data.Html_Total_Percentage + data.Css_Total_Percentage + data.Javascript_Total_Percentage|| '0';
-        document.querySelector('.Total_Ponits').textContent = data.Html_Complete_Module + data.Css_Complete_Module + data.Javascript_Complete_Module|| '0';
-        document.querySelector('.Total_Stars').textContent = (data.Html_Complete_Module + data.Css_Complete_Module + data.Javascript_Complete_Module) * 2 || '0';
-        localStorage.setItem('Total_Ponits', data.Javascript_Complete_Module);
+//         // Update HTML with fetched data
+//         document.querySelector('.Total_Quiz').textContent =  data.Html_Total_Percentage + data.Css_Total_Percentage + data.Javascript_Total_Percentage|| '0';
+//         document.querySelector('.Total_Ponits').textContent = data.Html_Complete_Module + data.Css_Complete_Module + data.Javascript_Complete_Module|| '0';
+//         document.querySelector('.Total_Stars').textContent = (data.Html_Complete_Module + data.Css_Complete_Module + data.Javascript_Complete_Module) * 2 || '0';
+//         localStorage.setItem('Total_Ponits', data.Javascript_Complete_Module);
 
-    } 
-    catch (error) 
-    {
-        console.error("Error fetching and updating data:", error); 
-    }
-}
+//     } 
+//     catch (error) 
+//     {
+//         console.error("Error fetching and updating data:", error); 
+//     }
+// }
 
-fetchDataAndUpdateJS();
+// fetchDataAndUpdateJS();
 
-// ------------ mysql firebase ---------------------
+// // ------------ mysql firebase ---------------------
 
-async function fetchDataAndUpdateSQL() 
-{
-    try 
-    {
-        const getRef = doc(db, 'Learning', '0');
-        const getData = await getDoc(getRef);
-        const data = getData.data();
+// async function fetchDataAndUpdateSQL() 
+// {
+//     try 
+//     {
+//         const getRef = doc(db, 'Learning', '0');
+//         const getData = await getDoc(getRef);
+//         const data = getData.data();
 
-        // Update HTML with fetched data
-        document.querySelector('.Total_Quiz').textContent =  data.Html_Total_Percentage + data.Css_Total_Percentage + data.Javascript_Total_Percentage + data.Mysql_Total_Percentage|| '0';
-        document.querySelector('.Total_Ponits').textContent = data.Html_Complete_Module + data.Css_Complete_Module + data.Javascript_Complete_Module + data.Mysql_Complete_Module|| '0';
-        document.querySelector('.Total_Stars').textContent = (data.Html_Complete_Module + data.Css_Complete_Module + data.Javascript_Complete_Module + data.Mysql_Complete_Module) * 2 || '0';
-        localStorage.setItem('Total_Ponits', data.Javascript_Complete_Module);
-    } 
-    catch (error) 
-    {
-        console.error("Error fetching and updating data:", error); 
-    }
-}
+//         // Update HTML with fetched data
+//         document.querySelector('.Total_Quiz').textContent =  data.Html_Total_Percentage + data.Css_Total_Percentage + data.Javascript_Total_Percentage + data.Mysql_Total_Percentage|| '0';
+//         document.querySelector('.Total_Ponits').textContent = data.Html_Complete_Module + data.Css_Complete_Module + data.Javascript_Complete_Module + data.Mysql_Complete_Module|| '0';
+//         document.querySelector('.Total_Stars').textContent = (data.Html_Complete_Module + data.Css_Complete_Module + data.Javascript_Complete_Module + data.Mysql_Complete_Module) * 2 || '0';
+//         localStorage.setItem('Total_Ponits', data.Mysql_Complete_Module);
+//     } 
+//     catch (error) 
+//     {
+//         console.error("Error fetching and updating data:", error); 
+//     }
+// }
 
-fetchDataAndUpdateSQL();
+// fetchDataAndUpdateSQL();
 
 // ---------------------------------
 
@@ -147,11 +168,16 @@ sidebar.addEventListener("mouseleave", () => {
   }
 });
 
+const dark_color = document.querySelector(".dashboard_profile_content p");
+const dash_color = document.querySelector(".dash")
+const back = document.querySelector(".back");
+
 function toggleDarkMode() {
   const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("darkMode");
-  document.querySelector(".dashboard_profile_content p").style.color = "white";
-  document.querySelector(".dash").style.color = "white";
+  dark_color.classList.toggle("active");
+  dash_color.classList.toggle("active");
+  back.classList.toggle("active2");
   sessionStorage.setItem("darkMode", isDarkMode);
 }
 

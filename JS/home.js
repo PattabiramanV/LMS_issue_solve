@@ -32,6 +32,8 @@ learning.addEventListener("click",()=>{
 
 
 
+
+
 navlogin.addEventListener("click",()=>{
      window.location.href='./login.html'
 })
@@ -46,6 +48,61 @@ navsign.addEventListener("click",()=>{
 
 
 
+let id=localStorage.getItem("UserId");
+let find_language = 0;
+
+
+
+
+let  Explorebtn=document.querySelectorAll(".enroll_btn")
+
+Explorebtn[0].addEventListener("click",()=>{
+
+find_language = 'Html';
+language_change_Fun();
+
+});
+
+Explorebtn[1].addEventListener("click",()=>{
+
+  find_language = 'Css';
+  language_change_Fun();
+
+  });
+
+  Explorebtn[2].addEventListener("click",()=>{
+
+    find_language = 'Javascript';
+    language_change_Fun();
+
+    });
+
+    Explorebtn[3].addEventListener("click",()=>{
+
+      find_language = 'Mysql';
+      language_change_Fun();
+
+      });
+
+      Explorebtn[4].addEventListener("click",()=>{
+
+        find_language = 'Php';
+        language_change_Fun();
+
+        });
+
+async  function language_change_Fun(){
+
+  let ref = doc(db, "Learning", `User=${id}`);
+  let get_data = await updateDoc(
+
+    ref,{
+      Find_Language_type:find_language,
+        find_index:0
+    }
+  )
+  window.location.href='./learning_content.html';
+ }
 
 
 

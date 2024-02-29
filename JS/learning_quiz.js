@@ -165,7 +165,11 @@ const app = initializeApp(firebaseConfig);
 import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 let db=getFirestore(app);
-let id=localStorage.getItem("UserId");
+var userDetailsString = localStorage.getItem("userdetails");
+
+var userDetails = JSON.parse(userDetailsString);
+let id=userDetails.user_id
+
 
 let get_ref=doc(db,'Learning',`User=${id}`);
 let get_data= await getDoc(get_ref);
@@ -343,7 +347,7 @@ console.log(Excat_answer);
 
 })
 
-alert(`Total Mark:${total_mark}/5`);
+// alert(`Total Mark:${total_mark}/5`);
 // console.log(arr);
 // console.log(total_mark);
 

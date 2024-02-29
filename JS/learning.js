@@ -22,10 +22,13 @@
   
 let db=getFirestore(app);
 let find_language=0;
-let id=localStorage.getItem("UserId");
 
 
+var userDetailsString = localStorage.getItem("userdetails");
 
+var userDetails = JSON.parse(userDetailsString);
+let id=userDetails.user_id
+// console.log(id);
 let all_learn_more_btn=document.querySelectorAll(".learn_more_btn");
 
 all_learn_more_btn.forEach((btn,index)=>{
@@ -51,7 +54,7 @@ let ref_data=doc(db,"Learning",`User=${id}`);
 
     }
 ).then(()=>{
-    alert("sucessfully");
+    // alert("sucessfully");
 }).catch((err)=>{
     console.log(err);
 });

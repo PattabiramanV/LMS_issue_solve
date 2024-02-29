@@ -1,5 +1,7 @@
 "use strict"
 
+
+
  // Import the functions you need from the SDKs you need
  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
  // TODO: Add SDKs for Firebase products that you want to use
@@ -36,10 +38,10 @@ let cssbtn=document.querySelector(".css_btn")
 let jsbtn=document.querySelector(".js_btn")
 let mysqlbtn=document.querySelector(".mysql_btn")
 let phpbtn=document.querySelector(".php_btn")
-
+let profile=document.querySelector(".profile")
 // learning.addEventListener("click",()=>{
 //     alert("learning menu clicked")
-// })
+// });
 
 dashboard.addEventListener("click",()=>{
     window.location.href="./dashboard.html";
@@ -68,28 +70,6 @@ navsign.addEventListener("click",()=>{
 })
 
 
-
-
-
-
-// let left_side_bar=document.querySelectorAll(".navlink");
-
-// left_side_bar[0].addEventListener("click",()=>{
-//   window.location.href='./index.html'
-// });
-
-// left_side_bar[1].addEventListener("click",()=>{
-
-//   window.location.href='./Learning.html'
-// });
-// left_side_bar[2].addEventListener("click",()=>{
-
-//   window.location.href='./dashboard.html';
-// });
-// left_side_bar[3].addEventListener("click",()=>{
-
-//   window.location.href='./Roadmap.html';
-// });
 
 let id=localStorage.getItem("UserId");
 let find_language = 0;
@@ -147,4 +127,9 @@ async  function language_change_Fun(){
   window.location.href='./learning_content.html';
  }
 
+// // console.log(!localStorage.getItem("User"));
+//  if(localStorage.getItem("UserId")){
 
+
+
+//  }

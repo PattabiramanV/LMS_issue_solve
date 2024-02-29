@@ -65,14 +65,34 @@ login_button.addEventListener("click",login_fun)
  async function login_fun(event)
 
 { 
+    let log_email_1=document.getElementById("log").value
+    let log_password_1=document.getElementById("log_pass").value
+    let invalid_mail=document.querySelector(".invalid_email")
+    let invalid_password=document.querySelector(".invalid_password")
+    
       event.preventDefault()
+
+      if(log_email_1 =="")
+      {
+       invalid_mail.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Invalid Mail.';
+     setTimeout(() => {
+         invalid_mail.innerHTML = "";
+     }, 2000);
+     return;
+      }
+      if(log_password_1=="")
+      {
+        invalid_password.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Invalid Password.';
+        setTimeout(() => {
+            invalid_password.innerHTML = "";
+        }, 2000);
+        return;
+      }
       getdata .forEach(async (record) => {
         
         let email_data = record.data().email
         let password_data = record.data().password
         let id=record.data().user_id;
-      //   // console.log(email_data);
-// console.log(id);
         if(log_email.value == email_data && log_password.value==password_data )
         {
           document.getElementById('loadingOverlay').style.visibility = 'visible';

@@ -287,6 +287,12 @@ i.fa-solid.fa-right-from-bracket {
   width: 50%;
 }
 
+.fa-magnifying-glass:before, .fa-search:before {
+  content: "\f002";
+  position: relative;
+  left: 104px;
+  top: 5px;
+}
 
 /*......................................5_learning_card..........................*/
 

@@ -21,6 +21,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
+let id=localStorage.getItem("UserId");
+
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
 
@@ -72,14 +74,34 @@ sidebar.addEventListener("mouseleave", () => {
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
 let searchicon = document.querySelector(".fas");
 
-darkLight.addEventListener("click", () => {
-  body.classList.toggle("dark");
+// Function to toggle dark mode
+
+function toggleDarkMode() {
+  const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
-  searchicon.style.color = body.classList.contains("dark") ? "white" : "black";
+  searchicon.style.color = isDarkMode ? "white" : "black";
+  headings.forEach((heading) => {
+      if (isDarkMode) {
+          heading.style.color = "white";
+      } else {
+          heading.style.color = "#b95233";
+      }
   Dckaplogo.src = body.classList.contains("dark")
-    ? "./Assests/Dckapwhite.png"
-    : "./Assests/Logodk.png";
-});
+  ? "./Assests/Dckapwhite.png"
+  : "./Assests/Logodk.png";
+  });
+
+  sessionStorage.setItem("darkMode", isDarkMode);
+}
+
+const storedDarkMode = sessionStorage.getItem("darkMode");
+if (storedDarkMode === "true") {
+  toggleDarkMode();
+}
+
+
+darkLight.addEventListener("click", toggleDarkMode);
+
 
 // Profile
 
@@ -130,7 +152,7 @@ let headingnavigate = document.querySelectorAll(".Heading_p");
 console.log(headingnavigate);
 
 headingnavigate.forEach(async (links) => {
-  let ref = doc(database, "Learning", "0");
+  let ref = doc(database, "Learning", `User=${id}`);
   let get_data = await getDoc(ref);
   let find_language = 0;
 
@@ -142,6 +164,7 @@ headingnavigate.forEach(async (links) => {
     }
     await updateDoc(ref, {
       Find_Language_type: find_language,
+      find_index:0
     });
     window.location.href = "./learning_content.html";
   });

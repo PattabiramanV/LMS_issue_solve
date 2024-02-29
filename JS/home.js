@@ -33,12 +33,12 @@ learning.addEventListener("click",()=>{
 
 
 navlogin.addEventListener("click",()=>{
-    alert("login button clicked")
+     window.location.href='./login.html'
 })
 
 navsign.addEventListener("click",()=>{
     // alert("sign_up button clicked")
-    window.location.href='signup.html';
+    window.location.href='./signup.html';
 
 
    
@@ -47,46 +47,23 @@ navsign.addEventListener("click",()=>{
 
 
 
-searchbtn.addEventListener("click",()=>{
-    alert("explore clicked")
-})
-
-htmlbtn.addEventListener("click",()=>{
-    alert("html button clicked")
-})
-
-cssbtn.addEventListener("click",()=>{
-    alert("css button clicked")
-})
-
-jsbtn.addEventListener("click",()=>{
-    alert("js button clicked")
-})
-
-mysqlbtn.addEventListener("click",()=>{
-    alert("mysql button clicked")
-})
-
-phpbtn.addEventListener("click",()=>{
-    alert("php button clicked")
-})
 
 
 let left_side_bar=document.querySelectorAll(".navlink");
 
 left_side_bar[0].addEventListener("click",()=>{
-  window.location.href='index.html'
+  window.location.href='./index.html'
 });
 
 left_side_bar[1].addEventListener("click",()=>{
 
-  window.location.href='Learning.html'
+  window.location.href='./Learning.html'
 });
 left_side_bar[2].addEventListener("click",()=>{
 
-  window.location.href='dashboard.html';
+  window.location.href='./dashboard.html';
 });
 left_side_bar[3].addEventListener("click",()=>{
 
-  window.location.href='Roadmap.html';
+  window.location.href='./Roadmap.html';
 });

@@ -254,7 +254,8 @@ ul.set_items {
 #sidebarOpen {
   display: none;
 }
-/* Dropdown Profile */
+
+/*----------------------------------------- Profile DropDown -------------------------------*/
 
 .profile_bar_list {
   top: 77px;
@@ -323,12 +324,9 @@ i.fa-solid.fa-right-from-bracket {
 {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   width: 100%;
   gap: 0%;
-  /* margin-top: 10%; */
   margin-left: 12%;
-  /* margin: 10% 6%; */
   padding: 0%;
 }
 .certificate
@@ -339,8 +337,6 @@ i.fa-solid.fa-right-from-bracket {
 {
   display: flex;
   flex-direction: column;
-  /* width: 20%; */
-  /* background-color: aqua; */
   margin: 0;
   padding: 0;
 }
@@ -351,7 +347,6 @@ i.fa-solid.fa-right-from-bracket {
 }
 .start_quiz_btn
 {
-  /* opacity: 0.5; */
   top: -10%;
   margin-left: 12%;
   width: 40%;
@@ -360,10 +355,7 @@ i.fa-solid.fa-right-from-bracket {
   border-radius: 7px;
   border: 1px solid #4F7942;
   font-size: 90%;
-  /* text-transform: uppercase; */
   font-weight: 600;
-  /* letter-spacing: 2px; */
-  /* background: transparent; */
   background: #EDC9AF ;
   color: #cd5700;
   overflow: hidden;
@@ -375,9 +367,7 @@ i.fa-solid.fa-right-from-bracket {
 .start_quiz_btn:hover
 {
   color: #cd5700;
-  /* background: #FEBA4F; */
   background: #F6CBA0;
-  /* box-shadow: 0 0 10px 2px #ADFF2F; */
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
@@ -435,9 +425,7 @@ i.fa-solid.fa-right-from-bracket {
   position: relative;
   top: -35%;
   margin-left: 30%;
-  /* left: 30%; */
   font-size: 300%;
-  /* color: #49a843; */
 }
 
 /* ------------- Error btn ---------------- */

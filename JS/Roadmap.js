@@ -24,6 +24,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
 
+let id=localStorage.getItem("UserId");
+console.log(id);
+
 const body = document.querySelector("body");
 
 const darkLight = document.querySelector("#darkLight");
@@ -143,7 +146,7 @@ let headingnavigate = document.querySelectorAll(".Heading_p");
 console.log(headingnavigate);
 
 headingnavigate.forEach(async (links) => {
-  let ref = doc(database, "Learning", "0");
+  let ref = doc(database, "Learning", `User=${id}`);
   let get_data = await getDoc(ref);
   let find_language = 0;
 
@@ -152,6 +155,12 @@ headingnavigate.forEach(async (links) => {
       find_language = "Html";
     } else if (links == headingnavigate[2]) {
       find_language = "Css";
+    }
+    else if(links==headingnavigate[3]){
+      find_language="Js"
+    }
+    else if(links==headingnavigate[4]){
+      find_language="Mysql"
     }
     await updateDoc(ref, {
       Find_Language_type: find_language,

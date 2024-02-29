@@ -133,6 +133,10 @@ label.slide.signup {
   justify-content: center;
   align-items: center;
 }
+img#profile_img {
+  width: 19%;
+  margin-top: 14px;
+}
 .container_1 {
   padding: 76px;
   width: 88%;

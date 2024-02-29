@@ -1,5 +1,28 @@
 "use strict"
 
+ // Import the functions you need from the SDKs you need
+ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+ // TODO: Add SDKs for Firebase products that you want to use
+ // https://firebase.google.com/docs/web/setup#available-libraries
+
+ // Your web app's Firebase configuration
+ const firebaseConfig = {
+   apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
+   authDomain: "dckap-lms-project.firebaseapp.com",
+   projectId: "dckap-lms-project",
+   storageBucket: "dckap-lms-project.appspot.com",
+   messagingSenderId: "1022626638467",
+   appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
+ };
+
+ // Initialize Firebase
+ const app = initializeApp(firebaseConfig);
+ import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+ 
+let db=getFirestore(app);
+
+
+
 let home=document.querySelector(".nav_home")
 console.log(home)
 let learning=document.querySelector(".nav_learning")
@@ -49,31 +72,79 @@ navsign.addEventListener("click",()=>{
 
 
 
-let left_side_bar=document.querySelectorAll(".navlink");
+// let left_side_bar=document.querySelectorAll(".navlink");
 
-left_side_bar[0].addEventListener("click",()=>{
-  window.location.href='./index.html'
-});
+// left_side_bar[0].addEventListener("click",()=>{
+//   window.location.href='./index.html'
+// });
 
-left_side_bar[1].addEventListener("click",()=>{
+// left_side_bar[1].addEventListener("click",()=>{
 
-  window.location.href='./Learning.html'
-});
-left_side_bar[2].addEventListener("click",()=>{
+//   window.location.href='./Learning.html'
+// });
+// left_side_bar[2].addEventListener("click",()=>{
 
-  window.location.href='./dashboard.html';
-});
-left_side_bar[3].addEventListener("click",()=>{
+//   window.location.href='./dashboard.html';
+// });
+// left_side_bar[3].addEventListener("click",()=>{
 
-  window.location.href='./Roadmap.html';
-});
+//   window.location.href='./Roadmap.html';
+// });
+
+let id=localStorage.getItem("UserId");
+let find_language = 0;
+
 
 
 
 let  Explorebtn=document.querySelectorAll(".enroll_btn")
 
-Explorebtn.forEach((btn)=>{
-          btn.addEventListener("click",()=>{
-            window.location.href='/.learning_content.html'
-          })
-})
+Explorebtn[0].addEventListener("click",()=>{
+
+find_language = 'Html';
+language_change_Fun();
+
+});
+
+Explorebtn[1].addEventListener("click",()=>{
+
+  find_language = 'Css';
+  language_change_Fun();
+
+  });
+
+  Explorebtn[2].addEventListener("click",()=>{
+
+    find_language = 'Javascript';
+    language_change_Fun();
+  
+    });
+
+    Explorebtn[3].addEventListener("click",()=>{
+
+      find_language = 'Mysql';
+      language_change_Fun();
+    
+      });
+
+      Explorebtn[4].addEventListener("click",()=>{
+
+        find_language = 'Php';
+        language_change_Fun();
+      
+        });
+
+async  function language_change_Fun(){
+
+  let ref = doc(db, "Learning", `User=${id}`);
+  let get_data = await updateDoc(
+
+    ref,{
+      Find_Language_type:find_language,
+        find_index:0
+    }
+  )
+  window.location.href='./learning_content.html';
+ }
+
+

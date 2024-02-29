@@ -33,7 +33,7 @@ learning.addEventListener("click",()=>{
 
 
 navlogin.addEventListener("click",()=>{
-    alert("login button clicked")
+    window.location.href="login.html"
 })
 
 navsign.addEventListener("click",()=>{

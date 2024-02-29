@@ -140,8 +140,6 @@ otp_btn.addEventListener("click", verified)
         // console.log(id);
 
     let ref=doc(db,"SignUp_details",`${++id}`)
-
-
     let userData = {
       username: username.value,
       email: email_box.value,
@@ -160,13 +158,16 @@ otp_btn.addEventListener("click", verified)
   setTimeout(() => {
     window.location.href = './login.html';
 }, 1000);
-localStorage.setItem("UserId",id)
-localStorage.setItem("username",username.value)
-localStorage.setItem("email",email_box.value)
-storedlocaldata=localStorage.getItem("UserId")
-storedlocalname=localStorage.getItem("username")
-storedlocalemail=localStorage.getItem("email")
-
+localStorage.setItem('userdetails',JSON.stringify(userData))
+let storedlocaldata=localStorage.getItem('userData')
+let storedparseddata=JSON.parse(storedlocaldata)
+ 
+// localStorage.setItem("UserId",id)
+// localStorage.setItem("username",username.value)
+// localStorage.setItem("email",email_box.value)
+// storedlocaldata=localStorage.getItem("UserId")
+// storedlocalname=localStorage.getItem("username")
+// storedlocalemail=localStorage.getItem("email")
         
   }
   else{
@@ -175,10 +176,6 @@ storedlocalemail=localStorage.getItem("email")
   
  }
   
-
-
-
-
    
 // --------password icon-----------
 let icon_eye=document.getElementById("icon_eye")

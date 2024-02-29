@@ -30,6 +30,7 @@ let searchIcon=document.querySelector("#search_icon")
 let Dckaplogo=document.querySelector(".DCKAPlOGO")
 // DarkMode Function 
 
+
 function toggleDarkMode() {
   const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");

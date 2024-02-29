@@ -486,10 +486,9 @@ h1 {
   font-size: 40pt;
   background: linear-gradient(to right, #643d6e, #a982b4, #c4a6cc, #9889ce, rgb(166, 68, 231) 80%, #8f36bbb6 );
   -webkit-text-fill-color: transparent;
-  /* background-clip: text;       */
+  background-clip: text;      
   -webkit-background-clip: text;
 }
-
 
 
 /* Add dark mode styles */
@@ -504,11 +503,6 @@ h1 {
   color: #ffffff;
 }
 
-.dark-mode h1 {
-  background: linear-gradient(to right, #643d6e, #a982b4, #c4a6cc, #9889ce, rgb(166, 68, 231) 80%, #8f36bbb6);
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
 
 .dark-mode button {
   color: #ffffff;

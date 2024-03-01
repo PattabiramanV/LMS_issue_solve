@@ -45,8 +45,8 @@ function toggleDarkMode() {
   document.body.classList.toggle("dark-mode");
   searchicon.style.color = isDarkMode ? "white" : "black";
   Dckaplogo.src = body.classList.contains("dark")
-  ? "./Assests/Dckapwhite.png"
-  : "./Assests/Logodk.png";
+    ? "./Assests/Dckapwhite.png"
+    : "./Assests/Logodk.png";
   sessionStorage.setItem("darkMode", isDarkMode);
 }
 
@@ -55,7 +55,6 @@ if (storedDarkMode === "true") {
   toggleDarkMode();
 }
 darkLight.addEventListener("click", toggleDarkMode);
-
 
 // Profile
 
@@ -79,15 +78,14 @@ document.addEventListener("click", (event) => {
 // Cancel Btn
 
 let cancel_btn = document.querySelector(".cancel_btn");
-    cancel_btn.addEventListener('click', (e) => {
-    
-      let previousLocation = localStorage.getItem('previous_location');
-      if (previousLocation) {
-        window.location.href = previousLocation;
-      } else {
-        window.location.href = './index.html';
-      }
-    });
+cancel_btn.addEventListener("click", (e) => {
+  let previousLocation = localStorage.getItem("previous_location");
+  if (previousLocation) {
+    window.location.href = previousLocation;
+  } else {
+    window.location.href = "./index.html";
+  }
+});
 
 // profile_drop
 
@@ -110,7 +108,7 @@ Certi_page.addEventListener("click", () => {
 let logout = document.querySelector(".log_out");
 
 logout.addEventListener("click", () => {
-  window.location.href = "./login.html";
+  windnameow.location.href = "./login.html";
 });
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -119,8 +117,6 @@ import {
   collection,
   addDoc,
   getDocs,
-  deleteDoc,
-  doc
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -135,9 +131,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
-// Add event listener to the edit button for name
-
-
+// Add event listener to the edit button for
 let inputName = document.querySelector(".editbtnName");
 inputName.addEventListener("click", () => {
   var nameSpan = document.getElementById("fullName");
@@ -169,7 +163,7 @@ async function SaveNametofirebase(name) {
   } catch (error) {
     console.error("Error saving name to Firebase: ", error);
   }
-};
+}
 
 // Load before executing JavaScript
 window.addEventListener("DOMContentLoaded", async (event) => {
@@ -187,11 +181,27 @@ window.addEventListener("DOMContentLoaded", async (event) => {
   } catch (error) {
     console.error("Error fetching Name data from Firebase: ", error);
   }
+
+  var userDetailsString = localStorage.getItem("userdetails");
+
+var userDetails = JSON.parse(userDetailsString);
+
+var storedEmail = userDetails.email;
+var storedUsername = userDetails.username;
+
+var emailInput = document.getElementById("emailadd");
+var nameSpan = document.getElementById("fullName");
+
+emailInput.value = storedEmail;
+
+if (storedUsername) {
+  nameSpan.innerHTML = storedUsername;
+} else {
+  nameSpan.innerHTML = "Guest";
+}
+
 });
 
-
-
-// Bio Information
 window.addEventListener("DOMContentLoaded", async (event) => {
   try {
     const bioRef = collection(database, "user_Bio_Information");
@@ -201,6 +211,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
       const bioSpan = document.getElementById("bioInfo");
       bioSpan.textContent = bioData.bio;
     });
+
     console.log("Bio data fetched from Firebase");
   } catch (error) {
     console.error("Error fetching bio data from Firebase: ", error);
@@ -241,6 +252,27 @@ async function saveBioToFirebase(bio) {
     console.error("Error saving bio to Firebase: ", error);
   }
 }
+
+// Email fetch local storage
+
+var userDetailsString = localStorage.getItem("userdetails");
+
+var userDetails = JSON.parse(userDetailsString);
+
+var storedEmail = userDetails.email;
+var storedUsername = userDetails.username;
+
+var emailInput = document.getElementById("emailadd");
+var nameSpan = document.getElementById("fullName");
+
+emailInput.value = storedEmail;
+
+if (storedUsername) {
+  nameSpan.innerHTML = storedUsername;
+} else {
+  nameSpan.innerHTML = "Guest";
+}
+
 
 // Git hu addevent
 window.addEventListener("DOMContentLoaded", async (event) => {
@@ -346,15 +378,15 @@ async function saveLinkedInToFirebase(linkedIn) {
     console.error("Error saving LinkedIn info to Firebase: ", error);
   }
 }
-const uploadButton = document.getElementById("uploadButton");
-const fileInput = document.getElementById("uploadInput");
-const imageContainer = document.getElementById("imageContainer");
-const profileImg = document.querySelector(".profile");
-let imageDocId = "1"; // Initial image ID
 
+const uploadButton = document.getElementById("uploadButton");
 uploadButton.addEventListener("click", function () {
   fileInput.click();
 });
+
+const fileInput = document.getElementById("uploadInput");
+const imageContainer = document.getElementById("imageContainer");
+let previousImageDocId = null;
 
 fileInput.addEventListener("change", async function (event) {
   const file = event.target.files[0];
@@ -366,36 +398,24 @@ fileInput.addEventListener("change", async function (event) {
       const img = document.createElement("img");
       img.src = e.target.result;
 
+      const profileImg = document.querySelector(".profile");
       profileImg.src = e.target.result;
 
-      // Remove existing image
-      imageContainer.innerHTML = '';
+      while (imageContainer.firstChild) {
+        imageContainer.removeChild(imageContainer.firstChild);
+      }
       imageContainer.appendChild(img);
 
       try {
         const imagesRef = collection(database, "images");
-        
-        // If an image with the same ID exists, delete it
-        if (imageDocId) {
-          await deleteDoc(doc(database, "images", imageDocId));
+        if (previousImageDocId) {
+          await deleteDoc(doc(database, "images", previousImageDocId));
         }
-        
-        // Upload the new image
         const newImageDocRef = await addDoc(imagesRef, {
           imageURL: e.target.result,
-          id: imageDocId
         });
-        
-        // Set the imageDocId to the newly uploaded image's ID
-        imageDocId = newImageDocRef.id;
-
+        previousImageDocId = newImageDocRef.id;
         alert("Successfully uploaded image and data.");
-
-        // Store the imageDocId in session storage
-        sessionStorage.setItem("profileImageDocId", imageDocId);
-
-        // Store the image URL in session storage
-        storeImageURLInSessionStorage(e.target.result);
       } catch (error) {
         console.error("Error adding document: ", error);
       }
@@ -405,27 +425,30 @@ fileInput.addEventListener("change", async function (event) {
   }
 });
 
-// Check if there's a stored image URL in session storage
-window.addEventListener("load", () => {
-  const storedImageURL = sessionStorage.getItem("profileImageURL");
-  
-  if (storedImageURL) {
-    profileImg.src = storedImageURL;
-    const img = document.createElement("img");
-    img.src = storedImageURL;
-    
-    // Remove existing image
-    imageContainer.innerHTML = '';
-    imageContainer.appendChild(img);
-  }
-});
+// window.addEventListener("load", async () => {
+//   const imagesRef = collection(database, "images");
+//   const imageContainer = document.getElementById('imageContainer');
+//   const profileImg = document.querySelector(".profile");
 
-// Store the uploaded image URL in session storage
-function storeImageURLInSessionStorage(imageURL) {
-  try {
-    sessionStorage.setItem("profileImageURL", imageURL);
-    console.log("Image URL stored in session storage:", imageURL);
-  } catch (error) {
-    console.error("Error storing image URL in session storage:", error);
-  }
-}
+//   try {
+//     const querySnapshot = await getDocs(imagesRef);
+//     imageContainer.innerHTML = '';
+
+//     querySnapshot.forEach((doc) => {
+//       const data = doc.data();
+//       const img = document.createElement("img");
+//       img.src = data.imageURL;
+
+//       imageContainer.appendChild(img);
+//       previousImageDocId = doc.id;
+//     });
+
+//     if (querySnapshot.docs.length > 0) {
+//       const lastDoc = querySnapshot.docs[querySnapshot.docs.length - 1];
+//       const lastImageURL = lastDoc.data().imageURL;
+//       profileImg.src = lastImageURL; // Set the profile image to the last uploaded image
+//     }
+//   } catch (error) {
+//     console.error("Error getting documents: ", error);
+//   }
+// });

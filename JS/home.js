@@ -32,13 +32,15 @@ learning.addEventListener("click",()=>{
 
 
 
+
+
 navlogin.addEventListener("click",()=>{
-    alert("login button clicked")
+     window.location.href='./login.html'
 })
 
 navsign.addEventListener("click",()=>{
     // alert("sign_up button clicked")
-    window.location.href='signup.html';
+    window.location.href='./signup.html';
 
 
    
@@ -46,47 +48,79 @@ navsign.addEventListener("click",()=>{
 
 
 
-
-searchbtn.addEventListener("click",()=>{
-    alert("explore clicked")
-})
-
-htmlbtn.addEventListener("click",()=>{
-    alert("html button clicked")
-})
-
-cssbtn.addEventListener("click",()=>{
-    alert("css button clicked")
-})
-
-jsbtn.addEventListener("click",()=>{
-    alert("js button clicked")
-})
-
-mysqlbtn.addEventListener("click",()=>{
-    alert("mysql button clicked")
-})
-
-phpbtn.addEventListener("click",()=>{
-    alert("php button clicked")
-})
+let id=localStorage.getItem("UserId");
+let find_language = 0;
 
 
-let left_side_bar=document.querySelectorAll(".navlink");
 
-left_side_bar[0].addEventListener("click",()=>{
-  window.location.href='index.html'
+
+let  Explorebtn=document.querySelectorAll(".enroll_btn")
+
+Explorebtn[0].addEventListener("click",()=>{
+
+find_language = 'Html';
+language_change_Fun();
+
 });
 
-left_side_bar[1].addEventListener("click",()=>{
+Explorebtn[1].addEventListener("click",()=>{
 
-  window.location.href='Learning.html'
-});
-left_side_bar[2].addEventListener("click",()=>{
+  find_language = 'Css';
+  language_change_Fun();
 
-  window.location.href='dashboard.html';
-});
-left_side_bar[3].addEventListener("click",()=>{
+  });
 
-  window.location.href='Roadmap.html';
-});
+  Explorebtn[2].addEventListener("click",()=>{
+
+    find_language = 'Javascript';
+    language_change_Fun();
+
+    });
+
+    Explorebtn[3].addEventListener("click",()=>{
+
+      find_language = 'Mysql';
+      language_change_Fun();
+
+      });
+
+      Explorebtn[4].addEventListener("click",()=>{
+
+        find_language = 'Php';
+        language_change_Fun();
+
+        });
+
+async  function language_change_Fun(){
+
+  let ref = doc(db, "Learning", `User=${id}`);
+  let get_data = await updateDoc(
+
+    ref,{
+      Find_Language_type:find_language,
+        find_index:0
+    }
+  )
+  window.location.href='./learning_content.html';
+ }
+
+
+
+// let left_side_bar=document.querySelectorAll(".navlink");
+
+// left_side_bar[0].addEventListener("click",()=>{
+//   window.location.href='./index.html'
+// });
+
+// left_side_bar[1].addEventListener("click",()=>{
+
+//   window.location.href='./Learning.html'
+// });
+// left_side_bar[2].addEventListener("click",()=>{
+
+//   window.location.href='./dashboard.html';
+// });
+// left_side_bar[3].addEventListener("click",()=>{
+
+//   window.location.href='./Roadmap.html';
+// });

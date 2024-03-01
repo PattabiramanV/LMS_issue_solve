@@ -118,6 +118,10 @@ let username_inputbox = document.getElementById("user").value;
   let getdata =await  getDocs(getref);
   let id=getdata.size;
 
+  let storedlocaldata;
+  let storedlocalname;
+  let storedlocalemail;
+
 let otp_btn=document.getElementById("otp_btn")
 let otp_inputbox=document.getElementById("otp_value")
 otp_btn.addEventListener("click", verified)
@@ -135,26 +139,35 @@ otp_btn.addEventListener("click", verified)
 
         // console.log(id);
 
-    let ref=doc(db,"SignUp_details",`${id++}`)
-
+    let ref=doc(db,"SignUp_details",`${++id}`)
     let userData = {
       username: username.value,
       email: email_box.value,
-      password: create_password.value
+      password: create_password.value,
+      user_id:id
   };
-
      setDoc(ref, userData)
          .then(() => {
              alert("Account created successfully");
-            //  window.location.href = './login.html';
+            
          })
     
   document.querySelector(".container").style.display = "none";
   document.getElementById('loadingOverlay').style.visibility = 'visible';
 
   setTimeout(() => {
-      window.location.href = './login.html';
-  }, 1000);
+    window.location.href = './login.html';
+}, 1000);
+localStorage.setItem('userdetails',JSON.stringify(userData))
+let storedlocaldata=localStorage.getItem('userData')
+let storedparseddata=JSON.parse(storedlocaldata)
+ 
+// localStorage.setItem("UserId",id)
+// localStorage.setItem("username",username.value)
+// localStorage.setItem("email",email_box.value)
+// storedlocaldata=localStorage.getItem("UserId")
+// storedlocalname=localStorage.getItem("username")
+// storedlocalemail=localStorage.getItem("email")
         
   }
   else{
@@ -163,10 +176,6 @@ otp_btn.addEventListener("click", verified)
   
  }
   
-
-
-
-
    
 // --------password icon-----------
 let icon_eye=document.getElementById("icon_eye")

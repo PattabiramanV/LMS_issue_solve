@@ -8,15 +8,6 @@ function signup_page() {
     }, 1000);
 }
 
-let login = document.querySelector("#login_btn");
-
-login.addEventListener("click", (e) => {
-   e.preventDefault(e)
-     console.log("hi");
-    window.location.href = "index.html";
-});
-
-
 // ---------password icon--------
 let log_email=document.getElementById("log")
 let log_password=document.getElementById("log_pass")
@@ -68,31 +59,84 @@ else if (log_password.type =='text') {
 let db=getFirestore(app);
 let getref=collection(db,"SignUp_details");
 let getdata =await  getDocs(getref);
-// let id=getdata.size;
+let id=getdata.size;
 
 login_button.addEventListener("click",login_fun)
- function login_fun(event)
+ async function login_fun(event)
 
 { 
+    let log_email_1=document.getElementById("log").value
+    let log_password_1=document.getElementById("log_pass").value
+    let invalid_mail=document.querySelector(".invalid_email")
+    let invalid_password=document.querySelector(".invalid_password")
+    
       event.preventDefault()
-      getdata .forEach((record) => {
+
+      if(log_email_1 =="")
+      {
+       invalid_mail.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Invalid Mail.';
+     setTimeout(() => {
+         invalid_mail.innerHTML = "";
+     }, 2000);
+     return;
+      }
+      if(log_password_1=="")
+      {
+        invalid_password.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Invalid Password.';
+        setTimeout(() => {
+            invalid_password.innerHTML = "";
+        }, 2000);
+        return;
+      }
+      getdata .forEach(async (record) => {
         
         let email_data = record.data().email
         let password_data = record.data().password
-
-        // console.log(email_data);
-
+        // let id=record.data().user_id;
+      
         if(log_email.value == email_data && log_password.value==password_data )
         {
-          // console.log("hi");
           document.getElementById('loadingOverlay').style.visibility = 'visible';
           setTimeout(() => {
               window.location.href = './index.html';
           }, 1000);
+
+
+
+          let ref_data=doc(db,"Learning",`User=${id}`);
+          let data_set=await setDoc(
+             ref_data,{
+                 Find_Language_type:0,
+                 find_index:0,
+                 Html_Complete_Module:0,
+                 Html_Total_Percentage:0,
+                 Css_Complete_Module:0,
+                 Css_Total_Percentage:0,
+                 Javascript_Complete_Module:0,
+                 Javascript_Total_Percentage:0,
+                 Mysql_Complete_Module:0,
+                 Mysql_Total_Percentage:0,
+                 Php_Complete_Module:0,
+                 Php_Total_Percentage:0,
+                 Html_unlock_total_module:0,
+                 Css_unlock_total_module:0,
+                 Javascript_unlock_total_module:0,
+                 Php_unlock_total_module:0,
+                 Mysql_unlock_total_module:0,
+             }
+         ).then(()=>{
+             alert("sucessfully");
+         }).catch((err)=>{
+             console.log(err);
+         });
+
+          
+
+
         }
       });
 }
 
 
-
+console.log(id);
 

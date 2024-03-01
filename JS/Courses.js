@@ -1,7 +1,15 @@
 "use strict";
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import {
+  getFirestore,
+  getDoc,
+  doc,
+  getDocs,
+  collection,
+  updateDoc,
+  addDoc,
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -13,14 +21,15 @@ const firebaseConfig = {
   appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6",
 };
 
+let id = localStorage.getItem("UserId");
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
 
 const exploreCoursesContainer = document.querySelector(".articles");
-// Use Local Storage to store enrolled courses
-let enrolledCourses = JSON.parse(localStorage.getItem("enrolledCourses")) || [];
 
+let enrolledCourses = JSON.parse(localStorage.getItem("enrolledCourses")) || [];
+let percentageCalSpan;
 exploreCoursesContainer.addEventListener("click", async function (event) {
   try {
     const clickedCourseContainer = event.target.closest(".article-wrapper");
@@ -34,7 +43,6 @@ exploreCoursesContainer.addEventListener("click", async function (event) {
       console.log("Course already enrolled!");
       return;
     }
-
     if (enrolledCourses.length >= 5) {
       console.log("You can only enroll in 5 courses.");
       return;
@@ -55,32 +63,64 @@ exploreCoursesContainer.addEventListener("click", async function (event) {
     ];
 
     enrolledCourseContainer.innerHTML = `
-            <div class="progress_language">
-                <img src="${courseDetails[index].imgSrc}" alt="" class="enroll_img">
-            </div>
-            <hr>
-            <div class="progress_status">
-                <p class="enroll_language">${courseDetails[index].name}</p>
-                <div class="percentage">
-                    <p class="progress">In progress</p>
-                    <span></span>
-                </div>
-            </div>
-        `;
+      <div class="progress_language">
+        <img src="${courseDetails[index].imgSrc}" alt="" class="enroll_img">
+      </div>
+      <hr>
+      <div class="progress_status">
+        <p class="enroll_language">${courseDetails[index].name}</p>
+        <div class="percentage">
+          <p class="progress">In progress</p>
+          <span class="percentage_cal"></span>
+        </div>
+      </div>
+    `;
 
+    // Append the enrolled course container to the DOM
     const enrolledCoursesContainer = document.querySelector(
       ".progressing_bar .Progress_container"
     );
     enrolledCoursesContainer.appendChild(enrolledCourseContainer);
 
+    // Update enrolled courses array and localStorage
     await addDoc(collection(database, "enrolledCourses"), {
       name: courseDetails[index].name,
       imgSrc: courseDetails[index].imgSrc,
     });
+
     enrolledCourses.push(index);
 
-    // Update Local Storage
     localStorage.setItem("enrolledCourses", JSON.stringify(enrolledCourses));
+
+    try {
+      let ref = doc(database, "Learning", `user=${id}`);
+      let data_ref = await getDoc(ref);
+      let percentageData;
+      switch (courseDetails[index].name) {
+        case "HTML":
+          percentageData = data_ref.data().Html_Total_Percentage;
+          break;
+        case "CSS":
+          percentageData = data_ref.data().Css_Total_Percentage;
+          break;
+        case "JavaScript":
+          percentageData = data_ref.data().Javascript_Total_Percentage;
+          break;
+        case "MySQL":
+          percentageData = data_ref.data().Mysql_Total_Percentage;
+          break;
+        case "PHP":
+          percentageData = data_ref.data().Php_Total_Percentage;
+          break;
+      }
+      if (percentageData !== undefined && percentageCalSpan !== null) {
+        percentageCalSpan.innerHTML = percentageData;
+      } else {
+        console.error("Percentage data or percentageCalSpan is undefined.");
+      }
+    } catch (error) {
+      console.error("Error occurred:", error);
+    }
   } catch (error) {
     console.error("Error:", error.message);
   }
@@ -128,10 +168,10 @@ const sidebarOpen = document.querySelector("#sidebarOpen");
 const sidebarClose = document.querySelector(".collapse_sidebar");
 const sidebarExpand = document.querySelector(".expand_sidebar");
 sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
-let content=document.querySelector(".menu_content");
-let searchIcon=document.querySelector("#Sicon");
-let headings=document.querySelectorAll("#headings")
-let Dckaplogo=document.querySelector(".DCKAPlOGO")
+let content = document.querySelector(".menu_content");
+let searchIcon = document.querySelector("#Sicon");
+let headings = document.querySelectorAll("#headings");
+let Dckaplogo = document.querySelector(".DCKAPlOGO");
 
 sidebarClose.addEventListener("click", () => {
   sidebar.classList.add("close", "hoverable");
@@ -141,7 +181,6 @@ sidebarClose.addEventListener("click", () => {
 sidebarExpand.addEventListener("click", () => {
   sidebar.classList.remove("close", "hoverable");
   content.style.left = "1rem";
-  
 });
 
 sidebar.addEventListener("mouseenter", () => {
@@ -151,13 +190,13 @@ sidebar.addEventListener("mouseenter", () => {
   }
 });
 sidebar.addEventListener("mouseleave", () => {
-  if (sidebar.classList.contains("hoverable") && sidebar.classList.contains("close")) {
-    content.style.left = "0rem"; 
+  if (
+    sidebar.classList.contains("hoverable") &&
+    sidebar.classList.contains("close")
+  ) {
+    content.style.left = "0rem";
   }
 });
-
-
-
 
 // Function to toggle dark mode
 
@@ -166,14 +205,14 @@ function toggleDarkMode() {
   document.body.classList.toggle("dark-mode");
   searchIcon.style.color = isDarkMode ? "white" : "black";
   headings.forEach((heading) => {
-      if (isDarkMode) {
-          heading.style.color = "white";
-      } else {
-          heading.style.color = "#b95233";
-      }
-  Dckaplogo.src = body.classList.contains("dark")
-  ? "./Assests/Dckapwhite.png"
-  : "./Assests/Logodk.png";
+    if (isDarkMode) {
+      heading.style.color = "white";
+    } else {
+      heading.style.color = "#b95233";
+    }
+    Dckaplogo.src = body.classList.contains("dark")
+      ? "./Assests/Dckapwhite.png"
+      : "./Assests/Logodk.png";
   });
 
   sessionStorage.setItem("darkMode", isDarkMode);
@@ -185,8 +224,6 @@ if (storedDarkMode === "true") {
 }
 
 darkLight.addEventListener("click", toggleDarkMode);
-
-
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");
@@ -219,17 +256,16 @@ Course_navigate.addEventListener("click", () => {
   window.location.href = "./Courses.html";
 });
 
-let Certi_page=document.querySelector(".profile_certicate");
+let Certi_page = document.querySelector(".profile_certicate");
 
-Certi_page.addEventListener("click",()=>{
-  window.location.href="./certificate.html"
-})
+Certi_page.addEventListener("click", () => {
+  window.location.href = "./certificate.html";
+});
 
+let logout = document.querySelector(".log_out");
 
-let logout =document.querySelector(".log_out")
-     
-logout.addEventListener("click",()=>{
-    window.location.href = "./login.html"; 
+logout.addEventListener("click", () => {
+  window.location.href = "./login.html";
 });
 
 let left_side_bar = document.querySelectorAll(".navlink");
@@ -248,63 +284,34 @@ left_side_bar[3].addEventListener("click", () => {
   window.location.href = "./Roadmap.html";
 });
 
-document.querySelector('.profile_down').addEventListener('click', function() {
-  localStorage.setItem('previous_location', window.location.href);
+document.querySelector(".profile_down").addEventListener("click", function () {
+  localStorage.setItem("previous_location", window.location.href);
 });
-
 
 // Button Navigation
 
-let Explorebtn = document.querySelectorAll('.read-more');
+let Explorebtn = document.querySelectorAll(".read-more");
 console.log(Explorebtn[0]);
-Explorebtn.forEach(async(btn) => {
-  let ref=doc(database,"Learning",'0');
-  let get_data=await getDoc(ref);
-  let find_language=0;
+Explorebtn.forEach(async (btn) => {
+  let ref = doc(database, "Learning", "0");
+  let get_data = await getDoc(ref);
+  let find_language = 0;
 
- 
-  btn.addEventListener( 'click',async (e)=>{
-
+  btn.addEventListener("click", async (e) => {
     if (btn === Explorebtn[0]) {
-      // alert("bye")
-      console.log("pattabi");
-
-find_language='Html';
-
+      find_language = "Html";
     } else if (btn === Explorebtn[1]) {
-// alert("hi")
-find_language='Css';
-
+      find_language = "Css";
     } else if (btn === Explorebtn[2]) {
-
+      find_language == "Js";
+    } else if (btn === Explorebtn[3]) {
+      find_language == "Mysql";
     }
 
-   let data_get=await updateDoc(
-      ref,{
-      Find_Language_type:find_language,
-      find_index:0
-
-
-      }
-    )
-    window.location.href='learning_content.html'
+    let data_get = await updateDoc(ref, {
+      Find_Language_type: find_language,
+      find_index: 0,
+    });
+    window.location.href = "./learning_content.html";
   });
 });
-
-// Percentage Calculations
-
-// const percentageElements = document.querySelectorAll('.percentagecalculation');
-// console.log(percentageElements);
-
-// let ref=doc(db,'Learning',0);
-//   let data_ref=await getDoc(ref);
-
-//   percentage_tag.innerHTML=data_ref.data().Html_Total_Percentage;
-
-// // })
-// all_percentage_show_tag[0].innerHTML=data_ref.data().Html_Total_Percentage;
-// all_percentage_show_tag[1].innerHTML=data_ref.data().Css_Total_Percentage;
-// all_percentage_show_tag[2].innerHTML=data_ref.data().Javascript_Total_Percentage;
-// all_percentage_show_tag[3].innerHTML=data_ref.data().Mysql_Total_Percentage;
-
-

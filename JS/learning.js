@@ -22,9 +22,22 @@
   
 let db=getFirestore(app);
 let find_language=0;
+let id=0;
+if(localStorage.getItem("userdetails")){
+  var userDetailsString = localStorage.getItem("userdetails");
+  var userDetails = JSON.parse(userDetailsString);
+  id=userDetails.user_id;
+}
+
+else{
+  setTimeout(()=>{
+  window.location.href='./signup.html';
+
+   } ,2000);
+}
 
 
-
+// console.log(id);
 let all_learn_more_btn=document.querySelectorAll(".learn_more_btn");
 
 all_learn_more_btn.forEach((btn,index)=>{
@@ -32,34 +45,32 @@ all_learn_more_btn.forEach((btn,index)=>{
     btn.addEventListener("click",async()=>{
 
       find_language=btn.parentElement.previousElementSibling.previousElementSibling.firstElementChild.lastElementChild.innerHTML;
-let id=0;
-let ref_data=doc(db,"Learning",`${id}`);
- let data_set=await setDoc(
+
+let ref_data=doc(db,"Learning",`User=${id}`);
+let get_data= await getDoc(ref_data);
+let find_language_unlock_module=get_data.data()[find_language+'_unlock_total_module'];
+console.log(find_language_unlock_module);
+ let data_set=await updateDoc(
     ref_data,{
         Find_Language_type:find_language,
-        find_index:id,
-        Html_Complete_Module:0,
-        Html_Total_Percentage:0,
-        Css_Complete_Module:0,
-        Css_Total_Percentage:0,
-        Javascript_Complete_Module:0,
-        Javascript_Total_Percentage:0,
-        Mysql_Complete_Module:0,
-        Mysql_Total_Percentage:0,
-        Php_Complete_Module:0,
-        Php_Total_Percentage:0,
-        Html_unlock_total_module:0,
-        Css_unlock_total_module:0,
-        Javascript_unlock_total_module:0,
-        Php_unlock_total_module:0,
-        Mysql_unlock_total_module:0,
+        find_index:find_language_unlock_module
+        // Html_Complete_Module:0,
+        // Html_Total_Percentage:0,
+        // Css_Complete_Module:0,
+        // Css_Total_Percentage:0,
+        // Javascript_Complete_Module:0,
+        // Javascript_Total_Percentage:0,
+        // Mysql_Complete_Module:0,
+        // Mysql_Total_Percentage:0,
+        // user_unlock_total_module:0
     }
 ).then(()=>{
-    alert("sucessfully");
+    // alert("sucessfully");
 }).catch((err)=>{
     console.log(err);
 });
     window.location.href='learning_content.html';
+console.log(find_language_unlock_module!=0 ? find_language_unlock_module+1:find_language_unlock_module)
 
  
 
@@ -69,16 +80,17 @@ let ref_data=doc(db,"Learning",`${id}`);
 let all_percentage_show_tag=document.querySelectorAll("strong");
 // all_percentage_show_tag.forEach( async(percentage_tag)=>{
 
-  let ref=doc(db,'Learning',`0`);
+  let ref=doc(db,'Learning',`User=${id}`);
   let data_ref=await getDoc(ref);
 
 //   percentage_tag.innerHTML=data_ref.data().Html_Total_Percentage;
 
-// })
+// // })
 all_percentage_show_tag[0].innerHTML=data_ref.data().Html_Total_Percentage;
 all_percentage_show_tag[1].innerHTML=data_ref.data().Css_Total_Percentage;
 all_percentage_show_tag[2].innerHTML=data_ref.data().Javascript_Total_Percentage;
 all_percentage_show_tag[3].innerHTML=data_ref.data().Mysql_Total_Percentage;
+all_percentage_show_tag[4].innerText=data_ref.data().Php_Total_Percentage;
 
 
 // all_learn_more_btn[0].addEventListener("click",async(event)=>{
@@ -315,9 +327,6 @@ document.addEventListener("click", (event) => {
     profile_Dropdown.style.display = "none";
   }
 });
-
-
-
 
 
 // profile_drop

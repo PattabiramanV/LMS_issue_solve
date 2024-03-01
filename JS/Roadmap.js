@@ -1,6 +1,6 @@
-if(localStorage.getItem("userdetails") == null){
-     window.location.href="./signup.html";
-}
+// if(localStorage.getItem("userdetails") == null){
+//      window.location.href="./signup.html";
+// }
 
 
 

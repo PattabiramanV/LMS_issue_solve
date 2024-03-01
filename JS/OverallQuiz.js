@@ -15,6 +15,10 @@ sidebarExpand.addEventListener("click", () => {
   sidebar.classList.remove("close", "hoverable");
 });
 
+
+
+
+
 sidebar.addEventListener("mouseenter", () => {
   if (sidebar.classList.contains("hoverable")) {
     sidebar.classList.remove("close");

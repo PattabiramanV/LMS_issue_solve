@@ -133,61 +133,64 @@
 
       </div>
       <div class="Users_Details">
-        <div class="User_name_details">
-          <div class="name_details">
-            <label for="Name">Full Name</label>
-            <span id="fullName"></span>
-            <input type="text" id="fullNameInput" style="display: none;">
+        <button class="Btn">Edit
+          <svg class="svg" viewBox="0 0 512 512">
+            <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path></svg>
+        </button>
+        <section id="info">
+          <div class="User_name_details">
+            <div class="name_details">
+              <label for="Name">Full Name</label>
+              <input type="text" id="fullNameInput" disabled="true">
+            </div>
+
           </div>
-          <div class="edit_button">
-            <button class="editbtnName">Edit</button>
+          <div class="User_name_details">
+            <div class="email_details">
+              <label for="Email">Email</label>
+              <input type="text" id="emailadd" disabled="true">
+            </div>
+
           </div>
-        </div>
-        <div class="User_name_details">
-          <div class="email_details">
-            <label for="Email">Email</label>
-            <input  type="text" id="emailadd">
+        </section>
+        <section id="info">
+          <div class="User_name_details">
+            <div class="Git_details">
+              <label for="Git_hub">Git_Hub Username</label>
+              <input type="text" id="gitinput" disabled="true">
+            </div>
           </div>
-          <div class="edit_button">
-            <button class="editbtnemail">Edit</button>
+          <div class="User_name_details">
+            <div class="Bio_details">
+              <label for="Bio">Bio Information:</label>
+              <textarea id="bioInput" rows="10" cols="200" disabled="true"></textarea>
+            </div>
           </div>
-        </div>
-        <div class="User_name_details">
-          <div class="Git_details">
-            <label for="Git_hub">Git_Hub Username</label>
-            <span id="gitadd"></span>
-            <input type="text" id="gitinput" style="display: none;">
-          </div>
-          <div class="edit_button">
-            <button class="editbtngit">Edit</button>
-          </div>
-        </div>
-        <div class="User_name_details">
-          <div class="Bio_details">
-            <label for="Bio">Bio Information:</label>
-            <span id="bioInfo"></span>
-            <textarea id="bioInput" rows="2" cols="50" style="display: none;"></textarea>
-          </div>
-          <div class="edit_button">
-            <button class="editbtnn">Edit</button>
-          </div>
-        </div>
+        </section>
+        <section id="info">
         <div class="User_name_details">
           <div class="linkedin_details">
             <label for="linked">linkin Information:</label>
-            <span id="linked_info"></span>
-          <input  type="text" id="linkedInInput" style="display: none;">
-          </div>
-          <div class="edit_button">
-            <button class="editbtnlink">Edit</button>
+            <input type="text" id="linkedInInput" disabled="true">
           </div>
         </div>
+        <div class="User_name_details">
+          <div class="Country">
+              <label for="countrySelect">Country</label>
+              <select id="countrySelect">
+                  <option value="India">India</option>
+                  <option value="America">America</option>
+                  <option value="Japan">Japan</option>
+              </select>
+          </div>
+      </div>
+        </section>
       </div>
     </div>
   </div>
 
 </body>
 <!-- Javascript -->
-<script src="./JS/profile.js" type="module"></script>
+<script src="/JS/profile.js" type="module"></script>
 
 </html>

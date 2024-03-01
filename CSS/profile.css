@@ -418,6 +418,15 @@ button.cancel_btn {
   border-radius: 5px;
   cursor: pointer;
   color: white;
+  background: brown;
+}
+
+.User_name_details .Country select {
+  width: 200px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
 h1.profile_hdg {
@@ -444,7 +453,7 @@ h1.profile_hdg {
   border-radius: 50%;
 }
 
-input#fullNameInput, #gitinput, textarea#bioInput, input#linkedInInput {
+input#fullNameInput, #gitinput, textarea#bioInput, input#linkedInInput ,input#emailadd,#countrySelect{
   border: 1px solid lightgray;
   padding: 7px;
   border-radius: 3px;
@@ -452,14 +461,7 @@ input#fullNameInput, #gitinput, textarea#bioInput, input#linkedInInput {
   position: relative;
   top: -3px;
   height: 1rem;
-}
-
-input#emailadd {
-  border: none;
-  font-size: 1rem;
-  padding: 0px;
-  margin: 0px;
-  outline: none;
+  outline-color: purple;
 }
 
 .Users_img {
@@ -493,7 +495,15 @@ input#emailadd {
   background-clip: padding-box;
   border: 1px solid #d8d6de;
   border-radius: 0.357rem;
+  padding: 6px 6px 6px 6px;
 }
+
+
+section#info {
+  display: flex;
+  gap: 5rem;
+}
+
 
 .User_name_details {
   display: flex;
@@ -511,10 +521,11 @@ textarea {
 .phone_details,
 .Git_details,
 .Bio_details,
-.linkedin_details {
+.linkedin_details,.Country {
   display: grid;
   gap: 20px;
 }
+
 
 button.editbtn,
 .editbtnn,
@@ -532,12 +543,13 @@ label {
   font-weight: 700;
   font-size: 14px;
   color: #82868b!important;
+  font-family: 'Roboto';
 }
 
 button {
   background-color: #AA3EE2;
   border-radius: 100px;
-  box-shadow: #AA3EE2 0 -25px 18px -14px inset, #AA3EE2 0 1px 2px, #AA3EE2 0 2px 4px;
+  box-shadow: #AA3EE2 0 0 18px -14px inset, #AA3EE2 0 0px 2px, inset #AA3EE2 0 -1px 3px;
   color: white;
   cursor: pointer;
   display: inline-block;
@@ -554,7 +566,7 @@ button {
 }
 
 button:hover {
-  box-shadow: #6C298E 0 -25px 18px -14px inset, #6C298E 0 1px 2px, #6C298E 0 2px 4px;
+  box-shadow: #AA3EE2 0 0 18px -14px inset, #AA3EE2 0 0px 2px, inset #AA3EE2 0 -1px 3px;
   transform: scale(1.05) rotate(-1deg);
 
 }
@@ -593,4 +605,46 @@ div#imageContainer {
   object-fit: cover;
   height: 100%;
   width: 100%;
+}
+
+.Btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 99px;
+  height: 43px;
+  border: none;
+  padding: 0px 20px;
+  background-color: #AA3EE2;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  /* box-shadow: 5px 5px 0px rgb(140, 32, 212); */
+  transition-duration: .3s;
+  border-radius: 10%;
+  left: 43rem;
+}
+.svg {
+  width: 13px;
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  fill: white;
+  transition-duration: .3s;
+}
+
+
+.Btn:hover svg {
+  border: none;
+}
+
+.Btn:active {
+  transform: translate(3px , 3px);
+  transition-duration: .3s;
+}
+
+select#countrySelect {
+  height: 34px;
 }

@@ -423,7 +423,7 @@ initializeQuiz();
 let certificate_get = localStorage.getItem("certificate_get");
 
 if (certificate_get === "HTML_Overall_Quiz") {
-  // // ------------------- html
+  // // ------------------- html -----------------
   const canvas = document.getElementById("canva");
   const ctx = canvas.getContext("2d");
   const name_input = document.getElementById("name");
@@ -521,7 +521,7 @@ downloadBtn3.addEventListener("click", () => {
 });
 
 }
-// // ------------------- mysql
+// // ------------------- mysql -----------------------------------
 else if (certificate_get === "MySql_Overall_Quiz") {
   const canvas4 = document.getElementById("canva");
 const ctx4 = canvas4.getContext("2d");

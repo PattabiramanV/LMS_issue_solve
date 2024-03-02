@@ -1,4 +1,3 @@
-"use strict";
 const body = document.querySelector("body");
 const darkLight = document.querySelector("#darkLight");
 const sidebar = document.querySelector(".sidebar");
@@ -6,38 +5,43 @@ const submenuItems = document.querySelectorAll(".submenu_item");
 const sidebarOpen = document.querySelector("#sidebarOpen");
 const sidebarClose = document.querySelector(".collapse_sidebar");
 const sidebarExpand = document.querySelector(".expand_sidebar");
-sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
+// sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
+
+let content = document.querySelector(".menu_content");
 
 sidebarClose.addEventListener("click", () => {
   sidebar.classList.add("close", "hoverable");
+  content.style.left = "1rem";
 });
+
 sidebarExpand.addEventListener("click", () => {
   sidebar.classList.remove("close", "hoverable");
+  content.style.left = "1rem";
 });
-
-
-
-
 
 sidebar.addEventListener("mouseenter", () => {
   if (sidebar.classList.contains("hoverable")) {
     sidebar.classList.remove("close");
-  }
-});
-sidebar.addEventListener("mouseleave", () => {
-  if (sidebar.classList.contains("hoverable")) {
-    sidebar.classList.add("close");
+    content.style.left = "1rem";
   }
 });
 
-let searchIcon = document.querySelector("#search_icon");
+sidebar.addEventListener("mouseleave", () => {
+  if (
+    sidebar.classList.contains("hoverable") &&
+    sidebar.classList.contains("close")
+  ) {
+    content.style.left = "0rem";
+  }
+});
+
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
-// DarkMode Function
+
+// Function to toggle dark mode
 
 function toggleDarkMode() {
   const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
-  searchIcon.style.color = isDarkMode ? "white" : "black";
   Dckaplogo.src = body.classList.contains("dark")
     ? "./Assests/Dckapwhite.png"
     : "./Assests/Logodk.png";
@@ -48,7 +52,6 @@ const storedDarkMode = sessionStorage.getItem("darkMode");
 if (storedDarkMode === "true") {
   toggleDarkMode();
 }
-
 darkLight.addEventListener("click", toggleDarkMode);
 
 // Profile
@@ -70,11 +73,7 @@ document.addEventListener("click", (event) => {
   }
 });
 
-// let Cancel_btn=document.querySelector(".cancel_btn")
 
-// Cancel_btn.addEventListener("click", () => {
-//     window.location.href="Roadmap.html";
-// });
 
 // profile_drop
 
@@ -94,9 +93,15 @@ Certi_page.addEventListener("click", () => {
   window.location.href = "./certificate.html";
 });
 
-Certi_page.addEventListener("click", () => {
-  window.location.href = "./certificate.html";
+let logout = document.querySelector(".log_out");
+
+logout.addEventListener("click", () => {
+  windnameow.location.href = "./login.html";
 });
+
+
+
+
 
 // // ---------------------Quiz----------------------------------
 
@@ -455,7 +460,7 @@ if (certificate_get === "HTML_Overall_Quiz") {
   const downloadBtn = document.getElementById("download_btn");
 
   const image = new Image();
-  image.src = "/Assests/without_username_html_certificate.png";
+  image.src = "./Assests/without_username_html_certificate.png";
   image.className = "gen_cer";
   image.onload = () => {
     drawImage();
@@ -520,7 +525,7 @@ else if (certificate_get === "JavaScript_Overall_Quiz") {
   const downloadBtn3 = document.getElementById("download_btn");
 
   const image3 = new Image();
-  image3.src = "/Assests/without_username_js_certificate.png";
+  image3.src = "./Assests/without_username_js_certificate.png";
   image3.className = "gen_cer";
   image3.onload = () => {
     drawImage();
@@ -552,7 +557,7 @@ else if (certificate_get === "MySql_Overall_Quiz") {
   const downloadBtn4 = document.getElementById("download_btn");
 
   const image4 = new Image();
-  image4.src = "/Assests/without_username_mysql_certificate.png";
+  image4.src = "./Assests/without_username_mysql_certificate.png";
   image4.className = "gen_cer";
   image4.onload = () => {
     drawImage();

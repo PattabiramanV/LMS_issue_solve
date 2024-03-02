@@ -1,3 +1,8 @@
+// if(localStorage.getItem("userdetails") == null){
+//      window.location.href="./signup.html";
+// }
+"use strict";
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
   getFirestore,
@@ -21,7 +26,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-let id=localStorage.getItem("UserId");
+let id = localStorage.getItem("UserId");
 
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
@@ -79,18 +84,9 @@ let searchicon = document.querySelector(".fas");
 function toggleDarkMode() {
   const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
-  searchicon.style.color = isDarkMode ? "white" : "black";
-  headings.forEach((heading) => {
-      if (isDarkMode) {
-          heading.style.color = "white";
-      } else {
-          heading.style.color = "#b95233";
-      }
   Dckaplogo.src = body.classList.contains("dark")
-  ? "./Assests/Dckapwhite.png"
-  : "./Assests/Logodk.png";
-  });
-
+    ? "./Assests/Dckapwhite.png"
+    : "./Assests/Logodk.png";
   sessionStorage.setItem("darkMode", isDarkMode);
 }
 
@@ -99,9 +95,7 @@ if (storedDarkMode === "true") {
   toggleDarkMode();
 }
 
-
 darkLight.addEventListener("click", toggleDarkMode);
-
 
 // Profile
 
@@ -164,68 +158,8 @@ headingnavigate.forEach(async (links) => {
     }
     await updateDoc(ref, {
       Find_Language_type: find_language,
-      find_index:0
+      find_index: 0,
     });
     window.location.href = "./learning_content.html";
   });
 });
-
-// Import Firebase modules
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-// import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-// // Your Firebase configuration
-// const firebaseConfig = {
-//     apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
-//     authDomain: "dckap-lms-project.firebaseapp.com",
-//     projectId: "dckap-lms-project",
-//     storageBucket: "dckap-lms-project.appspot.com",
-//     messagingSenderId: "1022626638467",
-//     appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
-// };
-
-// // Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-// const db = getFirestore(app); // Corrected: getFirestore
-
-// // Function to save checkbox state to Firebase
-// async function saveCheckboxState(id, checked) {
-//     try {
-//         await addDoc(collection(db, "checkboxes"), { id, checked }); // Corrected: addDoc and collection
-//         console.log("Checkbox state saved successfully!");
-//     } catch (error) {
-//         console.error("Error saving checkbox state: ", error);
-//     }
-// }
-
-// // Function to retrieve checkbox state from Firebase
-// async function getCheckboxState(id) {
-//   try {
-//       const querySnapshot = await getDocs(collection(db, "checkboxes")); // Query the collection
-//       querySnapshot.forEach(doc => {
-//           if (doc.id === id) {
-//               return doc.data().checked; // Return the value of 'checked' field from the document
-//           }
-//       });
-//       return false; // Return false if the document with the given ID is not found
-//   } catch (error) {
-//       console.error("Error getting checkbox state: ", error);
-//       return false;
-//   }
-// }
-
-// // Add event listeners to checkboxes
-// window.addEventListener('load', async function() {
-//   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-//   checkboxes.forEach(async function(checkbox) {
-//       const id = checkbox.id;
-//       const isChecked = await getCheckboxState(id); // Retrieve checkbox state from Firebase
-//       checkbox.checked = isChecked; // Set checkbox state based on Firebase data
-
-//       // Add event listener for checkbox click
-//       checkbox.addEventListener('click', function() {
-//           saveCheckboxState(id, checkbox.checked); // Save checkbox state to Firebase on click
-//       });
-
-//   });
-// });

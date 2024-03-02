@@ -605,9 +605,11 @@ h1 {
   font-family: "Fira Sans", sans-serif;
   font-weight: bold;
   font-size: 40pt;
-  background: linear-gradient(to right, #f88418, #e99414, #fda155, #cea889, rgb(196, 127, 70) 80%, #ffa238b6 );
+  background-color: #c84e2a;
+  /* background: linear-gradient(to right, 
+  #f28c3f, #f49a57, #f5a96f, #f7b787, #EE7214, #f9c59f); */
   -webkit-text-fill-color: transparent;
-  background-clip: text;      
+  background-clip: text;     
   -webkit-background-clip: text; 
 }
 
@@ -624,9 +626,12 @@ h1 {
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
   color: #ffffff;
 }
-
+git 
 .dark h1 {
-  background: linear-gradient(to right, #ded5e0, #fab282, #fcdf38, #faca71, rgb(231, 120, 68) 80%, #ff8138b6);
+  /* background: linear-gradient(to right, #ded5e0, #fab282, #fcdf38, #faca71, rgb(231, 120, 68) 80%, #ff8138b6); */
+  /* background: linear-gradient(to right, 
+  #f28c3f, #f49a57, #f5a96f, #f7b787, #EE7214, #f9c59f); */
+  background-color: #c84e2a;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-align: center;

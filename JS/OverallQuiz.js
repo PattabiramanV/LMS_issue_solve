@@ -1,4 +1,3 @@
-"use strict"
 const body = document.querySelector("body");
 const darkLight = document.querySelector("#darkLight");
 const sidebar = document.querySelector(".sidebar");
@@ -6,38 +5,46 @@ const submenuItems = document.querySelectorAll(".submenu_item");
 const sidebarOpen = document.querySelector("#sidebarOpen");
 const sidebarClose = document.querySelector(".collapse_sidebar");
 const sidebarExpand = document.querySelector(".expand_sidebar");
-sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
+// sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
+
+let content = document.querySelector(".menu_content");
 
 sidebarClose.addEventListener("click", () => {
   sidebar.classList.add("close", "hoverable");
+  content.style.left = "1rem";
 });
+
 sidebarExpand.addEventListener("click", () => {
   sidebar.classList.remove("close", "hoverable");
+  content.style.left = "1rem";
 });
 
 sidebar.addEventListener("mouseenter", () => {
   if (sidebar.classList.contains("hoverable")) {
     sidebar.classList.remove("close");
+    content.style.left = "1rem";
   }
 });
+
 sidebar.addEventListener("mouseleave", () => {
-  if (sidebar.classList.contains("hoverable")) {
-    sidebar.classList.add("close");
+  if (
+    sidebar.classList.contains("hoverable") &&
+    sidebar.classList.contains("close")
+  ) {
+    content.style.left = "0rem";
   }
 });
 
-let searchIcon=document.querySelector("#search_icon")
-let Dckaplogo=document.querySelector(".DCKAPlOGO")
-// DarkMode Function 
+let Dckaplogo = document.querySelector(".DCKAPlOGO");
 
+// Function to toggle dark mode
 
 function toggleDarkMode() {
   const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
-  searchIcon.style.color = isDarkMode ? "white" : "black";
   Dckaplogo.src = body.classList.contains("dark")
-  ? "./Assests/Dckapwhite.png"
-  : "./Assests/Logodk.png";
+    ? "./Assests/Dckapwhite.png"
+    : "./Assests/Logodk.png";
   sessionStorage.setItem("darkMode", isDarkMode);
 }
 
@@ -45,9 +52,7 @@ const storedDarkMode = sessionStorage.getItem("darkMode");
 if (storedDarkMode === "true") {
   toggleDarkMode();
 }
-
 darkLight.addEventListener("click", toggleDarkMode);
-
 
 // Profile
 
@@ -69,6 +74,7 @@ document.addEventListener("click", (event) => {
 });
 
 
+
 // profile_drop
 
 let profile_page = document.querySelector(".profile_down");
@@ -81,14 +87,22 @@ Course_navigate.addEventListener("click", () => {
   window.location.href = "./Courses.html";
 });
 
-let Certi_page=document.querySelector(".profile_certicate")
-Certi_page.addEventListener("click",()=>{
-  window.location.href="./certificate.html"
-})
+let Certi_page = document.querySelector(".profile_certicate");
 
-// // ---------------------Quiz----------------------------------
+Certi_page.addEventListener("click", () => {
+  window.location.href = "./certificate.html";
+});
 
-// Quiz_page
+let logout = document.querySelector(".log_out");
+
+logout.addEventListener("click", () => {
+  windnameow.location.href = "./login.html";
+});
+
+
+
+// ---------------------Quiz_page
+
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
@@ -213,17 +227,28 @@ async function initializeQuiz() {
     sessionStorage.removeItem("incorrectAnswers");
   }
 
+  let Quiz_div = document.createElement("div");
+  Quiz_div.className = "Quiz_div_1";
+
+  
   function displayQuestion() {
     let questionData = allQuizData[currentQuestion];
     let questionId = questionData.questionId;
 
-    let questionElement = document.createElement("div");
+    let question_Div = document.createElement("div");
+    question_Div.className = "question_div";
+
+    let questionElement = document.createElement("p");
     questionElement.className = "question";
-    // questionElement.innerHTML = `Question ID: ${questionId} : ${questionData.question}`;
-    questionElement.innerHTML = `Question No: ${questionId} : ${questionData.question.replace(
-      /[""]/g,
-      ""
-    )}`; // Removing double quotes
+    questionElement.innerHTML = `${questionId} . ${questionData.question}`;
+    // questionElement.innerHTML = `${questionId} . ${questionData.question.replace(
+    //   /[""]/g,
+    //   ""
+    // )}`; // Removing double quotes
+
+
+    let options_Div = document.createElement("div");
+    options_Div.className = "options_div";
 
     let optionsElement = document.createElement("div");
     optionsElement.className = "options";
@@ -253,12 +278,20 @@ async function initializeQuiz() {
 
       option.appendChild(radio);
       option.appendChild(optionText);
+      // optionsElement_1.appendChild(optionsElement)
+      options_Div.appendChild(optionsElement)
       optionsElement.appendChild(option);
     }
 
     quizContainer.innerHTML = "";
-    quizContainer.appendChild(questionElement);
-    quizContainer.appendChild(optionsElement);
+    Quiz_div.innerHTML = "";
+
+
+    quizContainer.appendChild(Quiz_div);
+    Quiz_div.append(question_Div);
+    question_Div.appendChild(questionElement);
+    Quiz_div.appendChild(options_Div);
+
 
     if (currentQuestion > 0) {
       backButton.style.display = "block";
@@ -300,7 +333,6 @@ async function initializeQuiz() {
             generate_certificate.style.display = "block";
           });
 
-
           function resetQuizState() {
             sessionStorage.removeItem("currentQuestion");
             sessionStorage.removeItem("score");
@@ -311,7 +343,7 @@ async function initializeQuiz() {
           certificate_button.appendChild(submitButton);
         }
         // else{
-          
+
         // }
       }
       score = Math.max(allQuizData.length - incorrectAnswers.length, 0);
@@ -396,7 +428,7 @@ async function initializeQuiz() {
     showAnswerButton.style.display = "inline-block";
     marks.style.display = "block";
     score = Math.min(score, allQuizData.length);
-    marks.textContent = `You scored ${score} out of ${allQuizData.length}!`;
+    marks.textContent = `You scored ${score} out of ${allQuizData.length} !`;
   }
 
   retrieveQuizState();
@@ -409,16 +441,11 @@ async function initializeQuiz() {
 
   displayQuestion();
   // initializeQuiz();
-  
 }
 
 initializeQuiz();
 
-
-
 //  Generate Certificate
-
-
 
 let certificate_get = localStorage.getItem("certificate_get");
 
@@ -460,99 +487,96 @@ if (certificate_get === "HTML_Overall_Quiz") {
   const ctx2 = canvas2.getContext("2d");
   const name_input2 = document.getElementById("name");
   const downloadBtn2 = document.getElementById("download_btn");
-  
+
   const image2 = new Image();
   image2.src = "./Assests/without_username_css_certificate.png";
   image2.className = "gen_cer";
   image2.onload = () => {
     drawImage();
   };
-  
+
   function drawImage() {
     ctx2.drawImage(image2, 0, 0, canvas2.width, canvas2.height);
     ctx2.font = "30px HK Grotesk";
     ctx2.fillStyle = "#ff914d";
     ctx2.fillText(name_input2.value, 40, 176);
   }
-  
+
   name_input2.addEventListener("input", () => {
     drawImage();
   });
-  
+
   downloadBtn2.addEventListener("click", () => {
     downloadBtn2.href = canvas2.toDataURL("image/jpg");
     downloadBtn2.download = "Certificate.jpg";
     // alert("Successfully downloaded");
     window.location.href = "./certificate.html";
   });
-  
 }
 
 // // ------------------- js
 else if (certificate_get === "JavaScript_Overall_Quiz") {
   const canvas3 = document.getElementById("canva");
-const ctx3 = canvas3.getContext("2d");
-const name_input3 = document.getElementById("name");
-const downloadBtn3 = document.getElementById("download_btn");
+  const ctx3 = canvas3.getContext("2d");
+  const name_input3 = document.getElementById("name");
+  const downloadBtn3 = document.getElementById("download_btn");
 
-const image3 = new Image();
-image3.src = "/Assests/without_username_js_certificate.png";
-image3.className = "gen_cer";
-image3.onload = () => {
-  drawImage();
-};
+  const image3 = new Image();
+  image3.src = "./Assests/without_username_js_certificate.png";
+  image3.className = "gen_cer";
+  image3.onload = () => {
+    drawImage();
+  };
 
-function drawImage() {
-  ctx3.drawImage(image3, 0, 0, canvas3.width, canvas3.height);
-  ctx3.font = "30px HK Grotesk";
-  ctx3.fillStyle = "#ff914d";
-  ctx3.fillText(name_input3.value, 40, 176);
-}
+  function drawImage() {
+    ctx3.drawImage(image3, 0, 0, canvas3.width, canvas3.height);
+    ctx3.font = "30px HK Grotesk";
+    ctx3.fillStyle = "#ff914d";
+    ctx3.fillText(name_input3.value, 40, 176);
+  }
 
-name_input3.addEventListener("input", () => {
-  drawImage();
-});
+  name_input3.addEventListener("input", () => {
+    drawImage();
+  });
 
-downloadBtn3.addEventListener("click", () => {
-  downloadBtn3.href = canvas3.toDataURL("image/jpg");
-  downloadBtn3.download = "Certificate.jpg";
-  // alert("Successfully downloaded");
-  window.location.href = "./certificate.html";
-});
-
+  downloadBtn3.addEventListener("click", () => {
+    downloadBtn3.href = canvas3.toDataURL("image/jpg");
+    downloadBtn3.download = "Certificate.jpg";
+    // alert("Successfully downloaded");
+    window.location.href = "./certificate.html";
+  });
 }
 // // ------------------- mysql -----------------------------------
 else if (certificate_get === "MySql_Overall_Quiz") {
   const canvas4 = document.getElementById("canva");
-const ctx4 = canvas4.getContext("2d");
-const name_input4 = document.getElementById("name");
-const downloadBtn4 = document.getElementById("download_btn");
+  const ctx4 = canvas4.getContext("2d");
+  const name_input4 = document.getElementById("name");
+  const downloadBtn4 = document.getElementById("download_btn");
 
-const image4 = new Image();
-image4.src = "./Assests/without_username_mysql_certificate.png";
-image4.className = "gen_cer";
-image4.onload = () => {
-  drawImage();
-};
+  const image4 = new Image();
+  image4.src = "./Assests/without_username_mysql_certificate.png";
+  image4.className = "gen_cer";
+  image4.onload = () => {
+    drawImage();
+  };
 
-function drawImage() {
-  ctx4.drawImage(image4, 0, 0, canvas4.width, canvas4.height);
-  ctx4.font = "30px HK Grotesk";
-  ctx4.fillStyle = "#ff914d";
-  ctx4.fillText(name_input4.value, 40, 176);
-}
+  function drawImage() {
+    ctx4.drawImage(image4, 0, 0, canvas4.width, canvas4.height);
+    ctx4.font = "30px HK Grotesk";
+    ctx4.fillStyle = "#ff914d";
+    ctx4.fillText(name_input4.value, 40, 176);
+  }
 
-name_input4.addEventListener("input", () => {
-  drawImage();
-});
+  name_input4.addEventListener("input", () => {
+    drawImage();
+  });
 
-downloadBtn4.addEventListener("click", () => {
-  downloadBtn4.href = canvas4.toDataURL("image/jpg");
-  downloadBtn4.download = "Certificate.jpg";
-  // alert("Successfully downloaded");
-  window.location.href = "./certificate.html";
-});
-
+  downloadBtn4.addEventListener("click", () => {
+    downloadBtn4.href = canvas4.toDataURL("image/jpg");
+    downloadBtn4.download = "Certificate.jpg";
+    // alert("Successfully downloaded");
+    window.location.href = "./certificate.html";
+  });
 } else {
   console.log("Site on the Work");
 }

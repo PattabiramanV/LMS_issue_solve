@@ -22,6 +22,7 @@
   
 let db=getFirestore(app);
 let find_language=0;
+let id=localStorage.getItem("UserId");
 
 
 
@@ -32,27 +33,22 @@ all_learn_more_btn.forEach((btn,index)=>{
     btn.addEventListener("click",async()=>{
 
       find_language=btn.parentElement.previousElementSibling.previousElementSibling.firstElementChild.lastElementChild.innerHTML;
-let id=0;
-let ref_data=doc(db,"Learning",`${id}`);
- let data_set=await setDoc(
+
+let ref_data=doc(db,"Learning",`User=${id}`);
+ let data_set=await updateDoc(
     ref_data,{
         Find_Language_type:find_language,
-        find_index:id,
-        Html_Complete_Module:0,
-        Html_Total_Percentage:0,
-        Css_Complete_Module:0,
-        Css_Total_Percentage:0,
-        Javascript_Complete_Module:0,
-        Javascript_Total_Percentage:0,
-        Mysql_Complete_Module:0,
-        Mysql_Total_Percentage:0,
-        Php_Complete_Module:0,
-        Php_Total_Percentage:0,
-        Html_unlock_total_module:0,
-        Css_unlock_total_module:0,
-        Javascript_unlock_total_module:0,
-        Php_unlock_total_module:0,
-        Mysql_unlock_total_module:0,
+        find_index:0,
+        // Html_Complete_Module:0,
+        // Html_Total_Percentage:0,
+        // Css_Complete_Module:0,
+        // Css_Total_Percentage:0,
+        // Javascript_Complete_Module:0,
+        // Javascript_Total_Percentage:0,
+        // Mysql_Complete_Module:0,
+        // Mysql_Total_Percentage:0,
+        // user_unlock_total_module:0
+
     }
 ).then(()=>{
     alert("sucessfully");
@@ -69,12 +65,12 @@ let ref_data=doc(db,"Learning",`${id}`);
 let all_percentage_show_tag=document.querySelectorAll("strong");
 // all_percentage_show_tag.forEach( async(percentage_tag)=>{
 
-  let ref=doc(db,'Learning',`0`);
+  let ref=doc(db,'Learning',`User=${id}`);
   let data_ref=await getDoc(ref);
 
 //   percentage_tag.innerHTML=data_ref.data().Html_Total_Percentage;
 
-// })
+// // })
 all_percentage_show_tag[0].innerHTML=data_ref.data().Html_Total_Percentage;
 all_percentage_show_tag[1].innerHTML=data_ref.data().Css_Total_Percentage;
 all_percentage_show_tag[2].innerHTML=data_ref.data().Javascript_Total_Percentage;
@@ -315,9 +311,6 @@ document.addEventListener("click", (event) => {
     profile_Dropdown.style.display = "none";
   }
 });
-
-
-
 
 
 // profile_drop

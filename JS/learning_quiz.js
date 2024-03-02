@@ -165,8 +165,9 @@ const app = initializeApp(firebaseConfig);
 import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 let db=getFirestore(app);
+let id=localStorage.getItem("UserId");
 
-let get_ref=doc(db,'Learning','0');
+let get_ref=doc(db,'Learning',`User=${id}`);
 let get_data= await getDoc(get_ref);
 let find_index=get_data.data().find_index;
 let find_language=get_data.data().Find_Language_type;
@@ -409,7 +410,7 @@ button_showing_Fun()
 
 
 next_module_btn.addEventListener("click",async()=>{
-  let ref_data=doc(db,"Learning",`0`);
+  let ref_data=doc(db,"Learning",`User=${id}`);
   
     let data_set=await updateDoc(
         ref_data,{

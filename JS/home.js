@@ -1,5 +1,30 @@
 "use strict"
 
+
+
+
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
+    authDomain: "dckap-lms-project.firebaseapp.com",
+    projectId: "dckap-lms-project",
+    storageBucket: "dckap-lms-project.appspot.com",
+    messagingSenderId: "1022626638467",
+    appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+  
+let db=getFirestore(app);
+
+
 let home=document.querySelector(".nav_home")
 console.log(home)
 let learning=document.querySelector(".nav_learning")
@@ -33,12 +58,12 @@ learning.addEventListener("click",()=>{
 
 
 navlogin.addEventListener("click",()=>{
-    window.location.href="login.html"
+     window.location.href='./login.html'
 })
 
 navsign.addEventListener("click",()=>{
     // alert("sign_up button clicked")
-    window.location.href='signup.html';
+    window.location.href='./signup.html';
 
 
    
@@ -47,46 +72,23 @@ navsign.addEventListener("click",()=>{
 
 
 
-searchbtn.addEventListener("click",()=>{
-    alert("explore clicked")
-})
-
-htmlbtn.addEventListener("click",()=>{
-    alert("html button clicked")
-})
-
-cssbtn.addEventListener("click",()=>{
-    alert("css button clicked")
-})
-
-jsbtn.addEventListener("click",()=>{
-    alert("js button clicked")
-})
-
-mysqlbtn.addEventListener("click",()=>{
-    alert("mysql button clicked")
-})
-
-phpbtn.addEventListener("click",()=>{
-    alert("php button clicked")
-})
 
 
 let left_side_bar=document.querySelectorAll(".navlink");
 
 left_side_bar[0].addEventListener("click",()=>{
-  window.location.href='index.html'
+  window.location.href='./index.html'
 });
 
 left_side_bar[1].addEventListener("click",()=>{
 
-  window.location.href='Learning.html'
+  window.location.href='./Learning.html'
 });
 left_side_bar[2].addEventListener("click",()=>{
 
-  window.location.href='dashboard.html';
+  window.location.href='./dashboard.html';
 });
 left_side_bar[3].addEventListener("click",()=>{
 
-  window.location.href='Roadmap.html';
+  window.location.href='./Roadmap.html';
 });

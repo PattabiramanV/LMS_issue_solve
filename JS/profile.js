@@ -192,11 +192,11 @@ document.getElementById('countrySelect').addEventListener('change', function() {
 // Fetch data into Local storage
 
 
-// let UserDetailsdata=localStorage.getItem("UserDetails")
-// let  userDetailsObj=JSON.parse("UserDetailsdata")
+let UserDetailsdata=localStorage.getItem("UserDetails")
+let  userDetailsObj=JSON.parse("UserDetailsdata")
 
-// inputName.value=userDetailsObj.username
-// inputEmail.value=userDetailsObj.email
+inputName.value=userDetailsObj.username
+inputEmail.value=userDetailsObj.email
 
 
 

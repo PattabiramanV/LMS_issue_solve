@@ -435,7 +435,8 @@ p.profile-name {
     align-items: center;
     /* Light Purple Color Codes */
     /* background-color: #CBC3E3;  */
-    background-color: #F1EAFF;
+    /* background-color: #F1EAFF; */
+    background-color: #eaeaea;
 
   }
   .container {
@@ -446,6 +447,8 @@ p.profile-name {
         /* background-color: white; */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 8px rgb(0 0 0 / 27%); */
+
     display: flex;
     flex-direction: column;
     position: relative;

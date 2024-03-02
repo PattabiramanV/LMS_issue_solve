@@ -101,11 +101,8 @@ logout.addEventListener("click", () => {
 
 
 
+// ---------------------Quiz_page
 
-
-// // ---------------------Quiz----------------------------------
-
-// Quiz_page
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
@@ -431,7 +428,7 @@ async function initializeQuiz() {
     showAnswerButton.style.display = "inline-block";
     marks.style.display = "block";
     score = Math.min(score, allQuizData.length);
-    marks.textContent = `You scored ${score} out of ${allQuizData.length}!`;
+    marks.textContent = `You scored ${score} out of ${allQuizData.length} !`;
   }
 
   retrieveQuizState();

@@ -1,5 +1,48 @@
 "use strict"
 
+
+
+
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
+    authDomain: "dckap-lms-project.firebaseapp.com",
+    projectId: "dckap-lms-project",
+    storageBucket: "dckap-lms-project.appspot.com",
+    messagingSenderId: "1022626638467",
+    appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+  
+let db=getFirestore(app);
+let id=0;
+
+function singup_check_Fun(){
+
+if(localStorage.getItem("userdetails")){
+  var userDetailsString = localStorage.getItem("userdetails");
+  var userDetails = JSON.parse(userDetailsString);
+  id=userDetails.user_id;
+}
+
+else{
+  setTimeout(()=>{
+  window.location.href='./signup.html';
+
+   } ,2000);
+}
+}
+
+
+
 let home=document.querySelector(".nav_home")
 console.log(home)
 let learning=document.querySelector(".nav_learning")
@@ -48,7 +91,6 @@ navsign.addEventListener("click",()=>{
 
 
 
-let id=localStorage.getItem("UserId");
 let find_language = 0;
 
 
@@ -93,12 +135,17 @@ Explorebtn[1].addEventListener("click",()=>{
 
 async  function language_change_Fun(){
 
+  singup_check_Fun();
+
   let ref = doc(db, "Learning", `User=${id}`);
-  let get_data = await updateDoc(
+  let get_data= await getDoc(ref);
+let find_language_unlock_module=get_data.data()[find_language+'_unlock_total_module'];
+
+  let set_data = await updateDoc(
 
     ref,{
       Find_Language_type:find_language,
-        find_index:0
+        find_index:find_language_unlock_module
     }
   )
   window.location.href='./learning_content.html';

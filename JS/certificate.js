@@ -7,29 +7,46 @@ const submenuItems = document.querySelectorAll(".submenu_item");
 const sidebarOpen = document.querySelector("#sidebarOpen");
 const sidebarClose = document.querySelector(".collapse_sidebar");
 const sidebarExpand = document.querySelector(".expand_sidebar");
-sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
+// sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
+
+let content = document.querySelector(".menu_content");
 
 sidebarClose.addEventListener("click", () => {
   sidebar.classList.add("close", "hoverable");
+  content.style.left = "1rem";
 });
+
 sidebarExpand.addEventListener("click", () => {
   sidebar.classList.remove("close", "hoverable");
+  content.style.left = "1rem";
 });
 
 sidebar.addEventListener("mouseenter", () => {
   if (sidebar.classList.contains("hoverable")) {
     sidebar.classList.remove("close");
-  }
-});
-sidebar.addEventListener("mouseleave", () => {
-  if (sidebar.classList.contains("hoverable")) {
-    sidebar.classList.add("close");
+    content.style.left = "1rem";
   }
 });
 
+sidebar.addEventListener("mouseleave", () => {
+  if (
+    sidebar.classList.contains("hoverable") &&
+    sidebar.classList.contains("close")
+  ) {
+    content.style.left = "0rem";
+  }
+});
+
+let Dckaplogo = document.querySelector(".DCKAPlOGO");
+
+// Function to toggle dark mode
+
 function toggleDarkMode() {
   const isDarkMode = body.classList.toggle("dark");
-  document.body.classList.toggle("darkMode");
+  document.body.classList.toggle("dark-mode");
+  Dckaplogo.src = body.classList.contains("dark")
+    ? "./Assests/Dckapwhite.png"
+    : "./Assests/Logodk.png";
   sessionStorage.setItem("darkMode", isDarkMode);
 }
 
@@ -37,10 +54,7 @@ const storedDarkMode = sessionStorage.getItem("darkMode");
 if (storedDarkMode === "true") {
   toggleDarkMode();
 }
-
 darkLight.addEventListener("click", toggleDarkMode);
-
-
 
 // Profile
 
@@ -48,14 +62,17 @@ let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");
 
 profile_navigate.addEventListener("click", (event) => {
-    event.stopPropagation();
-    profile_Dropdown.style.display = "block";
+  event.stopPropagation();
+  profile_Dropdown.style.display = "block";
 });
 
 document.addEventListener("click", (event) => {
-    if (!profile_navigate.contains(event.target) && !profile_Dropdown.contains(event.target)) {
-        profile_Dropdown.style.display = "none"; 
-    }
+  if (
+    !profile_navigate.contains(event.target) &&
+    !profile_Dropdown.contains(event.target)
+  ) {
+    profile_Dropdown.style.display = "none";
+  }
 });
 
 // profile_drop
@@ -79,7 +96,7 @@ Certi_page.addEventListener("click", () => {
 let logout = document.querySelector(".log_out");
 
 logout.addEventListener("click", () => {
-  window.location.href = "./login.html";
+  windnameow.location.href = "./login.html";
 });
 
 // -------------------------------- fire_base ---------------------------------------
@@ -165,7 +182,7 @@ async function html_quiz_btn()
         localStorage.setItem('selectedQuiz', 'HTML_Overall_Quiz');
         localStorage.setItem('certificate_get', 'HTML_Overall_Quiz');
         window.location.href = './OverallQuiz.html';
-        // document.querySelector(".html_lock").style.display = "none"; // Use querySelector or access the first element of the collection
+        document.querySelector(".html_lock").style.display = "none"; // Use querySelector or access the first element of the collection
       } 
       else if (Html_Complete_Percentage < 100) 
       {

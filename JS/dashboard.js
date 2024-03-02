@@ -148,36 +148,46 @@ const submenuItems = document.querySelectorAll(".submenu_item");
 const sidebarOpen = document.querySelector("#sidebarOpen");
 const sidebarClose = document.querySelector(".collapse_sidebar");
 const sidebarExpand = document.querySelector(".expand_sidebar");
-sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
+// sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
+
+let content = document.querySelector(".menu_content");
 
 sidebarClose.addEventListener("click", () => {
   sidebar.classList.add("close", "hoverable");
+  content.style.left = "1rem";
 });
+
 sidebarExpand.addEventListener("click", () => {
   sidebar.classList.remove("close", "hoverable");
+  content.style.left = "1rem";
 });
 
 sidebar.addEventListener("mouseenter", () => {
   if (sidebar.classList.contains("hoverable")) {
     sidebar.classList.remove("close");
-  }
-});
-sidebar.addEventListener("mouseleave", () => {
-  if (sidebar.classList.contains("hoverable")) {
-    sidebar.classList.add("close");
+    content.style.left = "1rem";
   }
 });
 
-const dark_color = document.querySelector(".dashboard_profile_content p");
-const dash_color = document.querySelector(".dash")
-const back = document.querySelector(".back");
+sidebar.addEventListener("mouseleave", () => {
+  if (
+    sidebar.classList.contains("hoverable") &&
+    sidebar.classList.contains("close")
+  ) {
+    content.style.left = "0rem";
+  }
+});
+
+let Dckaplogo = document.querySelector(".DCKAPlOGO");
+
+// Function to toggle dark mode
 
 function toggleDarkMode() {
   const isDarkMode = body.classList.toggle("dark");
-  document.body.classList.toggle("darkMode");
-  dark_color.classList.toggle("active");
-  dash_color.classList.toggle("active");
-  back.classList.toggle("active2");
+  document.body.classList.toggle("dark-mode");
+  Dckaplogo.src = body.classList.contains("dark")
+    ? "./Assests/Dckapwhite.png"
+    : "./Assests/Logodk.png";
   sessionStorage.setItem("darkMode", isDarkMode);
 }
 
@@ -185,32 +195,7 @@ const storedDarkMode = sessionStorage.getItem("darkMode");
 if (storedDarkMode === "true") {
   toggleDarkMode();
 }
-
 darkLight.addEventListener("click", toggleDarkMode);
-
-
-
-submenuItems.forEach((item, index) => {
-  item.addEventListener("click", () => {
-    item.classList.toggle("show_submenu");
-    submenuItems.forEach((item2, index2) => {
-      if (index !== index2) {
-        item2.classList.remove("show_submenu");
-      }
-    });
-  });
-});
-
-if (window.innerWidth < 768) 
-{
-  sidebar.classList.add("close");
-} 
-else 
-{
-  sidebar.classList.remove("close");
-}
-
-
 
 // Profile
 
@@ -218,15 +203,20 @@ let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");
 
 profile_navigate.addEventListener("click", (event) => {
-    event.stopPropagation();
-    profile_Dropdown.style.display = "block";
+  event.stopPropagation();
+  profile_Dropdown.style.display = "block";
 });
 
 document.addEventListener("click", (event) => {
-    if (!profile_navigate.contains(event.target) && !profile_Dropdown.contains(event.target)) {
-        profile_Dropdown.style.display = "none"; 
-    }
+  if (
+    !profile_navigate.contains(event.target) &&
+    !profile_Dropdown.contains(event.target)
+  ) {
+    profile_Dropdown.style.display = "none";
+  }
 });
+
+
 
 // profile_drop
 
@@ -249,7 +239,7 @@ Certi_page.addEventListener("click", () => {
 let logout = document.querySelector(".log_out");
 
 logout.addEventListener("click", () => {
-  window.location.href = "./login.html";
+  windnameow.location.href = "./login.html";
 });
 
 
@@ -262,335 +252,377 @@ logout.addEventListener("click", () => {
 // ------------------HTML Pie chart -------------------------
 
 
-async function HTMLchatr() 
-{
-  try 
-  {
-      const getRef = doc(db, 'Learning', '0');
-      const getData = await getDoc(getRef);
-      const data = getData.data();
+// async function HTMLchatr() 
+// {
+//   try 
+//   {
+//       const getRef = doc(db, 'Learning', '0');
+//       const getData = await getDoc(getRef);
+//       const data = getData.data();
 
-      return (data.Html_Complete_Module) || '0';
+//       return (data.Html_Complete_Module) || '0';
 
-  } 
-  catch (error) 
-  {
-      console.error("Error fetching and updating data:", error); 
-      return 0; // Return a default value in case of error
-  }
-}
+//   } 
+//   catch (error) 
+//   {
+//       console.error("Error fetching and updating data:", error); 
+//       return 0; // Return a default value in case of error
+//   }
+// }
 
-// Call fetchDataAndUpdateHTML to get the total points
-HTMLchatr().then(totalPoints => {
-  console.log("",totalPoints);
+// // Call fetchDataAndUpdateHTML to get the total points
+// HTMLchatr().then(totalPoints => {
+//   console.log("",totalPoints);
 
-const chartData_html = {
-  labels: ["Completed", "Not Completed"],
-  data: [totalPoints , 100-totalPoints],
-};
+// const chartData_html = {
+//   labels: ["Completed", "Not Completed"],
+//   data: [totalPoints , 100-totalPoints],
+// };
 
-const myChart_html = document.querySelector(".my_chart_html");
+// const myChart_html = document.querySelector(".my_chart_html");
 
-const ul_html = document.querySelector(".programming_status_html .details_html ul");
+// const ul_html = document.querySelector(".programming_status_html .details_html ul");
 
-new Chart(myChart_html, {
-  type: "doughnut",
+// new Chart(myChart_html, {
+//   type: "doughnut",
+//   data: {
+//     labels: chartData_html.labels,
+//     datasets: [
+//                 {
+//                     label: "Percentage",
+//                     data: chartData_html.data,
+//                 },
+//                 ],
+//              },
+//   options: {
+//     borderWidth: 4,
+//     borderRadius: 2,
+//     hoverBorderWidth: 0,
+//     plugins: {
+//       legend: {
+//         display: false,
+//       },
+//     },
+//   },
+// });
+
+// const populateUl = () => {
+//   chartData_html.labels.forEach((l, i) => {
+//     let li = document.createElement("li");
+//     li.innerHTML = `${l}: <span class = "percentage">${chartData_html.data[i]} % </span>`
+//     ul_html.appendChild(li);
+//   });
+// };
+
+// populateUl();
+
+// var cross_html = document.querySelector(".cross_html");
+// var display_chart_html = document.querySelector(".display_chart_html");
+// var html_btn = document.querySelector("#html_btn");
+
+// html_btn.addEventListener("click", () => {
+//   display_chart_html.style.display = "block";
+//   display_chart_css.style.display = "none";
+//   display_chart_js.style.display = "none";
+//   display_chart_mysql.style.display = "none";
+// });
+
+// cross_html.addEventListener("click", () => {
+//   display_chart_html.style.display = "none";
+// })
+// });
+
+// // ------------------ CSS Pie chart -------------------------
+
+
+// async function CSSchatr() 
+// {
+//   try 
+//   {
+//       const getRef = doc(db, 'Learning', '0');
+//       const getData = await getDoc(getRef);
+//       const data = getData.data();
+
+//       return (data.Css_Complete_Module) || '0';
+
+//   } 
+//   catch (error) 
+//   {
+//       console.error("Error fetching and updating data:", error); 
+//       return 0; // Return a default value in case of error
+//   }
+// }
+
+// // Call fetchDataAndUpdateHTML to get the total points
+// CSSchatr().then(totalPoints => {
+//   console.log("",totalPoints);
+
+// const chartData_css = {
+//     labels: ["Completed", "Not Completed"],
+//     data: [totalPoints, 100-totalPoints],
+//   };
+  
+//   const myChart_css = document.querySelector(".my_chart_css");
+  
+//   const ul_css = document.querySelector(".programming_status_css .details_css ul");
+  
+//   new Chart(myChart_css, {
+//     type: "doughnut",
+//     data: {
+//       labels: chartData_css.labels,
+//       datasets: [
+//                   {
+//                       label: "Percentage",
+//                       data: chartData_css.data,
+//                   },
+//                   ],
+//                },
+//     options: {
+//       borderWidth: 4,
+//       borderRadius: 2,
+//       hoverBorderWidth: 0,
+//       plugins: {
+//         legend: {
+//           display: false,
+//         },
+//       },
+//     },
+//   });
+  
+//   const populateUl2 = () => {
+//     chartData_css.labels.forEach((l, i) => {
+//       let li = document.createElement("li");
+//       li.innerHTML = `${l}: <span class = "percentage">${chartData_css.data[i]} % </span>`
+//       ul_css.appendChild(li);
+//     });
+//   };
+  
+//   populateUl2();
+  
+//   var cross_css = document.querySelector(".cross_css");
+//   var display_chart_css = document.querySelector(".display_chart_css");
+//   var css_btn = document.querySelector("#css_btn");
+  
+//   css_btn.addEventListener("click", () => {
+//     display_chart_css.style.display = "block";
+//     display_chart_html.style.display = "none";
+//     display_chart_js.style.display = "none";
+//     display_chart_mysql.style.display = "none";
+//   });
+  
+//   cross_css.addEventListener("click", () => {
+//     display_chart_css.style.display = "none";
+//   });
+// });
+
+// // ------------------- Javascript Piechart ----------------------
+
+// async function JSchatr() 
+// {
+//   try 
+//   {
+//       const getRef = doc(db, 'Learning', '0');
+//       const getData = await getDoc(getRef);
+//       const data = getData.data();
+
+//       return (data.Javascript_Complete_Module) || '0';
+
+//   } 
+//   catch (error) 
+//   {
+//       console.error("Error fetching and updating data:", error); 
+//       return 0; // Return a default value in case of error
+//   }
+// }
+
+// // Call fetchDataAndUpdateHTML to get the total points
+// JSchatr().then(totalPoints => {
+//   console.log("",totalPoints);
+
+// const chartData_js = {
+//     labels: ["Completed", "Not Completed"],
+//     data: [totalPoints, 100-totalPoints],
+//   };
+  
+//   const myChart_js = document.querySelector(".my_chart_js");
+  
+//   const ul_js = document.querySelector(".programming_status_js .details_js ul");
+  
+//   new Chart(myChart_js, {
+//     type: "doughnut",
+//     data: {
+//       labels: chartData_js.labels,
+//       datasets: [
+//                   {
+//                       label: "Percentage",
+//                       data: chartData_js.data,
+//                   },
+//                   ],
+//                },
+//     options: {
+//       borderWidth: 4,
+//       borderRadius: 2,
+//       hoverBorderWidth: 0,
+//       plugins: {
+//         legend: {
+//           display: false,
+//         },
+//       },
+//     },
+//   });
+  
+//   const populateUl3 = () => {
+//     chartData_js.labels.forEach((l, i) => {
+//       let li = document.createElement("li");
+//       li.innerHTML = `${l}: <span class = "percentage">${chartData_js.data[i]} % </span>`
+//       ul_js.appendChild(li);
+//     });
+//   };
+  
+//   populateUl3();
+  
+//   var cross_js = document.querySelector(".cross_js");
+//   var display_chart_js = document.querySelector(".display_chart_js");
+//   var js_btn = document.querySelector("#js_btn");
+  
+//   js_btn.addEventListener("click", () => {
+//     display_chart_js.style.display = "block";
+//     display_chart_html.style.display = "none";
+//     display_chart_css.style.display = "none";
+//     display_chart_mysql.style.display = "none";
+//   });
+  
+//   cross_js.addEventListener("click", () => {
+//     display_chart_js.style.display = "none";
+//   });
+// });
+// // ------------------- MySQL Piechart ----------------------
+
+// async function SQLchatr() 
+// {
+//   try 
+//   {
+//       const getRef = doc(db, 'Learning', '0');
+//       const getData = await getDoc(getRef);
+//       const data = getData.data();
+
+//       return (data.Mysql_Complete_Module) || '0';
+
+//   } 
+//   catch (error) 
+//   {
+//       console.error("Error fetching and updating data:", error); 
+//       return 0; // Return a default value in case of error
+//   }
+// }
+
+// // Call fetchDataAndUpdateHTML to get the total points
+// SQLchatr().then(totalPoints => {
+//   console.log("",totalPoints);
+
+// const chartData_mysql = {
+//     labels: ["Completed", "Not Completed"],
+//     data: [totalPoints, 100-totalPoints],
+//   };
+  
+//   const myChart_mysql = document.querySelector(".my_chart_mysql");
+  
+//   const ul_mysql = document.querySelector(".programming_status_mysql .details_mysql ul");
+  
+//   new Chart(myChart_mysql, {
+//     type: "doughnut",
+//     data: {
+//       labels: chartData_mysql.labels,
+//       datasets: [
+//                   {
+//                       label: "Percentage",
+//                       data: chartData_mysql.data,
+//                   },
+//                   ],
+//                },
+//     options: {
+//       borderWidth: 4,
+//       borderRadius: 2,
+//       hoverBorderWidth: 0,
+//       plugins: {
+//         legend: {
+//           display: false,
+//         },
+//       },
+//     },
+//   });
+  
+//   const populateUl4 = () => {
+//     chartData_mysql.labels.forEach((l, i) => {
+//       let li = document.createElement("li");
+//       li.innerHTML = `${l}: <span class = "percentage">${chartData_mysql.data[i]} % </span>`
+//       ul_mysql.appendChild(li);
+//     });
+//   };
+  
+//   populateUl4();
+  
+//   var cross_mysql = document.querySelector(".cross_mysql");
+//   var display_chart_mysql = document.querySelector(".display_chart_mysql");
+//   var mysql_btn = document.querySelector("#mysql_btn");
+  
+//   mysql_btn.addEventListener("click", () => {
+//     display_chart_mysql.style.display = "block";
+//     display_chart_html.style.display = "none";
+//     display_chart_css.style.display = "none";
+//     display_chart_js.style.display = "none";
+//   });
+  
+//   cross_mysql.addEventListener("click", () => {
+//     display_chart_mysql.style.display = "none";
+//   });
+// });
+
+
+  // ------------------Bar chart----------------------
+new Chart(document.getElementById("bar_chart"), {
+  type: 'bar',
   data: {
-    labels: chartData_html.labels,
-    datasets: [
-                {
-                    label: "Percentage",
-                    data: chartData_html.data,
-                },
-                ],
-             },
-  options: {
-    borderWidth: 4,
-    borderRadius: 2,
-    hoverBorderWidth: 0,
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
+    labels: ["HTML", "CSS", "JavaScript", "MySQL"],
+    datasets: [{
+      label: "Percentage of Completed Lessons",
+      backgroundColor: ["#a124e9", "#C37AED", "#D995FD", "#F0BBFE"],
+      data: [100, 89, 62, 14]
+    }]
   },
-});
-
-const populateUl = () => {
-  chartData_html.labels.forEach((l, i) => {
-    let li = document.createElement("li");
-    li.innerHTML = `${l}: <span class = "percentage">${chartData_html.data[i]} % </span>`
-    ul_html.appendChild(li);
-  });
-};
-
-populateUl();
-
-var cross_html = document.querySelector(".cross_html");
-var display_chart_html = document.querySelector(".display_chart_html");
-var html_btn = document.querySelector("#html_btn");
-
-html_btn.addEventListener("click", () => {
-  display_chart_html.style.display = "block";
-  display_chart_css.style.display = "none";
-  display_chart_js.style.display = "none";
-  display_chart_mysql.style.display = "none";
-});
-
-cross_html.addEventListener("click", () => {
-  display_chart_html.style.display = "none";
+  options: {
+    legend: { 
+      display: false
+    },
+    title: {
+      display: true,
+      text: 'Tracking Completed Lessons'
+    }
+  }
 })
-});
-
-// ------------------ CSS Pie chart -------------------------
 
 
-async function CSSchatr() 
-{
-  try 
-  {
-      const getRef = doc(db, 'Learning', '0');
-      const getData = await getDoc(getRef);
-      const data = getData.data();
-
-      return (data.Css_Complete_Module) || '0';
-
-  } 
-  catch (error) 
-  {
-      console.error("Error fetching and updating data:", error); 
-      return 0; // Return a default value in case of error
-  }
-}
-
-// Call fetchDataAndUpdateHTML to get the total points
-CSSchatr().then(totalPoints => {
-  console.log("",totalPoints);
-
-const chartData_css = {
-    labels: ["Completed", "Not Completed"],
-    data: [totalPoints, 100-totalPoints],
-  };
-  
-  const myChart_css = document.querySelector(".my_chart_css");
-  
-  const ul_css = document.querySelector(".programming_status_css .details_css ul");
-  
-  new Chart(myChart_css, {
-    type: "doughnut",
-    data: {
-      labels: chartData_css.labels,
-      datasets: [
-                  {
-                      label: "Percentage",
-                      data: chartData_css.data,
-                  },
-                  ],
-               },
-    options: {
-      borderWidth: 4,
-      borderRadius: 2,
-      hoverBorderWidth: 0,
-      plugins: {
-        legend: {
-          display: false,
-        },
-      },
-    },
-  });
-  
-  const populateUl2 = () => {
-    chartData_css.labels.forEach((l, i) => {
-      let li = document.createElement("li");
-      li.innerHTML = `${l}: <span class = "percentage">${chartData_css.data[i]} % </span>`
-      ul_css.appendChild(li);
-    });
-  };
-  
-  populateUl2();
-  
-  var cross_css = document.querySelector(".cross_css");
-  var display_chart_css = document.querySelector(".display_chart_css");
-  var css_btn = document.querySelector("#css_btn");
-  
-  css_btn.addEventListener("click", () => {
-    display_chart_css.style.display = "block";
-    display_chart_html.style.display = "none";
-    display_chart_js.style.display = "none";
-    display_chart_mysql.style.display = "none";
-  });
-  
-  cross_css.addEventListener("click", () => {
-    display_chart_css.style.display = "none";
-  });
-});
-
-// ------------------- Javascript Piechart ----------------------
-
-async function JSchatr() 
-{
-  try 
-  {
-      const getRef = doc(db, 'Learning', '0');
-      const getData = await getDoc(getRef);
-      const data = getData.data();
-
-      return (data.Javascript_Complete_Module) || '0';
-
-  } 
-  catch (error) 
-  {
-      console.error("Error fetching and updating data:", error); 
-      return 0; // Return a default value in case of error
-  }
-}
-
-// Call fetchDataAndUpdateHTML to get the total points
-JSchatr().then(totalPoints => {
-  console.log("",totalPoints);
-
-const chartData_js = {
-    labels: ["Completed", "Not Completed"],
-    data: [totalPoints, 100-totalPoints],
-  };
-  
-  const myChart_js = document.querySelector(".my_chart_js");
-  
-  const ul_js = document.querySelector(".programming_status_js .details_js ul");
-  
-  new Chart(myChart_js, {
-    type: "doughnut",
-    data: {
-      labels: chartData_js.labels,
-      datasets: [
-                  {
-                      label: "Percentage",
-                      data: chartData_js.data,
-                  },
-                  ],
-               },
-    options: {
-      borderWidth: 4,
-      borderRadius: 2,
-      hoverBorderWidth: 0,
-      plugins: {
-        legend: {
-          display: false,
-        },
-      },
-    },
-  });
-  
-  const populateUl3 = () => {
-    chartData_js.labels.forEach((l, i) => {
-      let li = document.createElement("li");
-      li.innerHTML = `${l}: <span class = "percentage">${chartData_js.data[i]} % </span>`
-      ul_js.appendChild(li);
-    });
-  };
-  
-  populateUl3();
-  
-  var cross_js = document.querySelector(".cross_js");
-  var display_chart_js = document.querySelector(".display_chart_js");
-  var js_btn = document.querySelector("#js_btn");
-  
-  js_btn.addEventListener("click", () => {
-    display_chart_js.style.display = "block";
-    display_chart_html.style.display = "none";
-    display_chart_css.style.display = "none";
-    display_chart_mysql.style.display = "none";
-  });
-  
-  cross_js.addEventListener("click", () => {
-    display_chart_js.style.display = "none";
-  });
-});
-// ------------------- MySQL Piechart ----------------------
-
-async function SQLchatr() 
-{
-  try 
-  {
-      const getRef = doc(db, 'Learning', '0');
-      const getData = await getDoc(getRef);
-      const data = getData.data();
-
-      return (data.Mysql_Complete_Module) || '0';
-
-  } 
-  catch (error) 
-  {
-      console.error("Error fetching and updating data:", error); 
-      return 0; // Return a default value in case of error
-  }
-}
-
-// Call fetchDataAndUpdateHTML to get the total points
-SQLchatr().then(totalPoints => {
-  console.log("",totalPoints);
-
-const chartData_mysql = {
-    labels: ["Completed", "Not Completed"],
-    data: [totalPoints, 100-totalPoints],
-  };
-  
-  const myChart_mysql = document.querySelector(".my_chart_mysql");
-  
-  const ul_mysql = document.querySelector(".programming_status_mysql .details_mysql ul");
-  
-  new Chart(myChart_mysql, {
-    type: "doughnut",
-    data: {
-      labels: chartData_mysql.labels,
-      datasets: [
-                  {
-                      label: "Percentage",
-                      data: chartData_mysql.data,
-                  },
-                  ],
-               },
-    options: {
-      borderWidth: 4,
-      borderRadius: 2,
-      hoverBorderWidth: 0,
-      plugins: {
-        legend: {
-          display: false,
-        },
-      },
-    },
-  });
-  
-  const populateUl4 = () => {
-    chartData_mysql.labels.forEach((l, i) => {
-      let li = document.createElement("li");
-      li.innerHTML = `${l}: <span class = "percentage">${chartData_mysql.data[i]} % </span>`
-      ul_mysql.appendChild(li);
-    });
-  };
-  
-  populateUl4();
-  
-  var cross_mysql = document.querySelector(".cross_mysql");
-  var display_chart_mysql = document.querySelector(".display_chart_mysql");
-  var mysql_btn = document.querySelector("#mysql_btn");
-  
-  mysql_btn.addEventListener("click", () => {
-    display_chart_mysql.style.display = "block";
-    display_chart_html.style.display = "none";
-    display_chart_css.style.display = "none";
-    display_chart_js.style.display = "none";
-  });
-  
-  cross_mysql.addEventListener("click", () => {
-    display_chart_mysql.style.display = "none";
-  });
-});
-
-
-  // ----------------------------------------
-
+// ----------------------------- copy of bar chart -------------------------------
+// new Chart(document.getElementById("bar_chart"), {
+//   type: 'bar',
+//   data: {
+//     labels: ["HTML", "CSS", "JavaScript", "MySQL"],
+//     datasets: [{
+//       label: "Percentage of Completed Lessons",
+//       backgroundColor: ["#a124e9", "#C37AED", "#D995FD", "#F0BBFE"],
+//       data: [100, 89, 62, 14]
+//     }]
+//   },
+//   options: {
+//     legend: { 
+//       display: false
+//     },
+//     title: {
+//       display: true,
+//       text: 'Tracking Completed Lessons'
+//     }
+//   }
+// })
 
 
 

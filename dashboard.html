@@ -9,18 +9,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-<!----------------------- navbar ------------------------>
+<!-------------------------------------- navbar ----------------------------------->
     <nav class="navbar">
         <div class="logo_item">
             <i class="bx bx-menu" id="sidebarOpen"></i>
-            <img src="./Assests/Dckap Logo.png" alt="" class="DCKAPlOGO"></i>
+            <img src="./Assests/Logodk.png" alt="" class="DCKAPlOGO"></i>
         </div>
-
-        <div class="search_bar">
-            <input type="text" placeholder="Search" />
-            <i class="fas fa-search"></i>
+        <div class="group">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
+            <input placeholder="Search" type="search" class="input">
         </div>
-
         <div class="navbar_content">
             <i class="bi bi-grid"></i>
             <i class='bx bx-sun' id="darkLight"></i>
@@ -28,100 +26,141 @@
         </div>
         <div class="profile_bar_list">
             <div class="profile_down">
-              <i class="fa fa-user" aria-hidden="true" class="profile-icon"></i>
-              <P class="profile-name">profile</P>
+                <i class="fa fa-user" aria-hidden="true" class="profile-icon"></i>
+                <P class="profile-name">profile</P>
             </div>
             <div class="Course_Down">
-              <i class="fa-solid fa-book"></i>
-              <P class="profile-name">My Courses</P>
+                <i class="fa-solid fa-book"></i>
+                <P class="profile-name">My Courses</P>
             </div>
             <div class="profile_certicate">
-              <i class="fa-solid fa-award" class="profile-icon"></i>
-              <P class="profile-name">certificate</P>
+                <i class="fa-solid fa-award" class="profile-icon"></i>
+                <P class="profile-name">certificate</P>
             </div>
             <div class="log_out">
-              <i class="fa-solid fa-right-from-bracket" class="profile-icon"></i>
-              <P class="profile-name">Logout</P>
+                <i class="fa-solid fa-right-from-bracket" class="profile-icon"></i>
+                <P class="profile-name">Logout</P>
             </div>
-          </div>
+        </div>
     </nav>
 
-<!--------------------------- sidebar ----------------------->
+  <!------------------------------------------ sidebar -------------------------------------->
     <nav class="sidebar" style="display: flex;">
         <div class="menu_content">
             <ul class="menu_items">
                 <li class="item">
-                    <a href="./index.html" class="nav_link submenu_item">
-                        <span class="navlink_icon">
-                            <i class="bx bx-home-alt"></i>
-                        </span>
-                        <span class="navlink">Home</span>
-                    </a>
-
+                <a href="./index.html" class="nav_link submenu_item">
+                    <span class="navlink_icon">
+                    <i class="bx bx-home-alt"></i>
+                    </span>
+                    <span class="navlink">Home</span>
+                </a>
                 </li>
                 <li class="item">
-                    <a href="./Learning.html" class="nav_link submenu_item">
-                        <span class="navlink_icon">
-                            <i class="bx bx-grid-alt"></i>
-                        </span>
-                        <span class="navlink">Learning</span>
-                    </a>
+                <a href="./Learning.html" class="nav_link submenu_item">
+                    <span class="navlink_icon">
+                    <i class="bx bx-grid-alt"></i>
+                    </span>
+                    <span class="navlink">Learning</span>
+                </a>
                 </li>
             </ul>
-
             <ul class="menu_items">
                 <li class="item">
-                    <a href="./dashboard.html" class="nav_link">
-                        <span class="navlink_icon">
-                            <i class="bx bxs-magic-wand"></i>
-                        </span>
-                        <span class="navlink">DashBoard</span>
-                    </a>
+                <a href="./dashboard.html" class="nav_link">
+                    <span class="navlink_icon">
+                    <i class="bx bxs-magic-wand"></i>
+                    </span>
+                    <span class="navlink">DashBoard</span>
+                </a>
                 </li>
                 <li class="item">
-                    <a href="./Roadmap.html" class="nav_link">
-                        <span class="navlink_icon">
-                            <i class="bx bx-loader-circle"></i>
-                        </span>
-                        <span class="navlink">RoadMap</span>
-                    </a>
+                <a href="./Roadmap.html" class="nav_link">
+                    <span class="navlink_icon">
+                    <i class="bx bx-loader-circle"></i>
+                    </span>
+                    <span class="navlink">RoadMap</span>
+                </a>
                 </li>
             </ul>
             <ul class="set_items">
                 <li class="item">
-                    <a href="#" class="nav_link">
-                        <span class="navlink_icon">
-                            <i class="bx bx-cog"></i>
-                        </span>
-                        <span class="navlink">Setting</span>
-                    </a>
+                <a href="#" class="nav_link">
+                    <span class="navlink_icon">
+                    <i class="bx bx-cog"></i>
+                    </span>
+                    <span class="navlink">Settings</span>
+                </a>
                 </li>
             </ul>
-
             <div class="bottom_content">
                 <div class="bottom expand_sidebar">
                     <span> Expand</span>
-                    <i class='bx bx-log-in'></i>
+                    <i class='bx bx-expand-horizontal'></i>
                 </div>
                 <div class="bottom collapse_sidebar">
                     <span> Collapse</span>
-                    <i class='bx bx-log-out'></i>
+                    <i class='bx bx-expand-horizontal'></i>
                 </div>
             </div>
         </div>
     </nav>
     <!--------------------- Dashboard_profile ------------------>
-    <div class="back">
     <div class="body">
         <div class="dashboard_profile">
+            <div class="dashboard_profile_img">
+                <img src="./Assests/236831.png" class="profile_img">
+            </div>
+            <div class="dashboard_profile_content">
+                <p class="username">Hello, <span class="u_name">Username</span></p>
+                <p class="dash">Dashboard</p>
+            </div>
+        </div>
+        <div class="dashboard_content">
+            <div class="total_points totals">
+                <div class="points_img">
+                  <i class="fa-solid fa-record-vinyl icon2"></i>
+                </div>
+                <div class="point_content content">
+                  <p class="con">Total Points</p>
+                  <p class="Total_Ponits con" id="Total_Ponits">0</p>
+                </div>
+            </div>
+            <div class="total_quz totals">
+                <div class="quiz_img">
+                  <i class="fa-solid fa-record-vinyl icon2"></i>
+                </div>
+                <div class="quiz_content content">
+                  <p class="con">Total Quiz</p>
+                  <p class="Total_Quiz con">0</p>
+                </div>
+            </div>
+            <div class="total_star totals">
+                <div class="star_img">
+                  <i class="fa-solid fa-star icon2"></i>
+                </div>
+                <div class="star_content content">
+                  <p class="con">Total Stars</p>
+                  <p class="Total_Stars  con">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="pie_chart">
+            <h1 class="pie_chart_topic">Bar Chart</h1>
+            <div id="chart_container">
+                <canvas id="bar_chart" width="800" height="450"></canvas>
+            </div>
+        </div>
+    </div>
+        <!-- <div class="dashboard_profile">
             <img src="./Assests/236831.png" alt="" class="dashboard_profile_img">
             <div class="dashboard_profile_content">
                 <p class="uname">Hello, <span class="user_name">Username</span></p>
                 <p class="dash">Dashboard</p>
             </div>
-        </div>
+        </div> -->
         <!----------------- Dashboard_content ------------------>
-        <div class="dashboard_content">
+        <!-- <div class="dashboard_content">
             <div class="total_points totals">
                 <div class="points_img">
                   <i class="fa-solid fa-record-vinyl icon"></i>
@@ -149,9 +188,9 @@
                   <p class="Total_Stars  con">0</p>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--------------- Pie Chart ------------->
-        <div class="pie_chart">
+        <!-- <div class="pie_chart">
             <h1>Pie Chart</h1>
             <div class="btn">
                 <div class="html">
@@ -167,10 +206,10 @@
                     <button class="pie_btn" id="mysql_btn">MySQL</button>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--------------- Display HTML Piechart ----------->
 
-        <div class="display_chart_html display_chart">
+        <!-- <div class="display_chart_html display_chart">
             <span class="cross_html cross">&times;</span>
             <h2 class="heading_chart_html heading_chart">HTML Pie Chart</h2>
             <div class="programming_status_html programming_status">
@@ -181,11 +220,11 @@
                     <ul></ul>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!----------------- Display CSS piachart ----------------->
 
-        <div class="display_chart_css display_chart">
+        <!-- <div class="display_chart_css display_chart">
             <span class="cross_css cross">&times;</span>
             <h2 class="heading_chart_css heading_chart">CSS Pie Chart</h2>
             <div class="programming_status_css programming_status">
@@ -196,11 +235,11 @@
                     <ul></ul>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!----------------- Display Javascript piachart ----------------->
 
-        <div class="display_chart_js display_chart">
+        <!-- <div class="display_chart_js display_chart">
             <span class="cross_js cross">&times;</span>
             <h2 class="heading_chart_js heading_chart">JavaScript Pie Chart</h2>
             <div class="programming_status_js programming_status">
@@ -211,12 +250,12 @@
                     <ul></ul>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!----------------- Display MySQL piachart ----------------->
         
-        <div class="display_chart_mysql display_chart">
-            <span class="cross_mysql cross">&times;</span>
+        <!-- <div class="display_chart_mysql display_chart"> -->
+            <!-- <span class="cross_mysql cross">&times;</span>
             <h2 class="heading_chart_mysql heading_chart">MySQL Pie Chart</h2>
             <div class="programming_status_mysql programming_status">
                 <div class="chart_container_mysql chart_container">
@@ -226,10 +265,8 @@
                     <ul></ul>
                 </div>
             </div>
-        </div>
-    </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        </div> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
     <script type="module" src="./JS/dashboard.js"></script>
 </body>
 </html>

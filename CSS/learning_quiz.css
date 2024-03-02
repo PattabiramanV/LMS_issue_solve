@@ -21,7 +21,7 @@ body, html {
   --background-color-red:rgb(207,46,46) 100%;
 }
 body {
-  background-color: #F1EAFF;
+  background-color:#eaeaea;
   transition: all 0.5s ease;
 }
 body.dark {
@@ -302,21 +302,22 @@ i.fa-solid.fa-right-from-bracket {
 
 
 .bottom_content_quiz {
-  padding: 10px 20px 20px 20px;
+  padding: 16px 20px 20px 20px;
   width: 60%;
   /* height: 345px; */
   max-height: 500px;
   margin: 151px auto 0px 360px;
   /* text-align: center; */
-  background-color: rgb(225 240 218 / 54%);
+  background-color:#fafafa;
   margin-top: 140px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 30px;
+  
   /* display: none; */
-  box-shadow: 0px 0px 9px gray;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .bottom_quiz_btn button {
@@ -363,11 +364,18 @@ button:hover{
   display: none;
 }
 .bottom_content_quiz h2 {
-  background: -webkit-linear-gradient(#99ecae,#B784B7,rgb(168 47 41));
-  -webkit-background-clip: text;
+  margin: 0;
+  /* display: inline-block; */
+  /* font-family: "Roboto"; */
+  font-family: "Fira Sans", sans-serif;
+  font-weight: bold;
+  font-size: 22pt;
+  background: linear-gradient(to right, #f88418, #e99414, #fda155, #cea889, rgb(196, 127, 70) 80%, #ffa238b6 );
   -webkit-text-fill-color: transparent;
-  font-size: 30px;
+  background-clip: text;
+  -webkit-background-clip: text;
   text-align: center;
+  /* margin: 10px 0px 0px 0px ; */
 }
 h3#Quiz_question {
   font-size: 22px;
@@ -386,7 +394,7 @@ form label{
   bottom: 3px;
 }
 .bottom_content_quiz strong {
-  font-size: 34px;
+  font-size: 32px;
 }
 
 /*........................................Quiz Result....................*/

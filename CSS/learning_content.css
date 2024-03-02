@@ -24,7 +24,7 @@ body {
   /* background-color: #d0eaf1; */
   transition: all 0.5s ease;
   /* background-color: #c3eef0; */
-  background-color: #F1EAFF;
+  background-color:#eaeaea;
 }
 body.dark {
   background-color: #333;
@@ -348,7 +348,7 @@ i.fa-solid.fa-right-from-bracket {
   width: 18%;
   line-height: 75px;
   margin-top: -32px;
-  background-color: #F1EAFF;
+  background-color: #eaeaea;
   overflow: hidden scroll;
   padding-top: 20px;
   max-height: 35em;

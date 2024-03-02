@@ -20,7 +20,7 @@ body, html {
   --background-color-li: #8000801c !important;
 }
 body {
-  background-color: #e7f2fd;
+  background-color: #eaeaea;
   transition: all 0.5s ease;
 }
 .dark-mode .nav_link:hover {

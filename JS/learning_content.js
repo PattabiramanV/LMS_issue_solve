@@ -27,7 +27,7 @@ var userDetails = JSON.parse(userDetailsString);
 let id=userDetails.user_id
 
 
-
+console.log(id);
 
 
 

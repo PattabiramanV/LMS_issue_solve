@@ -500,7 +500,6 @@ h1 {
 }
 
 
-
 /* Add dark mode styles */
 .dark .quiz_contion {
   background-color: #1e1e1e;
@@ -513,11 +512,6 @@ h1 {
   color: #ffffff;
 }
 
-.dark h1 {
-  background: linear-gradient(to right, #643d6e, #a982b4, #c4a6cc, #9889ce, rgb(166, 68, 231) 80%, #8f36bbb6);
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
 
 .dark button {
   color: #ffffff;

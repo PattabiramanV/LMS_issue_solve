@@ -106,21 +106,21 @@ async  function language_change_Fun(){
 
 
 
-let left_side_bar=document.querySelectorAll(".navlink");
+// let left_side_bar=document.querySelectorAll(".navlink");
 
-left_side_bar[0].addEventListener("click",()=>{
-  window.location.href='./index.html'
-});
+// left_side_bar[0].addEventListener("click",()=>{
+//   window.location.href='./index.html'
+// });
 
-left_side_bar[1].addEventListener("click",()=>{
+// left_side_bar[1].addEventListener("click",()=>{
 
-  window.location.href='./Learning.html'
-});
-left_side_bar[2].addEventListener("click",()=>{
+//   window.location.href='./Learning.html'
+// });
+// left_side_bar[2].addEventListener("click",()=>{
 
-  window.location.href='./dashboard.html';
-});
-left_side_bar[3].addEventListener("click",()=>{
+//   window.location.href='./dashboard.html';
+// });
+// left_side_bar[3].addEventListener("click",()=>{
 
-  window.location.href='./Roadmap.html';
-});
+//   window.location.href='./Roadmap.html';
+// });

@@ -59,7 +59,7 @@ else if (log_password.type =='text') {
 let db=getFirestore(app);
 let getref=collection(db,"SignUp_details");
 let getdata =await  getDocs(getref);
-// let id=getdata.size;
+let id=getdata.size;
 
 login_button.addEventListener("click",login_fun)
  async function login_fun(event)
@@ -92,7 +92,8 @@ login_button.addEventListener("click",login_fun)
         
         let email_data = record.data().email
         let password_data = record.data().password
-        let id=record.data().user_id;
+        // let id=record.data().user_id;
+      
         if(log_email.value == email_data && log_password.value==password_data )
         {
           document.getElementById('loadingOverlay').style.visibility = 'visible';
@@ -137,5 +138,5 @@ login_button.addEventListener("click",login_fun)
 }
 
 
-
+console.log(id);
 

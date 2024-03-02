@@ -116,7 +116,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(); // Create a Firestore instance
-
+var userDetailsString = localStorage.getItem("userdetails");
+  var userDetails = JSON.parse(userDetailsString);
+ let id=userDetails.user_id;
 // --------------- HTML Quiz -------------------
 
 // async function html_quiz_btn() {
@@ -158,7 +160,7 @@ async function html_quiz_btn()
 {
   try 
   {
-    const getRef = doc(db, 'Learning', '0');
+    const getRef = doc(db, 'Learning', `User=${id}`);
     const getData = await getDoc(getRef);
     const data = getData.data();
     const Html_Complete_Percentage = data.Html_Total_Percentage;
@@ -209,7 +211,7 @@ async function css_quiz_btn()
 {
   try 
   {
-    const getRef = doc(db, 'Learning', '0');
+    const getRef = doc(db, 'Learning', `User=${id}`);
     const getData = await getDoc(getRef);
     const data = getData.data();
     const Css_Complete_Percentage = data.Css_Total_Percentage;
@@ -298,7 +300,7 @@ async function js_quiz_btn()
 {
   try 
   {
-    const getRef = doc(db, 'Learning', '0');
+    const getRef = doc(db, 'Learning', `User=${id}`);
     const getData = await getDoc(getRef);
     const data = getData.data();
     const Javascript_Complete_Percentage = data.Javascript_Total_Percentage;
@@ -391,7 +393,7 @@ async function mysql_quiz_btn()
 {
   try 
   {
-    const getRef = doc(db, 'Learning', '0');
+    const getRef = doc(db, 'Learning', `User=${id}`);
     const getData = await getDoc(getRef);
     const data = getData.data();
     const Mysql_Complete_Percentage = data.Mysql_Total_Percentage;

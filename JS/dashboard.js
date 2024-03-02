@@ -17,6 +17,19 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); // Create a Firestore instance
 
+let id=0;
+if(localStorage.getItem("userdetails")){
+  var userDetailsString = localStorage.getItem("userdetails");
+  var userDetails = JSON.parse(userDetailsString);
+  id=userDetails.user_id;
+}
+
+else{
+  setTimeout(()=>{
+  window.location.href='./signup.html';
+
+   } ,2000);
+}
 // ------------ html firebase ---------------------
 let Total_Quiz=document.querySelector('.Total_Quiz');
 
@@ -24,7 +37,7 @@ let Total_Ponits = document.querySelector('.Total_Ponits');
 
 let Total_Stars = document.querySelector('.Total_Stars')
 
-const getRef = doc(db, 'Learning', '0');
+const getRef = doc(db, 'Learning', `User=${id}`);
 const getData = await getDoc(getRef);
 const data = getData.data();
 

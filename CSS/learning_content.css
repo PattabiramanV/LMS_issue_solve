@@ -1,16 +1,14 @@
 /* Import Google font - Roboto */
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
 body, html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   user-select: none;
-
-
 }
 :root {
   --white-color: #fff;

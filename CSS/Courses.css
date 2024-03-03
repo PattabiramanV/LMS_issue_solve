@@ -383,8 +383,9 @@ input:hover {
 
 .progressing_bar {
   width: 100%;
+  display: none;
 }
-
+/* 
 .Enroll_heading {
   text-align: center;
   font-size: 22px;
@@ -398,21 +399,36 @@ input:hover {
   cursor: pointer;
   width: 18%;
   color: #b95233;
+} */
+
+.Enroll_heading {
+  text-align: center;
+  font-size: 24px;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  font-weight: 600;
+  justify-content: center;
+  margin: 6rem auto auto;
+  position: relative;
+  left: 5rem;
+  cursor: pointer;
+  width: 18%;
+  color: #b95233;
 }
 
 .Enroll_heading::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -6px;
   left: 0;
-  width: 100%;
-  height: 4px;
+  width: 40%;
+  height: 3px;
   background-color: #AA3EE2;
   transform: scaleX(0);
-  transition: all .5s ease-in-out;
+  transition: all .3s ease-in-out;
   border-radius: 10%;
+  left: 28%;
 }
-
 
 
 .Enroll_heading:hover::after {
@@ -475,6 +491,7 @@ img.enroll_img {
   font-family: "Fira Sans", sans-serif;
   cursor: pointer;
   box-shadow: 0 4px 0 rgba(107, 127, 153, .5);
+ 
 }
 
 .Progress_bar:hover {
@@ -499,7 +516,6 @@ p.progress {
 .List.Courses {
   width: 94%;
   margin-left: 3rem;
-  margin-top: -4rem;
 }
 
 
@@ -749,13 +765,24 @@ body {
   padding: 24px 0;
 } */
 
-.articles {
+/* .articles {
   display: grid;
   max-width: 969px;
   margin-inline: auto;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   position: relative;
   left: 73px;
+  padding: 24px 0;
+} */
+
+
+.articles {
+  display: grid;
+  max-width: 969px;
+  margin-inline: auto;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  position: relative;
+  left: 112px;
   padding: 24px 0;
 }
 

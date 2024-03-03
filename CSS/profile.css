@@ -14,17 +14,13 @@ html {
 .dark-mode .nav_link:hover {
   color: #fffffff3;
   background-color: #7c15dd4d;
-  /* Your desired hover color in dark mode */
 }
 
 :root {
   --white-color: #fff;
-  --blue-color: #4070f4;
   --grey-color: #707070;
   --grey-color-light: #aaa;
   --background: rgb(255, 255, 255);
-  --background-color-hover: rgba(30, 245, 2, 0.986);
-  --background-color-btn: #49a843;
   --background-color-li: #8000801c !important
 }
 
@@ -88,7 +84,6 @@ img.DCKAPlOGO {
 }
 
 .search_bar input:focus {
-  border-color: #AA3EE2;
   outline: none;
   border-radius: 20px;
 
@@ -526,11 +521,23 @@ input#fullNameInput, #gitinput, textarea#bioInput, input#linkedInInput, input#em
   height: 1rem;
   cursor: pointer;
   color: black;
+  background-color: #efefef;
 }
 
-input#fullNameInput:hover, #gitinput:hover, textarea#bioInput:hover, input#linkedInInput:hover, input#emailadd:hover, #countrySelect:hover{
+/* input#fullNameInput:hover, #gitinput:hover, textarea#bioInput:hover, input#linkedInInput:hover, input#emailadd:hover, #countrySelect:hover{
   border: 1px solid #c84e2a;
+} */
+
+input#fullNameInput:not(:disabled):hover,
+input#gitinput:not(:disabled):hover,
+textarea#bioInput:not(:disabled):hover,
+input#linkedInInput:not(:disabled):hover,
+input#emailadd:not(:disabled):hover,
+#countrySelect:not(:disabled):hover {
+  border: 1px solid #c84e2a;
+  outline: none;
 }
+
 
 .Users_img {
   display: flex;
@@ -667,6 +674,7 @@ div#imageContainer {
 
 
 .Btn {
+  gap: 4px;
   position: relative;
   display: flex;
   align-items: center;

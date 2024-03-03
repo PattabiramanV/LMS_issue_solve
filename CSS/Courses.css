@@ -363,7 +363,7 @@ input:hover {
 .icon {
   position: absolute;
   left: 1rem;
-  fill: #9e9ea7;
+  fill: #AA3EE2;
   width: 1rem;
   height: 1rem;
 }
@@ -429,7 +429,28 @@ input:hover {
   justify-content: start;
   position: relative;
   left: 10%;
+  overflow-x: auto;
+  white-space: nowrap; 
 }
+
+/* .Progress_container {
+  width: 100%;
+  max-width:  700px;
+  display: flex;
+  margin-left: 6rem;
+  padding: 1%;
+  gap: 1%;
+  justify-content: start;
+  position: relative;
+  left: 10%;
+  white-space: nowrap; 
+} */
+
+.scrollbar-enabled {
+  overflow-x: auto;
+}
+
+
 
 
 .progress_langauge {

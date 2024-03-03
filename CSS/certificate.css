@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
 
 body,
@@ -372,7 +372,7 @@ p.profile-name {
   align-items: flex-start;
   display: flex;
   font-weight: inherit;
-  font-family: 'Roboto';
+  font-family: "Fira Sans", sans-serif;
   color: black;
   font-size: 14px;
 }
@@ -424,208 +424,18 @@ p.profile-name {
 /* ----------------- Certificate ------------------ */
 .body
 {
-  font-family: 'Roboto', sans-serif;
-  background-color: #F1EAFF;
+  font-family: "Fira Sans", sans-serif;
+  background-color: #eaeaea;
   width: calc(100% - 224px);
   position: absolute;
-  top: 11.5%;
+  top: 10.6%;
   right: 0%;
   height: 90vh;
 }
-/* .certi_img
-{
-  opacity: 0.7;
-  width: 65%;
-  height: 65%;
-}
-.generate_cer 
-{
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  gap: 0%; */
-  /* margin-top: 10%; */
-  /* margin-left: 12%;
-  position: relative;
-  top: 20%;
-  padding: 0%;
-} */
-/* .certificate
-{
-  position: relative;
-  top: 20%;
-} */
-/* .certify 
-{
-  display: flex;
-  flex-direction: column;
-  margin: 0; */
-  /* position: relative; */
-  /* margin-top: 3%;
-  padding: 0;
-}
-#js_btn
-{
-  width: 42%;
-  height: 20%;
-}
-.start_quiz_btn
-{
-  top: -10%;
-  margin-left: 12%;
-  width: 40%;
-  height: 15%;
-  position: relative;
-  border-radius: 7px;
-  border: 1px solid #4F7942;
-  font-size: 90%;
-  font-weight: 600;
-  background: #EDC9AF ;
-  color: #cd5700;
-  overflow: hidden;
-  box-shadow: 0 0 0 0 transparent;
-  -webkit-transition: all 0.2s ease-in;
-  -moz-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
-}
-.start_quiz_btn:hover
-{
-  color: #cd5700;
-  background: #F6CBA0;
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-}
-.start_quiz_btn:hover::before
-{
-  -webkit-animation: sh02 0.5s 0s linear;
-  -moz-animation: sh02 0.5s 0s linear;
-  animation: sh02 0.5s 0s linear;
-}
-.start_quiz_btn::before
-{
-  content: '';
-  display: block;
-  width: 0px;
-  height: 84%;
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  opacity: 0;
-  background: #FFA836;
-  box-shadow: 0 0 50px 30px #F2CA85;
-  -webkit-transform: skewX(-20deg);
-  -moz-transform: skewX(-20deg);
-  -ms-transform: skewX(-20deg);
-  -o-transform: skewX(-20deg);
-  transform: skewX(-20deg);
-}
-@keyframes sh02
-{
-  from
-  {
-    opacity: 0;
-    left: 0%;
-  }
-  50%
-  {
-    opacity: 1;
-  }
-  to
-  {
-    opacity: 0;
-    left: 100%;
-  }
-}
-.start_quiz_btn:active
-{
-  box-shadow: 0 0 0 0 transparent;
-  -webkit-transition: box-shadow 0.2s ease-in;
-  -moz-transition: box-shadow 0.2s ease-in;
-  transition: box-shadow 0.2s ease-in;
-}
-.fa-lock
-{
-  position: relative;
-  top: -35%;
-  margin-left: 30%;
-  font-size: 300%;
-} */
-
-/* ------------- Error btn ---------------- */
-/* .error
-{
-  position: absolute;
-  top: 12%;
-  right: 0%;
-  background-color: #FFCEFE;
-  padding: 0% 1%;
-  border-radius: 10px;
-  box-shadow: 2px 2px 1px 1px #B1AFFF;
-  display: none;
-}
-.para_error
-{
-  color: #EE7214;
-  font-weight: 700;
-} */
-
 .certi_img
 {
   width: 250px;
   height: 150px;
-}
-/* .certificate
-{
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-.c_img
-{
-  margin-left: 53px;
-}
-.c_btn
-{
-  margin-left: 53px;
-  display: flex;
-  align-items: center;
-
-}
-.certificate2
-{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 40px;
-}
-.generate_cer
-{
-  position: relative;
-  top: 40px; */
-  /* left: 10px; */
-/* }
-.fa-lock
-{
-  position: relative;
-  top: -125px;
-  left: 150px;
-  font-size: 60px;
-}
-.start_quiz_btn
-{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-.generate_cer
-{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 65px;
-  margin-left: 75px;
-  margin-top: 50px;
 }
 .fa-lock
 {
@@ -634,14 +444,39 @@ p.profile-name {
   left: 75px;
   font-size: 85px;
 }
-.certificate2
+/* #php_btn
+{
+  position: relative;
+  top: 16px;
+} */
+/* .php_certificate .php_lock
+{
+  position: relative;
+  top: -50px;
+  left: -185px;
+  font-size: 85px;
+} */
+.php_certificate
+{
+  width: 250px;
+}
+.certificate 
 {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  position:relative;
-  margin-left: -10px;
-  margin-top: -8px;
+  flex-wrap: wrap;
+  /* flex-direction: row; */
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 20px;
+  gap: 75px;
+}
+.generate_cer2
+{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 575px;
+  margin: 0 auto;
+  gap: 75px;
 }
 .start_quiz_btn
 {

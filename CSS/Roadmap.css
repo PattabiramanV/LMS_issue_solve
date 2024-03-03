@@ -377,7 +377,13 @@ p.profile-name {
   font-size: 14px;
 }
 
-
+img.profile {
+  height: 35px;
+  object-fit: cover;
+  border-radius: 100%;
+  min-width: 35px;
+  width: 40%;
+}
 /* search bar design */
 
 .group {
@@ -619,15 +625,13 @@ p.Heading_p {
   bottom: 186px;
   left: 0%;
   text-align: center;
-  color: rgb(3, 91, 255);
   /* font-family: 'FontAwesome'; */
   width: 100%;
   display: flex;
   justify-content: center;
   cursor: pointer;
+  color: blue;
 }
-
-
 
 /* Effcets  for li checkbox*/
 #checklist {

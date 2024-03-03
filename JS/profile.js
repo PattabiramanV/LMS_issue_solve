@@ -47,7 +47,7 @@ function toggleDarkMode() {
   const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
   Dckaplogo.src = body.classList.contains("dark")
-    ? "./Assests/darkwhite.png"
+    ? "./Assests/Dckapwhite.png"
     : "./Assests/Logodk.png";
   sessionStorage.setItem("darkMode", isDarkMode);
 }
@@ -110,7 +110,7 @@ Certi_page.addEventListener("click", () => {
 let logout = document.querySelector(".log_out");
 
 logout.addEventListener("click", () => {
-  windnameow.location.href = "./login.html";
+  window.location.href = "./login.html";
 });
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -192,11 +192,12 @@ document.getElementById('countrySelect').addEventListener('change', function() {
 // Fetch data into Local storage
 
 
-let UserDetailsdata=localStorage.getItem("UserDetails")
-let  userDetailsObj=JSON.parse("UserDetailsdata")
+// let UserDetailsdataname=localStorage.getItem("username")
+// let UserEmaildata=localStorage.getItem("email")
 
-inputName.value=userDetailsObj.username
-inputEmail.value=userDetailsObj.email
+
+// inputName.value=UserDetailsdataname
+// inputEmail.value=UserEmaildata
 
 
 
@@ -262,11 +263,37 @@ fileInput.addEventListener("change", async function (event) {
         });
         previousImageDocId = newImageDocRef.id;
         alert("Successfully uploaded image and data.");
+
+      let UserProfileImg=localStorage.setItem("imageURL", e.target.result);
+
+
+const profileImg = document.querySelector(".profile");
+profileImg.src = UserProfileImg;
+
       } catch (error) {
         console.error("Error adding document: ", error);
       }
     };
-
     reader.readAsDataURL(file);
+  }
+  
+});
+
+
+
+
+
+// Retrieve imageURL from localStorage when the page loads
+document.addEventListener("DOMContentLoaded", function () {
+  const storedImageURL = localStorage.getItem("imageURL");
+
+ 
+
+  if (storedImageURL) {
+      const profileImg = document.querySelector(".profile");
+      profileImg.src = storedImageURL;
+
+      const profilemainimg=document.querySelector(".profile_img")
+      profilemainimg.src=storedImageURL
   }
 });

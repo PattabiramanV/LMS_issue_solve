@@ -57,7 +57,7 @@ body.dark {
   z-index: 1000;
   box-shadow: 0 0 2px var(--grey-color-light);
   justify-content: space-evenly;
-  gap: 28%
+  gap: 36%;
 }
 
 
@@ -316,61 +316,13 @@ ul.set_items {
 #sidebarOpen {
   display: none;
 }
-
-/* Dropdown Profile */
-
-
-
-
-.profile_bar_list {
-  top: 77px;
-  width: 13%;
-  background: rgb(255 255 255 / 78%);
-  border-radius: 8px;
-  color: rgb(18, 22, 10);
-  position: absolute;
-  right: 5%;
-  display: none;
-  border: 1px solid lightgray;
-  cursor: pointer;
+img.profile {
+  height: 35px;
+  object-fit: cover;
+  border-radius: 100%;
+  min-width: 35px;
+  width: 40%;
 }
-
-.Drop_Down,
-.profile_down,
-.Course_Down,
-.profile_certicate,
-.log_out {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  text-align: center;
-  justify-content: space-between;
-}
-
-.Drop_Down:hover,
-.profile_down:hover,
-.Course_Down:hover,
-.profile_certicate:hover,
-.log_out:hover {
-  background-color: #8000801c;
-}
-
-i.fa.fa-user,
-i.fa-solid.fa-book,
-i.fa-solid.fa-award,
-i.fa-solid.fa-right-from-bracket {
-  width: 50%;
-}
-
-p.profile-name {
-  width: 100%;
-  align-items: flex-start;
-  display: flex;
-  font-weight: inherit;
-  color: black;
-  font-size: 14px;
-}
-
 
 /* search bar design */
 

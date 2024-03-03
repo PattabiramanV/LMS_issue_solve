@@ -317,3 +317,23 @@ Explorebtn.forEach(async (btn) => {
     window.location.href = "./learning_content.html";
   });
 });
+
+
+
+
+// Fetch with local storage Profile Img
+
+
+
+// let storeprofileImg=localStorage.getItem("imageURL");
+// const profileImg = document.querySelector(".profile");
+// profileImg.src = storeprofileImg
+// // Img Effect 
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   const storedImageURL = localStorage.getItem("imageURL");
+//   if (storedImageURL) {
+//       const profileImg = document.querySelector(".profile");
+//       profileImg.src = storedImageURL;
+//   }
+// });

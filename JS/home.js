@@ -48,15 +48,16 @@ console.log(home)
 let learning=document.querySelector(".nav_learning")
 let dashboard=document.querySelector(".nav_dashboard")
 let roadmap=document.querySelector(".nav_roadmap")
-let navlogin=document.getElementById("login")
-let navsign=document.getElementById("signup")
+let navlogin=document.querySelector(".login")
+let navsign=document.querySelector(".signup")
 let searchbtn=document.querySelector(".button_explore")
 let htmlbtn=document.querySelector(".html_btn")
 let cssbtn=document.querySelector(".css_btn")
 let jsbtn=document.querySelector(".js_btn")
 let mysqlbtn=document.querySelector(".mysql_btn")
 let phpbtn=document.querySelector(".php_btn")
-let profile=document.querySelector(".profile")
+let profile=document.querySelector(".profile");
+let singup_login_btn=document.querySelector(".slide-controls");
 // learning.addEventListener("click",()=>{
 //     alert("learning menu clicked")
 // });
@@ -168,3 +169,21 @@ let find_language_unlock_module=get_data.data()[find_language+'_unlock_total_mod
 
 //   window.location.href='./Roadmap.html';
 // });
+
+
+// -------------loginvalidate----------
+if(localStorage.getItem('userdetails')){
+  // let sessionStorage_value=sessionStorage.getItem('userdetails') // key name of data in session or localstorage
+  singup_login_btn.style.display = 'none';
+  // navsign.style.display = 'none'; // login signup btn display off
+  profile.classList.add('usrprofile');
+  //get and rename the correct name of user profile
+  // .usrprofile - css added feel free to change class names as u want
+}
+else{
+  singup_login_btn.style.display = 'block';
+  // navsign.style.display = 'block';
+
+}
+console.log(navlogin);
+console.log(navsign);

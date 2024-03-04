@@ -155,7 +155,7 @@ img#profile_img {
   display: flex;
   justify-content: flex-end;
 
-  /* display: none; */
+  display: none;
 }
 .container_1 {
   padding: 76px;
@@ -476,4 +476,10 @@ span#white {
 .resources {
   display: flex;
   flex-direction: column;
+}
+.usrprofile {
+
+  display: block;
+  text-align: end;
+  
 }

@@ -37,7 +37,7 @@ if(localStorage.getItem("userdetails"))
 // }
 
 
-let u_name = document.getElementById("u_name");
+let u_name = document.querySelector(".u_name");
 
 let Total_Quiz=document.querySelector('.Total_Quiz');
 
@@ -78,6 +78,7 @@ async function fetchDataAndUpdateHTML()
     Total_Stars.textContent = validate_Quiz * 2;
     localStorage.setItem('Total_Ponits', data.Html_Complete_Module);
 
+    u_name.textContent = name;
     new Chart(document.getElementById("bar_chart"), {
       type: 'bar',
       data: {
@@ -148,12 +149,14 @@ sidebar.addEventListener("mouseleave", () => {
 });
 
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
+// let bdy = document.querySelector(".body");
+// let dashboard_profile_content = document.querySelector(".dashboard_profile_content");
 
 //---------------------------------------------- Function to toggle dark mode --------------------------------------------
 
 function toggleDarkMode() {
   const isDarkMode = body.classList.toggle("dark");
-  document.body.classList.toggle("dark-mode");
+  document.body.classLisdashboard_profile_contentt.toggle("dark-mode");
   Dckaplogo.src = body.classList.contains("dark")
     ? "./Assests/Dckapwhite.png"
     : "./Assests/Logodk.png";
@@ -163,6 +166,8 @@ function toggleDarkMode() {
 const storedDarkMode = sessionStorage.getItem("darkMode");
 if (storedDarkMode === "true") {
   toggleDarkMode();
+  // dashboard_profile_content.classList.toggle("act2");
+  // bdy.classList.toggle("act");
 }
 darkLight.addEventListener("click", toggleDarkMode);
 

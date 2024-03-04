@@ -423,10 +423,10 @@ p.profile-name {
   width: calc(100% - 224px);
   /* align-items: center; */
   position: absolute;
-  top: 11.5%;
+  top: 10.7%;
   right: 0%;
   background-color: #eaeaea;
-  height: 90vh;
+  height: 89vh;
 }
 
 /* .body
@@ -783,4 +783,14 @@ h1
   margin: 0% 0% 0% 2%;
   width: 640px;
   height: auto;
+}
+
+.act
+{
+  background-color: #333;
+}
+
+.act2
+{
+  color: white;
 }

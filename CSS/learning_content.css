@@ -24,7 +24,7 @@ body {
   /* background-color: #d0eaf1; */
   transition: all 0.5s ease;
   /* background-color: #c3eef0; */
-  background-color: #F1EAFF;
+  background-color:#eaeaea;
 }
 body.dark {
   background-color: #333;
@@ -76,33 +76,53 @@ img.DCKAPlOGO {
   height: 35px;
   object-fit: cover;
 }
-.search_bar {
-  height: 47px;
-  max-width: 430px;
-  width: 100%;
-}
-.search_bar input {
-  height: 100%;
-  width: 100%;
-  border-radius: 25px;
-  font-size: 18px;
-  outline: none;
-  background-color: var(--white-color);
-  color: var(--grey-color);
-  border: 1px solid var(--grey-color-light);
-  padding: 0 20px;
+.group {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
   position: relative;
-  left: -8rem;
+  max-width: 247px;
 }
-i.fas.fa-search {
+ 
+.group .input {
+  width: 100%;
+  height: 40px;
+  line-height: 28px;
+  padding: 0 1rem;
+  padding-left: 2.5rem;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f3f3f4;
+  color: #0d0c22;
+  transition: .3s ease;
+}
+ 
+ .input::placeholder {
+  color: #9e9ea7;
+ }
+ 
+ .group .input:focus, .group  input:hover {
+  outline: none;
+  border-color: #8000801c;
+  background-color: #fff;
+  box-shadow: 0 0 0 2px rgba(228, 133, 43, 0.897);
+ }
+ 
+ .icon {
   position: absolute;
-  top: -185%;
-  left: 52%;
-}
+  left: 1rem;
+  fill: #9e9ea7;
+  width: 1rem;
+  height: 1rem;
+ }
+ 
 .navbar_content {
   display: flex;
   align-items: center;
   column-gap: 25px;
+  position: relative;
+    left: 100px;
 }
 .navbar_content>* {
   position: relative;
@@ -113,10 +133,10 @@ i.fas.fa-search {
   font-size: 20px;
   color: var(--grey-color);
 }
-img.profile {
+/* img.profile {
   position: absolute;
   left: 1237px;
-}
+} */
 /* sidebar */
 .sidebar {
   background-color: var(--white-color);
@@ -345,10 +365,10 @@ i.fa-solid.fa-right-from-bracket {
 }
 
 .left_heading_content {
-  width: 18%;
-  line-height: 75px;
+  width: 19%;
+  line-height: 50px;
   margin-top: -32px;
-  background-color: #F1EAFF;
+  background-color: #eaeaea;
   overflow: hidden scroll;
   padding-top: 20px;
   max-height: 35em;
@@ -402,6 +422,8 @@ i.fa-solid.fa-right-from-bracket {
   display: flex;
   justify-content: space-between;
   gap: 35px;
+  height: 58px;
+    align-items: baseline;
 }
 
 .explain_berief_data {
@@ -483,8 +505,16 @@ a,iframe,button,.profile_round:hover{
 .left_heding{
   color: rgb(121 172 120);
     font-weight: bolder;
+    display: flex;
+  justify-content: space-between;
+  gap: 35px;
+  height: 58px;
+    align-items: baseline;
 }
 
+.lock_remove_classlist{
+  color: #eaeaea;
+}
 
 /*....................................Content_classes...................*/
 

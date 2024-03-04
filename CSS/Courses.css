@@ -416,7 +416,21 @@ input:hover {
   color: #b95233;
 }
 
-.Enroll_heading::after {
+.Enroll_heading_Course {
+  text-align: center;
+  font-size: 24px;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  font-weight: 600;
+  justify-content: center;
+  position: relative;
+  left: 35rem;
+  cursor: pointer;
+  width: 18%;
+  color: #b95233;
+}
+
+.Enroll_heading::after,.Enroll_heading_Course::after {
   content: "";
   position: absolute;
   bottom: -6px;
@@ -431,7 +445,7 @@ input:hover {
 }
 
 
-.Enroll_heading:hover::after {
+.Enroll_heading:hover::after,.Enroll_heading_Course:hover::after{
   transform: scaleX(1);
 }
 
@@ -516,6 +530,7 @@ p.progress {
 .List.Courses {
   width: 94%;
   margin-left: 3rem;
+  margin-top: 2rem;
 }
 
 
@@ -783,7 +798,7 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   position: relative;
   left: 112px;
-  padding: 24px 0;
+  padding: 0px 0;
 }
 
 

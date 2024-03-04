@@ -154,16 +154,16 @@ headingnavigate.forEach(async (links) => {
   });
 });
 
-// let storeprofileImg=localStorage.getItem("imageURL");
-// const profileImg = document.querySelector(".profile");
-// profileImg.src = storeprofileImg
-// // Img Effect
+let storeprofileImg=localStorage.getItem("imageURL");
+const profileImg = document.querySelector(".profile");
+profileImg.src = storeprofileImg
+// Img Effect
 
-// document.addEventListener("DOMContentLoaded", function () {
-//   const storedImageURL = localStorage.getItem("imageURL");
+document.addEventListener("DOMContentLoaded", function () {
+  const storedImageURL = localStorage.getItem("imageURL");
 
-//   if (storedImageURL) {
-//       const profileImg = document.querySelector(".profile");
-//       profileImg.src = storedImageURL;
-//   }
-// });
+  if (storedImageURL) {
+      const profileImg = document.querySelector(".profile");
+      profileImg.src = storedImageURL;
+  }
+});

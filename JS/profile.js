@@ -264,8 +264,9 @@ fileInput.addEventListener("change", async function (event) {
 
         let UserProfileImg = localStorage.setItem("imageURL", e.target.result);
 
-        const profileImg = document.querySelector(".profile");
-        profileImg.src = UserProfileImg;
+        // const profileImg = document.querySelector(".profile");
+        // profileImg.src = UserProfileImg;
+
       } catch (error) {
         console.error("Error adding document: ", error);
       }
@@ -273,6 +274,13 @@ fileInput.addEventListener("change", async function (event) {
     reader.readAsDataURL(file);
   }
 });
+
+// const profileImg = document.querySelector(".profile");
+// profileImg.src = storedImageURL;
+
+
+const profileImg = document.querySelector(".profile");
+profileImg.src = storedImageURL;
 
 // Retrieve imageURL from localStorage when the page loads
 document.addEventListener("DOMContentLoaded", function () {
@@ -282,7 +290,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const profileImg = document.querySelector(".profile");
     profileImg.src = storedImageURL;
 
-    const profilemainimg = document.querySelector(".profile_img");
-    profilemainimg.src = storedImageURL;
+
+const profilemainimg = document.querySelector(".profile_img");
+profilemainimg.src = storedImageURL;
   }
 });

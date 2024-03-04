@@ -512,7 +512,7 @@ input#emailadd,
   height: 1rem;
   cursor: pointer;
   color: var(--black);
-  background-color: var(--whitee-color);
+  background-color: #efefef
 }
 
 input#fullNameInput:not(:disabled):hover,

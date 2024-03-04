@@ -119,6 +119,8 @@ import {
   collection,
   addDoc,
   getDocs,
+  getDoc,
+  setDoc,
   doc,
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
@@ -169,9 +171,10 @@ Editbtn.addEventListener("click", function () {
 
 // Function to save input values to Firebase
 function saveToFirebase(id) {
-  const docRef = database.collection("users").doc(id);
-  docRef
-    .set({
+  const docRef = doc(database,'users',`${id}`)
+
+  let data_set= setDoc(
+    docRef,{
       fullName: inputName.value,
       gitUsername: inputgitUsername.value,
       bioInfo: inputbioInfo.value,
@@ -184,6 +187,27 @@ function saveToFirebase(id) {
       console.error("Error writing document: ", error);
     });
 }
+
+
+window.addEventListener("load", async () => {
+  const docRef = doc(database, 'users', `${id}`);
+
+  try {
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      const userData = docSnap.data();
+      inputName.value = userData.fullName;
+      inputgitUsername.value = userData.gitUsername;
+      inputbioInfo.value = userData.bioInfo;
+      inputlinkInfo.value = userData.linkedIn;
+    } else {
+      console.log("No such document!");
+    }
+  } catch (error) {
+    console.error("Error getting document:", error);
+  }
+});
+
 
 document.querySelector(".Country label").addEventListener("click", function () {
   document.getElementById("countrySelect").disabled = false;

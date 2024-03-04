@@ -592,6 +592,8 @@ button:hover {
 button:active {
   transform: translateY(-1px);
   background-color: orangered;
+  color: white;
+
 }
 
   /* ------------------for the color h1 ----------------- */
@@ -623,11 +625,11 @@ h1 {
   color: #ffffff;
 }
 
-.dark h1 {
+/* .dark h1 {
   background: linear-gradient(to right, #643d6e, #a982b4, #c4a6cc, #9889ce, rgb(166, 68, 231) 80%, #8f36bbb6);
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
+} */
 
 .dark button {
   font-size: 12px;

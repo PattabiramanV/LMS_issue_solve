@@ -1,4 +1,20 @@
-
+:root {
+  --white-color: #fff;
+  --grey-color: #707070;
+  --grey-color-light: #aaa;
+  --background: #eaeaea;
+  --background-color-li: #8000801c !important;
+  --whitee-color:white;
+  --black:black;
+  --primarycolor:#c84e2a;
+  --profile-hover-color:#b27eccfd;
+  --Cancel-btn-color:#bb0a1e;
+  --Cancel-btn-hover:#e40d26;
+  --btn-hover-color:#e75c31;
+  --input-border: 1px solid #acacac;
+  --container-border: 1px solid #EAECF1;
+  --container-boxshadow:0px 10px 30px 3px rgba(81, 69, 158, 0.05);
+}
 
 * {
   font-family: "Fira Sans", sans-serif;
@@ -320,12 +336,10 @@ ul.set_items {
 /* Dropdown Profile */
 
 
-
-
 .profile_bar_list {
   top: 77px;
   width: 13%;
-  background: rgb(255 255 255 / 78%);
+  background: var(--whitee-color);
   border-radius: 8px;
   color: rgb(18, 22, 10);
   position: absolute;
@@ -333,6 +347,7 @@ ul.set_items {
   display: none;
   border: 1px solid lightgray;
   cursor: pointer;
+  border-radius: 2px;
 }
 
 .Drop_Down,
@@ -345,6 +360,9 @@ ul.set_items {
   width: 100%;
   text-align: center;
   justify-content: space-between;
+  border-radius: 2px;
+  background-color: var(--whitee-color);
+
 }
 
 .Drop_Down:hover,
@@ -352,7 +370,8 @@ ul.set_items {
 .Course_Down:hover,
 .profile_certicate:hover,
 .log_out:hover {
-  background-color: #8000801c;
+  background-color:var(--profile-hover-color);
+  border-radius: 2px;
 }
 
 i.fa.fa-user,
@@ -367,11 +386,30 @@ p.profile-name {
   align-items: flex-start;
   display: flex;
   font-weight: inherit;
-  font-family: 'Roboto';
-  color: black;
+  color: var(--black);
   font-size: 14px;
 }
 
+img.profile {
+  height: 40px !important;
+  width: 40px !important;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile_img {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.profile_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
 
 /* search bar design */
 

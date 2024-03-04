@@ -171,3 +171,15 @@ let find_language_unlock_module=get_data.data()[find_language+'_unlock_total_mod
 
 //   window.location.href='./Roadmap.html';
 // });
+
+
+// -------------loginvalidate----------
+if(sessionStorage.getItem('userdetails')){
+  let sessionStorage_value=sessionStorage.getItem('userdetails') // key name of data in session or localstorage
+  loginbtn.style.display = 'none'; // login signup btn display off
+  usrprofile.classlist.add('usrprofile') //get and rename the correct name of user profile
+  // .usrprofile - css added feel free to change class names as u want
+}
+else{
+  loginbtn.style.display = 'block'
+}

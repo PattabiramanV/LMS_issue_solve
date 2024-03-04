@@ -230,12 +230,12 @@ Explorebtn.forEach(async (btn) => {
     } else if (btn === Explorebtn[1]) {
       find_language = "Css";
     } else if (btn === Explorebtn[2]) {
-      find_language == "Js";
+      find_language = "Javascript";
     } else if (btn === Explorebtn[3]) {
-      find_language == "Mysql";
+      find_language = "Mysql";
     }
     else{
-        find_language=="Php"
+        find_language="Php"
     }
 
     let data_get = await updateDoc(ref, {

@@ -580,3 +580,28 @@ else if (certificate_get === "MySql_Overall_Quiz") {
 } else {
   console.log("Site on the Work");
 }
+
+
+// Profile_Icon
+// const profileImg = document.querySelector(".profile");
+// profileImg.src = storedImageURL;
+
+// // Retrieve imageURL from localStorage when the page loads
+// document.addEventListener("DOMContentLoaded", function () {
+//   const storedImageURL = localStorage.getItem("imageURL");
+
+//   if (storedImageURL) {
+//     const profileImg = document.querySelector(".profile");
+//     profileImg.src = storedImageURL;
+//   }
+// });
+
+
+
+
+// when i click the it will go to home page
+
+// let Dckaplogo = document.querySelector(".DCKAPlOGO");
+Dckaplogo.addEventListener("click",()=>{
+  window.location.href='./index.html'
+})

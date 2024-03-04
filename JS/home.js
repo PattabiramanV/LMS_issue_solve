@@ -205,3 +205,10 @@ if(localStorage.getItem('userdetails')){
 }
 
 
+
+// Profile_page_navigate
+
+let profile_page_nav=document.querySelector("#profile_img")
+profile_page_nav.addEventListener("click",()=>{
+       window.location.href='./profile.html'
+})

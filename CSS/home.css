@@ -150,6 +150,8 @@ img#profile_img {
   margin-right: 33px;
   position: relative;
   left: 250px;
+  height: 75%;
+  cursor: pointer;
 }
 .login_parent{
   width:20%;

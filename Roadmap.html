@@ -6,9 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <title>LMS WEBSITE</title>
-  <link rel="stylesheet" href="./CSS/Roadmap.css" />
+  <title>LMS WEBSITES</title>
+  <link rel="stylesheet" href="./CSS/Roadmap.css">
   <link rel="icon" type="image/x-icon" href="./Assests/icons8-learning-50.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Hanuman:wght@100;300;400;700;900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kalam:wght@300;400;700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
@@ -19,31 +25,37 @@
       <img src="./Assests/Logodk.png" alt="" class="DCKAPlOGO"></i>
     </div>
 
-    <div class="search_bar">
-      <input type="text" placeholder="Search" />
-      <i class="fas fa-search"></i>
+    <div class="group">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+        <g>
+          <path
+            d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+          </path>
+        </g>
+      </svg>
+      <input placeholder="Search" type="search" class="input">
     </div>
 
     <div class="navbar_content">
       <i class="bi bi-grid"></i>
       <i class='bx bx-sun' id="darkLight"></i>
-      <img src="./Assests/236831.png" alt="" class="profile" />
+      <img src="./Assests/Circle-icons-profile.svg" alt="" class="profile" />
     </div>
     <div class="profile_bar_list">
       <div class="profile_down">
-        <i class="fa fa-user" aria-hidden="true" class="profile-icon" style="color: black;"></i>
+        <i class="fa fa-user" aria-hidden="true" class="profile-icon"></i>
         <P class="profile-name">profile</P>
       </div>
       <div class="Course_Down">
-        <i class="fa-solid fa-book" class="profile-icon" style="color: black;"></i>
+        <i class="fa-solid fa-book"></i>
         <P class="profile-name">My Courses</P>
       </div>
       <div class="profile_certicate">
-        <i class="fa-solid fa-award" class="profile-icon" style="color: black;"></i>
+        <i class="fa-solid fa-award" class="profile-icon"></i>
         <P class="profile-name">certificate</P>
       </div>
       <div class="log_out">
-        <i class="fa-solid fa-right-from-bracket" class="profile-icon" style="color: black;"></i>
+        <i class="fa-solid fa-right-from-bracket" class="profile-icon"></i>
         <P class="profile-name">Logout</P>
       </div>
     </div>
@@ -62,13 +74,12 @@
           </a>
 
         </li>
-
         <li class="item">
           <a href="./Learning.html" class="nav_link submenu_item">
             <span class="navlink_icon">
               <i class="bx bx-grid-alt"></i>
             </span>
-            <span class="navlink">learning</span>
+            <span class="navlink">Learning</span>
           </a>
         </li>
       </ul>
@@ -82,6 +93,7 @@
             <span class="navlink">DashBoard</span>
           </a>
         </li>
+
 
         <li class="item">
           <a href="./Roadmap.html" class="nav_link">
@@ -98,7 +110,7 @@
             <span class="navlink_icon">
               <i class="bx bx-cog"></i>
             </span>
-            <span class="navlink">Setting</span>
+            <span class="navlink">Settings</span>
           </a>
         </li>
       </ul>
@@ -106,18 +118,19 @@
       <div class="bottom_content">
         <div class="bottom expand_sidebar">
           <span> Expand</span>
-          <i class='bx bx-log-in'></i>
+          <i class='bx bx-expand-horizontal'></i>
         </div>
         <div class="bottom collapse_sidebar">
           <span> Collapse</span>
-          <i class='bx bx-log-out'></i>
+          <i class='bx bx-expand-horizontal'></i>
         </div>
       </div>
     </div>
+
   </nav>
   <div class="Content_Area">
     <div class="container">
-      <h1>Frontend Development Roadmap</h1>
+      <h1>Full Stack Developer Road Map</h1>
       <hr class="centered-hr">
       <div class="step">
         <div class="line-connector" id="internet-html-connector"></div>

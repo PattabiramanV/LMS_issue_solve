@@ -56,10 +56,10 @@ let cssbtn=document.querySelector(".css_btn")
 let jsbtn=document.querySelector(".js_btn")
 let mysqlbtn=document.querySelector(".mysql_btn")
 let phpbtn=document.querySelector(".php_btn")
-
+let profile=document.querySelector(".profile")
 // learning.addEventListener("click",()=>{
 //     alert("learning menu clicked")
-// })
+// });
 
 dashboard.addEventListener("click",()=>{
     window.location.href="./dashboard.html";
@@ -116,21 +116,18 @@ Explorebtn[1].addEventListener("click",()=>{
 
     find_language = 'Javascript';
     language_change_Fun();
-
     });
 
     Explorebtn[3].addEventListener("click",()=>{
 
       find_language = 'Mysql';
       language_change_Fun();
-
       });
 
       Explorebtn[4].addEventListener("click",()=>{
 
         find_language = 'Php';
         language_change_Fun();
-
         });
 
 async  function language_change_Fun(){

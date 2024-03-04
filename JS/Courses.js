@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
@@ -22,142 +22,188 @@ const firebaseConfig = {
 };
 
 let id = localStorage.getItem("UserId");
-// Initialize Firebase
+console.log(id);
+
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
 
-const exploreCoursesContainer = document.querySelector(".articles");
+try {
+  let userRef = doc(database, "Learning", `User=${id}`);
+  let userData = await getDoc(userRef);
+  
+  // Check if the user data exists
 
-let enrolledCourses = JSON.parse(localStorage.getItem("enrolledCourses")) || [];
-let percentageCalSpan;
-exploreCoursesContainer.addEventListener("click", async function (event) {
-  try {
-    const clickedCourseContainer = event.target.closest(".article-wrapper");
-    const courseContainers =
-      exploreCoursesContainer.querySelectorAll(".article-wrapper");
-    let index = Array.from(courseContainers).findIndex(
-      (container) => container === clickedCourseContainer
-    );
+  const languages = ["Html", "Css", "Javascript", "Mysql", "Php"];
 
-    if (enrolledCourses.includes(index)) {
-      console.log("Course already enrolled!");
-      return;
-    }
-    if (enrolledCourses.length >= 5) {
-      console.log("You can only enroll in 5 courses.");
-      return;
-    }
-
-    const enrolledCourseContainer = document.createElement("div");
-    enrolledCourseContainer.classList.add("Progress_bar");
-
-    const courseDetails = [
-      { name: "HTML", imgSrc: "./Assests/html.webp" },
-      { name: "CSS", imgSrc: "./Assests/css.webp" },
-      { name: "JavaScript", imgSrc: "./Assests/js.webp" },
-      {
-        name: "MySQL",
-        imgSrc: "./Assests/7723d1592a0b454cb59a32cf5ab35642-SQL2.webp",
-      },
-      { name: "PHP", imgSrc: "./Assests/php.webp" },
-    ];
-
-    enrolledCourseContainer.innerHTML = `
-      <div class="progress_language">
-        <img src="${courseDetails[index].imgSrc}" alt="" class="enroll_img">
-      </div>
-      <hr>
-      <div class="progress_status">
-        <p class="enroll_language">${courseDetails[index].name}</p>
-        <div class="percentage">
-          <p class="progress">In progress</p>
-          <span class="percentage_cal"></span>
+  languages.forEach(language => {
+    const userLearningData = userData.data()[`${language}_Complete_Module`];
+    console.log(`${language} Complete Module:`, userLearningData);
+    if (userLearningData > 1) {
+      const completedCourseContainer = document.createElement("div");
+      completedCourseContainer.classList.add("Progress_bar");
+      completedCourseContainer.innerHTML = `
+        <div class="progress_language">
+          <img src="./Assests/${language.toLowerCase()}.webp" alt="" class="enroll_img">
         </div>
-      </div>
-    `;
-
-    // Append the enrolled course container to the DOM
-    const enrolledCoursesContainer = document.querySelector(
-      ".progressing_bar .Progress_container"
-    );
-    enrolledCoursesContainer.appendChild(enrolledCourseContainer);
-
-    // Update enrolled courses array and localStorage
-    await addDoc(collection(database, "enrolledCourses"), {
-      name: courseDetails[index].name,
-      imgSrc: courseDetails[index].imgSrc,
-    });
-
-    enrolledCourses.push(index);
-
-    localStorage.setItem("enrolledCourses", JSON.stringify(enrolledCourses));
-
-    try {
-      let ref = doc(database, "Learning", `user=${id}`);
-      let data_ref = await getDoc(ref);
-      let percentageData;
-      switch (courseDetails[index].name) {
-        case "HTML":
-          percentageData = data_ref.data().Html_Total_Percentage;
-          break;
-        case "CSS":
-          percentageData = data_ref.data().Css_Total_Percentage;
-          break;
-        case "JavaScript":
-          percentageData = data_ref.data().Javascript_Total_Percentage;
-          break;
-        case "MySQL":
-          percentageData = data_ref.data().Mysql_Total_Percentage;
-          break;
-        case "PHP":
-          percentageData = data_ref.data().Php_Total_Percentage;
-          break;
-      }
-      if (percentageData !== undefined && percentageCalSpan !== null) {
-        percentageCalSpan.innerHTML = percentageData;
-      } else {
-        console.error("Percentage data or percentageCalSpan is undefined.");
-      }
-    } catch (error) {
-      console.error("Error occurred:", error);
+        <hr>
+        <div class="progress_status">
+          <p class="enroll_language">${language}</p>
+          <div class="percentage">
+            <p class="progress">In Progress</p>
+            <span class="percentage_cal"></span>
+          </div>
+        </div>
+      `;
+      
+      // Append the completed course container to the DOM
+      const completedCoursesContainer = document.querySelector(
+        ".progressing_bar .Progress_container")
+      completedCoursesContainer.appendChild(completedCourseContainer);
+    }  else {
+      console.log(`User's ${language}_Complete_Module is not greater than 1`);
     }
-  } catch (error) {
-    console.error("Error:", error.message);
-  }
-});
+  });
 
-// Retrieve data
-window.addEventListener("load", async function () {
-  try {
-    const querySnapshot = await getDocs(
-      collection(database, "enrolledCourses")
-    );
-    querySnapshot.forEach((doc) => {
-      const enrolledCourseContainer = document.createElement("div");
-      enrolledCourseContainer.classList.add("Progress_bar");
+  let percentages = document.querySelectorAll(".percentage_cal");
+  languages.forEach((language1, index) => {
+    percentages[index].innerHTML = userData.data()[`${language1}_Total_Percentage`] + "%";
+  });
+} 
+catch (error) {
+  console.error("Error fetching user data:", error);
+}
 
-      enrolledCourseContainer.innerHTML = `
-                <div class="progress_language">
-                    <img src="${doc.data().imgSrc}" alt="" class="enroll_img">
-                </div>
-                <hr>
-                <div class="progress_status">
-                    <p class="enroll_language">${doc.data().name}</p>
-                    <div class="percentage">
-                        <p class="progress">In progress</p>
-                        <span class="percentagecalculation"></span>
-                    </div>
-                </div>
-            `;
-      const enrolledCoursesContainer = document.querySelector(
-        ".progressing_bar .Progress_container"
-      );
-      enrolledCoursesContainer.appendChild(enrolledCourseContainer);
-    });
-  } catch (error) {
-    console.error("Error:", error.message);
-  }
-});
+
+// const exploreCoursesContainer = document.querySelector(".articles");
+
+// let enrolledCourses = JSON.parse(localStorage.getItem("enrolledCourses")) || [];
+// let percentageCalSpan;
+// exploreCoursesContainer.addEventListener("click", async function (event) {
+//   try {
+//     const clickedCourseContainer = event.target.closest(".article-wrapper");
+//     const courseContainers =
+//       exploreCoursesContainer.querySelectorAll(".article-wrapper");
+//     let index = Array.from(courseContainers).findIndex(
+//       (container) => container === clickedCourseContainer
+//     );
+
+//     if (enrolledCourses.includes(index)) {
+//       console.log("Course already enrolled!");
+//       return;
+//     }
+//     if (enrolledCourses.length >= 5) {
+//       console.log("You can only enroll in 5 courses.");
+//       return;
+//     }
+
+//     const enrolledCourseContainer = document.createElement("div");
+//     enrolledCourseContainer.classList.add("Progress_bar");
+
+//     const courseDetails = [
+//       { name: "HTML", imgSrc: "./Assests/html.webp" },
+//       { name: "CSS", imgSrc: "./Assests/css.webp" },
+//       { name: "JavaScript", imgSrc: "./Assests/js.webp" },
+//       {
+//         name: "MySQL",
+//         imgSrc: "./Assests/7723d1592a0b454cb59a32cf5ab35642-SQL2.webp",
+//       },
+//       { name: "PHP", imgSrc: "./Assests/php.webp" },
+//     ];
+
+//     enrolledCourseContainer.innerHTML = `
+//       <div class="progress_language">
+//         <img src="${courseDetails[index].imgSrc}" alt="" class="enroll_img">
+//       </div>
+//       <hr>
+//       <div class="progress_status">
+//         <p class="enroll_language">${courseDetails[index].name}</p>
+//         <div class="percentage">
+//           <p class="progress">In progress</p>
+//           <span class="percentage_cal"></span>
+//         </div>
+//       </div>
+//     `;
+
+//     // Append the enrolled course container to the DOM
+//     const enrolledCoursesContainer = document.querySelector(
+//       ".progressing_bar .Progress_container"
+//     );
+//     enrolledCoursesContainer.appendChild(enrolledCourseContainer);
+
+//     // Update enrolled courses array and localStorage
+//     await addDoc(collection(database, "enrolledCourses"), {
+//       name: courseDetails[index].name,
+//       imgSrc: courseDetails[index].imgSrc,
+//     });
+
+//     enrolledCourses.push(index);
+
+//     localStorage.setItem("enrolledCourses", JSON.stringify(enrolledCourses));
+
+//     try {
+//       let ref = doc(database, "Learning", `user=${id}`);
+//       let data_ref = await getDoc(ref);
+//       let percentageData;
+//       switch (courseDetails[index].name) {
+//         case "HTML":
+//           percentageData = data_ref.data().Html_Total_Percentage;
+//           break;
+//         case "CSS":
+//           percentageData = data_ref.data().Css_Total_Percentage;
+//           break;
+//         case "JavaScript":
+//           percentageData = data_ref.data().Javascript_Total_Percentage;
+//           break;
+//         case "MySQL":
+//           percentageData = data_ref.data().Mysql_Total_Percentage;
+//           break;
+//         case "PHP":
+//           percentageData = data_ref.data().Php_Total_Percentage;
+//           break;
+//       }
+   
+//         percentageCalSpan.innerHTML = percentageData;
+
+//     } catch (error) {
+//       console.error("Error occurred:", error);
+//     }
+//   } catch (error) {
+//     console.error("Error:", error.message);
+//   }
+// });
+
+// // Retrieve data
+// window.addEventListener("load", async function () {
+//   try {
+//     const querySnapshot = await getDocs(
+//       collection(database, "enrolledCourses")
+//     );
+//     querySnapshot.forEach((doc) => {
+//       const enrolledCourseContainer = document.createElement("div");
+//       enrolledCourseContainer.classList.add("Progress_bar");
+
+//       enrolledCourseContainer.innerHTML = `
+//                 <div class="progress_language">
+//                     <img src="${doc.data().imgSrc}" alt="" class="enroll_img">
+//                 </div>
+//                 <hr>
+//                 <div class="progress_status">
+//                     <p class="enroll_language">${doc.data().name}</p>
+//                     <div class="percentage">
+//                         <p class="progress">In progress</p>
+//                         <span class="percentagecalculation"></span>
+//                     </div>
+//                 </div>
+//             `;
+//       const enrolledCoursesContainer = document.querySelector(
+//         ".progressing_bar .Progress_container"
+//       );
+//       enrolledCoursesContainer.appendChild(enrolledCourseContainer);
+//     });
+//   } catch (error) {
+//     console.error("Error:", error.message);
+//   }
+// });
 
 // Nav bar
 const body = document.querySelector("body");
@@ -200,10 +246,10 @@ sidebar.addEventListener("mouseleave", () => {
 
 // Function to toggle dark mode
 
+
 function toggleDarkMode() {
   const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
-  searchIcon.style.color = isDarkMode ? "white" : "black";
   headings.forEach((heading) => {
     if (isDarkMode) {
       heading.style.color = "white";
@@ -213,10 +259,12 @@ function toggleDarkMode() {
     Dckaplogo.src = body.classList.contains("dark")
       ? "./Assests/Dckapwhite.png"
       : "./Assests/Logodk.png";
-  });
-
-  sessionStorage.setItem("darkMode", isDarkMode);
+      sessionStorage.setItem("darkMode", isDarkMode);
+  })
 }
+
+
+
 
 const storedDarkMode = sessionStorage.getItem("darkMode");
 if (storedDarkMode === "true") {
@@ -293,7 +341,7 @@ document.querySelector(".profile_down").addEventListener("click", function () {
 let Explorebtn = document.querySelectorAll(".read-more");
 console.log(Explorebtn[0]);
 Explorebtn.forEach(async (btn) => {
-  let ref = doc(database, "Learning", "0");
+  let ref = doc(database, "Learning", `user=${id}`);
   let get_data = await getDoc(ref);
   let find_language = 0;
 
@@ -307,6 +355,9 @@ Explorebtn.forEach(async (btn) => {
     } else if (btn === Explorebtn[3]) {
       find_language == "Mysql";
     }
+    else{
+        find_language=="Php"
+    }
 
     let data_get = await updateDoc(ref, {
       Find_Language_type: find_language,
@@ -315,3 +366,42 @@ Explorebtn.forEach(async (btn) => {
     window.location.href = "./learning_content.html";
   });
 });
+
+
+
+
+// Fetch with local storage Profile Img
+
+
+// let storeprofileImg=localStorage.getItem("imageURL");
+// const profileImg = document.querySelector(".profile");
+// profileImg.src = storeprofileImg
+// // Img Effect 
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   const storedImageURL = localStorage.getItem("imageURL");
+//   if (storedImageURL) {
+//       const profileImg = document.querySelector(".profile");
+//       profileImg.src = storedImageURL;
+//   }
+// });
+
+
+
+// SCroll bar actions 
+
+
+// Calculate the number of child elements appended to .Progress_container
+// let progress=document.querySelector(".progressing_bar")
+// const progressContainer = document.querySelector('.Progress_container');
+// console.log(progressContainer);
+// const numberOfChildren = progressContainer.children.length;
+// console.log(numberOfChildren);
+
+// // Conditionally add a CSS class to enable the scrollbar
+// if (numberOfChildren > 4) {
+//   console.log("hi");
+//     progressContainer.classList.add('scrollbar-enabled');
+// } else {
+//     progressContainer.classList.remove('scrollbar-enabled');
+// }

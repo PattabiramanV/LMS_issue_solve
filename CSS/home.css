@@ -154,7 +154,8 @@ img#profile_img {
   height: 90%;
   display: flex;
   justify-content: flex-end;
-  display: none;
+
+  /* display: none; */
 }
 .container_1 {
   padding: 76px;
@@ -443,7 +444,7 @@ margin-top: 10%;
 }
 .footer {
 display: flex;
-justify-content: space-evenly;
+justify-content: space-between;
 }
 a#change {
   color: black;

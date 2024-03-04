@@ -1,3 +1,8 @@
+// if(localStorage.getItem("userdetails") == null){
+//      window.location.href="./signup.html";
+// }
+"use strict";
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
   getFirestore,
@@ -21,7 +26,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-let id=localStorage.getItem("UserId");
+let id = localStorage.getItem("UserId");
 
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
@@ -79,18 +84,9 @@ let searchicon = document.querySelector(".fas");
 function toggleDarkMode() {
   const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
-  searchicon.style.color = isDarkMode ? "white" : "black";
-  headings.forEach((heading) => {
-      if (isDarkMode) {
-          heading.style.color = "white";
-      } else {
-          heading.style.color = "#b95233";
-      }
   Dckaplogo.src = body.classList.contains("dark")
-  ? "./Assests/Dckapwhite.png"
-  : "./Assests/Logodk.png";
-  });
-
+    ? "./Assests/Dckapwhite.png"
+    : "./Assests/Logodk.png";
   sessionStorage.setItem("darkMode", isDarkMode);
 }
 
@@ -99,9 +95,7 @@ if (storedDarkMode === "true") {
   toggleDarkMode();
 }
 
-
 darkLight.addEventListener("click", toggleDarkMode);
-
 
 // Profile
 
@@ -164,9 +158,28 @@ headingnavigate.forEach(async (links) => {
     }
     await updateDoc(ref, {
       Find_Language_type: find_language,
-      find_index:0
+      find_index: 0,
     });
     window.location.href = "./learning_content.html";
   });
 });
 
+
+
+
+
+// let storeprofileImg=localStorage.getItem("imageURL");
+// const profileImg = document.querySelector(".profile");
+// profileImg.src = storeprofileImg
+// // Img Effect 
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   const storedImageURL = localStorage.getItem("imageURL");
+
+ 
+
+//   if (storedImageURL) {
+//       const profileImg = document.querySelector(".profile");
+//       profileImg.src = storedImageURL;
+//   }
+// });

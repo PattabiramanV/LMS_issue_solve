@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
 
 body,
@@ -366,7 +366,7 @@ p.profile-name {
   align-items: flex-start;
   display: flex;
   font-weight: inherit;
-  font-family: 'Roboto';
+  font-family: "Fira Sans", sans-serif;
   color: black;
   font-size: 14px;
 }
@@ -419,20 +419,20 @@ p.profile-name {
 /* ------------------Dashboard--------------- */
 .body
 {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Fira Sans", sans-serif;
   width: calc(100% - 224px);
   /* align-items: center; */
   position: absolute;
-  top: 11.5%;
+  top: 10.7%;
   right: 0%;
-  /* background-color: #F1EAFF; */
-  height: 90vh;
+  background-color: #eaeaea;
+  height: 89vh;
 }
 
 /* .body
 {
   margin: 6% 17.4%;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Fira Sans", sans-serif;
 } */
 /* .dashboard_profile 
 {
@@ -644,7 +644,7 @@ h1
 }
 .heading_chart
 {
-  font-family: "Roboto";
+  font-family: "Fira Sans", sans-serif;
   color: #A367B1;
   font-size: 180%;
   text-align: center;
@@ -655,7 +655,7 @@ h1
 }
 .programming_status
 {
-  font-family: "Roboto";
+ font-family: "Fira Sans", sans-serif;
   display: flex;
   align-items: center;
   margin: 0 auto;
@@ -733,18 +733,27 @@ h1
 {
   font-size: 12px;
 }
-.dashboard_content
-{
+/* .dashboard_content
+{ */
   /* background-color: #4070f4; */
-  display: flex;
+  /* display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   gap: 50px;
+} */
+.dashboard_content
+{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: flex-start;
+  width: 700px;
+  gap: 66px;
+  margin: 0;
 }
 .totals
 {
   color: var(--white-color);
-  margin: 2% 0% 0% 2%;
+  margin: 2% 0% 0% 3%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -771,6 +780,17 @@ h1
 }
 #chart_container
 {
+  margin: 0% 0% 0% 2%;
   width: 640px;
   height: auto;
+}
+
+.act
+{
+  background-color: #333;
+}
+
+.act2
+{
+  color: white;
 }

@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="./CSS/dashboard.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Hanuman:wght@100;300;400;700;900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kalam:wght@300;400;700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
 <!-------------------------------------- navbar ----------------------------------->
@@ -148,124 +151,10 @@
         <div class="pie_chart">
             <h1 class="pie_chart_topic">Bar Chart</h1>
             <div id="chart_container">
-                <canvas id="bar_chart" width="800" height="450"></canvas>
+                <canvas id="bar_chart" width="700" height="400"></canvas>
             </div>
         </div>
     </div>
-        <!-- <div class="dashboard_profile">
-            <img src="./Assests/236831.png" alt="" class="dashboard_profile_img">
-            <div class="dashboard_profile_content">
-                <p class="uname">Hello, <span class="user_name">Username</span></p>
-                <p class="dash">Dashboard</p>
-            </div>
-        </div> -->
-        <!----------------- Dashboard_content ------------------>
-        <!-- <div class="dashboard_content">
-            <div class="total_points totals">
-                <div class="points_img">
-                  <i class="fa-solid fa-record-vinyl icon"></i>
-                </div>
-                <div class="point_content content">
-                  <p class="con">Total Points</p>
-                  <p class="Total_Ponits con" id="Total_Ponits">0</p>
-                </div>
-            </div>
-            <div class="total_quz totals">
-                <div class="quiz_img">
-                  <i class="fa-solid fa-record-vinyl icon"></i>
-                </div>
-                <div class="quiz_content content">
-                  <p class="con">Total Quiz</p>
-                  <p class="Total_Quiz con">0</p>
-                </div>
-            </div>
-            <div class="total_star totals">
-                <div class="star_img">
-                  <i class="fa-solid fa-star icon"></i>
-                </div>
-                <div class="star_content content">
-                  <p class="con">Total Stars</p>
-                  <p class="Total_Stars  con">0</p>
-                </div>
-            </div>
-        </div> -->
-        <!--------------- Pie Chart ------------->
-        <!-- <div class="pie_chart">
-            <h1>Pie Chart</h1>
-            <div class="btn">
-                <div class="html">
-                    <button class="pie_btn" id="html_btn">HTML</button>
-                </div>
-                <div class="css">
-                    <button class="pie_btn" id="css_btn">CSS</button>
-                </div>
-                <div class="js">
-                    <button class="pie_btn" id="js_btn">JavaScript</button>
-                </div>
-                <div class="mysql">
-                    <button class="pie_btn" id="mysql_btn">MySQL</button>
-                </div>
-            </div>
-        </div> -->
-        <!--------------- Display HTML Piechart ----------->
-
-        <!-- <div class="display_chart_html display_chart">
-            <span class="cross_html cross">&times;</span>
-            <h2 class="heading_chart_html heading_chart">HTML Pie Chart</h2>
-            <div class="programming_status_html programming_status">
-                <div class="chart_container_html chart_container">
-                    <canvas class="my_chart_html my_chart"></canvas>
-                </div>
-                <div class="details_html details">
-                    <ul></ul>
-                </div>
-            </div>
-        </div> -->
-
-        <!----------------- Display CSS piachart ----------------->
-
-        <!-- <div class="display_chart_css display_chart">
-            <span class="cross_css cross">&times;</span>
-            <h2 class="heading_chart_css heading_chart">CSS Pie Chart</h2>
-            <div class="programming_status_css programming_status">
-                <div class="chart_container_css chart_container">
-                    <canvas class="my_chart_css my_chart"></canvas>
-                </div>
-                <div class="details_css details">
-                    <ul></ul>
-                </div>
-            </div>
-        </div> -->
-
-        <!----------------- Display Javascript piachart ----------------->
-
-        <!-- <div class="display_chart_js display_chart">
-            <span class="cross_js cross">&times;</span>
-            <h2 class="heading_chart_js heading_chart">JavaScript Pie Chart</h2>
-            <div class="programming_status_js programming_status">
-                <div class="chart_container_js chart_container">
-                    <canvas class="my_chart_js my_chart"></canvas>
-                </div>
-                <div class="details_js details">
-                    <ul></ul>
-                </div>
-            </div>
-        </div> -->
-
-        <!----------------- Display MySQL piachart ----------------->
-        
-        <!-- <div class="display_chart_mysql display_chart"> -->
-            <!-- <span class="cross_mysql cross">&times;</span>
-            <h2 class="heading_chart_mysql heading_chart">MySQL Pie Chart</h2>
-            <div class="programming_status_mysql programming_status">
-                <div class="chart_container_mysql chart_container">
-                    <canvas class="my_chart_mysql my_chart"></canvas>
-                </div>
-                <div class="details_mysql details">
-                    <ul></ul>
-                </div>
-            </div>
-        </div> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
     <script type="module" src="./JS/dashboard.js"></script>
 </body>

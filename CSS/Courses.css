@@ -363,11 +363,10 @@ input:hover {
 .icon {
   position: absolute;
   left: 1rem;
-  fill: #AA3EE2;
+  fill: #9785a1;
   width: 1rem;
   height: 1rem;
 }
-
 
 
 
@@ -416,6 +415,20 @@ input:hover {
   color: #b95233;
 }
 
+/* .Enroll_heading_Course {
+  text-align: center;
+  font-size: 24px;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  font-weight: 600;
+  justify-content: center;
+  position: relative;
+  left: 35rem;
+  cursor: pointer;
+  width: 18%;
+  color: #b95233;
+} */
+
 .Enroll_heading_Course {
   text-align: center;
   font-size: 24px;
@@ -428,7 +441,9 @@ input:hover {
   cursor: pointer;
   width: 18%;
   color: #b95233;
+  top: 8px;
 }
+
 
 .Enroll_heading::after,.Enroll_heading_Course::after {
   content: "";
@@ -527,10 +542,16 @@ p.progress {
   color: darkslategray;
 }
 
-.List.Courses {
+/* .List.Courses {
   width: 94%;
   margin-left: 3rem;
   margin-top: 2rem;
+} */
+
+.List.Courses {
+  width: 94%;
+  margin-left: 3rem;
+  margin-top: 6rem;
 }
 
 

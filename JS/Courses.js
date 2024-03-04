@@ -159,11 +159,45 @@ const firebaseConfig = {
   messagingSenderId: "1022626638467",
   appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6",
 };
-let id = localStorage.getItem("UserId");
-console.log(id);
-
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
+
+var userDetailsString = localStorage.getItem("userdetails");
+var userDetails = JSON.parse(userDetailsString);
+let id=userDetails.user_id;
+console.log(id);
+
+let Explorebtn = document.querySelectorAll(".read-more");
+console.log();
+Explorebtn.forEach(async (btn) => {
+  let ref = doc(database, "Learning", `User=${id}`);
+  let get_data = await getDoc(ref);
+  let find_language = 0;
+
+  btn.addEventListener("click", async (e) => {
+    if (btn == Explorebtn[0]) {
+      find_language = "Html";
+    } else if (btn == Explorebtn[1]) {
+      find_language = "Css";
+    } else if (btn == Explorebtn[2]) {
+      find_language = "Javascript";
+    } else if (btn === Explorebtn[3]) {
+      find_language = "Mysql";
+    }
+    else{
+        find_language="Php"
+    }
+    let find_language_unlock_module=get_data.data()[find_language+"_unlock_total_module"]
+
+    let data_get = await updateDoc(ref, {
+      Find_Language_type: find_language,
+      find_index: find_language_unlock_module
+    });
+    window.location.href = "./learning_content.html";
+  });
+});
+
+
 let Progressbarconatiner=document.querySelector(".progressing_bar")
 
 try {
@@ -205,7 +239,7 @@ try {
     }
   });
 
-  let percentages = document.querySelectorAll(".percentage_cal");
+  let percentages = document.querySelector(".percentage_cal");
   languages.forEach((language1, index) => {
     percentages[index].innerHTML = userData.data()[`${language1}_Total_Percentage`] + "%";
   });
@@ -217,34 +251,7 @@ catch (error) {
 
 // Button Navigation With Learning Page
 
-let Explorebtn = document.querySelectorAll(".read-more");
-console.log(Explorebtn[0]);
-Explorebtn.forEach(async (btn) => {
-  let ref = doc(database, "Learning", `user=${id}`);
-  let get_data = await getDoc(ref);
-  let find_language = 0;
 
-  btn.addEventListener("click", async (e) => {
-    if (btn === Explorebtn[0]) {
-      find_language = "Html";
-    } else if (btn === Explorebtn[1]) {
-      find_language = "Css";
-    } else if (btn === Explorebtn[2]) {
-      find_language == "Js";
-    } else if (btn === Explorebtn[3]) {
-      find_language == "Mysql";
-    }
-    else{
-        find_language=="Php"
-    }
-
-    let data_get = await updateDoc(ref, {
-      Find_Language_type: find_language,
-      find_index: 0,
-    });
-    window.location.href = "./learning_content.html";
-  });
-});
 
 
 
@@ -252,9 +259,9 @@ Explorebtn.forEach(async (btn) => {
 // Fetch with local storage Profile Img
 
 
-let storeprofileImg=localStorage.getItem("imageURL");
-const profileImg = document.querySelector(".profile");
-profileImg.src = storeprofileImg
+// let storeprofileImg=localStorage.getItem("imageURL");
+// const profileImg = document.querySelector(".profile");
+// profileImg.src = storeprofileImg
 // Img Effect 
 
 document.addEventListener("DOMContentLoaded", function () {

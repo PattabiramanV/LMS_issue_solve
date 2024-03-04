@@ -529,13 +529,14 @@ button:hover{
   /* font-family: "Roboto"; */
   font-family: "Fira Sans", sans-serif;
   font-weight: bold;
-  font-size: 22pt;
-  background: linear-gradient(to right, #f88418, #e99414, #fda155, #cea889, rgb(196, 127, 70) 80%, #ffa238b6 );
-  -webkit-text-fill-color: transparent;
+  font-size: 30pt;
+  /* background: linear-gradient(to right, #f88418, #e99414, #fda155, #cea889, rgb(196, 127, 70) 80%, #ffa238b6 ); */
+  /* -webkit-text-fill-color: transparent; */
   background-clip: text;
-  -webkit-background-clip: text;
+  /* -webkit-background-clip: text; */
   text-align: center;
-  /* margin: 10px 0px 0px 0px ; */
+  /* margin: 10px 0px 0px 0px; */
+  color: #c84e2a;
 }
 h3#Quiz_question {
   font-size: 22px;
@@ -554,7 +555,7 @@ form label{
   bottom: 3px;
 }
 .bottom_content_quiz strong {
-  font-size: 32px;
+  font-size: 38px;
 }
 
 /*........................................Quiz Result....................*/

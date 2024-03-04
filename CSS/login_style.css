@@ -29,7 +29,7 @@
 }
 .input-parent-section
 {
-  margin: 30px 0;
+  margin: 20px 0;
 
 }
 .google_btn ,.btn_for_login{
@@ -77,9 +77,17 @@
   top: 9px;
   right: 6px;
 }
-.invalid_mail,.invalid_password{
-  /* visibility: hidden; */
-
+.invalid_email{
+  /* color: red;
+  padding: 8px 0px ;
+  display: block; */
+ visibility: hidden;
+}
+.invalid_password{
+  /* color: red;
+  padding: 8px 0px ;
+  display: block; */
+  visibility: hidden;
 }
 
 #login_btn{
@@ -89,7 +97,7 @@
   background-color:#c84e2a;
   color:white;
   font-size: 14px;
-  margin-bottom: 50px;
+  margin-bottom: 37px;
   position: relative;
   top: 20px;
   font-family: "Fira Sans", sans-serif;
@@ -104,6 +112,7 @@
   color: red;
   font-family: "Fira Sans", sans-serif;
   margin: 4px;
+  cursor: pointer;
   
 }
 /* ---------- */
@@ -129,22 +138,80 @@
     animation: spin 2s linear infinite;
   }
 
-  label.invalid_email {
-    position: absolute;
-    top: 103%;
-    color: red;
-}
 
-.login_password {
-    position: relative;
-    top: 2rem;
-}
-label.invalid_password {
-    position: absolute;
-    top: 6rem;
-    color: red;
-}
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+  /* -----forgot------ */
+
+
+.maincontainer3 {
+  max-width: 1440px;
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  /* background-color: aquamarine; */
+}
+
+
+.inner-reset_container{
+width: 100%;
+display: flex;
+justify-content: center;
+margin-top: 50px;
+/* background-color: gray; */
+
+}
+#reset_form{
+width: 30%;
+height: 400px;
+display: flex;
+flex-direction: column;
+align-items:center ;
+border-radius: 5px;
+box-shadow:0px 0px 2px gray ;
+margin-top: 10px;
+font-family: "Fira Sans", sans-serif;
+
+
+}
+div.email,.new_ps,.con_ps {
+display: flex;
+width: 70%;
+padding: 12px;
+margin: 5px;
+flex-direction: inherit;
+}
+input#reset_id,#new,#confirm{
+padding: 12px;
+border-radius: 3px;
+border: none;
+box-shadow: 0px 0px 2px gray;
+}
+
+h4#mail,#new_pass,#con_password {
+margin: 2px;
+padding: 2px;
+}
+
+button#Reset_button {
+width: 200%;
+display: flex;
+justify-content: center;
+position: relative;
+left: -24px;
+padding: 6px;
+top: 9px;
+background-color: #c84e2a;
+border: none;
+border-radius:3px ;
+color: white;
+}
+#Reset_Title
+{
+font-size: 18px;
+/* padding: 3px; */
+position: relative;
+top: 5px;
+}

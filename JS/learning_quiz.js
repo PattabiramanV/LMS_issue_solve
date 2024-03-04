@@ -34,6 +34,9 @@ sidebar.addEventListener("mouseleave", () => {
 
 //............................Dark_Mode......................................//
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
+Dckaplogo.addEventListener("click",()=>{
+  window.location.href='./index.html'
+})
 let searchicon = document.querySelector(".fas");
 function toggleDarkMode() {
 
@@ -123,42 +126,6 @@ const firebaseConfig = {
   appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
 };
 
-let arr1=[
-
-  {
-      Question:'1.What is Full form of HTML?',
-      Options: ['Hyper Text Markup Language','Hyper Text Makeup Language',
-      'Hyper Text Mark Language','Hyper Test Markup Language'],
-      Answers:['Hyper Text Markup Language','It specifies the title of the web page',
-      'It defines a header for the document.','To define the structure of a web page',
-      '<body>']
-  
-  },
-
-  {
-      Question:'2.What is the purpose of the &lt;title&gt; tag in HTML?',
-      Options:['It defines the main heading of the document','It specifies the title of the web page',
-      'It creates a hyperlink to another webpage',' It formats the text in bold']
-   
-  },
-  {
-      Question:`3.In HTML, what is the purpose of the &lt;head&gt; element?`,
-      Options:['It contains the main content of the document.','It defines a header for the document.',
-      'It provides metadata about the document.','It creates a navigation bar.' ]
-
-  },
-  {
-      Question:'4.What is the purpose of HTML elements?',
-      Options: ['To style the content','To define the structure of a web page',
-      ' To execute scripts','To interact with databases']
-  },
-  {
-      Question:'5.Which HTML tag is used to define the body of the HTML document?',
-      Options:['<head>','<body>','<title>','<html>']
-   
-  }
-   
-]
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -177,53 +144,35 @@ let find_index=get_data.data().find_index;
 let find_language=get_data.data().Find_Language_type;
 let find_language_percentage=get_data.data()[find_language+'_Total_Percentage'];
 let find_complete_module=get_data.data()[find_language + '_Complete_Module'];
+let find_language_unlock_module=get_data.data()[find_language+'_unlock_total_module'];
 
 async function quiz_mark_validate_Fun(){
 //  alert("come to db")
+
   let ref=doc(db,`${find_language}_Content`,`0`);
   let data_ref=await getDoc(ref);
   let total_title=data_ref.data().left_headings;
 
 total_title=total_title.length-1;
-if(find_complete_module==0){
-  find_complete_module=find_complete_module+1
 
-}
-// console.log(1/(total_title.length-1)*100);
+if(find_index==find_language_unlock_module){
+
   let get_data= await updateDoc(
    get_ref,{
-    [find_language+'_Total_Percentage']:Math.floor(find_language_percentage+find_complete_module/total_title*100),
-    [find_language+'_Complete_Module']:find_complete_module
+    [find_language+'_Total_Percentage']:Math.floor(find_language_percentage+find_complete_module+1/total_title*100),
+    [find_language+'_Complete_Module']:find_complete_module+1
    }
   )
-
+  }
 
 }
 let get_quiz=doc(db,`${find_language}_Quiz`,`${find_index}`)
 let get_quiz_obj=await getDoc(get_quiz);
 
 let Quiz_object=get_quiz_obj.data().Quiz_1  ;
-// console.log(Quiz_object);
-// console.log(get_quiz_obj.data());
-// console.log(find_index);
-//......................Firebse......daat...........Set.............//
-
-// let get_quiz=doc(db,`${find_language}_Quiz`,`${find_index}`)
-// let get_quiz_obj=await getDoc(get_quiz);
-// let Quiz_object=get_quiz_obj.data().Quiz_1;
-// console.log(Quiz_object);
-// let id=0;
-// let ref=doc(db,`${find_language}_Quiz`,`${id}`);
-//  updateDoc(
-//   ref,{
-//     Quiz_1:arr1
-//   }
-// ).then(()=>{
-//   alert("updatae sucessfull")
-// })
 
 
-// console.log(Quiz_object.length);
+
 let quiz_options=document.querySelectorAll("label");
 let quiz_Question=document.getElementById("Quiz_question");
 let next_btn=document.querySelector(".quiz_next_btn");
@@ -233,6 +182,7 @@ let form_radio_btn_4=document.forms.radio_4_btn_form;
 let all_radio_btn=form_radio_btn_4.radio_value_1;
 let Ex_no=document.querySelector("strong");
 Ex_no.innerHTML=find_index;
+
 next_btn.addEventListener("click",function(){ Quiz_change_Fun(this)});
 previous_btn.addEventListener("click",function(){ Quiz_change_Fun(this)});
 
@@ -252,7 +202,6 @@ if(value.innerHTML=='Next'&& all_radio_btn.value!=''){
     arr.push(all_radio_btn.value);
     form_radio_btn_4.reset();
  
-
 }
 else if(index!=0 && value.innerHTML=='Previous'){
     
@@ -347,9 +296,6 @@ console.log(Excat_answer);
 
 })
 
-// alert(`Total Mark:${total_mark}/5`);
-// console.log(arr);
-// console.log(total_mark);
 
 form_radio_btn_4.reset();
 arr=[];
@@ -370,22 +316,24 @@ console.log(all_P_tag);
     all_score_content[0].innerHTML=Quiz_object.length;
     all_score_content[1].innerHTML=total_mark;
     all_score_content[2].innerHTML=Math.floor(total_mark/Quiz_object.length*100);
-    if(total_mark!=Quiz_object.length){
-   next_module_btn.style.display='none';
-   retry_btn.style.display='block';
-   right_thumsup.classList.add("right_thumsup_class_list");
-   thumsup_img.src="Assests/thumbs-up (2).png";
 
-   all_P_tag[0].innerHTML="You don't get 100%. So you not eligible for go the next module."
-   all_P_tag[1].innerHTML='When you complete the quiz without wrong you will be move next module. '
-    }
-    else{
-        next_module_btn.style.display='block';
-   retry_btn.style.display='none';
-   right_thumsup.classList.remove("right_thumsup_class_list");
-   thumsup_img.src="Assests/thumbs-up (1).png";
-   all_P_tag[0].innerHTML='Sucessfully complete the excersize and you eligible for go the next module.'
-   all_P_tag[1].innerHTML='Congralation you unlocked the first excersize.'
+  if (total_mark != Quiz_object.length) {
+    next_module_btn.style.display = 'none';
+    retry_btn.style.display = 'block';
+    right_thumsup.classList.add("right_thumsup_class_list");
+    thumsup_img.src = "./Assests/wrong_img.jpg";
+
+    all_P_tag[0].innerHTML = "You don't get 100%. So you not eligible for go the next module."
+    all_P_tag[1].innerHTML = 'When you complete the quiz without wrong you will be move next module. '
+  }
+
+  else {
+    next_module_btn.style.display = 'block';
+    retry_btn.style.display = 'none';
+    right_thumsup.classList.remove("right_thumsup_class_list");
+    thumsup_img.src = "./Assests/right_img.jpg";
+    all_P_tag[0].innerHTML = 'Sucessfully complete the excersize and you eligible for go the next module.'
+    all_P_tag[1].innerHTML = 'Congralation you unlocked the first excersize.'
 
    quiz_mark_validate_Fun();
     }
@@ -414,33 +362,34 @@ button_showing_Fun()
 
 
 next_module_btn.addEventListener("click",async()=>{
-  let ref_data=doc(db,"Learning",`User=${id}`);
+
+if(find_index==find_language_unlock_module){
+
+  find_language_unlock_module=find_language_unlock_module+1
+  }
+
+      let ref_data=doc(db,"Learning",`User=${id}`);
   
-    let data_set=await updateDoc(
-        ref_data,{
-            find_index:find_index+1
-        }
-    )
+      let data_set=await updateDoc(
+          ref_data,{
+              find_index:find_language_unlock_module,
+              [find_language+'_unlock_total_module']:find_language_unlock_module
+          }
+      )
     window.location.href="learning_content.html";
 });
 
 
-// let left_side_bar=document.querySelectorAll(".navlink");
+// Local storage get Img
 
-// left_side_bar[0].addEventListener("click",()=>{
-  
-//   window.location.href='./index.html'
-// });
+document.addEventListener("DOMContentLoaded", function () {
+  const storedImageURL = localStorage.getItem("imageURL");
 
-// left_side_bar[1].addEventListener("click",()=>{
+  if (storedImageURL) {
+    const profileImg = document.querySelector(".profile");
+    profileImg.src = storedImageURL;
+  }
+});
 
-//   window.location.href='./Learning.html  '
-// });
-// left_side_bar[2].addEventListener("click",()=>{
 
-//   window.location.href='./dashboard.html';
-// });
-// left_side_bar[3].addEventListener("click",()=>{
 
-//   window.location.href='./Roadmap.html';
-// });

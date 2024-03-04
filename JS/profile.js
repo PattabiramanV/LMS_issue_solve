@@ -6,7 +6,6 @@ const sidebarOpen = document.querySelector("#sidebarOpen");
 const sidebarClose = document.querySelector(".collapse_sidebar");
 const sidebarExpand = document.querySelector(".expand_sidebar");
 sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
-
 let content = document.querySelector(".menu_content");
 
 sidebarClose.addEventListener("click", () => {
@@ -35,15 +34,16 @@ sidebar.addEventListener("mouseleave", () => {
   }
 });
 
-let searchicon = document.querySelector(".fas");
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
+Dckaplogo.addEventListener("click",()=>{
+  window.location.href='./index.html'
+})
 
 // Function to toggle dark mode
 
 function toggleDarkMode() {
   const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
-  searchicon.style.color = isDarkMode ? "white" : "black";
   Dckaplogo.src = body.classList.contains("dark")
     ? "./Assests/Dckapwhite.png"
     : "./Assests/Logodk.png";
@@ -56,7 +56,7 @@ if (storedDarkMode === "true") {
 }
 darkLight.addEventListener("click", toggleDarkMode);
 
-// Profile
+// Profile Dropdown Work
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");
@@ -72,18 +72,6 @@ document.addEventListener("click", (event) => {
     !profile_Dropdown.contains(event.target)
   ) {
     profile_Dropdown.style.display = "none";
-  }
-});
-
-// Cancel Btn
-
-let cancel_btn = document.querySelector(".cancel_btn");
-cancel_btn.addEventListener("click", (e) => {
-  let previousLocation = localStorage.getItem("previous_location");
-  if (previousLocation) {
-    window.location.href = previousLocation;
-  } else {
-    window.location.href = "./index.html";
   }
 });
 
@@ -111,12 +99,27 @@ logout.addEventListener("click", () => {
   windnameow.location.href = "./login.html";
 });
 
+// Cancel Btn Navigation
+
+let cancel_btn = document.querySelector(".cancel_btn");
+cancel_btn.addEventListener("click", (e) => {
+  let previousLocation = localStorage.getItem("previous_location");
+  if (previousLocation) {
+    window.location.href = previousLocation;
+  } else {
+    window.location.href = "./index.html";
+  }
+});
+
+
+// Firebase Store
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
   getFirestore,
   collection,
   addDoc,
   getDocs,
+  doc,
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -131,253 +134,76 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
-// Add event listener to the edit button for
-let inputName = document.querySelector(".editbtnName");
-inputName.addEventListener("click", () => {
-  var nameSpan = document.getElementById("fullName");
-  var nameInput = document.getElementById("fullNameInput");
-  var editButton = document.querySelector(".editbtnName");
-
-  if (nameSpan.style.display !== "none") {
-    nameInput.value = nameSpan.textContent;
-    nameSpan.style.display = "none";
-    nameInput.style.display = "inline-block";
-    editButton.textContent = "Save";
-  } else {
-    nameSpan.textContent = nameInput.value;
-    nameInput.style.display = "none";
-    nameSpan.style.display = "inline-block";
-    editButton.textContent = "Edit";
-    SaveNametofirebase(nameSpan.textContent);
-  }
-});
-
-// Function to save the name to Firebase
-async function SaveNametofirebase(name) {
-  try {
-    const NameRef = collection(database, "user_Name_Information");
-    await addDoc(NameRef, {
-      name: name,
-    });
-    console.log("Name saved to Firebase");
-  } catch (error) {
-    console.error("Error saving name to Firebase: ", error);
-  }
-}
-
-// Load before executing JavaScript
-window.addEventListener("DOMContentLoaded", async (event) => {
-  try {
-    const NameRef = collection(database, "user_Name_Information");
-    const querySnapshot = await getDocs(NameRef);
-
-    querySnapshot.forEach((doc) => {
-      const NameData = doc.data();
-      const nameSpan = document.getElementById("fullName");
-      nameSpan.textContent = NameData.name;
-    });
-
-    console.log("Name data fetched from Firebase");
-  } catch (error) {
-    console.error("Error fetching Name data from Firebase: ", error);
-  }
-
-  var userDetailsString = localStorage.getItem("userdetails");
-
-var userDetails = JSON.parse(userDetailsString);
-
-var storedEmail = userDetails.email;
-var storedUsername = userDetails.username;
-
-var emailInput = document.getElementById("emailadd");
-var nameSpan = document.getElementById("fullName");
-
-emailInput.value = storedEmail;
-
-if (storedUsername) {
-  nameSpan.innerHTML = storedUsername;
-} else {
-  nameSpan.innerHTML = "Guest";
-}
-
-});
-
-window.addEventListener("DOMContentLoaded", async (event) => {
-  try {
-    const bioRef = collection(database, "user_Bio_Information");
-    const querySnapshot = await getDocs(bioRef);
-    querySnapshot.forEach((doc) => {
-      const bioData = doc.data();
-      const bioSpan = document.getElementById("bioInfo");
-      bioSpan.textContent = bioData.bio;
-    });
-
-    console.log("Bio data fetched from Firebase");
-  } catch (error) {
-    console.error("Error fetching bio data from Firebase: ", error);
-  }
-});
-
-let boedit = document.querySelector(".editbtnn");
-boedit.addEventListener("click", () => {
-  var bioSpan = document.getElementById("bioInfo");
-  var bioInput = document.getElementById("bioInput");
-  var editButton = document.querySelector(".editbtnn");
-
-  if (bioSpan.style.display !== "none") {
-    bioInput.value = bioSpan.textContent;
-    bioSpan.style.display = "none";
-    bioInput.style.display = "inline-block";
-    editButton.textContent = "Save";
-  } else {
-    bioSpan.textContent = bioInput.value;
-    bioInput.style.display = "none";
-    bioSpan.style.display = "inline-block";
-    editButton.textContent = "Edit";
-
-    saveBioToFirebase(bioSpan.textContent);
-  }
-});
-
-async function saveBioToFirebase(bio) {
-  try {
-    const bioRef = collection(database, "user_Bio_Information");
-
-    await addDoc(bioRef, {
-      bio: bio,
-    });
-
-    console.log("Bio saved to Firebase");
-  } catch (error) {
-    console.error("Error saving bio to Firebase: ", error);
-  }
-}
-
-// Email fetch local storage
-
 var userDetailsString = localStorage.getItem("userdetails");
-
 var userDetails = JSON.parse(userDetailsString);
+let id = userDetails.user_id;
+console.log(id);
 
-var storedEmail = userDetails.email;
-var storedUsername = userDetails.username;
+let inputName = document.querySelector("#fullNameInput");
+let inputEmail = document.querySelector("#emailadd");
+let inputgitUsername = document.querySelector("#gitinput");
+let inputbioInfo = document.querySelector("#bioInput");
+let inputlinkInfo = document.querySelector("#linkedInInput");
 
-var emailInput = document.getElementById("emailadd");
-var nameSpan = document.getElementById("fullName");
+let Editbtn = document.querySelector(".Btn");
 
-emailInput.value = storedEmail;
-
-if (storedUsername) {
-  nameSpan.innerHTML = storedUsername;
-} else {
-  nameSpan.innerHTML = "Guest";
-}
-
-
-// Git hu addevent
-window.addEventListener("DOMContentLoaded", async (event) => {
-  try {
-    const gitnameRef = collection(database, "user_Git_Name_Information");
-    const querySnapshot = await getDocs(gitnameRef);
-    querySnapshot.forEach((doc) => {
-      const gitnameData = doc.data();
-      const gitSpan = document.getElementById("gitadd");
-      gitSpan.textContent = gitnameData.gitname;
-    });
-
-    console.log("GitHub name data fetched from Firebase");
-  } catch (error) {
-    console.error("Error fetching GitHub name data from Firebase: ", error);
-  }
-});
-
-// Add event listener to the element with the class "editbtngit"
-let inputGitHub = document.querySelector(".editbtngit");
-inputGitHub.addEventListener("click", function (e) {
-  var gitSpan = document.getElementById("gitadd");
-  var gitinput = document.getElementById("gitinput");
-  var giteditbtn = document.querySelector(".editbtngit");
-
-  if (gitSpan.style.display !== "none") {
-    gitinput.value = gitSpan.textContent;
-    gitSpan.style.display = "none";
-    gitinput.style.display = "inline-block";
-    giteditbtn.textContent = "Save";
+Editbtn.addEventListener("click", function () {
+  if (Editbtn.textContent.trim() === "Edit") {
+    Editbtn.innerHTML = "Save  <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='fill: white;transform: ;msFilter:;'><path d='M5 21h14a2 2 0 0 0 2-2V8l-5-5H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2zM7 5h4v2h2V5h2v4H7V5zm0 8h10v6H7v-6z'></path></svg>";
+    inputName.disabled = false;
+    inputgitUsername.disabled = false;
+    inputbioInfo.disabled = false;
+    inputlinkInfo.disabled = false;
   } else {
-    gitSpan.textContent = gitinput.value;
-    gitinput.style.display = "none";
-    gitSpan.style.display = "inline-block";
-    giteditbtn.textContent = "Edit";
+    Editbtn.innerHTML =
+      "Edit <svg class='svg' viewBox='0 0 512 512'><path d='M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z'></path></svg>";
+    inputName.disabled = true;
+    inputgitUsername.disabled = true;
+    inputbioInfo.disabled = true;
+    inputlinkInfo.disabled = true;
 
-    SaveGitnameInFirebase(gitSpan.textContent);
+    // Save the input values to Firebase
+    saveToFirebase(id);
   }
 });
 
-async function SaveGitnameInFirebase(gitname) {
-  try {
-    const GitRef = collection(database, "user_Git_Name_Information");
-    await addDoc(GitRef, {
-      gitname: gitname,
+// Function to save input values to Firebase
+function saveToFirebase(id) {
+  const docRef = database.collection("users").doc(id);
+  docRef
+    .set({
+      fullName: inputName.value,
+      gitUsername: inputgitUsername.value,
+      bioInfo: inputbioInfo.value,
+      linkedIn: inputlinkInfo.value,
+    })
+    .then(() => {
+      console.log("Document successfully written!");
+    })
+    .catch((error) => {
+      console.error("Error writing document: ", error);
     });
-
-    console.log("GitHub name saved to Firebase");
-  } catch (error) {
-    console.error("Error saving GitHub name to Firebase: ", error);
-  }
 }
 
-// linked in information
-window.addEventListener("DOMContentLoaded", async (event) => {
-  try {
-    const linkedInRef = collection(database, "user_LinkedIn_Information");
-    const querySnapshot = await getDocs(linkedInRef);
-
-    querySnapshot.forEach((doc) => {
-      const linkedInData = doc.data();
-      const linkedInSpan = document.getElementById("linked_info");
-      linkedInSpan.textContent = linkedInData.linkedin;
-    });
-
-    console.log("LinkedIn data fetched from Firebase");
-  } catch (error) {
-    console.error("Error fetching LinkedIn data from Firebase: ", error);
-  }
+document.querySelector(".Country label").addEventListener("click", function () {
+  document.getElementById("countrySelect").disabled = false;
 });
 
-let linkedInEditButton = document.querySelector(".editbtnlink");
-linkedInEditButton.addEventListener("click", () => {
-  var linkedInSpan = document.getElementById("linked_info");
-  var linkedInInput = document.getElementById("linkedInInput");
-  var editButton = document.querySelector(".editbtnlink");
+document
+  .getElementById("countrySelect")
+  .addEventListener("change", function () {
+    var selectedCountry = this.value;
+    console.log("Selected country:", selectedCountry);
+  });
 
-  if (linkedInSpan.style.display !== "none") {
-    linkedInInput.value = linkedInSpan.textContent;
-    linkedInSpan.style.display = "none";
-    linkedInInput.style.display = "inline-block";
-    editButton.textContent = "Save";
-  } else {
-    linkedInSpan.textContent = linkedInInput.value;
-    linkedInInput.style.display = "none";
-    linkedInSpan.style.display = "inline-block";
-    editButton.textContent = "Edit";
+// Fetch data into Local storage
 
-    // Save the updated LinkedIn info to Firebase
-    saveLinkedInToFirebase(linkedInSpan.textContent);
-  }
-});
+let UserDetailsdataname=userDetails.username;
+let UserEmaildata=userDetails.email;
 
-async function saveLinkedInToFirebase(linkedIn) {
-  try {
-    const linkedInRef = collection(database, "user_LinkedIn_Information");
-    await addDoc(linkedInRef, {
-      linkedin: linkedIn,
-    });
+inputName.value=UserDetailsdataname
+inputEmail.value=UserEmaildata
 
-    console.log("LinkedIn info saved to Firebase");
-  } catch (error) {
-    console.error("Error saving LinkedIn info to Firebase: ", error);
-  }
-}
 
 const uploadButton = document.getElementById("uploadButton");
 uploadButton.addEventListener("click", function () {
@@ -416,39 +242,37 @@ fileInput.addEventListener("change", async function (event) {
         });
         previousImageDocId = newImageDocRef.id;
         alert("Successfully uploaded image and data.");
+
+        let UserProfileImg = localStorage.setItem("imageURL", e.target.result);
+
+        // const profileImg = document.querySelector(".profile");
+        // profileImg.src = UserProfileImg;
+
       } catch (error) {
         console.error("Error adding document: ", error);
       }
     };
-
     reader.readAsDataURL(file);
   }
 });
 
-// window.addEventListener("load", async () => {
-//   const imagesRef = collection(database, "images");
-//   const imageContainer = document.getElementById('imageContainer');
-//   const profileImg = document.querySelector(".profile");
+// const profileImg = document.querySelector(".profile");
+// profileImg.src = storedImageURL;
 
-//   try {
-//     const querySnapshot = await getDocs(imagesRef);
-//     imageContainer.innerHTML = '';
 
-//     querySnapshot.forEach((doc) => {
-//       const data = doc.data();
-//       const img = document.createElement("img");
-//       img.src = data.imageURL;
+const profileImg = document.querySelector(".profile");
+profileImg.src = storedImageURL;
 
-//       imageContainer.appendChild(img);
-//       previousImageDocId = doc.id;
-//     });
+// Retrieve imageURL from localStorage when the page loads
+document.addEventListener("DOMContentLoaded", function () {
+  const storedImageURL = localStorage.getItem("imageURL");
 
-//     if (querySnapshot.docs.length > 0) {
-//       const lastDoc = querySnapshot.docs[querySnapshot.docs.length - 1];
-//       const lastImageURL = lastDoc.data().imageURL;
-//       profileImg.src = lastImageURL; // Set the profile image to the last uploaded image
-//     }
-//   } catch (error) {
-//     console.error("Error getting documents: ", error);
-//   }
-// });
+  if (storedImageURL) {
+    const profileImg = document.querySelector(".profile");
+    profileImg.src = storedImageURL;
+
+
+const profilemainimg = document.querySelector(".profile_img");
+profilemainimg.src = storedImageURL;
+  }
+});

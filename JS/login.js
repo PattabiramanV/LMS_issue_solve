@@ -12,24 +12,20 @@ function signup_page() {
 let log_email=document.getElementById("log")
 let log_password=document.getElementById("log_pass")
 let login_button=document.getElementById("login_btn")
+let passEyeIcon = document.querySelector("#passIcon")
 
-let icon_eye=document.getElementById("icon_eyeforpassword")
-icon_eye.innerHTML=` <i id="icon_eye" class="fa-solid fa-eye-slash"></i>`
+  passEyeIcon.addEventListener("click",()=>{
+    if (log_password.type == "password") {
+      log_password.type = "text"
+      passEyeIcon.className = "fa-solid fa-eye"
 
+    }
+    else{
+      log_password.type = "password"
+      passEyeIcon.className = "fa-solid fa-eye-slash"
+    }
+  })
 
-icon_eye.addEventListener("click",changeicon)
- function changeicon()
-{
-if (log_password.type =='password') {
-    log_password.type='text'
-    icon_eye.innerHTML=` <i id="icon_eye" class="fa-solid fa-eye"></i>` 
-}
-else if (log_password.type =='text') {
-    log_password.type='password'
-    icon_eye.innerHTML=` <i id="icon_eye" class="fa-solid fa-eye-slash"></i>`
-    
-}
-}
 
 
 // -----login validation----
@@ -53,48 +49,57 @@ else if (log_password.type =='text') {
   const app = initializeApp(firebaseConfig);
 
 
-  import { getFirestore,getDocs,setDoc,doc,collection,getDoc,addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+  import { getFirestore,getDocs,setDoc,doc,collection,getDoc,addDoc,updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 
 let db=getFirestore(app);
 let getref=collection(db,"SignUp_details");
 let getdata =await  getDocs(getref);
-// let id=getdata.size;
+let id=getdata.size;
+// let userdetails=JSON.parse(localStorage.getItem("userdetails"))
+// console.log(userdetails);
 
 login_button.addEventListener("click",login_fun)
  async function login_fun(event)
 
 { 
+  // console.log("asha");
     let log_email_1=document.getElementById("log").value
     let log_password_1=document.getElementById("log_pass").value
     let invalid_mail=document.querySelector(".invalid_email")
     let invalid_password=document.querySelector(".invalid_password")
     
       event.preventDefault()
-
-      if(log_email_1 =="")
+      
+      if(log_email_1 == "")
       {
-       invalid_mail.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Invalid Mail.';
-     setTimeout(() => {
-         invalid_mail.innerHTML = "";
-     }, 2000);
-     return;
-      }
-      if(log_password_1=="")
-      {
-        invalid_password.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Invalid Password.';
+        // invalid_mail.innerHTML = 'Enter a Email';
+        invalid_mail.style.color = "red";
+        invalid_mail.style.visibility="visible"
         setTimeout(() => {
-            invalid_password.innerHTML = "";
+          invalid_mail.style.visibility = "hidden";
         }, 2000);
-        return;
+         return;
       }
-      getdata .forEach(async (record) => {
-        
+      if(log_password_1 == "")
+      {
+        // invalid_password.innerHTML = 'Enter a password';
+        invalid_password.style.color = "red";
+        invalid_password.style.visibility="visible"
+        setTimeout(() => {
+          invalid_password.style.visibility = "hidden";
+        }, 2000);
+         return;
+      }
+      
+      getdata .forEach(async (record) => { 
         let email_data = record.data().email
         let password_data = record.data().password
         let id=record.data().user_id;
+    
         if(log_email.value == email_data && log_password.value==password_data )
         {
+          // console.log("hi");
           document.getElementById('loadingOverlay').style.visibility = 'visible';
           setTimeout(() => {
               window.location.href = './index.html';
@@ -135,6 +140,46 @@ login_button.addEventListener("click",login_fun)
         }
       });
 }
+
+
+// ----------forgot-----
+let forgot_btn=document.querySelector("#forget")
+
+
+
+forgot_btn.addEventListener("click",()=>{
+
+ document.querySelector(".maincontainer3").style.display = "block";
+ document.querySelector(".maincontainer_2").style.display="none";
+    
+}
+)
+
+
+// Assuming Firestore is properly imported and initialized
+
+let reset_btn = document.querySelector("#Reset_button");
+reset_btn.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    let mail = document.querySelector("#reset_id").value;
+    let new_ps = document.querySelector("#new").value;
+    let confirm_resetpass = document.querySelector("#confirm").value;
+
+    if (confirm_resetpass !== new_ps) {
+        alert("Passwords do not match");
+    } else {
+        const ref = doc(db, "SignUp_details",`${id}`); 
+
+        updateDoc(ref, {
+          password: new_ps
+        }).then(() => {
+            alert("Updated Successfully");
+        })
+    }
+});
+
+
 
 
 

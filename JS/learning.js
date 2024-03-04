@@ -22,12 +22,21 @@
   
 let db=getFirestore(app);
 let find_language=0;
+let id=0;
+if(localStorage.getItem("userdetails")){
+  var userDetailsString = localStorage.getItem("userdetails");
+  var userDetails = JSON.parse(userDetailsString);
+  id=userDetails.user_id;
+}
+
+else{
+  setTimeout(()=>{
+  window.location.href='./signup.html';
+
+   } ,2000);
+}
 
 
-var userDetailsString = localStorage.getItem("userdetails");
-
-var userDetails = JSON.parse(userDetailsString);
-let id=userDetails.user_id
 // console.log(id);
 let all_learn_more_btn=document.querySelectorAll(".learn_more_btn");
 
@@ -38,10 +47,13 @@ all_learn_more_btn.forEach((btn,index)=>{
       find_language=btn.parentElement.previousElementSibling.previousElementSibling.firstElementChild.lastElementChild.innerHTML;
 
 let ref_data=doc(db,"Learning",`User=${id}`);
+let get_data= await getDoc(ref_data);
+let find_language_unlock_module=get_data.data()[find_language+'_unlock_total_module'];
+console.log(find_language_unlock_module);
  let data_set=await updateDoc(
     ref_data,{
         Find_Language_type:find_language,
-        find_index:0,
+        find_index:find_language_unlock_module
         // Html_Complete_Module:0,
         // Html_Total_Percentage:0,
         // Css_Complete_Module:0,
@@ -51,7 +63,6 @@ let ref_data=doc(db,"Learning",`User=${id}`);
         // Mysql_Complete_Module:0,
         // Mysql_Total_Percentage:0,
         // user_unlock_total_module:0
-
     }
 ).then(()=>{
     // alert("sucessfully");
@@ -59,6 +70,7 @@ let ref_data=doc(db,"Learning",`User=${id}`);
     console.log(err);
 });
     window.location.href='learning_content.html';
+console.log(find_language_unlock_module!=0 ? find_language_unlock_module+1:find_language_unlock_module)
 
  
 
@@ -78,6 +90,7 @@ all_percentage_show_tag[0].innerHTML=data_ref.data().Html_Total_Percentage;
 all_percentage_show_tag[1].innerHTML=data_ref.data().Css_Total_Percentage;
 all_percentage_show_tag[2].innerHTML=data_ref.data().Javascript_Total_Percentage;
 all_percentage_show_tag[3].innerHTML=data_ref.data().Mysql_Total_Percentage;
+all_percentage_show_tag[4].innerText=data_ref.data().Php_Total_Percentage;
 
 
 // all_learn_more_btn[0].addEventListener("click",async(event)=>{
@@ -271,7 +284,11 @@ sidebar.addEventListener("mouseleave", () => {
 
 
 //............................Dark_Mode......................................//
+
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
+Dckaplogo.addEventListener("click",()=>{
+  window.location.href='./index.html'
+})
 let searchicon = document.querySelector(".fas");
 function toggleDarkMode() {
 
@@ -339,3 +356,18 @@ let logout = document.querySelector(".log_out");
 logout.addEventListener("click", () => {
   window.location.href = "./login.html";
 });
+
+
+// Local storage get data
+
+document.addEventListener("DOMContentLoaded", function () {
+  const storedImageURL = localStorage.getItem("imageURL");
+
+  if (storedImageURL) {
+    const profileImg = document.querySelector(".profile");
+    profileImg.src = storedImageURL;
+  }
+});
+
+
+

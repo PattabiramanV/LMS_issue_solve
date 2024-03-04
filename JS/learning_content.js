@@ -27,7 +27,7 @@ var userDetails = JSON.parse(userDetailsString);
 let id=userDetails.user_id
 
 
-
+console.log(id);
 
 
 
@@ -247,11 +247,11 @@ console.log(user_unlock_total_module);
 
   
     if(index<find_complete_module+1 || (index<=find_complete_module+1 && find_complete_module!=0 ) ){
-      lock_icon.style.display='none';
+      lock_icon.classList.add("lock_remove_classlist");
       p_tag.classList.add("left_heding");
     }
    else if(user_unlock_total_module>=index){
-    lock_icon.style.display='none';
+    lock_icon.classList.add("lock_remove_classlist");
     p_tag.classList.add("left_heding");
    }
 
@@ -344,7 +344,7 @@ all_heading_title.forEach((title,index)=>{
     }
     
     all_heading_title=document.querySelectorAll(".content_title");
-    all_heading_title[index].parentElement.lastElementChild.style.display='none';
+    all_heading_title[index].parentElement.lastElementChild.classList.add("lock_remove_classlist")
     all_heading_title[index].classList.add("left_heding");
 
 quiz_btn_Change_Fun();
@@ -420,6 +420,9 @@ sidebar.addEventListener("mouseleave", () => {
 
 //............................Dark_Mode......................................//
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
+Dckaplogo.addEventListener("click",()=>{
+  window.location.href='./index.html'
+})
 let searchicon = document.querySelector(".fas");
 function toggleDarkMode() {
 
@@ -491,4 +494,17 @@ logout.addEventListener("click", () => {
 });
 
 
+// profile img take in localstorage
 
+// const profileImg = document.querySelector(".profile");
+// profileImg.src = storedImageURL;
+
+// Retrieve imageURL from localStorage when the page loads
+document.addEventListener("DOMContentLoaded", function () {
+  const storedImageURL = localStorage.getItem("imageURL");
+
+  if (storedImageURL) {
+    const profileImg = document.querySelector(".profile");
+    profileImg.src = storedImageURL;
+  }
+});

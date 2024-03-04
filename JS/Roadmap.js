@@ -1,3 +1,11 @@
+if(localStorage.getItem("userdetails") == null){
+     window.location.href="./signup.html";
+     setTimeout(()=>{
+      window.location.href='./signup.html';
+    },2000);
+}
+
+"use strict";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
   getFirestore,
@@ -20,29 +28,21 @@ const firebaseConfig = {
   appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6",
 };
 
-// Initialize Firebase
-let id=localStorage.getItem("UserId");
-
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
 
+var userDetailsString = localStorage.getItem("userdetails");
+var userDetails = JSON.parse(userDetailsString);
+let id = userDetails.user_id;
+console.log(id);
+
 const body = document.querySelector("body");
-
 const darkLight = document.querySelector("#darkLight");
-
 const sidebar = document.querySelector(".sidebar");
-
-const submenuItems = document.querySelectorAll(".submenu_item");
-
 const sidebarOpen = document.querySelector("#sidebarOpen");
-
 const sidebarClose = document.querySelector(".collapse_sidebar");
-
 const sidebarExpand = document.querySelector(".expand_sidebar");
 sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
-
-let Navlink = document.querySelector(".nav_link");
-
 let content = document.querySelector(".menu_content");
 
 sidebarClose.addEventListener("click", () => {
@@ -72,25 +72,18 @@ sidebar.addEventListener("mouseleave", () => {
 });
 
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
-let searchicon = document.querySelector(".fas");
+Dckaplogo.addEventListener("click", () => {
+  window.location.href = "./index.html";
+});
 
 // Function to toggle dark mode
 
 function toggleDarkMode() {
   const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
-  searchicon.style.color = isDarkMode ? "white" : "black";
-  headings.forEach((heading) => {
-      if (isDarkMode) {
-          heading.style.color = "white";
-      } else {
-          heading.style.color = "#b95233";
-      }
   Dckaplogo.src = body.classList.contains("dark")
-  ? "./Assests/Dckapwhite.png"
-  : "./Assests/Logodk.png";
-  });
-
+    ? "./Assests/Dckapwhite.png"
+    : "./Assests/Logodk.png";
   sessionStorage.setItem("darkMode", isDarkMode);
 }
 
@@ -99,11 +92,9 @@ if (storedDarkMode === "true") {
   toggleDarkMode();
 }
 
-
 darkLight.addEventListener("click", toggleDarkMode);
 
-
-// Profile
+// Profile DropDown Work
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");
@@ -121,8 +112,6 @@ document.addEventListener("click", (event) => {
     profile_Dropdown.style.display = "none";
   }
 });
-
-// profile_drop
 
 let profile_page = document.querySelector(".profile_down");
 profile_page.addEventListener("click", () => {
@@ -151,22 +140,43 @@ logout.addEventListener("click", () => {
 let headingnavigate = document.querySelectorAll(".Heading_p");
 console.log(headingnavigate);
 
-headingnavigate.forEach(async (links) => {
+headingnavigate.forEach(async (btn) => {
   let ref = doc(database, "Learning", `User=${id}`);
   let get_data = await getDoc(ref);
   let find_language = 0;
+  
 
-  links.addEventListener("click", async () => {
-    if (links == headingnavigate[1]) {
+  btn.addEventListener("click", async (e) => {
+    if (btn == headingnavigate[0]) {
+      find_language = "";
+    } else if (btn == headingnavigate[1]) {
       find_language = "Html";
-    } else if (links == headingnavigate[2]) {
+    } else if (btn == headingnavigate[2]) {
       find_language = "Css";
+    } else if (btn === headingnavigate[3]) {
+      find_language = "Javascript";
+    } else {
+      find_language = "Php";
     }
-    await updateDoc(ref, {
+let find_language_unlock_module=get_data.data()[find_language+"_unlock_total_module"]
+    let data_get = await updateDoc(ref, {
       Find_Language_type: find_language,
-      find_index:0
+      find_index: find_language_unlock_module,
     });
     window.location.href = "./learning_content.html";
   });
 });
 
+let storeprofileImg = localStorage.getItem("imageURL");
+const profileImg = document.querySelector(".profile");
+profileImg.src = storeprofileImg;
+// Img Effect
+
+document.addEventListener("DOMContentLoaded", function () {
+  const storedImageURL = localStorage.getItem("imageURL");
+
+  if (storedImageURL) {
+    const profileImg = document.querySelector(".profile");
+    profileImg.src = storedImageURL;
+  }
+});

@@ -1,6 +1,9 @@
 "use strict"
 
-// / Import the functions you need from the SDKs you need
+
+
+
+  // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
@@ -18,9 +21,25 @@
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
+  
 let db=getFirestore(app);
-// let find_language=0;
+let id=0;
+
+function singup_check_Fun(){
+
+if(localStorage.getItem("userdetails")){
+  var userDetailsString = localStorage.getItem("userdetails");
+  var userDetails = JSON.parse(userDetailsString);
+  id=userDetails.user_id;
+}
+
+else{
+  setTimeout(()=>{
+  window.location.href='./signup.html';
+
+   } ,2000);
+}
+}
 
 
 
@@ -29,8 +48,8 @@ console.log(home)
 let learning=document.querySelector(".nav_learning")
 let dashboard=document.querySelector(".nav_dashboard")
 let roadmap=document.querySelector(".nav_roadmap")
-let navlogin=document.getElementById("login")
-let navsign=document.getElementById("signup")
+let navlogin=document.querySelector(".login")
+let navsign=document.querySelector(".signup")
 let searchbtn=document.querySelector(".button_explore")
 let htmlbtn=document.querySelector(".html_btn")
 let cssbtn=document.querySelector(".css_btn")
@@ -40,7 +59,7 @@ let phpbtn=document.querySelector(".php_btn")
 
 // learning.addEventListener("click",()=>{
 //     alert("learning menu clicked")
-// })
+// });
 
 dashboard.addEventListener("click",()=>{
     window.location.href="./dashboard.html";
@@ -72,13 +91,8 @@ navsign.addEventListener("click",()=>{
 
 
 
-// let id=localStorage.getItem("UserId");
 let find_language = 0;
 
-var userDetailsString = localStorage.getItem("userdetails");
-
-var userDetails = JSON.parse(userDetailsString);
-let id=userDetails.user_id
 
 
 let  Explorebtn=document.querySelectorAll(".enroll_btn")
@@ -101,31 +115,33 @@ Explorebtn[1].addEventListener("click",()=>{
 
     find_language = 'Javascript';
     language_change_Fun();
-
     });
 
     Explorebtn[3].addEventListener("click",()=>{
 
       find_language = 'Mysql';
       language_change_Fun();
-
       });
 
       Explorebtn[4].addEventListener("click",()=>{
 
         find_language = 'Php';
         language_change_Fun();
-
         });
 
 async  function language_change_Fun(){
 
+  singup_check_Fun();
+
   let ref = doc(db, "Learning", `User=${id}`);
-  let get_data = await updateDoc(
+  let get_data= await getDoc(ref);
+let find_language_unlock_module=get_data.data()[find_language+'_unlock_total_module'];
+
+  let set_data = await updateDoc(
 
     ref,{
       Find_Language_type:find_language,
-        find_index:0
+        find_index:find_language_unlock_module
     }
   )
   window.location.href='./learning_content.html';
@@ -133,21 +149,59 @@ async  function language_change_Fun(){
 
 
 
-let left_side_bar=document.querySelectorAll(".navlink");
+// let left_side_bar=document.querySelectorAll(".navlink");
 
-left_side_bar[0].addEventListener("click",()=>{
-  window.location.href='./index.html'
-});
+// left_side_bar[0].addEventListener("click",()=>{
+//   window.location.href='./index.html'
+// });
 
-left_side_bar[1].addEventListener("click",()=>{
+// left_side_bar[1].addEventListener("click",()=>{
 
-  window.location.href='./Learning.html'
-});
-left_side_bar[2].addEventListener("click",()=>{
+//   window.location.href='./Learning.html'
+// });
+// left_side_bar[2].addEventListener("click",()=>{
 
-  window.location.href='./dashboard.html';
-});
-left_side_bar[3].addEventListener("click",()=>{
+//   window.location.href='./dashboard.html';
+// });
+// left_side_bar[3].addEventListener("click",()=>{
 
-  window.location.href='./Roadmap.html';
-});
+//   window.location.href='./Roadmap.html';
+// });
+
+
+// -------------loginvalidate----------
+
+// let singup_login_btn=document.querySelector(".slide-controls");
+// let profile=document.getElementById("profile_img");
+// let login_parent = document.querySelector(".login_parent");
+
+// if(localStorage.getItem('userdetails')){
+
+//   login_parent.style.display = 'none';
+//   profile.style.display = 'block';
+// }
+// else{
+//   login_parent.style.display = 'block';
+//   profile.style.display = 'none';
+// }
+
+
+// 
+
+// Get reference to elements
+let signcontrols = document.querySelector(".login_parent");
+let profile = document.querySelector(".profile");
+
+// Check if userdetails exist in localStorage
+if(localStorage.getItem('userdetails')){
+    // User details exist
+    signcontrols.style.display = 'none'; // Hide the sign-up and login buttons
+    profile.style.display = 'block'; // Show the profile icon
+ // Add class to profile icon if needed
+} else {
+    // User details don't exist
+  // Show the sign-up and login buttons
+    profile.style.display = 'none'; // Hide the profile icon
+}
+
+

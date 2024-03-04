@@ -1,5 +1,30 @@
 "use strict"
 
+
+
+ // Import the functions you need from the SDKs you need
+ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+ // TODO: Add SDKs for Firebase products that you want to use
+ // https://firebase.google.com/docs/web/setup#available-libraries
+
+ // Your web app's Firebase configuration
+ const firebaseConfig = {
+   apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
+   authDomain: "dckap-lms-project.firebaseapp.com",
+   projectId: "dckap-lms-project",
+   storageBucket: "dckap-lms-project.appspot.com",
+   messagingSenderId: "1022626638467",
+   appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
+ };
+
+ // Initialize Firebase
+ const app = initializeApp(firebaseConfig);
+ import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+ 
+let db=getFirestore(app);
+
+
+
 let home=document.querySelector(".nav_home")
 console.log(home)
 let learning=document.querySelector(".nav_learning")
@@ -13,10 +38,10 @@ let cssbtn=document.querySelector(".css_btn")
 let jsbtn=document.querySelector(".js_btn")
 let mysqlbtn=document.querySelector(".mysql_btn")
 let phpbtn=document.querySelector(".php_btn")
-
+let profile=document.querySelector(".profile")
 // learning.addEventListener("click",()=>{
 //     alert("learning menu clicked")
-// })
+// });
 
 dashboard.addEventListener("click",()=>{
     window.location.href="./dashboard.html";
@@ -74,21 +99,18 @@ Explorebtn[1].addEventListener("click",()=>{
 
     find_language = 'Javascript';
     language_change_Fun();
-
     });
 
     Explorebtn[3].addEventListener("click",()=>{
 
       find_language = 'Mysql';
       language_change_Fun();
-
       });
 
       Explorebtn[4].addEventListener("click",()=>{
 
         find_language = 'Php';
         language_change_Fun();
-
         });
 
 async  function language_change_Fun(){

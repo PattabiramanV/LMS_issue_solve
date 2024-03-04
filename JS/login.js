@@ -12,24 +12,20 @@ function signup_page() {
 let log_email=document.getElementById("log")
 let log_password=document.getElementById("log_pass")
 let login_button=document.getElementById("login_btn")
+let passEyeIcon = document.querySelector("#passIcon")
 
-let icon_eye=document.getElementById("icon_eyeforpassword")
-icon_eye.innerHTML=` <i id="icon_eye" class="fa-solid fa-eye-slash"></i>`
+  passEyeIcon.addEventListener("click",()=>{
+    if (log_password.type == "password") {
+      log_password.type = "text"
+      passEyeIcon.className = "fa-solid fa-eye"
 
+    }
+    else{
+      log_password.type = "password"
+      passEyeIcon.className = "fa-solid fa-eye-slash"
+    }
+  })
 
-icon_eye.addEventListener("click",changeicon)
- function changeicon()
-{
-if (log_password.type =='password') {
-    log_password.type='text'
-    icon_eye.innerHTML=` <i id="icon_eye" class="fa-solid fa-eye"></i>` 
-}
-else if (log_password.type =='text') {
-    log_password.type='password'
-    icon_eye.innerHTML=` <i id="icon_eye" class="fa-solid fa-eye-slash"></i>`
-    
-}
-}
 
 
 // -----login validation----
@@ -65,6 +61,7 @@ login_button.addEventListener("click",login_fun)
  async function login_fun(event)
 
 { 
+  console.log("asha");
     let log_email_1=document.getElementById("log").value
     let log_password_1=document.getElementById("log_pass").value
     let invalid_mail=document.querySelector(".invalid_email")
@@ -72,29 +69,15 @@ login_button.addEventListener("click",login_fun)
     
       event.preventDefault()
 
-      if(log_email_1 =="")
-      {
-       invalid_mail.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Invalid Mail.';
-     setTimeout(() => {
-         invalid_mail.innerHTML = "";
-     }, 2000);
-     return;
-      }
-      if(log_password_1=="")
-      {
-        invalid_password.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Invalid Password.';
-        setTimeout(() => {
-            invalid_password.innerHTML = "";
-        }, 2000);
-        return;
-      }
-      getdata .forEach(async (record) => {
-        
+
+      getdata .forEach(async (record) => { 
         let email_data = record.data().email
         let password_data = record.data().password
         let id=record.data().user_id;
+    
         if(log_email.value == email_data && log_password.value==password_data )
         {
+          // console.log("hi");
           document.getElementById('loadingOverlay').style.visibility = 'visible';
           setTimeout(() => {
               window.location.href = './index.html';
@@ -135,7 +118,6 @@ login_button.addEventListener("click",login_fun)
         }
       });
 }
-
 
 
 

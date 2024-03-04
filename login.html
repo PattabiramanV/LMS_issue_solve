@@ -25,14 +25,14 @@
                     <div id="login_username" class="input-parent-section" >
                         <h4 id="Login_title_name">Email </h4>
                         <input type="email" id="log" class="inputs" name="login" placeholder="Enter your mail">
-                        <label class="invalid_email"></label>
+                        <label class="invalid_email">Enter a mail</label>
                     </div>
                     <div id ="login_password" class="input-parent-section">
                         <h4 id="login_second_title">Password</h4>
                         <div class="password-section">
                         <input type="password" id="log_pass" class="inputs" name="login_pass" placeholder="Enter your password">
                         <div class="icon_eye"> <i id="passIcon" class="fa-solid fa-eye-slash"></i></div> 
-                        <label class="invalid_password"></label>
+                        <label class="invalid_password">Enter a password</label>
                         <h5 id="forget">Forgot password</h5>
                     </div>
                     </div>
@@ -67,7 +67,30 @@
                 <img id="logoimage" style="width: 550px;" src="./Assests/Sign in-pana.png">
             </div>
         </div>
-    
+    </div>
+    <div class="maincontainer3" style="display: none;">
+        <div class="inner-reset_container">
+        <form id="reset_form">
+            <!-- <h3 id="Reset_Title">Reset your password</h3> -->
+            <div class="email">
+                <h4 id="mail">Email</h4>
+            <input type="email" id="reset_id" name="mail_reset" placeholder="Enter your email">
+            </div>
+            <div class="new_ps">
+                <h4 id="new_pass">New password</h4>
+                <input type="text" id="new" placeholder="Enter a password">
+
+            </div>
+            <div class="con_ps">
+                <h4 id="con_password">confirm password</h4>
+                <input type="text" id="confirm" placeholder="confirm your password">
+
+            </div>
+            <div class="Reset_btn">
+                 <button id="Reset_button">Reset</button>
+            </div>
+        </form>
+        </div>
     </div>
     <script src="./JS/login.js"type="module"></script>
 </body>

@@ -2,7 +2,6 @@
 //      window.location.href="./signup.html";
 // }
 "use strict";
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
   getFirestore,
@@ -32,22 +31,12 @@ const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
 
 const body = document.querySelector("body");
-
 const darkLight = document.querySelector("#darkLight");
-
 const sidebar = document.querySelector(".sidebar");
-
-const submenuItems = document.querySelectorAll(".submenu_item");
-
 const sidebarOpen = document.querySelector("#sidebarOpen");
-
 const sidebarClose = document.querySelector(".collapse_sidebar");
-
 const sidebarExpand = document.querySelector(".expand_sidebar");
-sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
-
-let Navlink = document.querySelector(".nav_link");
-
+sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"))
 let content = document.querySelector(".menu_content");
 
 sidebarClose.addEventListener("click", () => {
@@ -77,7 +66,10 @@ sidebar.addEventListener("mouseleave", () => {
 });
 
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
-let searchicon = document.querySelector(".fas");
+Dckaplogo.addEventListener("click", () => {
+  window.location.href = "./index.html";
+});
+
 
 // Function to toggle dark mode
 
@@ -97,7 +89,7 @@ if (storedDarkMode === "true") {
 
 darkLight.addEventListener("click", toggleDarkMode);
 
-// Profile
+// Profile DropDown Work
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");
@@ -115,8 +107,6 @@ document.addEventListener("click", (event) => {
     profile_Dropdown.style.display = "none";
   }
 });
-
-// profile_drop
 
 let profile_page = document.querySelector(".profile_down");
 profile_page.addEventListener("click", () => {
@@ -164,22 +154,16 @@ headingnavigate.forEach(async (links) => {
   });
 });
 
+let storeprofileImg=localStorage.getItem("imageURL");
+const profileImg = document.querySelector(".profile");
+profileImg.src = storeprofileImg
+// Img Effect
 
+document.addEventListener("DOMContentLoaded", function () {
+  const storedImageURL = localStorage.getItem("imageURL");
 
-
-
-// let storeprofileImg=localStorage.getItem("imageURL");
-// const profileImg = document.querySelector(".profile");
-// profileImg.src = storeprofileImg
-// // Img Effect 
-
-// document.addEventListener("DOMContentLoaded", function () {
-//   const storedImageURL = localStorage.getItem("imageURL");
-
- 
-
-//   if (storedImageURL) {
-//       const profileImg = document.querySelector(".profile");
-//       profileImg.src = storedImageURL;
-//   }
-// });
+  if (storedImageURL) {
+      const profileImg = document.querySelector(".profile");
+      profileImg.src = storedImageURL;
+  }
+});

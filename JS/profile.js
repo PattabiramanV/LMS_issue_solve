@@ -6,7 +6,6 @@ const sidebarOpen = document.querySelector("#sidebarOpen");
 const sidebarClose = document.querySelector(".collapse_sidebar");
 const sidebarExpand = document.querySelector(".expand_sidebar");
 sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
-
 let content = document.querySelector(".menu_content");
 
 sidebarClose.addEventListener("click", () => {
@@ -36,6 +35,9 @@ sidebar.addEventListener("mouseleave", () => {
 });
 
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
+Dckaplogo.addEventListener("click",()=>{
+  window.location.href='./index.html'
+})
 
 // Function to toggle dark mode
 
@@ -54,7 +56,7 @@ if (storedDarkMode === "true") {
 }
 darkLight.addEventListener("click", toggleDarkMode);
 
-// Profile
+// Profile Dropdown Work
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");
@@ -70,18 +72,6 @@ document.addEventListener("click", (event) => {
     !profile_Dropdown.contains(event.target)
   ) {
     profile_Dropdown.style.display = "none";
-  }
-});
-
-// Cancel Btn
-
-let cancel_btn = document.querySelector(".cancel_btn");
-cancel_btn.addEventListener("click", (e) => {
-  let previousLocation = localStorage.getItem("previous_location");
-  if (previousLocation) {
-    window.location.href = previousLocation;
-  } else {
-    window.location.href = "./index.html";
   }
 });
 
@@ -109,6 +99,20 @@ logout.addEventListener("click", () => {
   windnameow.location.href = "./login.html";
 });
 
+// Cancel Btn Navigation
+
+let cancel_btn = document.querySelector(".cancel_btn");
+cancel_btn.addEventListener("click", (e) => {
+  let previousLocation = localStorage.getItem("previous_location");
+  if (previousLocation) {
+    window.location.href = previousLocation;
+  } else {
+    window.location.href = "./index.html";
+  }
+});
+
+
+// Firebase Store
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
   getFirestore,
@@ -133,9 +137,6 @@ const database = getFirestore(app);
 let id = localStorage.getItem("UserId");
 console.log(id);
 
-// Assuming you have initialized your Firebase app and imported necessary functions,
-// collections from the Firebase SDK.
-
 let inputName = document.querySelector("#fullNameInput");
 let inputEmail = document.querySelector("#emailadd");
 let inputgitUsername = document.querySelector("#gitinput");
@@ -154,8 +155,6 @@ Editbtn.addEventListener("click", function () {
   } else {
     Editbtn.innerHTML =
       "Edit <svg class='svg' viewBox='0 0 512 512'><path d='M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z'></path></svg>";
-
-    // Disable input fields to prevent further editing
     inputName.disabled = true;
     inputgitUsername.disabled = true;
     inputbioInfo.disabled = true;
@@ -188,7 +187,6 @@ document.querySelector(".Country label").addEventListener("click", function () {
   document.getElementById("countrySelect").disabled = false;
 });
 
-// Add event listener to the dropdown for handling selection
 document
   .getElementById("countrySelect")
   .addEventListener("change", function () {
@@ -266,8 +264,9 @@ fileInput.addEventListener("change", async function (event) {
 
         let UserProfileImg = localStorage.setItem("imageURL", e.target.result);
 
-        const profileImg = document.querySelector(".profile");
-        profileImg.src = UserProfileImg;
+        // const profileImg = document.querySelector(".profile");
+        // profileImg.src = UserProfileImg;
+
       } catch (error) {
         console.error("Error adding document: ", error);
       }
@@ -275,6 +274,13 @@ fileInput.addEventListener("change", async function (event) {
     reader.readAsDataURL(file);
   }
 });
+
+// const profileImg = document.querySelector(".profile");
+// profileImg.src = storedImageURL;
+
+
+const profileImg = document.querySelector(".profile");
+profileImg.src = storedImageURL;
 
 // Retrieve imageURL from localStorage when the page loads
 document.addEventListener("DOMContentLoaded", function () {
@@ -284,7 +290,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const profileImg = document.querySelector(".profile");
     profileImg.src = storedImageURL;
 
-    const profilemainimg = document.querySelector(".profile_img");
-    profilemainimg.src = storedImageURL;
+
+const profilemainimg = document.querySelector(".profile_img");
+profilemainimg.src = storedImageURL;
   }
 });

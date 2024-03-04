@@ -56,8 +56,7 @@ let cssbtn=document.querySelector(".css_btn")
 let jsbtn=document.querySelector(".js_btn")
 let mysqlbtn=document.querySelector(".mysql_btn")
 let phpbtn=document.querySelector(".php_btn")
-let profile=document.querySelector(".profile");
-let singup_login_btn=document.querySelector(".slide-controls");
+
 // learning.addEventListener("click",()=>{
 //     alert("learning menu clicked")
 // });
@@ -172,18 +171,38 @@ let find_language_unlock_module=get_data.data()[find_language+'_unlock_total_mod
 
 
 // -------------loginvalidate----------
-if(localStorage.getItem('userdetails')){
-  // let sessionStorage_value=sessionStorage.getItem('userdetails') // key name of data in session or localstorage
-  singup_login_btn.style.display = 'none';
-  // navsign.style.display = 'none'; // login signup btn display off
-  profile.classList.add('usrprofile');
-  //get and rename the correct name of user profile
-  // .usrprofile - css added feel free to change class names as u want
-}
-else{
-  singup_login_btn.style.display = 'block';
-  // navsign.style.display = 'block';
 
+// let singup_login_btn=document.querySelector(".slide-controls");
+// let profile=document.getElementById("profile_img");
+// let login_parent = document.querySelector(".login_parent");
+
+// if(localStorage.getItem('userdetails')){
+
+//   login_parent.style.display = 'none';
+//   profile.style.display = 'block';
+// }
+// else{
+//   login_parent.style.display = 'block';
+//   profile.style.display = 'none';
+// }
+
+
+// 
+
+// Get reference to elements
+let signcontrols = document.querySelector(".login_parent");
+let profile = document.querySelector(".profile");
+
+// Check if userdetails exist in localStorage
+if(localStorage.getItem('userdetails')){
+    // User details exist
+    signcontrols.style.display = 'none'; // Hide the sign-up and login buttons
+    profile.style.display = 'block'; // Show the profile icon
+ // Add class to profile icon if needed
+} else {
+    // User details don't exist
+  // Show the sign-up and login buttons
+    profile.style.display = 'none'; // Hide the profile icon
 }
-console.log(navlogin);
-console.log(navsign);
+
+

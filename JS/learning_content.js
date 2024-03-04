@@ -20,10 +20,14 @@
   import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
   
 let db=getFirestore(app);
-let id=localStorage.getItem("UserId");
+
+var userDetailsString = localStorage.getItem("userdetails");
+
+var userDetails = JSON.parse(userDetailsString);
+let id=userDetails.user_id
 
 
-
+console.log(id);
 
 
 

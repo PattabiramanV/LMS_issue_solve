@@ -12,24 +12,20 @@ function signup_page() {
 let log_email=document.getElementById("log")
 let log_password=document.getElementById("log_pass")
 let login_button=document.getElementById("login_btn")
+let passEyeIcon = document.querySelector("#passIcon")
 
-let icon_eye=document.getElementById("icon_eyeforpassword")
-icon_eye.innerHTML=` <i id="icon_eye" class="fa-solid fa-eye-slash"></i>`
+  passEyeIcon.addEventListener("click",()=>{
+    if (log_password.type == "password") {
+      log_password.type = "text"
+      passEyeIcon.className = "fa-solid fa-eye"
 
+    }
+    else{
+      log_password.type = "password"
+      passEyeIcon.className = "fa-solid fa-eye-slash"
+    }
+  })
 
-icon_eye.addEventListener("click",changeicon)
- function changeicon()
-{
-if (log_password.type =='password') {
-    log_password.type='text'
-    icon_eye.innerHTML=` <i id="icon_eye" class="fa-solid fa-eye"></i>` 
-}
-else if (log_password.type =='text') {
-    log_password.type='password'
-    icon_eye.innerHTML=` <i id="icon_eye" class="fa-solid fa-eye-slash"></i>`
-    
-}
-}
 
 
 // -----login validation----
@@ -59,22 +55,29 @@ else if (log_password.type =='text') {
 let db=getFirestore(app);
 let getref=collection(db,"SignUp_details");
 let getdata =await  getDocs(getref);
-// let id=getdata.size;
+let id=getdata.size;
 
 login_button.addEventListener("click",login_fun)
  async function login_fun(event)
 
 { 
+  console.log("asha");
+    let log_email_1=document.getElementById("log").value
+    let log_password_1=document.getElementById("log_pass").value
+    let invalid_mail=document.querySelector(".invalid_email")
+    let invalid_password=document.querySelector(".invalid_password")
+    
       event.preventDefault()
-      getdata .forEach(async (record) => {
-        
+
+
+      getdata .forEach(async (record) => { 
         let email_data = record.data().email
         let password_data = record.data().password
         let id=record.data().user_id;
-      //   // console.log(email_data);
-// console.log(id);
+    
         if(log_email.value == email_data && log_password.value==password_data )
         {
+          // console.log("hi");
           document.getElementById('loadingOverlay').style.visibility = 'visible';
           setTimeout(() => {
               window.location.href = './index.html';
@@ -115,7 +118,6 @@ login_button.addEventListener("click",login_fun)
         }
       });
 }
-
 
 
 

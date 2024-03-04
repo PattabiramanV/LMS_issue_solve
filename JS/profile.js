@@ -96,7 +96,7 @@ Certi_page.addEventListener("click", () => {
 let logout = document.querySelector(".log_out");
 
 logout.addEventListener("click", () => {
-  window.location.href = "./login.html";
+  windnameow.location.href = "./login.html";
 });
 
 // Cancel Btn Navigation
@@ -134,7 +134,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
-let id = localStorage.getItem("UserId");
+var userDetailsString = localStorage.getItem("userdetails");
+var userDetails = JSON.parse(userDetailsString);
+let id = userDetails.user_id;
 console.log(id);
 
 let inputName = document.querySelector("#fullNameInput");
@@ -196,33 +198,12 @@ document
 
 // Fetch data into Local storage
 
-// let UserDetailsdataname=localStorage.getItem("username")
-// let UserEmaildata=localStorage.getItem("email")
+let UserDetailsdataname=userDetails.username;
+let UserEmaildata=userDetails.email;
 
-// inputName.value=UserDetailsdataname
-// inputEmail.value=UserEmaildata
+inputName.value=UserDetailsdataname
+inputEmail.value=UserEmaildata
 
-// var username = localStorage.getItem("username");
-// var nameSpan = document.getElementById("fullName");
-// if (username) {
-//   nameSpan.innerHTML = username;
-// } else {
-//   nameSpan.innerHTML = "Guest";
-// }
-
-// Email fetch local storage
-
-// var storedEmail = localStorage.getItem("email");
-// var emailInput = document.getElementById("emailadd");
-// emailInput.value = storedEmail;
-
-// var username = localStorage.getItem("username");
-// var nameSpan = document.getElementById("fullName");
-// if (username) {
-//   nameSpan.innerHTML = username;
-// } else {
-//   nameSpan.innerHTML = "Guest";
-// }
 
 const uploadButton = document.getElementById("uploadButton");
 uploadButton.addEventListener("click", function () {

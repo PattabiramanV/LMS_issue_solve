@@ -27,6 +27,12 @@ body {
 body.dark {
   background-color: #333;
 }
+.dark-mode .nav_link:hover {
+  color: #fffffff3;
+  background-color: #7c15dd4d;
+
+}
+
 body.dark {
   --white-color: #333;
   --blue-color: #fff;
@@ -170,10 +176,12 @@ ul.set_items {
   color: #333;
   background: var(--background-color-li);
 }
+
 .sidebar.close .nav_link:hover {
   background: var(--background-color-li);
   color: #333;
 }
+
 .submenu_item {
   cursor: pointer;
 }
@@ -267,7 +275,7 @@ ul.set_items {
 
 .Drop_Down:hover,
 .profile_down:hover,
-.Course_Down:hover,.profile_certicate:hover {
+.Course_Down:hover,.profile_certicate:hover,.log_out:hover {
   background-color: #8000801c;
 }
 
@@ -486,41 +494,36 @@ h1 {
   font-size: 40pt;
   background: linear-gradient(to right, #643d6e, #a982b4, #c4a6cc, #9889ce, rgb(166, 68, 231) 80%, #8f36bbb6 );
   -webkit-text-fill-color: transparent;
-  /* background-clip: text;       */
-  -webkit-background-clip: text;
+  background-clip: text;      
+  -webkit-background-clip: text; /* For compatibility with older versions of Webkit browsers */
+
 }
 
 
-
 /* Add dark mode styles */
-.dark-mode .quiz_contion {
+.dark .quiz_contion {
   background-color: #1e1e1e;
   color: #ffffff;
 }
 
-.dark-mode .container {
+.dark .container {
   background-color: #333333;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
   color: #ffffff;
 }
 
-.dark-mode h1 {
-  background: linear-gradient(to right, #643d6e, #a982b4, #c4a6cc, #9889ce, rgb(166, 68, 231) 80%, #8f36bbb6);
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
 
-.dark-mode button {
+.dark button {
   color: #ffffff;
   background-color: #AA3EE2;
   border-color: #AA3EE2;
 }
 
-.dark-mode button:hover {
+.dark button:hover {
   background-color: #6C298E;
 }
 
-.dark-mode button:active {
+.dark button:active {
   background-color: #C253FC;
 }
 

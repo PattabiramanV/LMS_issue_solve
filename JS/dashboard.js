@@ -85,8 +85,8 @@ async function fetchDataAndUpdateHTML()
         labels: ["HTML", "CSS", "JavaScript", "MySQL", "PHP"],
         datasets: [{
           label: "Percentage of Completed Lessons",
-          backgroundColor: ["#a124e9", "#C37AED", "#D995FD", "#F0BBFE"],
-          data: [Html_Complete_Module, Css_Complete_Module, Javascript_Complete_Module, Mysql_Complete_Module, Php_Complete_Module]
+          backgroundColor: ["#7e01c6", "#a124e9", "#C37AED", "#D995FD", "#F0BBFE"],
+          data: [data.Html_Total_Percentage, data.Css_Total_Percentage, data.Javascript_Total_Percentage, data.Mysql_Total_Percentage, data.Php_Total_Percentage]
         }]
       },
       options: {
@@ -149,25 +149,45 @@ sidebar.addEventListener("mouseleave", () => {
 });
 
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
-// let bdy = document.querySelector(".body");
-// let dashboard_profile_content = document.querySelector(".dashboard_profile_content");
+let bdy = document.querySelector(".body");
+let dashboard_profile_content = document.querySelector(".dashboard_profile_content");
+let total_points = document.querySelector(".total_points");
+let total_quz = document.querySelector(".total_quz");
+let total_star = document.querySelector(".total_star");
+let pie_chart = document.querySelector(".pie_chart");
+// let bar_chart = document.querySelector("#bar_chart");
+
+
+// let Dckaplogo = document.querySelector(".DCKAPlOGO");
+Dckaplogo.addEventListener("click",()=>{
+  window.location.href='./index.html'
+})
+
 
 //---------------------------------------------- Function to toggle dark mode --------------------------------------------
 
 function toggleDarkMode() {
+  dashboard_profile_content.classList.toggle("act2");
+  bdy.classList.toggle("act");
+  total_points.classList.toggle("act2");
+  total_quz.classList.toggle("act2");
+  total_star.classList.toggle("act2");
+  pie_chart.classList.toggle("act2");
+  // bar_chart.classList.toggle("act2");
   const isDarkMode = body.classList.toggle("dark");
   document.body.classLisdashboard_profile_contentt.toggle("dark-mode");
   Dckaplogo.src = body.classList.contains("dark")
     ? "./Assests/Dckapwhite.png"
     : "./Assests/Logodk.png";
+    
   sessionStorage.setItem("darkMode", isDarkMode);
 }
 
 const storedDarkMode = sessionStorage.getItem("darkMode");
 if (storedDarkMode === "true") {
+  
   toggleDarkMode();
-  // dashboard_profile_content.classList.toggle("act2");
-  // bdy.classList.toggle("act");
+  
 }
 darkLight.addEventListener("click", toggleDarkMode);
 
@@ -309,3 +329,23 @@ logout.addEventListener("click", () => {
 //         console.error("Error retrieving user's learning data:", error);
 //       });
   
+
+// Certificate 
+
+document.querySelector(".profile_down").addEventListener("click", function () {
+  localStorage.setItem("previous_location", window.location.href);
+});
+
+
+const profileImg = document.querySelector(".profile");
+profileImg.src = storedImageURL;
+
+// Retrieve imageURL from localStorage when the page loads
+document.addEventListener("DOMContentLoaded", function () {
+  const storedImageURL = localStorage.getItem("imageURL");
+
+  if (storedImageURL) {
+    const profileImg = document.querySelector(".profile");
+    profileImg.src = storedImageURL;
+  }
+});

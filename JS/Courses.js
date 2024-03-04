@@ -239,7 +239,7 @@ try {
     }
   });
 
-  let percentages = document.querySelector(".percentage_cal");
+  let percentages = document.querySelectorAll(".percentage_cal");
   languages.forEach((language1, index) => {
     percentages[index].innerHTML = userData.data()[`${language1}_Total_Percentage`] + "%";
   });

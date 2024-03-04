@@ -531,6 +531,10 @@ a,iframe,button,.profile_round:hover{
 }
 
 
+.fa-solid, .fas {
+  font-weight: 900;
+  margin-right: 6%;
+}
 
 /*.......................................Top content......................*/
 

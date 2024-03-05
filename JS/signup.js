@@ -126,7 +126,7 @@ sign_up_btn.addEventListener("click", form_submit);
     var invalid_conpassword = document.querySelector(".invalid_conpassword")
 
     if (!usernameValue.match(nameRegex)) {
-        invalid_name.innerHTML = 'Invalid Name.';
+        invalid_name.innerHTML = 'Enter a username.';
         invalid_name.style.color = "red";
         invalid_name.style.visibility = "visible"
         setTimeout(() => {
@@ -136,7 +136,7 @@ sign_up_btn.addEventListener("click", form_submit);
     }
 
     if (!mailRegex.test(emailValue)) {
-        invalid_mail.innerHTML = ' Invalid Mail.';
+        invalid_mail.innerHTML = ' Enter a email.';
         invalid_mail.style.color = "red";
         invalid_mail.style.visibility = "visible"
         setTimeout(() => {

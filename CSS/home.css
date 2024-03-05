@@ -78,11 +78,12 @@ justify-content: space-between;
 border: 1px solid lightgrey;
 border-radius: 15px;
 /* border: none; */
-display: none;
-}.slide-controls .slide {
+/* display: none; */
+}
+.slide-controls .slide {
   height: 100%;
   width: 100%;
-  color: black;
+  color: #fff;
   font-size: 14px;
   font-weight: 300;
   text-align: center;
@@ -144,20 +145,37 @@ label.slide.signup {
  
 } */
 
+img.profile {
+  height: 40px !important;
+  width: 40px !important;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: auto;
+  position: relative;
+  top: 20%;
+}
+
+.profile {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
 img#profile_img {
   width: 19%;
   margin-top: 11px;
   margin-right: 33px;
   position: relative;
   left: 250px;
-  height: 75%;
-  cursor: pointer;
 }
-.login_parent{
-  width:20%;
+.login_parent {
+  width: 20%;
   display: flex;
   justify-content: flex-end;
   /* display: none; */
+  position: relative;
+  left: 6rem;
 }
 .profile{
   width: 100%;
@@ -185,11 +203,11 @@ font-weight: 800;
 }
 
 hr.line_1 {
-  right: 89%;
+  right: 90%;
   transform: rotate(90deg);
   width: 0px;
   height: 113px;
-  background: black;
+  background: blanchedalmond;
   position: absolute;
   bottom: 13rem;
 }
@@ -249,7 +267,7 @@ img.dckapimg {
     font-weight: 600;
     border: none;
     margin-top: -52px;
-    margin-left: 40%;
+    margin-left: 43%;
     position: relative;
     cursor: pointer;
     transition-duration: .2s;
@@ -342,19 +360,19 @@ p#para_2 {
   justify-content: center;
 }
 .sub_comtainer_2 {
-  width: 100%;
+  width: 90%;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
   gap: 60px;
   justify-content: space-evenly;
 }
-.content_3, .content_4, .content_5, .content_6, .content_7 {
-  background-color: #ffffff;
-  padding: 1%;
-  width: 25%;
-  border-radius: 10px;
-  color: black;
+.content_3,.content_4,.content_5,.content_6,.content_7 {
+background-color: #ffffff;
+padding: 1%;
+width: 324px;
+border-radius: 10px;
+color: black;
 }
 .html_heading,.css_heading,.js_heading,.mysql_heading,.php_heading{
 text-align: center;
@@ -385,7 +403,7 @@ justify-content: space-evenly;
   align-items: center;
   font-size: 15px;
   width: 161px;
-  margin-left: 20%;
+  margin-left: 70px;
   height: 40px;
 }
 .enroll_btn > svg {
@@ -433,9 +451,9 @@ display: flex;
 width: 50%;
 }
 .sub_content_9 {
-  width: 20%;
-  margin-left: 10%;
-  margin-top: 10%;
+width: 19%;
+margin-left: 85px;
+margin-top: 55px;
 }
 .content_11, .info {
   font-size: 20px;
@@ -491,65 +509,4 @@ span#white {
   display: block;
   text-align: end;
   
-}
-img {
-  width: 100%;
-}
-p#answer {
-  line-height: 30px;
-}
-
-/* classlist */
-
-.class {
-  /* position: relative;
-  left: 12rem; */
-  display: block;
-  position: relative;
-  display: flex;
-  height: 35px;
-  width: 9em;
-  overflow: hidden;
-  margin-top: 18px;
-  justify-content: space-between;
-  border: 1px solid lightgrey;
-  border-radius: 15px;
-}
-
-
-
-
-
-/* profile */
-
-.profile {
-  width: 26%;
-  height: 85%;
-  display: flex;
-  justify-content: flex-end;
-  /* display: none; */
-  margin-left: -7rem;
-}
-
-
-.slide-controls {
-  position: relative;
-  display: flex;
-  height: 35px;
-  width: 9em;
-  overflow: hidden;
-  margin-top: -1px;
-  justify-content: space-between;
-  border: 1px solid lightgrey;
-  border-radius: 15px;
-  /* border: none; */
-  /* display: none; */
-}
-
-
-.login_parent {
-  width: 20%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
 }

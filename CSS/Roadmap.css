@@ -27,7 +27,7 @@ html {
   --background: rgb(255, 255, 255);
   --background-color-hover: rgba(30, 245, 2, 0.986);
   --background-color-btn: #49a843;
-  --background-color-li: #8000801c !important
+  --background-color-li: #8000801c !important;
 }
 
 body {
@@ -231,6 +231,17 @@ ul.set_items {
   color: #333;
   background: var(--background-color-li);
 }
+
+
+/* Nav link Active state */
+
+.nav_link:active,
+.nav_link.active {
+  background: var(--background-color-li); 
+  color: white;
+}
+
+
 
 .sidebar.close .nav_link:hover {
   background: var(--background-color-li);
@@ -478,6 +489,10 @@ h1 {
 
 }
 
+#navheading{
+  cursor: pointer;
+}
+
 .step h2 {
   color: #fff;
   display: flex;
@@ -518,13 +533,9 @@ ul.languages {
   border-bottom: 4px solid transparent;
   background: #abababb5;
 }
-
-.line-connector,
-.step:nth-child(5) .line-connector,
-.step:nth-child(7) .line-connector {
-  left: 36.7rem;
+.line-connector, .step:nth-child(5) .line-connector, .step:nth-child(7) .line-connector {
+  left: 36.9rem;
 }
-
 .step:nth-child(4) .line-connector,
 .step:nth-child(6) .line-connector,
 .step:nth-child(8) .line-connector {
@@ -627,8 +638,12 @@ p.Heading_p {
   width: 100%;
   display: flex;
   justify-content: center;
-  cursor: pointer;
-  color: blue;
+  /* cursor: pointer; */
+  color: #0000009e;
+}
+
+#navheading:hover{
+  box-shadow: 0px 4px 15px 1px #ab3ee288;
 }
 
 /* Effcets  for li checkbox*/
@@ -835,4 +850,30 @@ p.Heading_p {
     opacity: 0;
     box-shadow: 0 -15px 0 0px #AA3EE2, 14px -8px 0 0px #AA3EE2, 14px 8px 0 0px #AA3EE2, 0 15px 0 0px #AA3EE2, -14px 8px 0 0px #AA3EE2, -14px -8px 0 0px #AA3EE2;
   }
+}
+
+
+/* Roadmap scroll bar */
+
+
+/* Width and background color of the scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f5f5f5; 
+}
+
+/* Track of the scrollbar */
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5; 
+}
+
+/* Thumb of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 0px;
+}
+
+/* On hover, transition the scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ab3ee286; 
 }

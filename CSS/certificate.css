@@ -147,7 +147,7 @@ i.fas.fa-search {
   color: #5448489e;
 }
 
-img.profile {
+img.profile_img {
   height: 35px;
   object-fit: cover;
 }
@@ -401,7 +401,7 @@ p.profile-name {
   font-size: 14px;
 }
 
-img.profile {
+img.profile_img{
   height: 40px !important;
   width: 40px !important;
   border-radius: 50%;

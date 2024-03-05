@@ -38,10 +38,26 @@ sidebar.addEventListener("mouseleave", () => {
 });
 
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
+Dckaplogo.addEventListener("click",()=>{
+  window.location.href='./index.html'
+})
+let bdy = document.querySelector(".body");
+let html_btn = document.querySelector("#html_btn");
+let css_btn = document.querySelector("#css_btn");
+let js_btn = document.querySelector("#js_btn");
+let mysql_btn = document.querySelector("#mysql_btn");
+let php_btn = document.querySelector("#php_btn");
 
 // Function to toggle dark mode
 
 function toggleDarkMode() {
+  bdy.classList.toggle("act");
+  html_btn.classList.toggle("act2");
+  css_btn.classList.toggle("act2");
+  js_btn.classList.toggle("act2");
+  mysql_btn.classList.toggle("act2");
+  php_btn.classList.toggle("act2");
+  // start_quiz_btn.classList.toggle("act2")
   const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
   Dckaplogo.src = body.classList.contains("dark")
@@ -327,3 +343,23 @@ async function mysql_quiz_btn()
 // Call the quiz_btn function
 mysql_quiz_btn();
 
+// Cancel Navigation
+
+document.querySelector(".profile_down").addEventListener("click", function () {
+  localStorage.setItem("previous_location", window.location.href);
+});
+
+// profile show
+
+const profileImg = document.querySelector(".profile");
+profileImg.src = storedImageURL;
+
+// Retrieve imageURL from localStorage when the page loads
+document.addEventListener("DOMContentLoaded", function () {
+  const storedImageURL = localStorage.getItem("imageURL");
+
+  if (storedImageURL) {
+    const profileImg = document.querySelector(".profile");
+    profileImg.src = storedImageURL;
+  }
+});

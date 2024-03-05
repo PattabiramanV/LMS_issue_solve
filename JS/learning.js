@@ -284,7 +284,11 @@ sidebar.addEventListener("mouseleave", () => {
 
 
 //............................Dark_Mode......................................//
+
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
+Dckaplogo.addEventListener("click",()=>{
+  window.location.href='./index.html'
+})
 let searchicon = document.querySelector(".fas");
 function toggleDarkMode() {
 
@@ -352,3 +356,18 @@ let logout = document.querySelector(".log_out");
 logout.addEventListener("click", () => {
   window.location.href = "./login.html";
 });
+
+
+// Local storage get data
+
+document.addEventListener("DOMContentLoaded", function () {
+  const storedImageURL = localStorage.getItem("imageURL");
+
+  if (storedImageURL) {
+    const profileImg = document.querySelector(".profile");
+    profileImg.src = storedImageURL;
+  }
+});
+
+
+

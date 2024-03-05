@@ -34,6 +34,9 @@ sidebar.addEventListener("mouseleave", () => {
 
 //............................Dark_Mode......................................//
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
+Dckaplogo.addEventListener("click",()=>{
+  window.location.href='./index.html'
+})
 let searchicon = document.querySelector(".fas");
 function toggleDarkMode() {
 
@@ -145,11 +148,14 @@ let find_language_unlock_module=get_data.data()[find_language+'_unlock_total_mod
 
 async function quiz_mark_validate_Fun(){
 //  alert("come to db")
+
   let ref=doc(db,`${find_language}_Content`,`0`);
   let data_ref=await getDoc(ref);
   let total_title=data_ref.data().left_headings;
 
 total_title=total_title.length-1;
+
+if(find_index==find_language_unlock_module){
 
   let get_data= await updateDoc(
    get_ref,{
@@ -157,7 +163,7 @@ total_title=total_title.length-1;
     [find_language+'_Complete_Module']:find_complete_module+1
    }
   )
-
+  }
 
 }
 let get_quiz=doc(db,`${find_language}_Quiz`,`${find_index}`)
@@ -196,7 +202,6 @@ if(value.innerHTML=='Next'&& all_radio_btn.value!=''){
     arr.push(all_radio_btn.value);
     form_radio_btn_4.reset();
  
-
 }
 else if(index!=0 && value.innerHTML=='Previous'){
     
@@ -311,22 +316,24 @@ console.log(all_P_tag);
     all_score_content[0].innerHTML=Quiz_object.length;
     all_score_content[1].innerHTML=total_mark;
     all_score_content[2].innerHTML=Math.floor(total_mark/Quiz_object.length*100);
-    if(total_mark!=Quiz_object.length){
-   next_module_btn.style.display='none';
-   retry_btn.style.display='block';
-   right_thumsup.classList.add("right_thumsup_class_list");
-   thumsup_img.src="Assests/thumbs-up (2).png";
 
-   all_P_tag[0].innerHTML="You don't get 100%. So you not eligible for go the next module."
-   all_P_tag[1].innerHTML='When you complete the quiz without wrong you will be move next module. '
-    }
-    else{
-        next_module_btn.style.display='block';
-   retry_btn.style.display='none';
-   right_thumsup.classList.remove("right_thumsup_class_list");
-   thumsup_img.src="Assests/thumbs-up (1).png";
-   all_P_tag[0].innerHTML='Sucessfully complete the excersize and you eligible for go the next module.'
-   all_P_tag[1].innerHTML='Congralation you unlocked the first excersize.'
+  if (total_mark != Quiz_object.length) {
+    next_module_btn.style.display = 'none';
+    retry_btn.style.display = 'block';
+    right_thumsup.classList.add("right_thumsup_class_list");
+    thumsup_img.src = "./Assests/wrong_img.jpg";
+
+    all_P_tag[0].innerHTML = "You don't get 100%. So you not eligible for go the next module."
+    all_P_tag[1].innerHTML = 'When you complete the quiz without wrong you will be move next module. '
+  }
+
+  else {
+    next_module_btn.style.display = 'block';
+    retry_btn.style.display = 'none';
+    right_thumsup.classList.remove("right_thumsup_class_list");
+    thumsup_img.src = "./Assests/right_img.jpg";
+    all_P_tag[0].innerHTML = 'Sucessfully complete the excersize and you eligible for go the next module.'
+    all_P_tag[1].innerHTML = 'Congralation you unlocked the first excersize.'
 
    quiz_mark_validate_Fun();
     }
@@ -353,16 +360,36 @@ button_showing_Fun()
 
 });
 
-console.log(find_index);
+
 next_module_btn.addEventListener("click",async()=>{
-  let ref_data=doc(db,"Learning",`User=${id}`);
+
+if(find_index==find_language_unlock_module){
+
+  find_language_unlock_module=find_language_unlock_module+1
+  }
+
+      let ref_data=doc(db,"Learning",`User=${id}`);
   
-    let data_set=await updateDoc(
-        ref_data,{
-            find_index:find_index+1,
-            [find_language+'_unlock_total_module']:find_language_unlock_module+1
-        }
-    )
+      let data_set=await updateDoc(
+          ref_data,{
+              find_index:find_language_unlock_module,
+              [find_language+'_unlock_total_module']:find_language_unlock_module
+          }
+      )
     window.location.href="learning_content.html";
 });
+
+
+// Local storage get Img
+
+document.addEventListener("DOMContentLoaded", function () {
+  const storedImageURL = localStorage.getItem("imageURL");
+
+  if (storedImageURL) {
+    const profileImg = document.querySelector(".profile");
+    profileImg.src = storedImageURL;
+  }
+});
+
+
 

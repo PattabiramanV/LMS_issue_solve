@@ -533,9 +533,9 @@ img.profile {
   padding: 0%;
   text-align: center;
 }
-.pie_chart_topic
+.pie_chart
 {
-  margin: 2% 0% 0% 3%;
+  margin: 2% 0% 0% 2%;
 }
 .icon2
 {
@@ -543,10 +543,145 @@ img.profile {
 }
 #chart_container
 {
-  margin: 0% 0% 0% 2%;
-  width: 640px;
+  display: block;
+  margin: 0% 0% 0% 0%;
+  width: 600px;
   height: auto;
 }
+.pie_chart_topic
+{
+  margin: 1% 0% 0% 0%;
+}
+/* .chart_btn
+{
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+} */
+.chart_btn button
+{
+  border-radius: 25px;
+  border: 2px solid purple;
+  padding: 2px 2px 2px 2px;
+  text-align: center;
+  width: 140px;
+  height: 30px;
+  /* gap: 4px; */
+}
+/* #tooltip_hcahrt {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.3em 0.6em;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  background: var(--background);
+  z-index: -1;
+  border-radius: 8px;
+  scale: 0;
+  transform-origin: 0 0;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 16px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+}
+
+#tooltip_hcahrt::before {
+  position: absolute;
+  content: "";
+  height: 0.6em;
+  width: 0.6em;
+  bottom: -0.2em;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  background: var(--background);
+}
+
+.vertical_barchart:hover #tooltip_hcahrt {
+  top: -100%;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  scale: 1;
+  animation: shake 0.5s ease-in-out both;
+}
+
+.vertical_barchart:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  color: white;
+  border-color: transparent;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0);
+  }
+
+  25% {
+    transform: rotate(7deg);
+  }
+
+  50% {
+    transform: rotate(-7deg);
+  }
+
+  75% {
+    transform: rotate(1deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+} */
+
+
+/* .pie_chart {
+  position: relative;
+}
+
+.chart_btn {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+} */
+
+.vertical_barchart {
+  background-color: #c84e2a; /* Example color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+#tooltip_hcahrt {
+  position: absolute;
+  top: 31%;
+  left: 20%;
+  transform: translateX(-20%);
+  padding: 5px 10px;
+  color: "white";
+  background-color: #D0C9C0;
+  border: 1px solid #f3f2f2;
+  border-radius: 5px;
+  display: none;
+}
+
+.vertical_barchart:hover + #tooltip_hcahrt {
+  display: block;
+  color: black;
+}
+
+/* .pie_chart_topic {
+  text-align: center;
+  margin-top: 50px;
+} */
+
+
 
 .act
 {

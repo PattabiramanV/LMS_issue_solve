@@ -73,7 +73,7 @@ login_button.addEventListener("click",login_fun)
       
       if(log_email_1 == "")
       {
-        // invalid_mail.innerHTML = 'Enter a Email';
+  
         invalid_mail.style.color = "red";
         invalid_mail.style.visibility="visible"
         setTimeout(() => {
@@ -83,7 +83,6 @@ login_button.addEventListener("click",login_fun)
       }
       if(log_password_1 == "")
       {
-        // invalid_password.innerHTML = 'Enter a password';
         invalid_password.style.color = "red";
         invalid_password.style.visibility="visible"
         setTimeout(() => {
@@ -96,15 +95,35 @@ login_button.addEventListener("click",login_fun)
         let email_data = record.data().email
         let password_data = record.data().password
         let id=record.data().user_id;
-    
-        if(log_email.value == email_data && log_password.value==password_data )
+        
+       if(log_email.value != email_data)
+       {
+        invalid_mail.innerHTML="Enter a valid email"
+        invalid_mail.style.color = "red";
+        invalid_mail.style.visibility="visible"
+        setTimeout(() => {
+          invalid_mail.style.visibility = "hidden";
+        }, 2000);
+         return;
+        // alert("Enter a valid email")
+       }
+
+        if(log_password.value !== password_data)
+       {
+        invalid_password.style.color = "red";
+        invalid_password.innerHTML="Enter a Valid password"
+        invalid_password.style.visibility="visible"
+        setTimeout(() => {
+          invalid_password.style.visibility = "hidden";
+        }, 2000);
+         return;
+       }
+        else if(log_email.value == email_data && log_password.value==password_data )
         {
-          // console.log("hi");
           document.getElementById('loadingOverlay').style.visibility = 'visible';
           setTimeout(() => {
               window.location.href = './index.html';
           }, 1000);
-
 
 
           let ref_data=doc(db,"Learning",`User=${id}`);
@@ -162,7 +181,7 @@ verify_btn.addEventListener("click",(event)=>{
  document.querySelector(".maincontainer_foremail").style.display="none";
  document.querySelector(".maincontainer_2").style.display="none";
  let otp_random=Math.floor(Math.random()*100000);
-//  console.log(otp_random);
+ console.log(otp_random);
  let mail_msg= ` You recently requested to reset your password for your account. To complete the password reset process, please enter the following 
          OTP : <b>${otp_random}</b>`
          Email.send({
@@ -180,10 +199,10 @@ let next_btn=document.querySelector("#otp_btn")
 
 next_btn.addEventListener("click",()=>{
   document.getElementById('loadingOverlay').style.visibility = 'visible';
-  // setTimeout(() => {
-    // alert("success")
-  window.location.href = './DCKAP_LMS_Project/Reset.html';
-  // }, 1000);
+  setTimeout(() => {
+    // alert("message")
+  window.location.href = './Reset.html';
+  }, 1000);
 })
 
 

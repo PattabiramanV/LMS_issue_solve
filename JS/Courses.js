@@ -291,3 +291,43 @@ document.addEventListener("DOMContentLoaded", function () {
 // } else {
 //     progressContainer.classList.remove('scrollbar-enabled');
 // }
+
+
+// profile shown
+
+try {
+  const profileImg = document.querySelector(".profile");
+  const docRef = doc(database, 'users_img', `${id}`);
+  const docSnapimg = await getDoc(docRef);
+
+  if (docSnapimg.exists()) {
+      const userDataimg = docSnapimg.data();
+      profileImg.src = userDataimg.imageURL;
+  } else {
+      console.log("The image is not found in Firestore.");
+  }
+} catch (error) {
+  console.error("Error getting document:", error);
+  alert("Error getting user image. Please try again.");
+}
+
+window.addEventListener("load", async function () {
+  const profileImg = document.querySelector(".profile");
+  const ProfileMainImg=this.document.querySelector(".profile_img")
+
+  try {
+    const docRef = doc(database, 'users_img', `${id}`);
+    const docSnapimg = await getDoc(docRef);
+
+    if (docSnapimg.exists()) {
+      const userDataimg = docSnapimg.data();
+      profileImg.src = userDataimg.imageURL;
+      ProfileMainImg.src=userDataimg.imageURL
+    } else {
+      console.log("The image is not found in Firestore.");
+    }
+  } catch (error) {
+    console.error("Error getting document:", error);
+    alert("Error getting user image. Please try again.");
+  }
+});

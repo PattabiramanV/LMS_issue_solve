@@ -22,15 +22,15 @@
   const app = initializeApp(firebaseConfig);
   import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
   
-let db=getFirestore(app);
-let id=0;
+let database=getFirestore(app);
 
+// var  id=userDetails.user_id;
 function singup_check_Fun(){
 
 if(localStorage.getItem("userdetails")){
   var userDetailsString = localStorage.getItem("userdetails");
   var userDetails = JSON.parse(userDetailsString);
-  id=userDetails.user_id;
+ var  id=userDetails.user_id;
 }
 
 else{
@@ -133,7 +133,7 @@ async  function language_change_Fun(){
 
   singup_check_Fun();
 
-  let ref = doc(db, "Learning", `User=${id}`);
+  let ref = doc(database, "Learning", `User=${id}`);
   let get_data= await getDoc(ref);
 let find_language_unlock_module=get_data.data()[find_language+'_unlock_total_module'];
 
@@ -204,4 +204,42 @@ if(localStorage.getItem('userdetails')){
     profile.style.display = 'none'; // Hide the profile icon
 }
 
+// Profile shown
+  var userDetailsString = localStorage.getItem("userdetails");
+  var userDetails = JSON.parse(userDetailsString);
+ var  id=userDetails.user_id;
+try {
+  const profileImg = document.querySelector(".profile_img");
+  const docRef = doc(database, 'users_img', `${id}`);
+  const docSnapimg = await getDoc(docRef);
 
+  if (docSnapimg.exists()) {
+      const userDataimg = docSnapimg.data();
+      profileImg.src = userDataimg.imageURL;
+  } else {
+      console.log("The image is not found in Firestore.");
+  }
+} catch (error) {
+  console.error("Error getting document:", error);
+  alert("Error getting user image. Please try again.");
+}
+
+window.addEventListener("load", async function () {
+  const profileImg = document.querySelector(".profile_img");
+ 
+
+  try {
+    const docRef = doc(database, 'users_img', `${id}`);
+    const docSnapimg = await getDoc(docRef);
+
+    if (docSnapimg.exists()) {
+      const userDataimg = docSnapimg.data();
+      profileImg.src = userDataimg.imageURL;
+    } else {
+      console.log("The image is not found in Firestore.");
+    }
+  } catch (error) {
+    console.error("Error getting document:", error);
+    alert("Error getting user image. Please try again.");
+  }
+});

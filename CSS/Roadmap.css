@@ -478,6 +478,10 @@ h1 {
 
 }
 
+#navheading{
+  cursor: pointer;
+}
+
 .step h2 {
   color: #fff;
   display: flex;
@@ -627,8 +631,8 @@ p.Heading_p {
   width: 100%;
   display: flex;
   justify-content: center;
-  cursor: pointer;
-  color: blue;
+  /* cursor: pointer; */
+  color: #0000009e;
 }
 
 /* Effcets  for li checkbox*/

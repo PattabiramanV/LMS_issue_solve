@@ -480,11 +480,11 @@ img.profile {
 
 .bottom_two_btn {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   width: 100%;
   margin: 0 auto;
   position: relative;
-    left: 100px;
+  /* left: 9px; */
 }
 
 .bottom_two_btn button {
@@ -493,7 +493,7 @@ img.profile {
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0px 2px rgb(255, 255, 255);
-  background-color: rgb(168 47 41);
+  background-color: #c84e2a;
   color: white;
   font-size: 16px;
   font-weight: bolder;
@@ -510,6 +510,10 @@ img.profile {
 
 }
 
+button.Exercise_btn, .next_btn {
+  position: relative;
+  left: 130px;
+}
 h3#language_title {
   margin: 0;
 }
@@ -556,6 +560,12 @@ a,iframe,button,.profile_round:hover{
   color: #eaeaea;
 }
 
+.bottom_button{
+
+  display: flex;
+  justify-content: end;
+}
+
 /*....................................Content_classes...................*/
 
 .red_color{
@@ -575,6 +585,4 @@ b {
 .content_heading{
   text-align: center;
 }
-
-
 

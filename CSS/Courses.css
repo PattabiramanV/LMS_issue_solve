@@ -317,11 +317,10 @@ ul.set_items {
   display: none;
 }
 img.profile {
-  height: 35px;
+  height: 40px !important;
+  width: 40px !important;
+  border-radius: 50%;
   object-fit: cover;
-  border-radius: 100%;
-  min-width: 35px;
-  width: 40%;
 }
 
 /* search bar design */
@@ -466,16 +465,21 @@ input:hover {
 
 
 .Progress_container {
-  width: 81%;
+  width: 79%;
   display: flex;
   margin-left: 6rem;
   padding: 1%;
   gap: 1%;
   justify-content: start;
   position: relative;
-  left: 10%;
+  left: 11%;
   overflow-x: auto;
-  white-space: nowrap; 
+  white-space: nowrap;
+}
+
+.ListCourses {
+  width: 94%;
+  margin-left: 2%;
 }
 
 /* .Progress_container {
@@ -530,6 +534,9 @@ img.enroll_img {
 
 p.enroll_language {
   text-align: center;
+  color: black;
+  font-size: larger;
+  font-weight: 400;
 }
 
 .percentage {
@@ -548,11 +555,13 @@ p.progress {
   margin-top: 2rem;
 } */
 
-.List.Courses {
+.ListCourses {
   width: 94%;
   margin-left: 3rem;
   margin-top: 6rem;
 }
+
+
 
 
 .Progress_bar_Course {
@@ -760,6 +769,9 @@ p.aboutlang {
   font-size: smaller;
 }
 
+span.percentage_cal {
+  font-weight: 600;
+}
 /* using the has() relational pseudo selector to update our custom properties */
 article:has(:hover, :focus) {
   --img-scale: 1.1;
@@ -770,55 +782,20 @@ article:has(:hover, :focus) {
 }
 
 
-/************************ 
-Generic layout (demo looks)
-**************************/
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* 
-body {
-  margin: 0;
-  padding: 48px 0;
-  font-family: "Figtree", sans-serif;
-  font-size: 1.2rem;
-  line-height: 1.6rem;
-  background-image: linear-gradient(45deg, #7c9885, #b5b682);
-  min-height: 100vh;
-} */
-
-/* .articles {
-  display: grid;
-  max-width: 1067px;
-  margin-inline: auto;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  position: relative;
-  left: 6rem;
-  padding: 24px 0;
-} */
-
-/* .articles {
-  display: grid;
-  max-width: 969px;
-  margin-inline: auto;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  position: relative;
-  left: 73px;
-  padding: 24px 0;
-} */
-
 
 .articles {
   display: grid;
-  max-width: 969px;
+  max-width: 1026px;
   margin-inline: auto;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   position: relative;
-  left: 112px;
+  left: 115px;
   padding: 0px 0;
 }
 

@@ -126,7 +126,9 @@ i.fas.fa-search {
 }
 
 img.profile {
-  height: 35px;
+  height: 40px !important;
+  width: 40px !important;
+  border-radius: 50%;
   object-fit: cover;
 }
 
@@ -388,13 +390,6 @@ p.profile-name {
   font-size: 14px;
 }
 
-img.profile {
-  height: 35px;
-  object-fit: cover;
-  border-radius: 100%;
-  min-width: 35px;
-  width: 40%;
-}
 /* search bar design */
 
 .group {

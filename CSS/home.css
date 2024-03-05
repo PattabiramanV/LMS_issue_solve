@@ -197,9 +197,11 @@ img#profile_img {
   left: 6rem;
 }
 
-.profile_img{
+.profile_img {
   display: flex;
   gap: 2rem;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Dark light */
@@ -209,8 +211,9 @@ i#darkLight {
   justify-content: center;
   display: flex;
   cursor: pointer;
-    font-size: 20px;
-    color: grey;
+  font-size: 20px;
+  color: grey;
+  display: none;
 }
 .profile{
   width: 100%;
@@ -291,7 +294,6 @@ img.dckapimg {
   .bell path {
     fill: rgb(17, 16, 16);
   }
-  
   .button_explore {
     width: 120px;
     height: 45px;
@@ -299,19 +301,18 @@ img.dckapimg {
     align-items: center;
     justify-content: flex-start;
     gap: 10px;
-    background-color: #c84e2a;
+    background-color: rgb(200, 78, 42);
     border-radius: 15px;
     color: white;
     font-weight: 600;
     border: none;
     margin-top: -52px;
-    margin-left: 43%;
+    margin-left: 40%;
     position: relative;
     cursor: pointer;
-    transition-duration: .2s;
-    box-shadow: 5px 5px 10px rgba(2, 2, 2, 0.116);
+    box-shadow: rgba(2, 2, 2, 0.118) 5px 5px 10px;
     padding-left: 8px;
-    transition-duration: .5s;
+    transition-duration: 0.5s;
 }
   
   .svgIcon {
@@ -383,6 +384,7 @@ h3#heading_2 {
   font-size: 36px;
   font-weight: 700;
   line-height: 25px;
+  color: var(--orange)
 }
 hr.line_2 {
 width: 10%;
@@ -394,6 +396,7 @@ p#para_2 {
   line-height: 30px;
   font-size: 20px;
   font-weight: 300;
+  color: var(--grey-color);
 }
 .cards{
   width: 100%;
@@ -485,6 +488,7 @@ section.container_5 {
 padding: 90px;
 background-color: #eaeaea;
 background-color: var(--white-color);
+color: var(--grey-color);
 }
 .sub_container_5 {
 width: 100%;

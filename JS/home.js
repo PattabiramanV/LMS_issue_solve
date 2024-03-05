@@ -185,7 +185,7 @@ else{
   var userDetails = JSON.parse(userDetailsString);
  var  id=userDetails.user_id;
 try {
-  const profileImg = document.querySelector(".profile_img");
+  const profileImg = document.querySelector(".profile");
   const docRef = doc(database, 'users_img', `${id}`);
   const docSnapimg = await getDoc(docRef);
 
@@ -201,7 +201,7 @@ try {
 }
 
 window.addEventListener("load", async function () {
-  const profileImg = document.querySelector(".profile_img");
+  const profileImg = document.querySelector(".profile");
  
 
   try {
@@ -219,3 +219,9 @@ window.addEventListener("load", async function () {
     alert("Error getting user image. Please try again.");
   }
 });
+
+
+let profile_navigate=document.querySelector(".profile")
+profile_navigate.addEventListener("click",()=>{
+       window.location.href="./profile.html"
+})

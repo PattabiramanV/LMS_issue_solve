@@ -244,26 +244,26 @@ window.addEventListener("load", async function () {
 
 
 // Get all elements with the class 'nav_link'
-const navLinks = document.querySelectorAll('.nav_link');
+// const navLinks = document.querySelectorAll('.nav_link');
 
 
 
 // Loop through each nav link
-navLinks.forEach(link => {
-  // Add click event listener to each nav link
-  link.addEventListener('click', function(event) {
-    // Prevent default link behavior
-    event.preventDefault();
+// navLinks.forEach(link => {
+//   // Add click event listener to each nav link
+//   link.addEventListener('click', function(event) {
+//     // Prevent default link behavior
+//     event.preventDefault();
 
-    // Remove 'active' class from all nav links
-    navLinks.forEach(navLink => {
-      navLink.classList.remove('active');
-    });
+//     // Remove 'active' class from all nav links
+//     navLinks.forEach(navLink => {
+//       navLink.classList.remove('active');
+//     });
 
-    // Add 'active' class to the clicked link
-    link.classList.add('active');
-  });
-});
+//     // Add 'active' class to the clicked link
+//     link.classList.add('active');
+//   });
+// });
 
 // // Get the "Roadmap" link element
 // const roadmapLink = document.getElementById('roadmap_link');

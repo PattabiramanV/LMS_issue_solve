@@ -343,13 +343,15 @@ var userDetailsString = localStorage.getItem("userdetails");
 var userDetails = JSON.parse(userDetailsString);
 // var  id=userDetails.user_id;
 try {
-  const profileImg = document.querySelector(".profile_img");
-  const docRef = doc(database, 'users_img', `${id}`);
+  const profileImg = document.querySelector(".profile");
+  const mainprofileimg=document.querySelector(".profile_img")
+  const docRef = doc(db, 'users_img', `${id}`);
   const docSnapimg = await getDoc(docRef);
   
   if (docSnapimg.exists()) {
       const userDataimg = docSnapimg.data();
       profileImg.src = userDataimg.imageURL;
+      mainprofileimg.src=userDataimg.imageURL
   } else {
       console.log("The image is not found in Firestore.");
   }
@@ -359,12 +361,14 @@ try {
   }
   
   window.addEventListener("load", async function () {
-  const profileImg = document.querySelector(".profile_img");
+  const profileImg = document.querySelector(".profile");
+  const mainprofileimg=document.querySelector(".profile_img")
   
   
   try {
-    const docRef = doc(database, 'users_img', `${id}`);
+    const docRef = doc(db, 'users_img', `${id}`);
     const docSnapimg = await getDoc(docRef);
+    mainprofileimg.src=userDataimg.imageURL
   
     if (docSnapimg.exists()) {
       const userDataimg = docSnapimg.data();

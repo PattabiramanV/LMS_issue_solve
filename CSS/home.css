@@ -145,13 +145,24 @@ label.slide.signup {
  
 } */
 
-img.profile_img {
-  width: 19%;
-  margin-top: 11px;
-  margin-right: 33px;
+img.profile {
+  height: 40px !important;
+  width: 40px !important;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: auto;
   position: relative;
-  left: 250px;
+  top: 20%;
 }
+
+.profile {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+
 .login_parent{
   width:20%;
   display: flex;

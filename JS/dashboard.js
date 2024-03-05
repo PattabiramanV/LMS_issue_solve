@@ -28,13 +28,13 @@ if(localStorage.getItem("userdetails"))
   console.log(name);
 }
 
-else
-{
-  setTimeout(()=>{
-  window.location.href='./signup.html';
+// else
+// {
+//   setTimeout(()=>{
+//   window.location.href='./signup.html';
 
-   } ,2000);
-}
+//    } ,2000);
+// }
 
 
 let u_name = document.querySelector(".u_name");
@@ -85,11 +85,42 @@ async function fetchDataAndUpdateHTML()
         labels: ["HTML", "CSS", "JavaScript", "MySQL", "PHP"],
         datasets: [{
           label: "Percentage of Completed Lessons",
-          backgroundColor: ["#7e01c6", "#a124e9", "#C37AED", "#D995FD", "#F0BBFE"],
-          data: [data.Html_Total_Percentage, data.Css_Total_Percentage, data.Javascript_Total_Percentage, data.Mysql_Total_Percentage, data.Php_Total_Percentage]
+          // backgroundColor: ["#7e01c6", "#a124e9", "#C37AED", "#D995FD", "#F0BBFE"],
+          backgroundColor: ["#9D76C1", "#BEADFA", "#C3ACD0", "#D0BFFF", "#DFCCFB"],
+          data: [data.Html_Total_Percentage, data.Css_Total_Percentage, data.Javascript_Total_Percentage, data.Mysql_Total_Percentage, data.Php_Total_Percentage],
+          borderWidth: 1,
+          borderRadius: 20,
+          // borderColor: "orange",
+          hoverBorderWidth: 2,
+          hoverBorderColor: "#c84e2a",
         }]
       },
       options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              min: 0, 
+              max: 100,
+              stepSize: 10,
+            },
+            scaleLabel: {
+              display: false,
+              fontSize: 20, 
+              labelString: "Percentage"
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              // fontColor: "#FE7A36",
+              fontSize: 14
+            },
+            scaleLabel: {
+              display: false,
+              fontSize: 20,
+              labelString: "Courses Name"
+            }
+          }]
+        },
         legend: {
           display: false
         },
@@ -175,7 +206,6 @@ function toggleDarkMode() {
   pie_chart.classList.toggle("act2");
   // bar_chart.classList.toggle("act2");
   const isDarkMode = body.classList.toggle("dark");
-  document.body.classLisdashboard_profile_contentt.toggle("dark-mode");
   Dckaplogo.src = body.classList.contains("dark")
     ? "./Assests/Dckapwhite.png"
     : "./Assests/Logodk.png";

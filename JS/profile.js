@@ -300,3 +300,4 @@ window.addEventListener("load", async function () {
     alert("Error getting user image. Please try again.");
   }
 });
+

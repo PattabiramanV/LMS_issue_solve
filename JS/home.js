@@ -232,3 +232,23 @@ let profile_navigate=document.querySelector(".profile")
 profile_navigate.addEventListener("click",()=>{
        window.location.href="./profile.html"
 })
+
+
+// Dark mode Theme
+const body = document.querySelector("body");
+const darkLight = document.querySelector("#darkLight");
+let Dckaplogo = document.querySelector(".DCKAPlOGO");
+function toggleDarkMode() {
+  const isDarkMode = body.classList.toggle("dark");
+  document.body.classList.toggle("dark-mode");
+  Dckaplogo.src = body.classList.contains("dark")
+    ? "./Assests/Dckapwhite.png"
+    : "./Assests/Logodk.png";
+  sessionStorage.setItem("darkMode", isDarkMode);
+}
+
+const storedDarkMode = sessionStorage.getItem("darkMode");
+if (storedDarkMode === "true") {
+  toggleDarkMode();
+}
+darkLight.addEventListener("click", toggleDarkMode);

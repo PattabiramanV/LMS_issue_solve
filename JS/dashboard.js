@@ -175,7 +175,6 @@ function toggleDarkMode() {
   pie_chart.classList.toggle("act2");
   // bar_chart.classList.toggle("act2");
   const isDarkMode = body.classList.toggle("dark");
-  document.body.classLisdashboard_profile_contentt.toggle("dark-mode");
   Dckaplogo.src = body.classList.contains("dark")
     ? "./Assests/Dckapwhite.png"
     : "./Assests/Logodk.png";

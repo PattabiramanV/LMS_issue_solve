@@ -189,7 +189,6 @@ try {
 
 window.addEventListener("load", async function () {
   const profileImg = document.querySelector(".profile");
-  const ProfileMainImg=this.document.querySelector(".profile_img")
 
   try {
     const docRef = doc(database, 'users_img', `${id}`);
@@ -198,7 +197,6 @@ window.addEventListener("load", async function () {
     if (docSnapimg.exists()) {
       const userDataimg = docSnapimg.data();
       profileImg.src = userDataimg.imageURL;
-      ProfileMainImg.src=userDataimg.imageURL
     } else {
       console.log("The image is not found in Firestore.");
     }

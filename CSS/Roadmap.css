@@ -635,6 +635,10 @@ p.Heading_p {
   color: #0000009e;
 }
 
+#navheading:hover{
+  box-shadow: 0px 4px 15px 1px #ab3ee288;
+}
+
 /* Effcets  for li checkbox*/
 #checklist {
   --background: #E8E6F3;

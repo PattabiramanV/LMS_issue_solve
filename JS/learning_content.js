@@ -500,11 +500,39 @@ logout.addEventListener("click", () => {
 // profileImg.src = storedImageURL;
 
 // Retrieve imageURL from localStorage when the page loads
-document.addEventListener("DOMContentLoaded", function () {
-  const storedImageURL = localStorage.getItem("imageURL");
 
-  if (storedImageURL) {
-    const profileImg = document.querySelector(".profile");
-    profileImg.src = storedImageURL;
+try {
+  const profileImg = document.querySelector(".profile");
+  const docRef = doc(db, 'users_img', `${id}`);
+  const docSnapimg = await getDoc(docRef);
+
+  if (docSnapimg.exists()) {
+      const userDataimg = docSnapimg.data();
+      profileImg.src = userDataimg.imageURL;
+  } else {
+      console.log("The image is not found in Firestore.");
+  }
+} catch (error) {
+  console.error("Error getting document:", error);
+  alert("Error getting user image. Please try again.");
+}
+
+window.addEventListener("load", async function () {
+  const profileImg = document.querySelector(".profile");
+
+  try {
+    const docRef = doc(db, 'users_img', `${id}`);
+    const docSnapimg = await getDoc(docRef);
+
+    if (docSnapimg.exists()) {
+      const userDataimg = docSnapimg.data();
+      profileImg.src = userDataimg.imageURL;
+    } else {
+      console.log("The image is not found in Firestore.");
+    }
+  } catch (error) {
+    console.error("Error getting document:", error);
+    alert("Error getting user image. Please try again.");
   }
 });
+

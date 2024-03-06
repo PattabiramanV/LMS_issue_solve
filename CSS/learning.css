@@ -547,12 +547,12 @@ button:hover{
   .top_card_img_div > img {
   max-width: 100%;
   height: 180px;
-  width: 98%;
+  width: 94%;
   margin: 0 auto;
   display: flex;
   align-items: center;
   border-radius: 4px;
-  height: 98%;
+  height: 94%;
   }
   .bottom_btn_div {
   display: flex;

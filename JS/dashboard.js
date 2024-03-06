@@ -64,6 +64,9 @@ let Php_Complete_Module = data.Php_Complete_Module;
 let validate_Quiz = Html_Complete_Module + Css_Complete_Module + Javascript_Complete_Module + Mysql_Complete_Module + Php_Complete_Module;
 // Total_Quiz.textContent = validate_Quiz*5;
 
+// let vertical_barchart = document.querySelector("#vertical_barchart");
+// let chart_btn = document.querySelector(".chart_btn button");
+
 console.log(validate_Quiz);
 
 async function fetchDataAndUpdateHTML() 
@@ -79,27 +82,197 @@ async function fetchDataAndUpdateHTML()
     localStorage.setItem('Total_Ponits', data.Html_Complete_Module);
 
     u_name.textContent = name;
-    new Chart(document.getElementById("bar_chart"), {
-      type: 'bar',
-      data: {
-        labels: ["HTML", "CSS", "JavaScript", "MySQL", "PHP"],
-        datasets: [{
-          label: "Percentage of Completed Lessons",
-          backgroundColor: ["#7e01c6", "#a124e9", "#C37AED", "#D995FD", "#F0BBFE"],
-          data: [data.Html_Total_Percentage, data.Css_Total_Percentage, data.Javascript_Total_Percentage, data.Mysql_Total_Percentage, data.Php_Total_Percentage]
-        }]
-      },
-      options: {
-        legend: {
-          display: false
+      new Chart(document.getElementById("bar_chart"), {
+        type: 'bar',
+        data: {
+          labels: ["HTML", "CSS", "JavaScript", "MySQL", "PHP"],
+          datasets: [{
+            label: "Percentage of Completed Lessons",
+            backgroundColor: [
+              "#7e01c6", "#a124e9", "#C37AED", "#D995FD", "#F0BBFE"
+            ],
+            data: [
+              data.Html_Total_Percentage, 
+              data.Css_Total_Percentage, 
+              data.Javascript_Total_Percentage, 
+              data.Mysql_Total_Percentage, 
+              data.Php_Total_Percentage
+            ],
+            borderWidth: 1,
+            borderRadius: 100,
+            hoverBorderWidth: 2,
+            hoverBorderColor: "#c84e2a",
+          }]
         },
-        title: {
-          display: true,
-          text: 'Tracking Completed Lessons'
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                min: 0,
+                max: 100,
+                stepSize: 10,
+              },
+              scaleLabel: {
+                display: false,
+                fontSize: 20,
+                labelString: "Percentage"
+              }
+            }],
+            xAxes: [{
+              ticks: {
+                // fontColor: "#FE7A36",
+                fontSize: 14
+              },
+              scaleLabel: {
+                display: false,
+                fontSize: 20,
+                labelString: "Courses Name"
+              }
+            }]
+          },
+          legend: {
+            display: false
+          },
+          title: {
+            display: true,
+            text: 'Tracking Completed Lessons'
+          }
         }
-      }
-    });
+      });
 
+
+
+
+
+
+
+
+
+    // let chart_btn = document.querySelector(".chart_btn button");
+    // console.log(chart_btn);
+    // function verticalBar() {
+    //     new Chart(document.getElementById("bar_chart"), {
+    //         type: 'bar',
+    //         data: {
+    //             labels: ["HTML", "CSS", "JavaScript", "MySQL", "PHP"],
+    //             datasets: [{
+    //                 label: "Percentage of Completed Lessons",
+    //                 backgroundColor: ["#7e01c6", "#a124e9", "#C37AED", "#D995FD", "#F0BBFE"],
+    //                 data: [data.Html_Total_Percentage, data.Css_Total_Percentage, data.Javascript_Total_Percentage, data.Mysql_Total_Percentage, data.Php_Total_Percentage],
+    //                 borderWidth: 1,
+    //                 borderRadius: 100,
+    //                 hoverBorderWidth: 2,
+    //                 hoverBorderColor: "#c84e2a",
+    //             }]
+    //         },
+    //         options: {
+    //             scales: {
+    //                 yAxes: [{
+    //                     ticks: {
+    //                         min: 0,
+    //                         max: 100,
+    //                         stepSize: 10,
+    //                     },
+    //                     scaleLabel: {
+    //                         display: false,
+    //                         fontSize: 20,
+    //                         labelString: "Percentage"
+    //                     }
+    //                 }],
+    //                 xAxes: [{
+    //                     ticks: {
+    //                         // fontColor: "#FE7A36",
+    //                         fontSize: 14
+    //                     },
+    //                     scaleLabel: {
+    //                         display: false,
+    //                         fontSize: 20,
+    //                         labelString: "Courses Name"
+    //                     }
+    //                 }]
+    //             },
+    //             legend: {
+    //                 display: false
+    //             },
+    //             title: {
+    //                 display: true,
+    //                 text: 'Tracking Completed Lessons'
+    //             }
+    //         }
+    //     });
+    //     document.querySelector("#tooltip_hcahrt").innerHTML = "Click me to get Horizontal Chart";
+    //     document.querySelector(".pie_chart_topic").innerHTML = "Vertical Chart";
+    //     chart_btn.style.backgroundColor = "#c84e2a";
+    // }
+    
+    // function horizontalBar() {
+    //     new Chart(document.getElementById("bar_chart"), {
+    //         type: 'horizontalBar',
+    //         data: {
+    //             labels: ["HTML", "CSS", "JavaScript", "MySQL", "PHP"],
+    //             datasets: [{
+    //                 label: "Percentage of Completed Lessons",
+    //                 backgroundColor: ["#7e01c6", "#a124e9", "#C37AED", "#D995FD", "#F0BBFE"],
+    //                 data: [data.Html_Total_Percentage, data.Css_Total_Percentage, data.Javascript_Total_Percentage, data.Mysql_Total_Percentage, data.Php_Total_Percentage],
+    //                 borderWidth: 1,
+    //                 borderRadius: 100,
+    //                 hoverBorderWidth: 2,
+    //                 hoverBorderColor: "#c84e2a",
+    //             }]
+    //         },
+    //         options: {
+    //             scales: {
+    //                 xAxes: [{
+    //                     ticks: {
+    //                         min: 0,
+    //                         max: 100,
+    //                         stepSize: 10,
+    //                     },
+    //                     scaleLabel: {
+    //                         display: false,
+    //                         fontSize: 20,
+    //                         labelString: "Percentage"
+    //                     }
+    //                 }],
+    //                 yAxes: [{
+    //                     ticks: {
+    //                         // fontColor: "#FE7A36",
+    //                         fontSize: 14
+    //                     },
+    //                     scaleLabel: {
+    //                         display: false,
+    //                         fontSize: 20,
+    //                         labelString: "Courses Name"
+    //                     }
+    //                 }]
+    //             },
+    //             legend: {
+    //                 display: false
+    //             },
+    //             title: {
+    //                 display: true,
+    //                 text: 'Tracking Completed Lessons'
+    //             }
+    //         }
+    //     });
+    //     document.querySelector("#tooltip_hcahrt").innerHTML = "Click me to get Vertical Chart";
+    //     document.querySelector(".pie_chart_topic").innerHTML = "Horizontal Chart";
+    //     chart_btn.style.backgroundColor = "#c84e2a";
+    // }
+    
+    // chart_btn.addEventListener("click", (ev) => {
+    //   ev.preventDefault();
+    //   console.log("button clicked");
+    //     if (chart_btn.innerHTML === "Vertical Chart") {
+
+    //         verticalBar();
+    //         chart_btn.innerHTML = "Horizontal Chart"; 
+    //     } else if (chart_btn.innerHTML === "Horizontal Chart") {
+    //         horizontalBar();
+    //         chart_btn.innerHTML = "Vertical Chart"; 
+    //     }
+    // });
+    // verticalBar();
   } 
   catch (error) 
   {

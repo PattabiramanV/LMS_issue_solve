@@ -533,9 +533,9 @@ img.profile {
   padding: 0%;
   text-align: center;
 }
-.pie_chart_topic
+.pie_chart
 {
-  margin: 2% 0% 0% 3%;
+  margin: 2% 0% 0% 2%;
 }
 .icon2
 {
@@ -543,10 +543,61 @@ img.profile {
 }
 #chart_container
 {
-  margin: 0% 0% 0% 2%;
-  width: 640px;
+  display: block;
+  margin: 0% 0% 0% 0%;
+  width: 600px;
   height: auto;
 }
+.pie_chart_topic
+{
+  margin: 1% 0% 0% 0%;
+}
+.chart_btn button
+{
+  border-radius: 25px;
+  border: 2px solid purple;
+  padding: 2px 2px 2px 2px;
+  text-align: center;
+  width: 140px;
+  height: 30px;
+  /* gap: 4px; */
+}
+
+
+.vertical_barchart {
+  background-color: #c84e2a; /* Example color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+#tooltip_hcahrt {
+  position: absolute;
+  top: 31%;
+  left: 20%;
+  transform: translateX(-20%);
+  padding: 5px 10px;
+  color: "white";
+  background-color: #D0C9C0;
+  border: 1px solid #f3f2f2;
+  border-radius: 5px;
+  display: none;
+}
+
+.vertical_barchart:hover + #tooltip_hcahrt {
+  display: block;
+  color: black;
+}
+
+/* .pie_chart_topic {
+  text-align: center;
+  margin-top: 50px;
+} */
+
+
 
 .act
 {

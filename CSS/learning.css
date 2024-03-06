@@ -91,6 +91,9 @@ img.DCKAPlOGO {
   position: absolute;
   left: 2rem;
 }
+.DCKAPlOGO:hover{
+  cursor: pointer;
+}
 
 .navbar img {
   height: 35px;

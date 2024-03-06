@@ -224,5 +224,7 @@ window.addEventListener("load", async function () {
   }
 });
 
-
+document.querySelector(".profile_down").addEventListener("click", function () {
+  localStorage.setItem("previous_location", window.location.href);
+});
 

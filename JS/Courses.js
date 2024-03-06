@@ -234,6 +234,8 @@ try {
       const completedCoursesContainer = document.querySelector(
         ".progressing_bar .Progress_container")
       completedCoursesContainer.appendChild(completedCourseContainer);
+      let listcourse = document.querySelector(".ListCourses");
+       listcourse.style.marginTop = "0px";
     }  else {
       console.log(`User's ${language}_Complete_Module is not greater than 1`);
     }
@@ -264,13 +266,7 @@ catch (error) {
 // profileImg.src = storeprofileImg
 // Img Effect 
 
-document.addEventListener("DOMContentLoaded", function () {
-  const storedImageURL = localStorage.getItem("imageURL");
-  if (storedImageURL) {
-      const profileImg = document.querySelector(".profile");
-      profileImg.src = storedImageURL;
-  }
-});
+
 
 
 

@@ -236,15 +236,19 @@ profile_navigate.addEventListener("click",()=>{
 
 
 // Dark mode Theme
-const body = document.querySelector("body");
+let Dckaplogo = document.querySelectorAll(".DCKAPlOGO");
 
-let Dckaplogo = document.querySelector(".DCKAPlOGO");
 function toggleDarkMode() {
-  const isDarkMode = body.classList.toggle("dark");
+
+const body = document.querySelector("body");
+  const isDarkMode = document.body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
-  Dckaplogo.src = body.classList.contains("dark")
+  Dckaplogo.forEach((logo)=>{
+    logo.src = document.body.classList.contains("dark")
     ? "./Assests/Dckapwhite.png"
     : "./Assests/Logodk.png";
+  })
+
   sessionStorage.setItem("darkMode", isDarkMode);
 }
 
@@ -258,6 +262,6 @@ darkLight.addEventListener("click", toggleDarkMode);
 
 // Home navigate to profile
 
-document.querySelector(".profile_down").addEventListener("click", function () {
+document.querySelector(".profile_img").addEventListener("click", function () {
   localStorage.setItem("previous_location", window.location.href);
 });

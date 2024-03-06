@@ -14,8 +14,23 @@ body.dark {
 }
 
 .dark .navbar {
-  background-color: var(--your-dark-mode-color);
+  background-color: black;
+  border: 2px solid dimgray;
 }
+
+.dark p#head_para,.dark section.container_6,.dark a#change,.dark span#change {
+  color: var(--grey-color);
+}
+.dark h1#head {
+  color: var(--orange);
+}
+
+
+.dark h3#heading_2 {
+  color: var(--orange);
+}
+
+
 
 .dark .container_2,.dark .container_5{
   background-color: var(--your-dark-mode-color);
@@ -761,4 +776,27 @@ img#img_3 {
   align-items: center;
   position: relative;
   top: -52px;
+}
+
+
+/* Width and background color of the scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f5f5f5; 
+}
+
+/* Track of the scrollbar */
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5; 
+}
+
+/* Thumb of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 0px;
+}
+
+/* On hover, transition the scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ab3ee286; 
 }

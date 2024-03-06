@@ -36,7 +36,11 @@ change_btn.addEventListener("click", (event) => {
     let confirm_resetpass = document.querySelector("#confirm").value;
 
     if (confirm_resetpass !== new_ps) {
-        alert("Passwords do not match");
+        alert("Passwords does not match");
+    }
+    else if(confirm_resetpass =="" && new_ps == "")
+    {
+      alert("Enter a password")
     }
      else {
         const ref = doc(db, "SignUp_details",`${id}`); 

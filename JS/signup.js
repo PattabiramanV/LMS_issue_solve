@@ -26,6 +26,8 @@
   import { getFirestore,getDocs,setDoc,doc,collection,getDoc,addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 
+
+
 let db=getFirestore(app);
 
 
@@ -291,3 +293,4 @@ function login_page() {
         window.location.href = './login.html';
     }, 2000);
 }
+

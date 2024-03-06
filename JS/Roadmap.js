@@ -137,7 +137,7 @@ logout.addEventListener("click", () => {
 
 // Navigating into learning page
 
-let headingnavigate = document.querySelectorAll(".Heading_p");
+let headingnavigate = document.querySelectorAll("#navheading");
 console.log(headingnavigate);
 
 headingnavigate.forEach(async (btn) => {
@@ -155,10 +155,13 @@ headingnavigate.forEach(async (btn) => {
       find_language = "Css";
     } else if (btn === headingnavigate[3]) {
       find_language = "Javascript";
-    } else {
-      find_language = "Php";
+    } else if(btn===headingnavigate[5]){
+      find_language = "Mysql";
     }
-let find_language_unlock_module=get_data.data()[find_language+"_unlock_total_module"]
+    else{
+         find_language="Php";
+    }
+    let find_language_unlock_module=get_data.data()[find_language+"_unlock_total_module"]
     let data_get = await updateDoc(ref, {
       Find_Language_type: find_language,
       find_index: find_language_unlock_module,
@@ -167,16 +170,105 @@ let find_language_unlock_module=get_data.data()[find_language+"_unlock_total_mod
   });
 });
 
-let storeprofileImg = localStorage.getItem("imageURL");
-const profileImg = document.querySelector(".profile");
-profileImg.src = storeprofileImg;
-// Img Effect
 
-document.addEventListener("DOMContentLoaded", function () {
-  const storedImageURL = localStorage.getItem("imageURL");
+try {
+  const profileImg = document.querySelector(".profile");
+  const docRef = doc(database, 'users_img', `${id}`);
+  const docSnapimg = await getDoc(docRef);
 
-  if (storedImageURL) {
-    const profileImg = document.querySelector(".profile");
-    profileImg.src = storedImageURL;
+  if (docSnapimg.exists()) {
+      const userDataimg = docSnapimg.data();
+      profileImg.src = userDataimg.imageURL;
+  } else {
+      console.log("The image is not found in Firestore.");
+  }
+} catch (error) {
+  console.error("Error getting document:", error);
+  alert("Error getting user image. Please try again.");
+}
+
+window.addEventListener("load", async function () {
+  const profileImg = document.querySelector(".profile");
+
+  try {
+    const docRef = doc(database, 'users_img', `${id}`);
+    const docSnapimg = await getDoc(docRef);
+
+    if (docSnapimg.exists()) {
+      const userDataimg = docSnapimg.data();
+      profileImg.src = userDataimg.imageURL;
+    } else {
+      console.log("The image is not found in Firestore.");
+    }
+  } catch (error) {
+    console.error("Error getting document:", error);
+    alert("Error getting user image. Please try again.");
   }
 });
+
+
+// // navlink active
+// const roadmapLink = document.getElementById('roadmap_link');
+
+
+// roadmapLink.addEventListener('click', function(event) {
+//   event.preventDefault();
+
+//   document.querySelectorAll('.nav_link').forEach(link => {
+//     link.classList.remove('active');
+//   });
+// })
+
+
+// // Get all elements with the class 'nav_link'
+// const navLinks = document.querySelectorAll('.nav_link');
+
+
+// navLinks.forEach(link => {
+//   link.addEventListener('click', function(event) {
+    
+//     event.preventDefault();
+
+
+//     navLinks.forEach(navLink => {
+//       navLink.classList.remove('active');
+//     });
+
+//     link.classList.add('active');
+//   });
+// });
+
+
+
+// Naviagatin to navlink
+
+
+// Get all elements with the class 'nav_link'
+// const navLinks = document.querySelectorAll('.nav_link');
+
+
+
+// Loop through each nav link
+// navLinks.forEach(link => {
+//   // Add click event listener to each nav link
+//   link.addEventListener('click', function(event) {
+//     // Prevent default link behavior
+//     event.preventDefault();
+
+//     // Remove 'active' class from all nav links
+//     navLinks.forEach(navLink => {
+//       navLink.classList.remove('active');
+//     });
+
+//     // Add 'active' class to the clicked link
+//     link.classList.add('active');
+//   });
+// });
+
+// // Get the "Roadmap" link element
+// const roadmapLink = document.getElementById('roadmap_link');
+
+// // Add click event listener to the "Roadmap" link
+// roadmapLink.addEventListener('click', function(event) {
+//       window.location.href='./Roadmap.html'
+// });

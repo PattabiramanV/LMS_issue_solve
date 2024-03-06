@@ -75,7 +75,7 @@ darkLight.addEventListener("click", toggleDarkMode);
 // Profile
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
-let profile_navigate = document.querySelector(".profile");
+let profile_navigate = document.querySelector(".profile_img");
 
 profile_navigate.addEventListener("click", (event) => {
   event.stopPropagation();
@@ -351,15 +351,43 @@ document.querySelector(".profile_down").addEventListener("click", function () {
 
 // profile show
 
-const profileImg = document.querySelector(".profile");
-profileImg.src = storedImageURL;
 
-// Retrieve imageURL from localStorage when the page loads
-document.addEventListener("DOMContentLoaded", function () {
-  const storedImageURL = localStorage.getItem("imageURL");
+// Profile shown
+// var userDetailsString = localStorage.getItem("userdetails");
+// var userDetails = JSON.parse(userDetailsString);
+// var  id=userDetails.user_id;
+try {
+const profileImg = document.querySelector(".profile_img");
+const docRef = doc(db, 'users_img', `${id}`);
+const docSnapimg = await getDoc(docRef);
 
-  if (storedImageURL) {
-    const profileImg = document.querySelector(".profile");
-    profileImg.src = storedImageURL;
+if (docSnapimg.exists()) {
+    const userDataimg = docSnapimg.data();
+    profileImg.src = userDataimg.imageURL;
+} else {
+    console.log("The image is not found in Firestore.");
+}
+} catch (error) {
+console.error("Error getting document:", error);
+alert("Error getting user image. Please try again.");
+}
+
+window.addEventListener("load", async function () {
+const profileImg = document.querySelector(".profile_img");
+
+
+try {
+  const docRef = doc(db, 'users_img', `${id}`);
+  const docSnapimg = await getDoc(docRef);
+
+  if (docSnapimg.exists()) {
+    const userDataimg = docSnapimg.data();
+    profileImg.src = userDataimg.imageURL;
+  } else {
+    console.log("The image is not found in Firestore.");
   }
+} catch (error) {
+  console.error("Error getting document:", error);
+  alert("Error getting user image. Please try again.");
+}
 });

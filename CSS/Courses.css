@@ -323,6 +323,8 @@ img.profile {
   object-fit: cover;
 }
 
+
+
 /* search bar design */
 
 .group {
@@ -505,12 +507,13 @@ input:hover {
 .progress_langauge {
   width: 100%;
 }
-
 img.enroll_img {
-  border-radius: 100%;
-  width: 40%;
-  margin: auto;
-  display: flex;
+    height: 102px;
+    border-radius: 100%;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    object-fit: cover;
 }
 
 .Progress_bar {
@@ -717,21 +720,19 @@ figure {
   aspect-ratio: 16 / 9;
   overflow: hidden;
 }
-
 article img {
-  /* max-width: 100%; */
-  transform-origin: center;
-  transform: scale(var(--img-scale));
-  transition: transform 0.4s ease-in-out;
-  width: 50%;
-  /* height: 77%; */
-  border-radius: 100%;
-  margin: auto;
-  display: flex;
-  /* padding: 4%; */
-  border-radius: 100%;
-  width: 40%;
-  padding: 7px 2px;
+    max-width: 100%;
+    transform-origin: center;
+    transform: scale(var(--img-scale));
+    transition: transform 0.4s ease-in-out;
+    width: 50%;
+    height: 77%;
+    border-radius: 15px 15px 0px 0px;
+    margin: auto;
+    display: flex;
+    width: 95%;
+    padding: 4px 1px;
+    padding-top: 5px;
 }
 
 .article-body {

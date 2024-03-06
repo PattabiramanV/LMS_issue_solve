@@ -529,7 +529,8 @@ button:hover{
 .card{
   max-width: 300px;
   padding: 8px;
-  /* margin-top: 100px; */
+  height: 417px;
+
   }
   .card>* {
   width: 100%;
@@ -563,7 +564,7 @@ button:hover{
  
   .learn_more_btn {
   color: #fafafa;
-  background-color: rgb(168 47 41);
+  background-color: #c84e2a;
   width: 100%;
   font-weight: 800;
   border-radius: 4px;
@@ -578,8 +579,9 @@ line-height: 36px;
   .learn_more_btn:hover{
   
   cursor: pointer;
-  color: rgb(168 47 41);
+  color: #c84e2a;
   background-color: #fafafa;
+  border: 1px solid #c84f2aa2;
   }
   .middle_card_title{
   display: flex;
@@ -612,6 +614,7 @@ width: 90%;
     left: 270px;
     margin-top: 100px;
     column-gap: 20px;
+    row-gap: 10px;
 }
   .main_card {
   background-color:#eaeaea !important;
@@ -623,4 +626,14 @@ font-size: 24px;
 .inner_card{
 border-radius: 10px;
 background-color: #fafafa;
+border: 1px solid #c84f2a40;
+
+}
+
+.inner_card:hover{
+  /* border: 1px solid #c84f2a40; */
+border: 1px solid #fff;
+
+  cursor: pointer;
+
 }

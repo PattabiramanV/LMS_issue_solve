@@ -80,10 +80,6 @@ function heading_append_Fun(arr){
 
     left_heading_content.append(content_heading_div);
   
-    // let user_unlock_total_module=get_data.data()[find_language + '_unlock_total_module'];
-
-
-  
     if(index<find_complete_module+1 || (index<=find_complete_module+1 && find_complete_module!=0 ) ){
       lock_icon.classList.add("lock_remove_classlist");
       p_tag.classList.add("left_heding");
@@ -103,9 +99,6 @@ all_heading_title=document.querySelectorAll(".content_title");
 
 
 let Exercise_btn=document.querySelector(".Exercise_btn");
-let next_btn=document.querySelector(".next_btn");
-let previous_btn=document.querySelector(".Previous_btn")
-let bottom_two_btn=document.querySelector(".bottom_two_btn");
 
 content_btn_Change_Fun()
 async function content_btn_Change_Fun(){
@@ -115,24 +108,11 @@ async function content_btn_Change_Fun(){
   find_index=get_data.data().find_index;
 
 Exercise_btn.style.display='block';
-next_btn.style.display='block';
-previous_btn.style.display='block';
-bottom_two_btn.style.justifyContent='space-between';
-
   if(find_index==0){
- 
-    previous_btn.style.display='none';
     Exercise_btn.style.display='none';
-    bottom_two_btn.style.justifyContent='end';
+    }
     
-    }
-    else{
-
-      next_btn.style.display='none';
-  
-    }
-
-}
+  }
 
   
 Exercise_btn.addEventListener("click",()=>{
@@ -210,63 +190,6 @@ bottom_content.innerHTML=data_ref.data().bottom_content;
 
 
 }
-
-//...............................Next_Btn....................................//
-
-next_btn.addEventListener("click",async()=>{
-
-  let ref_data=doc(db,"Learning",`User=${id}`);
-    let get_data= await getDoc(ref_data);
-    let user_unlock_total_module=get_data.data()[find_language + '_unlock_total_module'];
-    let data_set=await updateDoc(
-        ref_data,{
-            find_index:1,
-            
-        }
-    )
-    if(user_unlock_total_module<1){
-      updateDoc(
-        ref_data,{
-          
-          [find_language + '_unlock_total_module']:1
-            
-        }
-    )
-    }
-
-    all_heading_title=document.querySelectorAll(".content_title");
-    all_heading_title[1].parentElement.lastElementChild.classList.add("lock_remove_classlist")
-    all_heading_title[1].classList.add("left_heding");
-content_btn_Change_Fun();
-  content_showing_fun(find_language,1);
-  
-
-});
-
-//...................................Previous_Btn..............................//
-
-previous_btn.addEventListener("click",async()=>{
-
-  let get_ref=doc(db,'Learning',`User=${id}`);
-  let get_data= await getDoc(get_ref);
-  find_index=get_data.data().find_index;
-  find_index--;
-  let data_set=await updateDoc(
-    get_ref,{
-        find_index:find_index,
-        
-    }
-)
-
-all_heading_title=document.querySelectorAll(".content_title");
-all_heading_title[find_index].parentElement.lastElementChild.classList.add("lock_remove_classlist")
-all_heading_title[find_index].classList.add("left_heding");
-
-content_btn_Change_Fun();
-  content_showing_fun(find_language,find_index);
-
-})
-
 
 
 

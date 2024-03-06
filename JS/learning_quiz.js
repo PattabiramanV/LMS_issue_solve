@@ -199,8 +199,10 @@ async function Quiz_change_Fun(value){
 if(value.innerHTML=='Next'&& all_radio_btn.value!=''){
     index++;
     // console.log(all_radio_btn.value);
+    document.querySelector(".Answer_show_page").classList.add("Answer_show_page_classlist")
     arr.push(all_radio_btn.value);
     form_radio_btn_4.reset();
+
  
 }
 else if(index!=0 && value.innerHTML=='Previous'){
@@ -332,8 +334,8 @@ console.log(all_P_tag);
     retry_btn.style.display = 'none';
     right_thumsup.classList.remove("right_thumsup_class_list");
     thumsup_img.src = "./Assests/right_img.jpg";
-    all_P_tag[0].innerHTML = 'Sucessfully complete the excersize and you eligible for go the next module.'
-    all_P_tag[1].innerHTML = 'Congralation you unlocked the first excersize.'
+    all_P_tag[0].innerHTML = 'Sucessfully complete the exercise and you eligible for go the next module.'
+    all_P_tag[1].innerHTML = 'Congralation you unlocked the first exercise.'
 
    quiz_mark_validate_Fun();
     }

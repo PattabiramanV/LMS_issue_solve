@@ -480,11 +480,11 @@ img.profile {
 
 .bottom_two_btn {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   width: 100%;
   margin: 0 auto;
   position: relative;
-  /* left: 9px; */
+  
 }
 
 .bottom_two_btn button {
@@ -494,21 +494,28 @@ img.profile {
   border-radius: 5px;
   box-shadow: 0px 0px 2px rgb(255, 255, 255);
   background-color: #c84e2a;
-  color: white;
+  color: #fff;
   font-size: 16px;
   font-weight: bolder;
   cursor: pointer;
-  /* padding: 2%; */
+ 
 }
 
 .bottom_two_btn button:hover{
 
-  background-color: rgba(168, 47, 41, 0.744);
+  background-color: #fff;
+  color:#c84e2a ;
   transform: scale(1.05);
-
-
+  border: 1px solid #c84f2aa2 ;
 
 }
+
+
+
+
+
+
+
 
 button.Exercise_btn, .next_btn {
   position: relative;
@@ -533,8 +540,10 @@ a,iframe,button,.profile_round:hover{
   top: 26px;
   left: 34px;
 }
-
-
+.fa-solid, .fas {
+  font-weight: 900;
+  margin-right: 8%;
+}
 
 /*.......................................Top content......................*/
 

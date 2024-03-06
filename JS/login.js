@@ -68,12 +68,12 @@ login_button.addEventListener("click",login_fun)
     let log_password_1=document.getElementById("log_pass").value
     let invalid_mail=document.querySelector(".invalid_email")
     let invalid_password=document.querySelector(".invalid_password")
-    
+ 
       event.preventDefault()
       
       if(log_email_1 == "")
       {
-        // invalid_mail.innerHTML = 'Enter a Email';
+  
         invalid_mail.style.color = "red";
         invalid_mail.style.visibility="visible"
         setTimeout(() => {
@@ -83,7 +83,6 @@ login_button.addEventListener("click",login_fun)
       }
       if(log_password_1 == "")
       {
-        // invalid_password.innerHTML = 'Enter a password';
         invalid_password.style.color = "red";
         invalid_password.style.visibility="visible"
         setTimeout(() => {
@@ -92,21 +91,48 @@ login_button.addEventListener("click",login_fun)
          return;
       }
       
-      getdata .forEach(async (record) => { 
-        let email_data = record.data().email
-        let password_data = record.data().password
-        let id=record.data().user_id;
-    
-        if(log_email.value == email_data && log_password.value==password_data )
+        let email_data = localStorage.getItem("userdetails");
+        let email=JSON.parse(email_data);
+        let user_email=email.email;
+        let password=email.password;
+
+       if(log_email.value != user_email)
+       {
+        console.log("hi");
+        invalid_mail.innerHTML="Enter a valid email";
+        invalid_mail.style.color = "red";
+        invalid_mail.style.visibility="visible";
+        setTimeout(() => {
+          invalid_mail.style.visibility = "hidden";
+        }, 2000);
+      
+     
+        
+       }
+
+         if(log_password.value != password)
+       {
+        console.log("bye");
+         
+        invalid_password.style.color = "red";
+        invalid_password.innerHTML="Enter a Valid password"
+        invalid_password.style.visibility="visible"
+        setTimeout(() => {
+          invalid_password.style.visibility = "hidden";
+        }, 2000);
+       
+
+         return;
+       }
+        else if(log_email.value == user_email && log_password.value==password )
         {
-          // console.log("hi");
           document.getElementById('loadingOverlay').style.visibility = 'visible';
           setTimeout(() => {
               window.location.href = './index.html';
           }, 1000);
 
-
-
+       
+     
           let ref_data=doc(db,"Learning",`User=${id}`);
           let data_set=await setDoc(
              ref_data,{
@@ -138,47 +164,54 @@ login_button.addEventListener("click",login_fun)
 
 
         }
-      });
+       
+      // });
 }
 
 
 // ----------forgot-----
 let forgot_btn=document.querySelector("#forget")
-
-
+let verify_btn=document.querySelector("#verify_button")
 
 forgot_btn.addEventListener("click",()=>{
 
- document.querySelector(".maincontainer3").style.display = "block";
+ document.querySelector(".maincontainer_foremail").style.display="block";
  document.querySelector(".maincontainer_2").style.display="none";
     
 }
 )
 
+verify_btn.addEventListener("click",(event)=>{
 
-// Assuming Firestore is properly imported and initialized
+ event.preventDefault();
+ let mail_box=document.querySelector("#reset_id")
+ document.querySelector(".container").style.display="block";
+ document.querySelector(".maincontainer_foremail").style.display="none";
+ document.querySelector(".maincontainer_2").style.display="none";
+ let otp_random=Math.floor(Math.random()*100000);
+ console.log(otp_random);
+ let mail_msg= ` You recently requested to reset your password for your account. To complete the password reset process, please enter the following 
+         OTP : <b>${otp_random}</b>`
+         Email.send({
+           SecureToken : "3530e414-b30b-4087-819e-ce07fc9da7b5",
+           To : mail_box.value,
+           From : "dckaplms@gmail.com",
+           Subject : "Verify OTP",
+           Body : mail_msg
+       }).then(
+         message => alert(message)
+       ) 
+})
 
-let reset_btn = document.querySelector("#Reset_button");
-reset_btn.addEventListener("click", (event) => {
-    event.preventDefault();
+let next_btn=document.querySelector("#otp_btn")
 
-    let mail = document.querySelector("#reset_id").value;
-    let new_ps = document.querySelector("#new").value;
-    let confirm_resetpass = document.querySelector("#confirm").value;
-
-    if (confirm_resetpass !== new_ps) {
-        alert("Passwords do not match");
-    } else {
-        const ref = doc(db, "SignUp_details",`${id}`); 
-
-        updateDoc(ref, {
-          password: new_ps
-        }).then(() => {
-            alert("Updated Successfully");
-        })
-    }
-});
-
+next_btn.addEventListener("click",()=>{
+  document.getElementById('loadingOverlay').style.visibility = 'visible';
+  setTimeout(() => {
+    // alert("message")
+  window.location.href = './Reset.html';
+  }, 1000);
+})
 
 
 

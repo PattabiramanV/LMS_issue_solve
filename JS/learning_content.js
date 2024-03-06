@@ -228,16 +228,15 @@ let Dckaplogo = document.querySelector(".DCKAPlOGO");
 Dckaplogo.addEventListener("click",()=>{
   window.location.href='./index.html'
 })
-let searchicon = document.querySelector(".fas");
 function toggleDarkMode() {
 
   const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
-  searchicon.style.color = isDarkMode ? "white" : "black";
  
+
   Dckaplogo.src = body.classList.contains("dark")
-  ? "./Assests/Dckapwhite.png"
-  : "./Assests/Logodk.png";
+    ? "./Assests/Dckapwhite.png"
+    : "./Assests/Logodk.png";
  
 
   sessionStorage.setItem("darkMode", isDarkMode);

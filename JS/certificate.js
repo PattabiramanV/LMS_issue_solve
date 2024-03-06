@@ -343,7 +343,58 @@ async function mysql_quiz_btn()
 // Call the quiz_btn function
 mysql_quiz_btn();
 
-// Cancel Navigation
+// ------------------------------------ PHP Quiz -------------------------------------------------
+
+async function php_quiz_btn() 
+{
+  try 
+  {
+    const getRef = doc(db, 'Learning', `User=${id}`);
+    const getData = await getDoc(getRef);
+    const data = getData.data();
+    const Php_Complete_Percentage = data.Php_Total_Percentage;
+    console.log(Php_Complete_Percentage); // Output the value to debug
+
+    const php_btn = document.querySelector("#php_btn");
+
+    if (Php_Complete_Percentage === 100) 
+    {
+      document.querySelector(".php_lock").style.display = "none";
+      php_btn.classList.add("class");
+    }
+    else
+    {
+      document.querySelector(".php_lock").style.display = "block";
+      php_btn.classList.remove("class");
+    }
+
+    php_btn.addEventListener("click", () => {
+      if (Php_Complete_Percentage === 100) 
+      {
+        localStorage.setItem('selectedQuiz', 'PHP_Overall_Quiz');
+        localStorage.setItem('certificate_get', 'PHP_Overall_Quiz');
+        window.location.href = './OverallQuiz.html';
+        document.querySelector(".php_lock").style.display = "none"; // Use querySelector or access the first element of the collection
+      } 
+      else if (Php_Complete_Percentage < 100) 
+      {
+        document.getElementById("php_error").style.display = "block";
+        setInterval(() => {
+          document.getElementById("php_error").style.display = "none";
+        }, 4000);
+      }
+    });
+  } catch (error) {
+    console.error("Error fetching and updating data:", error);
+    return 0;
+  }
+}
+
+// Call the quiz_btn function
+php_quiz_btn();
+
+
+// ----------------------------------------- Cancel Navigation ------------------------------------------
 
 document.querySelector(".profile_down").addEventListener("click", function () {
   localStorage.setItem("previous_location", window.location.href);

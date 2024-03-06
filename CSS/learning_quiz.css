@@ -476,7 +476,8 @@ img.profile {
   justify-content: space-between;
   gap: 30px;
   
-  /* display: none; */
+  /* border: 1px solid #80808069; */
+border:   1px solid #c84f2a42;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -486,15 +487,17 @@ img.profile {
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0px 2px gray;
-  background-color: rgb(168 47 41);
   font-size: 16px;
   font-weight: bolder;
   cursor: pointer;
-  color: #FFFFFF;
+  color: #fff;
+  background-color: #c84e2a;
 }
 button:hover{
-  background-color: rgba(168, 47, 41, 0.744);
-  transform: scale(1.05);
+  color: #c84e2a;
+  background-color: #fff;
+  border: 1px solid #c84f2aa2;
+  /* transform: scale(1.05); */
 
 }
 
@@ -510,12 +513,7 @@ button:hover{
     color: gray;
 }
 
-/* button.previous_btn {
-  background-color: lightsalmon;
-  color: lightsalmon;
-  border: none;
-  box-shadow: 0px 0px;
-} */
+
 .previous_btn{
   display: none;
 }
@@ -563,7 +561,7 @@ form label{
 .Answer_show_page {
   width: 52%;
   background-color: #FFFFFF;
-  box-shadow: 0px 0px 12px 0px grey;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 0 428px;
   margin-top: 170px;
   /* height: 350px; */
@@ -573,14 +571,9 @@ form label{
   gap: 45px;
   border-radius: 8px;
   display: none;
+  border: 1px solid #c84f2a42;
 }
 
-/* .Answer_show_page {
-  width: 70%;
-  background-color: #d3d3d3c9;
-  margin: 0 auto;
-  margin-top: 50px;
-} */
 .top_thumsup_and_content {
   display: flex;
   justify-content: space-evenly;
@@ -638,15 +631,19 @@ form label{
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0px 2px gray;
-  background-color: rgb(168 47 41);
+  color: #fff;
+  background-color: #c84e2a;
   font-size: 14px;
   font-weight: bolder;
   cursor: pointer;
-  color: #FFFFFF;
+ 
 }
 .two_btn button:hover{
-  background-color: rgba(168, 47, 41, 0.744);
-  transform: scale(1.05);
+
+   color: #c84e2a;
+  background-color: #fff;
+  border: 1px solid #c84f2aa2;
+  /* transform: scale(1.05); */
 }
 #retry_btn{
   display: none;
@@ -660,9 +657,6 @@ button:hover{
 }
 
 .Answer_show_page img {
-  /* position: relative;
-  top: 41px; */
-  /* height: 149px; */
   width: 100%;
   height: 157px;
 }
@@ -685,6 +679,7 @@ strong{
   display: flex;
 flex-direction: column;
 gap: 20px;
+
 }
 .bootm_content_quiz_classlist{
   display: flex;
@@ -699,3 +694,4 @@ gap: 20px;
   background-color:red;
 
 }
+

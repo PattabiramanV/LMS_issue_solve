@@ -78,7 +78,7 @@ async function fetchDataAndUpdateHTML()
         // Update HTML with fetched data
     Total_Quiz.textContent = validate_Quiz * 5;
     Total_Ponits.textContent = validate_Quiz;
-    Total_Stars.textContent = validate_Quiz * 2;
+    Total_Stars.textContent = validate_Quiz * 5;
     localStorage.setItem('Total_Ponits', data.Html_Complete_Module);
 
     u_name.textContent = name;

@@ -99,9 +99,10 @@ async function fetchDataAndUpdateHTML()
               data.Php_Total_Percentage
             ],
             borderWidth: 1,
-            borderRadius: 100,
+            borderRadius: 5,
             hoverBorderWidth: 2,
             hoverBorderColor: "#c84e2a",
+            // borderSkipped : false
           }]
         },
         options: {
@@ -136,8 +137,10 @@ async function fetchDataAndUpdateHTML()
           title: {
             display: true,
             text: 'Tracking Completed Lessons'
-          }
+          },
+         
         }
+
       });
 
 

@@ -220,7 +220,6 @@ otp_btn.addEventListener("click", verified)
   }
   if(otp_inputbox.value == otp_random)
   {
-
     let ref=doc(db,"SignUp_details",`${++id}`)
     let userData = {
       username: username.value,

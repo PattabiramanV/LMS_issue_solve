@@ -233,7 +233,7 @@ otp_btn.addEventListener("click", verified)
   };
      setDoc(ref, userData)
          .then(() => {
-             alert("Account created successfully");
+            //  alert("Account created successfully");
             
          })
     

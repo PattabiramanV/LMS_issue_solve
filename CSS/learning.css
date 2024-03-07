@@ -583,7 +583,9 @@ line-height: 36px;
   color: #c84e2a;
   background-color: #fafafa;
   border: 1px solid #c84f2aa2;
+  
   }
+  
   .middle_card_title{
   display: flex;
   justify-content: space-between;

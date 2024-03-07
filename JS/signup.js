@@ -193,7 +193,7 @@ let username_inputbox = document.getElementById("user").value;
               Subject : "Verify OTP",
               Body : mail_msg
           }).then(
-            message => alert(message)
+            // message => alert(message)
           )
           .catch(err => alert(err));
           }
@@ -233,7 +233,7 @@ otp_btn.addEventListener("click", verified)
   };
      setDoc(ref, userData)
          .then(() => {
-             alert("Account created successfully");
+            //  alert("Account created successfully");
             
          })
     

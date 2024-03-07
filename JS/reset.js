@@ -49,7 +49,7 @@ change_btn.addEventListener("click", (event) => {
           password: new_ps,
           confirmPassword :confirm_resetpass,
         }).then(() => {
-            alert("Updated Successfully");
+            // alert("Updated Successfully");
             window.location.href='./login.html'
         })
     }    

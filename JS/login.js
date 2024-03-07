@@ -155,7 +155,7 @@ login_button.addEventListener("click",login_fun)
                  Mysql_unlock_total_module:0,
              }
          ).then(()=>{
-             alert("sucessfully");
+          
          }).catch((err)=>{
              console.log(err);
          });
@@ -199,7 +199,7 @@ verify_btn.addEventListener("click",(event)=>{
            Subject : "Verify OTP",
            Body : mail_msg
        }).then(
-         message => alert(message)
+        //  message => alert(message)
        ) 
 })
 
@@ -208,7 +208,7 @@ let next_btn=document.querySelector("#otp_btn")
 next_btn.addEventListener("click",()=>{
   document.getElementById('loadingOverlay').style.visibility = 'visible';
   setTimeout(() => {
-    // alert("message")
+ 
   window.location.href = './Reset.html';
   }, 1000);
 })

@@ -76,7 +76,7 @@ learning.addEventListener("click",()=>{
 
 
 navlogin.addEventListener("click",()=>{
-     window.location.href='./login.html'
+    window.location.href="./login.html";
 })
 
 navsign.addEventListener("click",()=>{
@@ -89,7 +89,30 @@ navsign.addEventListener("click",()=>{
 
 
 
-let find_language = 0;
+
+searchbtn.addEventListener("click",()=>{
+    alert("explore clicked")
+})
+
+htmlbtn.addEventListener("click",()=>{
+    window.location.href="./learning_content.html";
+})
+
+cssbtn.addEventListener("click",()=>{
+    window.location.href="./";
+})
+
+jsbtn.addEventListener("click",()=>{
+    alert("js button clicked")
+})
+
+mysqlbtn.addEventListener("click",()=>{
+    alert("mysql button clicked")
+})
+
+phpbtn.addEventListener("click",()=>{
+    alert("php button clicked")
+})
 
 
 

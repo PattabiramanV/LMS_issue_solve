@@ -108,13 +108,14 @@ confirmPassword.addEventListener("click",()=>{
 })
 
 // ------------form submit---------
+
 sign_up_btn.addEventListener("click", form_submit);
  async function form_submit(event) {
+
     event.preventDefault();
     var usernameValue = username.value; //inputbox values
     var emailValue = email_box.value;
     var createPasswordValue = create_password.value;
-    // console.log(createPasswordValue);
     var confirmpassvalue= confirmPassword.value
 
 
@@ -176,7 +177,7 @@ sign_up_btn.addEventListener("click", form_submit);
 
   
 
-// --------otp generating---------
+// --------otp generating-----------
 let mail_id_inputbox = document.getElementById("mail_id");
 let username_inputbox = document.getElementById("user").value;
  document.querySelector(".container").style.display = "block";

@@ -1,8 +1,5 @@
 "use strict"
 
-
-
-
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
   // TODO: Add SDKs for Firebase products that you want to use
@@ -22,15 +19,15 @@
   const app = initializeApp(firebaseConfig);
   import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
   
-let db=getFirestore(app);
-let id=0;
+let database=getFirestore(app);
 
+// var  id=userDetails.user_id;
 function singup_check_Fun(){
 
 if(localStorage.getItem("userdetails")){
   var userDetailsString = localStorage.getItem("userdetails");
   var userDetails = JSON.parse(userDetailsString);
-  id=userDetails.user_id;
+ var  id=userDetails.user_id;
 }
 
 else{
@@ -96,7 +93,6 @@ let find_language = 0;
 
 
 
-
 let  Explorebtn=document.querySelectorAll(".enroll_btn")
 
 Explorebtn[0].addEventListener("click",()=>{
@@ -135,7 +131,7 @@ async  function language_change_Fun(){
 
   singup_check_Fun();
 
-  let ref = doc(db, "Learning", `User=${id}`);
+  let ref = doc(database, "Learning", `User=${id}`);
   let get_data= await getDoc(ref);
 let find_language_unlock_module=get_data.data()[find_language+'_unlock_total_module'];
 
@@ -172,18 +168,100 @@ let find_language_unlock_module=get_data.data()[find_language+'_unlock_total_mod
 
 
 // -------------loginvalidate----------
-if(localStorage.getItem('userdetails')){
-  // let sessionStorage_value=sessionStorage.getItem('userdetails') // key name of data in session or localstorage
-  singup_login_btn.style.display = 'none';
-  // navsign.style.display = 'none'; // login signup btn display off
-  profile.classList.add('usrprofile');
-  //get and rename the correct name of user profile
-  // .usrprofile - css added feel free to change class names as u want
-}
-else{
-  singup_login_btn.style.display = 'block';
-  // navsign.style.display = 'block';
 
+let signcontrols = document.querySelector(".login_parent");
+const darkLight = document.querySelector("#darkLight");
+
+// Check if userdetails exist in localStorage
+if(localStorage.getItem('userdetails')){
+    // User details exist
+    signcontrols.style.display = 'none'; // Hide the sign-up and login buttons
+    profile.style.display = 'block'; // Show the profile icon
+    darkLight.style.display='block'
+
+ // Add class to profile icon if needed
+} else {
+
+    profile.style.display = 'none'; // Hide the profile icon
 }
-console.log(navlogin);
-console.log(navsign);
+
+
+
+
+// Profile shown
+  var userDetailsString = localStorage.getItem("userdetails");
+  var userDetails = JSON.parse(userDetailsString);
+ var  id=userDetails.user_id;
+try {
+  const profileImg = document.querySelector(".profile");
+  const docRef = doc(database, 'users_img', `${id}`);
+  const docSnapimg = await getDoc(docRef);
+
+  if (docSnapimg.exists()) {
+      const userDataimg = docSnapimg.data();
+      profileImg.src = userDataimg.imageURL;
+  } else {
+      console.log("The image is not found in Firestore.");
+  }
+} catch (error) {
+  console.error("Error getting document:", error);
+  alert("Error getting user image. Please try again.");
+}
+
+window.addEventListener("load", async function () {
+  const profileImg = document.querySelector(".profile");
+ 
+
+  try {
+    const docRef = doc(database, 'users_img', `${id}`);
+    const docSnapimg = await getDoc(docRef);
+
+    if (docSnapimg.exists()) {
+      const userDataimg = docSnapimg.data();
+      profileImg.src = userDataimg.imageURL;
+    } else {
+      console.log("The image is not found in Firestore.");
+    }
+  } catch (error) {
+    console.error("Error getting document:", error);
+    alert("Error getting user image. Please try again.");
+  }
+});
+
+
+let profile_navigate=document.querySelector(".profile")
+profile_navigate.addEventListener("click",()=>{
+       window.location.href="./profile.html"
+})
+
+
+// Dark mode Theme
+let Dckaplogo = document.querySelectorAll(".DCKAPlOGO");
+
+function toggleDarkMode() {
+
+const body = document.querySelector("body");
+  const isDarkMode = document.body.classList.toggle("dark");
+  document.body.classList.toggle("dark-mode");
+  Dckaplogo.forEach((logo)=>{
+    logo.src = document.body.classList.contains("dark")
+    ? "./Assests/Dckapwhite.png"
+    : "./Assests/Logodk.png";
+  })
+
+  sessionStorage.setItem("darkMode", isDarkMode);
+}
+
+const storedDarkMode = sessionStorage.getItem("darkMode");
+if (storedDarkMode === "true") {
+  toggleDarkMode();
+}
+darkLight.addEventListener("click", toggleDarkMode);
+
+
+
+// Home navigate to profile
+
+document.querySelector(".profile_img").addEventListener("click", function () {
+  localStorage.setItem("previous_location", window.location.href);
+});

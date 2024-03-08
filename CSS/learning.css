@@ -25,6 +25,8 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+user-select: none;
+
 
 }
 
@@ -90,6 +92,9 @@ body.dark {
 img.DCKAPlOGO {
   position: absolute;
   left: 2rem;
+}
+.DCKAPlOGO:hover{
+  cursor: pointer;
 }
 
 .navbar img {
@@ -646,4 +651,28 @@ border: 1px solid #fff;
   height: 100%;
   border-radius: 0px; 
   transition: 0.2s; 
+}
+
+
+
+/* Width and background color of the scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f5f5f5; 
+}
+
+/* Track of the scrollbar */
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5; 
+}
+
+/* Thumb of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 0px;
+}
+
+/* On hover, transition the scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ab3ee286; 
 }

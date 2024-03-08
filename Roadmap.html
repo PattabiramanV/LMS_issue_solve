@@ -9,12 +9,9 @@
   <title>LMS WEBSITES</title>
   <link rel="stylesheet" href="./CSS/Roadmap.css">
   <link rel="icon" type="image/x-icon" href="./Assests/icons8-learning-50.png" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Hanuman:wght@100;300;400;700;900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kalam:wght@300;400;700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Hanuman:wght@100;300;400;700;900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kalam:wght@300;400;700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -39,12 +36,12 @@
     <div class="navbar_content">
       <i class="bi bi-grid"></i>
       <i class='bx bx-sun' id="darkLight"></i>
-      <img src="./Assests/Circle-icons-profile.svg" alt="" class="profile" />
+      <img src="./Assests/system-regular-8-account.gif" alt="" class="profile" />
     </div>
     <div class="profile_bar_list">
       <div class="profile_down">
         <i class="fa fa-user" aria-hidden="true" class="profile-icon"></i>
-        <P class="profile-name">profile</P>
+        <P class="profile-name">Profile</P>
       </div>
       <div class="Course_Down">
         <i class="fa-solid fa-book"></i>
@@ -52,7 +49,7 @@
       </div>
       <div class="profile_certicate">
         <i class="fa-solid fa-award" class="profile-icon"></i>
-        <P class="profile-name">certificate</P>
+        <P class="profile-name">Certificate</P>
       </div>
       <div class="log_out">
         <i class="fa-solid fa-right-from-bracket" class="profile-icon"></i>
@@ -90,7 +87,7 @@
             <span class="navlink_icon">
               <i class="bx bxs-magic-wand"></i>
             </span>
-            <span class="navlink">DashBoard</span>
+            <span class="navlink">Dashboard</span>
           </a>
         </li>
 
@@ -100,7 +97,7 @@
             <span class="navlink_icon">
               <i class="bx bx-loader-circle"></i>
             </span>
-            <span class="navlink">RoadMap</span>
+            <span class="navlink" id="roadmap_link">Roadmap</span>
           </a>
         </li>
       </ul>
@@ -135,7 +132,7 @@
       <div class="step">
         <div class="line-connector" id="internet-html-connector"></div>
         <p class="jobText"></p>
-        <h2 class="internet">
+        <h2 class="internet" id="navheading">
           <i class="fa-solid fa-circle-check"></i>Internet
         </h2>
 
@@ -159,11 +156,11 @@
           <input value="3" name="r" type="checkbox" id="Html-03"><label for="Html-03">Sematic Tags</label>
           <input value="4" name="r" type="checkbox" id="Html-04"><label for="Html-04">Flex and Grid</label>
         </div>
-        <h2 class="html"> <i class="fa-solid fa-circle-check"></i>HTML</h2>
+        <h2 class="html" id="navheading"> <i class="fa-solid fa-circle-check"></i>HTML</h2>
       </div>
       <div class="step">
         <div class="line-connector" id="css-js-connector"></div>
-        <h2 class="Css"><i class="fa-solid fa-circle-check"></i>CSS</h2>
+        <h2 class="Css" id="navheading"><i class="fa-solid fa-circle-check"></i>CSS</h2>
         <div id="checklist">
           <p class="Heading_p">Learn the basics of Css</p>
           <input value="1" name="r" type="checkbox" id="Css-01"><label for="Css-01">Css Syntax</label>
@@ -181,11 +178,11 @@
           <input value="3" name="r" type="checkbox" id="Java-03"><label for="Java-03">js functions</label>
           <input value="4" name="r" type="checkbox" id="Java-04"><label for="Java-04">Hoisting</label>
         </div>
-        <h2 class="Js"><i class="fa-solid fa-circle-check"></i>JavaScript</h2>
+        <h2 class="Js" id="navheading"><i class="fa-solid fa-circle-check"></i>JavaScript</h2>
       </div>
       <div class="step">
         <div class="line-connector" id="css-js-connector"></div>
-        <h2 class="Figma"><i class="fa-solid fa-circle-check"></i>Figma</h2>
+        <h2 class="Figma" id="navheading"><i class="fa-solid fa-circle-check"></i>Figma</h2>
         <div id="checklist">
           <p class="Heading_p">Learn the basics of Figma</p>
           <input value="1" name="r" type="checkbox" id="figma-01"><label for="figma-01">Designs ui && ux</label>
@@ -203,7 +200,7 @@
           <input value="3" name="r" type="checkbox" id="mysql-03"><label for="mysql-03">join queries.</label>
           <input value="4" name="r" type="checkbox" id="mysql-04"><label for="mysql-04">Database</label>
         </div>
-        <h2 class="Mysql"><i class="fa-solid fa-circle-check"></i>Mysql</h2>
+        <h2 class="Mysql" id="navheading"><i class="fa-solid fa-circle-check"></i>Mysql</h2>
       </div>
     </div>
   </div>

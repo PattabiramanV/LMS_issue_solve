@@ -159,11 +159,45 @@ const firebaseConfig = {
   messagingSenderId: "1022626638467",
   appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6",
 };
-let id = localStorage.getItem("UserId");
-console.log(id);
-
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
+
+var userDetailsString = localStorage.getItem("userdetails");
+var userDetails = JSON.parse(userDetailsString);
+let id=userDetails.user_id;
+console.log(id);
+
+let Explorebtn = document.querySelectorAll(".read-more");
+console.log();
+Explorebtn.forEach(async (btn) => {
+  let ref = doc(database, "Learning", `User=${id}`);
+  let get_data = await getDoc(ref);
+  let find_language = 0;
+
+  btn.addEventListener("click", async (e) => {
+    if (btn == Explorebtn[0]) {
+      find_language = "Html";
+    } else if (btn == Explorebtn[1]) {
+      find_language = "Css";
+    } else if (btn == Explorebtn[2]) {
+      find_language = "Javascript";
+    } else if (btn === Explorebtn[3]) {
+      find_language = "Mysql";
+    }
+    else{
+        find_language="Php"
+    }
+    let find_language_unlock_module=get_data.data()[find_language+"_unlock_total_module"]
+
+    let data_get = await updateDoc(ref, {
+      Find_Language_type: find_language,
+      find_index: find_language_unlock_module
+    });
+    window.location.href = "./learning_content.html";
+  });
+});
+
+
 let Progressbarconatiner=document.querySelector(".progressing_bar")
 
 try {
@@ -178,7 +212,7 @@ try {
     const userLearningData = userData.data()[`${language}_Complete_Module`];
     console.log(`${language} Complete Module:`, userLearningData);
 
-    if (userLearningData > 1) {
+    if (userLearningData >= 1) {
       const completedCourseContainer = document.createElement("div");
       completedCourseContainer.classList.add("Progress_bar");
       completedCourseContainer.innerHTML = `
@@ -200,16 +234,38 @@ try {
       const completedCoursesContainer = document.querySelector(
         ".progressing_bar .Progress_container")
       completedCoursesContainer.appendChild(completedCourseContainer);
+      let listcourse = document.querySelector(".ListCourses");
+       listcourse.style.marginTop = "0px";
     }  else {
       console.log(`User's ${language}_Complete_Module is not greater than 1`);
     }
   });
 
   let percentages = document.querySelectorAll(".percentage_cal");
-  languages.forEach((language1, index) => {
-    percentages[index].innerHTML = userData.data()[`${language1}_Total_Percentage`] + "%";
+  // console.log(percentages.childrens.length);
+  percentages.forEach((enroll_div,index)=>{
+    let courcename=enroll_div.parentElement.parentElement.firstElementChild.innerHTML;
+  
+    if(courcename=='Html'){
+      percentages[index].innerHTML=userData.data().Html_Total_Percentage+'%';
+    }
+    if(courcename=='Css'){
+      percentages[index].innerHTML=userData.data().Css_Total_Percentage+'%';
+    }
+    if(courcename=='Php'){
+      percentages[index].innerHTML=userData.data().Php_Total_Percentage+'%';
+    }
+    if(courcename=='Javascript'){
+      percentages[index].innerHTML=userData.data().Javascript_Total_Percentage+'%';
+    }
+    if(courcename=='Mysql'){
+      percentages[index].innerHTML=userData.data().Mysql_Total_Percentage+'%';
+    }
+    
+
   });
-} 
+ 
+}
 catch (error) {
   console.error("Error fetching user data:", error);
 }
@@ -217,34 +273,7 @@ catch (error) {
 
 // Button Navigation With Learning Page
 
-let Explorebtn = document.querySelectorAll(".read-more");
-console.log(Explorebtn[0]);
-Explorebtn.forEach(async (btn) => {
-  let ref = doc(database, "Learning", `user=${id}`);
-  let get_data = await getDoc(ref);
-  let find_language = 0;
 
-  btn.addEventListener("click", async (e) => {
-    if (btn === Explorebtn[0]) {
-      find_language = "Html";
-    } else if (btn === Explorebtn[1]) {
-      find_language = "Css";
-    } else if (btn === Explorebtn[2]) {
-      find_language == "Js";
-    } else if (btn === Explorebtn[3]) {
-      find_language == "Mysql";
-    }
-    else{
-        find_language=="Php"
-    }
-
-    let data_get = await updateDoc(ref, {
-      Find_Language_type: find_language,
-      find_index: 0,
-    });
-    window.location.href = "./learning_content.html";
-  });
-});
 
 
 
@@ -252,18 +281,12 @@ Explorebtn.forEach(async (btn) => {
 // Fetch with local storage Profile Img
 
 
-let storeprofileImg=localStorage.getItem("imageURL");
-const profileImg = document.querySelector(".profile");
-profileImg.src = storeprofileImg
+// let storeprofileImg=localStorage.getItem("imageURL");
+// const profileImg = document.querySelector(".profile");
+// profileImg.src = storeprofileImg
 // Img Effect 
 
-document.addEventListener("DOMContentLoaded", function () {
-  const storedImageURL = localStorage.getItem("imageURL");
-  if (storedImageURL) {
-      const profileImg = document.querySelector(".profile");
-      profileImg.src = storedImageURL;
-  }
-});
+
 
 
 
@@ -284,3 +307,43 @@ document.addEventListener("DOMContentLoaded", function () {
 // } else {
 //     progressContainer.classList.remove('scrollbar-enabled');
 // }
+
+
+// profile shown
+
+try {
+  const profileImg = document.querySelector(".profile");
+  const docRef = doc(database, 'users_img', `${id}`);
+  const docSnapimg = await getDoc(docRef);
+
+  if (docSnapimg.exists()) {
+      const userDataimg = docSnapimg.data();
+      profileImg.src = userDataimg.imageURL;
+  } else {
+      console.log("The image is not found in Firestore.");
+  }
+} catch (error) {
+  console.error("Error getting document:", error);
+  alert("Error getting user image. Please try again.");
+}
+
+window.addEventListener("load", async function () {
+  const profileImg = document.querySelector(".profile");
+  const ProfileMainImg=this.document.querySelector(".profile_img")
+
+  try {
+    const docRef = doc(database, 'users_img', `${id}`);
+    const docSnapimg = await getDoc(docRef);
+
+    if (docSnapimg.exists()) {
+      const userDataimg = docSnapimg.data();
+      profileImg.src = userDataimg.imageURL;
+      ProfileMainImg.src=userDataimg.imageURL
+    } else {
+      console.log("The image is not found in Firestore.");
+    }
+  } catch (error) {
+    console.error("Error getting document:", error);
+    alert("Error getting user image. Please try again.");
+  }
+});

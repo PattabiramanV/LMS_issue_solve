@@ -25,6 +25,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+   user-select: none;
+
   
   }
   
@@ -48,7 +50,7 @@
   body {
     background-color: #eaeaea;
     transition: all 0.5s ease;
-    /* background-image: url('Asseste/body_img.jpg'); */
+   
   }
   
   body.dark {
@@ -62,7 +64,7 @@
     --grey-color-light: #aaa;
   }
   
-  /* navbar */
+  /*...................................top_navbar................................*/
   .navbar {
     position: fixed;
     top: 0;
@@ -91,6 +93,10 @@
   img.DCKAPlOGO {
     position: absolute;
     left: 2rem;
+  }
+
+  .DCKAPlOGO:hover{
+    cursor: pointer;
   }
   
   .navbar img {
@@ -160,7 +166,7 @@
   
   
   
-  /* sidebar */
+  /*...............................................sidebar............................ */
   .sidebar {
     background-color: var(--white-color);
     width: 224px;
@@ -334,9 +340,7 @@
     display: none;
   }
   
-  /* Dropdown Profile */
-  
-  
+  /*.....................................Profile Dropdown.......................*/
   
 .profile_bar_list {
   top: 77px;
@@ -412,8 +416,8 @@ img.profile {
   object-fit: cover;
   border-radius: 50%;
 }
-  
-  /* search bar design */
+
+  /*............................search bar design..............................*/
   
   .group {
       display: flex;
@@ -694,4 +698,28 @@ gap: 20px;
   background-color:red;
 
 }
+
+
+/* Width and background color of the scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f5f5f5; 
+}
+
+/* Track of the scrollbar */
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5; 
+}
+
+/* Thumb of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 0px;
+}
+
+/* On hover, transition the scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ab3ee286; 
+}
+
 

@@ -119,6 +119,8 @@ import {
   collection,
   addDoc,
   getDocs,
+  getDoc,
+  setDoc,
   doc,
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
@@ -134,7 +136,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
-let id = localStorage.getItem("UserId");
+var userDetailsString = localStorage.getItem("userdetails");
+var userDetails = JSON.parse(userDetailsString);
+let id = userDetails.user_id;
 console.log(id);
 
 let inputName = document.querySelector("#fullNameInput");
@@ -167,9 +171,10 @@ Editbtn.addEventListener("click", function () {
 
 // Function to save input values to Firebase
 function saveToFirebase(id) {
-  const docRef = database.collection("users").doc(id);
-  docRef
-    .set({
+  const docRef = doc(database,'users',`${id}`)
+
+  let data_set= setDoc(
+    docRef,{
       fullName: inputName.value,
       gitUsername: inputgitUsername.value,
       bioInfo: inputbioInfo.value,
@@ -182,6 +187,27 @@ function saveToFirebase(id) {
       console.error("Error writing document: ", error);
     });
 }
+
+
+window.addEventListener("load", async () => {
+  const docRef = doc(database, 'users', `${id}`);
+
+  try {
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      const userData = docSnap.data();
+      inputName.value = userData.fullName;
+      inputgitUsername.value = userData.gitUsername;
+      inputbioInfo.value = userData.bioInfo;
+      inputlinkInfo.value = userData.linkedIn;
+    } else {
+      console.log("No such document!");
+    }
+  } catch (error) {
+    console.error("Error getting document:", error);
+  }
+});
+
 
 document.querySelector(".Country label").addEventListener("click", function () {
   document.getElementById("countrySelect").disabled = false;
@@ -196,43 +222,24 @@ document
 
 // Fetch data into Local storage
 
-// let UserDetailsdataname=localStorage.getItem("username")
-// let UserEmaildata=localStorage.getItem("email")
+let UserDetailsdataname=userDetails.username;
+let UserEmaildata=userDetails.email;
 
-// inputName.value=UserDetailsdataname
-// inputEmail.value=UserEmaildata
+inputName.value=UserDetailsdataname
+inputEmail.value=UserEmaildata
 
-// var username = localStorage.getItem("username");
-// var nameSpan = document.getElementById("fullName");
-// if (username) {
-//   nameSpan.innerHTML = username;
-// } else {
-//   nameSpan.innerHTML = "Guest";
-// }
 
-// Email fetch local storage
-
-// var storedEmail = localStorage.getItem("email");
-// var emailInput = document.getElementById("emailadd");
-// emailInput.value = storedEmail;
-
-// var username = localStorage.getItem("username");
-// var nameSpan = document.getElementById("fullName");
-// if (username) {
-//   nameSpan.innerHTML = username;
-// } else {
-//   nameSpan.innerHTML = "Guest";
-// }
 
 const uploadButton = document.getElementById("uploadButton");
-uploadButton.addEventListener("click", function () {
-  fileInput.click();
-});
-
 const fileInput = document.getElementById("uploadInput");
 const imageContainer = document.getElementById("imageContainer");
-let previousImageDocId = null;
 
+// Event listener for the upload button
+uploadButton.addEventListener("click", function () {
+  fileInput.click(); // Trigger click event on file input
+});
+
+// Event listener for file input change
 fileInput.addEventListener("change", async function (event) {
   const file = event.target.files[0];
 
@@ -240,58 +247,57 @@ fileInput.addEventListener("change", async function (event) {
     const reader = new FileReader();
 
     reader.onload = async function (e) {
-      const img = document.createElement("img");
-      img.src = e.target.result;
-
-      const profileImg = document.querySelector(".profile");
-      profileImg.src = e.target.result;
-
-      while (imageContainer.firstChild) {
-        imageContainer.removeChild(imageContainer.firstChild);
-      }
-      imageContainer.appendChild(img);
-
       try {
-        const imagesRef = collection(database, "images");
-        if (previousImageDocId) {
-          await deleteDoc(doc(database, "images", previousImageDocId));
+        const img = document.createElement("img");
+        img.src = e.target.result;
+   
+
+        const profileImg = document.querySelector(".profile");
+        profileImg.src = e.target.result;
+        // Clear existing images
+        while (imageContainer.firstChild) {
+          imageContainer.removeChild(imageContainer.firstChild);
         }
-        const newImageDocRef = await addDoc(imagesRef, {
+        // Append new image
+        imageContainer.appendChild(img);
+
+        // Upload image URL to Firestore
+        const docRef = doc(database, 'users_img', `${id}`);
+        await setDoc(docRef, {
           imageURL: e.target.result,
         });
-        previousImageDocId = newImageDocRef.id;
-        alert("Successfully uploaded image and data.");
 
-        let UserProfileImg = localStorage.setItem("imageURL", e.target.result);
-
-        // const profileImg = document.querySelector(".profile");
-        // profileImg.src = UserProfileImg;
-
+   
       } catch (error) {
-        console.error("Error adding document: ", error);
+        console.error("Error uploading image and data: ", error);
+        alert("Error uploading image and data. Please try again.");
       }
     };
+
+    // Read the file as data URL
     reader.readAsDataURL(file);
   }
 });
 
-// const profileImg = document.querySelector(".profile");
-// profileImg.src = storedImageURL;
+// Window load event listener
+window.addEventListener("load", async function () {
+  const profileImg = document.querySelector(".profile");
+  const ProfileMainImg=this.document.querySelector(".profile_img")
 
+  try {
+    const docRef = doc(database, 'users_img', `${id}`);
+    const docSnapimg = await getDoc(docRef);
 
-const profileImg = document.querySelector(".profile");
-profileImg.src = storedImageURL;
-
-// Retrieve imageURL from localStorage when the page loads
-document.addEventListener("DOMContentLoaded", function () {
-  const storedImageURL = localStorage.getItem("imageURL");
-
-  if (storedImageURL) {
-    const profileImg = document.querySelector(".profile");
-    profileImg.src = storedImageURL;
-
-
-const profilemainimg = document.querySelector(".profile_img");
-profilemainimg.src = storedImageURL;
+    if (docSnapimg.exists()) {
+      const userDataimg = docSnapimg.data();
+      profileImg.src = userDataimg.imageURL;
+      ProfileMainImg.src=userDataimg.imageURL
+    } else {
+      console.log("The image is not found in Firestore.");
+    }
+  } catch (error) {
+    console.error("Error getting document:", error);
+    alert("Error getting user image. Please try again.");
   }
 });
+

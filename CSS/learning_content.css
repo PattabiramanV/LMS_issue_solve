@@ -25,6 +25,8 @@ body, html {
   padding: 0;
   box-sizing: border-box;
   user-select: none;
+user-select: none;
+
 }
 :root {
   --white-color: #fff;
@@ -37,9 +39,7 @@ body, html {
   --background-color-li:  #8000801c !important;
 }
 body {
-  /* background-color: #d0eaf1; */
   transition: all 0.5s ease;
-  /* background-color: #c3eef0; */
   background-color:#eaeaea;
 }
 body.dark {
@@ -61,7 +61,7 @@ body.dark {
 }
 
 
-/* navbar */
+/*..............................top_navbar................................... */
 .navbar {
   position: fixed;
   top: 0;
@@ -87,6 +87,9 @@ body.dark {
 img.DCKAPlOGO {
   position: absolute;
   left: 2rem;
+}
+.DCKAPlOGO:hover{
+  cursor: pointer;
 }
 .navbar img {
   height: 35px;
@@ -149,11 +152,8 @@ img.DCKAPlOGO {
   font-size: 20px;
   color: var(--grey-color);
 }
-/* img.profile {
-  position: absolute;
-  left: 1237px;
-} */
-/* sidebar */
+
+/*..................................sidebar....................................*/
 .sidebar {
   background-color: var(--white-color);
   width: 85px;
@@ -313,7 +313,7 @@ ul.set_items {
   display: none;
 }
 
-/* Profile DropDown */
+/*...............................Profile DropDown................................ */
 
 .profile_bar_list {
   top: 77px;
@@ -390,7 +390,7 @@ img.profile {
   border-radius: 50%;
 }
 
-/* Your Content paste here */
+/*..........................learning left headings and right content................................. */
 
 
 .bottom_learning_content_parent {
@@ -512,11 +512,6 @@ img.profile {
 
 
 
-
-
-
-
-
 button.Exercise_btn, .next_btn {
   position: relative;
   left: 130px;
@@ -542,6 +537,7 @@ a,iframe,button,.profile_round:hover{
 }
 .fa-solid, .fas {
   font-weight: 900;
+  margin-right: 8%;
 }
 
 /*.......................................Top content......................*/
@@ -574,7 +570,7 @@ a,iframe,button,.profile_round:hover{
   justify-content: end;
 }
 
-/*....................................Content_classes...................*/
+/*....................................Right_Content_classes...................*/
 
 .red_color{
   color:red;
@@ -592,5 +588,29 @@ b {
 
 .content_heading{
   text-align: center;
+}
+
+/*.....................................Right_Scroll_bar.........................*/
+
+/* Width and background color of the scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f5f5f5; 
+}
+
+/* Track of the scrollbar */
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5; 
+}
+
+/* Thumb of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 0px;
+}
+
+/* On hover, transition the scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ab3ee286; 
 }
 

@@ -55,9 +55,7 @@ let mysqlbtn=document.querySelector(".mysql_btn")
 let phpbtn=document.querySelector(".php_btn")
 let profile=document.querySelector(".profile");
 let singup_login_btn=document.querySelector(".slide-controls");
-// learning.addEventListener("click",()=>{
-//     alert("learning menu clicked")
-// });
+
 
 dashboard.addEventListener("click",()=>{
     window.location.href="./dashboard.html";
@@ -147,25 +145,6 @@ let find_language_unlock_module=get_data.data()[find_language+'_unlock_total_mod
 
 
 
-// let left_side_bar=document.querySelectorAll(".navlink");
-
-// left_side_bar[0].addEventListener("click",()=>{
-//   window.location.href='./index.html'
-// });
-
-// left_side_bar[1].addEventListener("click",()=>{
-
-//   window.location.href='./Learning.html'
-// });
-// left_side_bar[2].addEventListener("click",()=>{
-
-//   window.location.href='./dashboard.html';
-// });
-// left_side_bar[3].addEventListener("click",()=>{
-
-//   window.location.href='./Roadmap.html';
-// });
-
 
 // -------------loginvalidate----------
 
@@ -175,14 +154,14 @@ const darkLight = document.querySelector("#darkLight");
 // Check if userdetails exist in localStorage
 if(localStorage.getItem('userdetails')){
     // User details exist
-    signcontrols.style.display = 'none'; // Hide the sign-up and login buttons
-    profile.style.display = 'block'; // Show the profile icon
+    signcontrols.style.display = 'none'; 
+    profile.style.display = 'block'; 
     darkLight.style.display='block'
 
- // Add class to profile icon if needed
+
 } else {
 
-    profile.style.display = 'none'; // Hide the profile icon
+    profile.style.display = 'none'; 
 }
 
 

@@ -7,7 +7,6 @@ const submenuItems = document.querySelectorAll(".submenu_item");
 const sidebarOpen = document.querySelector("#sidebarOpen");
 const sidebarClose = document.querySelector(".collapse_sidebar");
 const sidebarExpand = document.querySelector(".expand_sidebar");
-// sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
 
 let content = document.querySelector(".menu_content");
 
@@ -22,7 +21,8 @@ sidebarExpand.addEventListener("click", () => {
 });
 
 sidebar.addEventListener("mouseenter", () => {
-  if (sidebar.classList.contains("hoverable")) {
+  if (sidebar.classList.contains("hoverable")) 
+  {
     sidebar.classList.remove("close");
     content.style.left = "1rem";
   }
@@ -32,7 +32,8 @@ sidebar.addEventListener("mouseleave", () => {
   if (
     sidebar.classList.contains("hoverable") &&
     sidebar.classList.contains("close")
-  ) {
+  ) 
+  {
     content.style.left = "0rem";
   }
 });
@@ -48,16 +49,16 @@ let js_btn = document.querySelector("#js_btn");
 let mysql_btn = document.querySelector("#mysql_btn");
 let php_btn = document.querySelector("#php_btn");
 
-// Function to toggle dark mode
+//---------------- Function to toggle dark mode ------------------------
 
-function toggleDarkMode() {
+function toggleDarkMode() 
+{
   bdy.classList.toggle("act");
   html_btn.classList.toggle("act2");
   css_btn.classList.toggle("act2");
   js_btn.classList.toggle("act2");
   mysql_btn.classList.toggle("act2");
   php_btn.classList.toggle("act2");
-  // start_quiz_btn.classList.toggle("act2")
   const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
   Dckaplogo.src = body.classList.contains("dark")
@@ -67,12 +68,13 @@ function toggleDarkMode() {
 }
 
 const storedDarkMode = sessionStorage.getItem("darkMode");
-if (storedDarkMode === "true") {
+if (storedDarkMode === "true") 
+{
   toggleDarkMode();
 }
 darkLight.addEventListener("click", toggleDarkMode);
 
-// Profile
+//------------------------------ Profile -----------------------------
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile_img");
@@ -86,12 +88,13 @@ document.addEventListener("click", (event) => {
   if (
     !profile_navigate.contains(event.target) &&
     !profile_Dropdown.contains(event.target)
-  ) {
+  ) 
+  {
     profile_Dropdown.style.display = "none";
   }
 });
 
-// profile_drop
+//--------------- profile_drop ---------------------------
 
 let profile_page = document.querySelector(".profile_down");
 profile_page.addEventListener("click", () => {
@@ -119,7 +122,7 @@ logout.addEventListener("click", () => {
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// Your web app's Firebase configuration
+//--------------- Your web app's Firebase configuration ------------------
 const firebaseConfig = {
   apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
   authDomain: "dckap-lms-project.firebaseapp.com",
@@ -129,14 +132,13 @@ const firebaseConfig = {
   appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
 };
 
-// Initialize Firebase
+//-------------- Initialize Firebase ------------------------------------
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(); // Create a Firestore instance
 
 var userDetailsString = localStorage.getItem("userdetails");
 var userDetails = JSON.parse(userDetailsString);
 let id=userDetails.user_id;
-
 
 // --------------- HTML Quiz -------------------
 
@@ -187,6 +189,7 @@ async function html_quiz_btn()
 }
 
 // Call the quiz_btn function
+
 html_quiz_btn();
 
 // --------------- CSS Quiz -------------------
@@ -237,6 +240,7 @@ async function css_quiz_btn()
 }
 
 // Call the quiz_btn function
+
 css_quiz_btn();
 
 // --------------- js Quiz -------------------
@@ -289,6 +293,7 @@ async function js_quiz_btn()
 }
 
 // Call the quiz_btn function
+
 js_quiz_btn();
 
 
@@ -341,6 +346,7 @@ async function mysql_quiz_btn()
 }
 
 // Call the quiz_btn function
+
 mysql_quiz_btn();
 
 // ------------------------------------ PHP Quiz -------------------------------------------------
@@ -391,6 +397,7 @@ async function php_quiz_btn()
 }
 
 // Call the quiz_btn function
+
 php_quiz_btn();
 
 
@@ -400,45 +407,50 @@ document.querySelector(".profile_down").addEventListener("click", function () {
   localStorage.setItem("previous_location", window.location.href);
 });
 
-// profile show
+//----------- profile show ---------------------
 
+try 
+{
+  const profileImg = document.querySelector(".profile_img");
+  const docRef = doc(db, 'users_img', `${id}`);
+  const docSnapimg = await getDoc(docRef);
 
-// Profile shown
-// var userDetailsString = localStorage.getItem("userdetails");
-// var userDetails = JSON.parse(userDetailsString);
-// var  id=userDetails.user_id;
-try {
-const profileImg = document.querySelector(".profile_img");
-const docRef = doc(db, 'users_img', `${id}`);
-const docSnapimg = await getDoc(docRef);
-
-if (docSnapimg.exists()) {
-    const userDataimg = docSnapimg.data();
-    profileImg.src = userDataimg.imageURL;
-} else {
-    console.log("The image is not found in Firestore.");
-}
-} catch (error) {
-console.error("Error getting document:", error);
-alert("Error getting user image. Please try again.");
+  if (docSnapimg.exists()) 
+  {
+      const userDataimg = docSnapimg.data();
+      profileImg.src = userDataimg.imageURL;
+  } 
+  else 
+  {
+      console.log("The image is not found in Firestore.");
+  }
+} 
+catch (error) 
+{
+  console.error("Error getting document:", error);
+  alert("Error getting user image. Please try again.");
 }
 
 window.addEventListener("load", async function () {
 const profileImg = document.querySelector(".profile_img");
+  try 
+  {
+    const docRef = doc(db, 'users_img', `${id}`);
+    const docSnapimg = await getDoc(docRef);
 
-
-try {
-  const docRef = doc(db, 'users_img', `${id}`);
-  const docSnapimg = await getDoc(docRef);
-
-  if (docSnapimg.exists()) {
-    const userDataimg = docSnapimg.data();
-    profileImg.src = userDataimg.imageURL;
-  } else {
-    console.log("The image is not found in Firestore.");
+    if (docSnapimg.exists()) 
+    {
+      const userDataimg = docSnapimg.data();
+      profileImg.src = userDataimg.imageURL;
+    } 
+    else 
+    {
+      console.log("The image is not found in Firestore.");
+    }
+  } 
+  catch (error) 
+  {
+    console.error("Error getting document:", error);
+    alert("Error getting user image. Please try again.");
   }
-} catch (error) {
-  console.error("Error getting document:", error);
-  alert("Error getting user image. Please try again.");
-}
 });

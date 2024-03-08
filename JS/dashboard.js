@@ -62,8 +62,7 @@ let Mysql_Complete_Module = data.Mysql_Complete_Module;
 let Php_Complete_Module = data.Php_Complete_Module;
 
 let validate_Quiz = Html_Complete_Module + Css_Complete_Module + Javascript_Complete_Module + Mysql_Complete_Module + Php_Complete_Module;
-// Total_Quiz.textContent = validate_Quiz*5;
-
+// Total_Quiz.textContent = validate_Quiz*5
 // let vertical_barchart = document.querySelector("#vertical_barchart");
 // let chart_btn = document.querySelector(".chart_btn button");
 
@@ -78,7 +77,8 @@ async function fetchDataAndUpdateHTML()
         // Update HTML with fetched data
     Total_Quiz.textContent = validate_Quiz * 5;
     Total_Ponits.textContent = validate_Quiz;
-    Total_Stars.textContent = validate_Quiz * 2;
+    Total_Stars.textContent = validate_Quiz * 5;
+    console.log(Total_Stars);
     localStorage.setItem('Total_Ponits', data.Html_Complete_Module);
 
     u_name.textContent = name;

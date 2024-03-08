@@ -160,7 +160,6 @@ all_heading_title.forEach((title,index)=>{
   }
   else{
 
-    alert("please complete previous module")
   }
  
  

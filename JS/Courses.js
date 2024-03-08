@@ -212,7 +212,7 @@ try {
     const userLearningData = userData.data()[`${language}_Complete_Module`];
     console.log(`${language} Complete Module:`, userLearningData);
 
-    if (userLearningData > 1) {
+    if (userLearningData >= 1) {
       const completedCourseContainer = document.createElement("div");
       completedCourseContainer.classList.add("Progress_bar");
       completedCourseContainer.innerHTML = `
@@ -242,10 +242,30 @@ try {
   });
 
   let percentages = document.querySelectorAll(".percentage_cal");
-  languages.forEach((language1, index) => {
-    percentages[index].innerHTML = userData.data()[`${language1}_Total_Percentage`] + "%";
+  // console.log(percentages.childrens.length);
+  percentages.forEach((enroll_div,index)=>{
+    let courcename=enroll_div.parentElement.parentElement.firstElementChild.innerHTML;
+  
+    if(courcename=='Html'){
+      percentages[index].innerHTML=userData.data().Html_Total_Percentage+'%';
+    }
+    if(courcename=='Css'){
+      percentages[index].innerHTML=userData.data().Css_Total_Percentage+'%';
+    }
+    if(courcename=='Php'){
+      percentages[index].innerHTML=userData.data().Php_Total_Percentage+'%';
+    }
+    if(courcename=='Javascript'){
+      percentages[index].innerHTML=userData.data().Javascript_Total_Percentage+'%';
+    }
+    if(courcename=='Mysql'){
+      percentages[index].innerHTML=userData.data().Mysql_Total_Percentage+'%';
+    }
+    
+
   });
-} 
+ 
+}
 catch (error) {
   console.error("Error fetching user data:", error);
 }

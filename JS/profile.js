@@ -267,7 +267,7 @@ fileInput.addEventListener("change", async function (event) {
           imageURL: e.target.result,
         });
 
-        alert("Successfully uploaded image and data.");
+   
       } catch (error) {
         console.error("Error uploading image and data: ", error);
         alert("Error uploading image and data. Please try again.");

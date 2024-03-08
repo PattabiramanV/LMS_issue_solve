@@ -4,7 +4,6 @@
 
 //................................. Nav bar...................................//
 
-
 const body = document.querySelector("body");
 const darkLight = document.querySelector("#darkLight");
 const sidebar = document.querySelector(".sidebar");

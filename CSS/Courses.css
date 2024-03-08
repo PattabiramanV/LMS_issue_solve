@@ -31,6 +31,8 @@ html {
 body {
   background-color: #eaeaea;
   transition: all 0.5s ease;
+user-select: none;
+
 }
 
 body.dark {

@@ -1,21 +1,4 @@
-* {
-  font-family: "Fira Sans", sans-serif;
-
-}
-
-body,
-html {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-
-}
-
-.dark-mode .nav_link:hover {
-  color: #fffffff3;
-  background-color: #7c15dd4d;
-  /* Your desired hover color in dark mode */
-}
+/* Root Selection */
 
 :root {
   --white-color: #fff;
@@ -23,30 +6,50 @@ html {
   --grey-color: #707070;
   --grey-color-light: #aaa;
   --background: rgb(255, 255, 255);
-  --background-color-hover: rgba(30, 245, 2, 0.986);
-  --background-color-btn: #49a843;
-  --background-color-li: #8000801c !important
+  --background-color-li: #8000801c !important;
+  --body-background-color: #eaeaea;
+  --nav-link-hover: #7c15dd4d;
+  --secondary-color: #b95233;
+  --primary-color: #AA3EE2;
 }
 
-body {
-  background-color: #eaeaea;
+* {
+  font-family: "Fira Sans", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--body-background-color);
   transition: all 0.5s ease;
-user-select: none;
-
+  user-select: none;
 }
 
-body.dark {
-  background-color: #333;
-}
+/* Darkmode Color */
 
 body.dark {
   --white-color: #333;
   --blue-color: #fff;
   --grey-color: #f2f2f2;
   --grey-color-light: #aaa;
+  background-color: #333;
 }
 
-/* navbar */
+.dark-mode .nav_link:hover {
+  color: #ffffff;
+  background-color: var(--nav-link-hover);
+}
+
+/* Navbar  Styles */
+
 .navbar {
   position: fixed;
   top: 0;
@@ -62,7 +65,6 @@ body.dark {
   gap: 36%;
 }
 
-
 .logo_item {
   display: flex;
   align-items: center;
@@ -77,56 +79,13 @@ img.DCKAPlOGO {
   left: 2rem;
 }
 
-.DCKAPlOGO:hover{
+.DCKAPlOGO:hover {
   cursor: pointer;
 }
 
 .navbar img {
   height: 35px;
   object-fit: cover;
-}
-
-.search_bar {
-  height: 47px;
-  max-width: 464px;
-  width: 100%;
-  transition: border-radius 0.3s, border-color 0.3s;
-}
-
-.search_bar input:focus {
-  border-color: #AA3EE2;
-  outline: none;
-  border-radius: 20px;
-
-}
-
-.search_bar input {
-  height: 100%;
-  width: 76%;
-  border-radius: 20px;
-  font-size: 18px;
-  outline: none;
-  background-color: var(--white-color);
-  color: var(--grey-color);
-  border: 1px solid var(--grey-color-light);
-  padding: 0 20px;
-  position: relative;
-  left: -8rem;
-}
-
-i.fas.fa-search {
-  position: absolute;
-  top: 17px;
-  left: 46%;
-  margin-right: 1rem !important;
-  margin-right: 2px solid gray;
-  border-left: 1px solid #adadad;
-  height: 48%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;
-  color: #5448489e;
 }
 
 img.profile {
@@ -148,7 +107,8 @@ img.profile {
 
 
 
-/* sidebar */
+/* Sidebar Styles */
+
 .sidebar {
   background-color: var(--white-color);
   width: 224px;
@@ -229,16 +189,6 @@ ul.set_items {
 
 .sidebar.close .navlink {
   display: none;
-}
-
-.nav_link:hover {
-  color: #333;
-  background: var(--background-color-li);
-}
-
-.sidebar.close .nav_link:hover {
-  background: var(--background-color-li);
-  color: #333;
 }
 
 .submenu_item {
@@ -322,6 +272,7 @@ ul.set_items {
 #sidebarOpen {
   display: none;
 }
+
 img.profile {
   height: 40px !important;
   width: 40px !important;
@@ -329,9 +280,20 @@ img.profile {
   object-fit: cover;
 }
 
+/* Navlink hover  Styles*/
+
+.nav_link:hover {
+  color: #333;
+  background: var(--background-color-li);
+}
+
+.sidebar.close .nav_link:hover {
+  background: var(--background-color-li);
+  color: #333;
+}
 
 
-/* search bar design */
+/* search bar design styles */
 
 .group {
   display: flex;
@@ -347,7 +309,7 @@ img.profile {
   line-height: 28px;
   padding: 0 1rem;
   padding-left: 2.5rem;
-  border: 1px solid lightgray;
+  border: 1px solid #d3d3d3;
   border-radius: 8px;
   outline: none;
   background-color: #f3f3f4;
@@ -377,7 +339,8 @@ input:hover {
 
 
 
-/* Main_Content */
+/* Course Main Container */
+
 #Main_Content {
   display: flex;
   flex-direction: column;
@@ -391,21 +354,21 @@ input:hover {
   width: 100%;
   display: none;
 }
-/* 
-.Enroll_heading {
-  text-align: center;
-  font-size: 22px;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-  font-weight: 600;
-  justify-content: center;
-  margin: 6rem auto auto;
+
+.Progress_container {
+  width: 79%;
+  display: flex;
+  margin-left: 6rem;
+  padding: 1%;
+  gap: 1%;
+  justify-content: start;
   position: relative;
-  left: 3rem;
-  cursor: pointer;
-  width: 18%;
-  color: #b95233;
-} */
+  left: 11%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/*  Enroll heading  Styles */
 
 .Enroll_heading {
   text-align: center;
@@ -422,20 +385,6 @@ input:hover {
   color: #b95233;
 }
 
-/* .Enroll_heading_Course {
-  text-align: center;
-  font-size: 24px;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-  font-weight: 600;
-  justify-content: center;
-  position: relative;
-  left: 35rem;
-  cursor: pointer;
-  width: 18%;
-  color: #b95233;
-} */
-
 .Enroll_heading_Course {
   text-align: center;
   font-size: 24px;
@@ -447,19 +396,20 @@ input:hover {
   left: 35rem;
   cursor: pointer;
   width: 18%;
-  color: #b95233;
+  color: var(--secondary-color);
   top: 8px;
 }
 
 
-.Enroll_heading::after,.Enroll_heading_Course::after {
+.Enroll_heading::after,
+.Enroll_heading_Course::after {
   content: "";
   position: absolute;
   bottom: -6px;
   left: 0;
   width: 40%;
   height: 3px;
-  background-color: #AA3EE2;
+  background-color: var(--primary-color);
   transform: scaleX(0);
   transition: all .3s ease-in-out;
   border-radius: 10%;
@@ -467,22 +417,9 @@ input:hover {
 }
 
 
-.Enroll_heading:hover::after,.Enroll_heading_Course:hover::after{
+.Enroll_heading:hover::after,
+.Enroll_heading_Course:hover::after {
   transform: scaleX(1);
-}
-
-
-.Progress_container {
-  width: 79%;
-  display: flex;
-  margin-left: 6rem;
-  padding: 1%;
-  gap: 1%;
-  justify-content: start;
-  position: relative;
-  left: 11%;
-  overflow-x: auto;
-  white-space: nowrap;
 }
 
 .ListCourses {
@@ -490,50 +427,35 @@ input:hover {
   margin-left: 2%;
 }
 
-/* .Progress_container {
-  width: 100%;
-  max-width:  700px;
-  display: flex;
-  margin-left: 6rem;
-  padding: 1%;
-  gap: 1%;
-  justify-content: start;
-  position: relative;
-  left: 10%;
-  white-space: nowrap; 
-} */
-
 .scrollbar-enabled {
   overflow-x: auto;
 }
 
-
-
-
 .progress_langauge {
   width: 100%;
 }
+
 img.enroll_img {
-    height: 102px;
-    border-radius: 100%;
-    width: 50%;
-    margin: auto;
-    display: flex;
-    object-fit: cover;
+  height: 102px;
+  border-radius: 100%;
+  width: 50%;
+  margin: auto;
+  display: flex;
+  object-fit: cover;
 }
 
 .Progress_bar {
   width: 25%;
   padding: 1%;
   border-radius: 1rem;
-  background: #f9f9fa;
+  background: var(--white-color);
   border: 1.8px solid #dce2e5;
   box-sizing: border-box;
   border-radius: 7px;
   font-family: "Fira Sans", sans-serif;
   cursor: pointer;
-  box-shadow: 0 4px 0 rgba(107, 127, 153, .5);
- 
+  box-shadow: 0 4px 0 #6b7f9980;
+
 }
 
 .Progress_bar:hover {
@@ -543,7 +465,7 @@ img.enroll_img {
 
 p.enroll_language {
   text-align: center;
-  color: black;
+  color: #000000;
   font-size: larger;
   font-weight: 400;
 }
@@ -554,24 +476,11 @@ p.enroll_language {
   align-items: center;
 }
 
-p.progress {
-  color: darkslategray;
-}
-
-/* .List.Courses {
-  width: 94%;
-  margin-left: 3rem;
-  margin-top: 2rem;
-} */
-
 .ListCourses {
   width: 94%;
   margin-left: 3rem;
   margin-top: 6rem;
 }
-
-
-
 
 .Progress_bar_Course {
   width: 25%;
@@ -586,7 +495,6 @@ p.progress {
 
 .Course_point {
   padding: 2%;
-
 }
 
 .Progress_bar_Course:hover {
@@ -628,13 +536,13 @@ img.Courseimg {
 .profile_bar_list {
   top: 73px;
   width: 13%;
-  background: rgb(255 255 255 / 78%);
+  background: #ffffff;
   border-radius: 8px;
   color: rgb(18, 22, 10);
   position: absolute;
   right: 1%;
   display: none;
-  border: 1px solid lightgray;
+  border: 1px solid #d3d3d3;
   cursor: pointer;
   border-radius: 2px;
 }
@@ -650,7 +558,7 @@ img.Courseimg {
   text-align: center;
   justify-content: space-between;
   border-radius: 2px;
-  background-color: white;
+  background-color: #ffffff;
 
 }
 
@@ -659,11 +567,12 @@ img.Courseimg {
 .Course_Down:hover,
 .profile_certicate:hover,
 .log_out:hover {
-  background-color: #AA3EE2;
+  background-color: var(--primary-color);
   border-radius: 2px;
 }
+
 .hoverlist {
-  color: white;
+  color: #ffffff;
 }
 
 
@@ -680,12 +589,10 @@ i.fa-solid.fa-right-from-bracket {
   width: 50%;
 }
 
-.articles> :nth-child(-n+3) {
-  margin-bottom: 12px;
-}
 
 
-/* Arcticle */
+
+/* Arcticle  Container  Styles*/
 
 article {
   --img-scale: 1.001;
@@ -711,7 +618,6 @@ article a::after {
   content: "";
 }
 
-/* basic article elements styling */
 article h2 {
   margin: 0 0 18px 0;
   font-size: 1.4rem;
@@ -726,19 +632,20 @@ figure {
   aspect-ratio: 16 / 9;
   overflow: hidden;
 }
+
 article img {
-    max-width: 100%;
-    transform-origin: center;
-    transform: scale(var(--img-scale));
-    transition: transform 0.4s ease-in-out;
-    width: 50%;
-    height: 77%;
-    border-radius: 15px 15px 0px 0px;
-    margin: auto;
-    display: flex;
-    width: 95%;
-    padding: 4px 1px;
-    padding-top: 5px;
+  max-width: 100%;
+  transform-origin: center;
+  transform: scale(var(--img-scale));
+  transition: transform 0.4s ease-in-out;
+  width: 50%;
+  height: 77%;
+  border-radius: 15px 15px 0px 0px;
+  margin: auto;
+  display: flex;
+  width: 95%;
+  padding: 4px 1px;
+  padding-top: 5px;
 }
 
 .article-body {
@@ -748,8 +655,8 @@ article img {
 }
 
 
-  .article-wrapper {
-    height: 270px;
+.article-wrapper {
+  height: 270px;
 }
 
 
@@ -757,7 +664,7 @@ article a {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  color: #AA3EE2;
+  color: var(--primary-color);
 }
 
 article a:focus {
@@ -774,6 +681,10 @@ article a .icon {
   transition: all 0.3s;
 }
 
+.articles> :nth-child(-n+3) {
+  margin-bottom: 12px;
+}
+
 p.aboutlang {
   font-size: smaller;
 }
@@ -781,22 +692,16 @@ p.aboutlang {
 span.percentage_cal {
   font-weight: 600;
 }
-/* using the has() relational pseudo selector to update our custom properties */
+
+/*  pseudo selector  */
+
 article:has(:hover, :focus) {
   --img-scale: 1.1;
   --title-color: #AA3EE2;
   --link-icon-translate: 0;
   --link-icon-opacity: 1;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  box-shadow: #00000029 0px 10px 36px 0px, #0000000f 0px 0px 0px 1px;
 }
-
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 
 .articles {
   display: grid;
@@ -824,8 +729,53 @@ article:has(:hover, :focus) {
   left: 6rem;
 }
 
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
 
-@media screen and (max-width: 960px) {
+
+/* Width and background color of the scrollbar */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 5px;
+  background-color: #f5f5f5;
+}
+
+/* Track of the scrollbar */
+
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+
+}
+
+/* Thumb of the scrollbar */
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 0px;
+
+}
+
+/* On hover, transition the scrollbar thumb */
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-color);
+
+}
+
+
+
+
+/* Media Queries For responsive design */
+
+/* @media screen and (max-width: 960px) {
   article {
     container: card/inline-size;
   }
@@ -859,20 +809,6 @@ article:has(:hover, :focus) {
   }
 }
 
-.sr-only:not(:focus):not(:active) {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
-
-
-
-/* Media Queries */
-
 
 @media screen and (max-width: 768px) {
 
@@ -880,7 +816,6 @@ article:has(:hover, :focus) {
     position: relative;
     left: 20%;
   }
-
 
   .navbar {
     padding: 15px;
@@ -933,31 +868,4 @@ article:has(:hover, :focus) {
   .profile_bar_list {
     width: 100px;
   }
-}
-
-
-/* Width and background color of the scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 5px; 
-  background-color: #f5f5f5; 
-}
-
-/* Track of the scrollbar */
-::-webkit-scrollbar-track {
-  background-color: #f5f5f5; 
-
-}
-
-/* Thumb of the scrollbar */
-::-webkit-scrollbar-thumb {
-  background-color: #888; 
-  border-radius: 0px;
-
-}
-
-/* On hover, transition the scrollbar thumb */
-::-webkit-scrollbar-thumb:hover {
-  background-color: #ab3ee286; 
- 
-}
+} */

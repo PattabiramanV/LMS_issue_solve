@@ -1,23 +1,4 @@
-/* Import Google font - Roboto */
-
-* {
-  font-family: "Fira Sans", sans-serif;
-
-}
-
-body,
-html {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-user-select: none;
-}
-
-.dark-mode .nav_link:hover {
-  color: #fffffff3;
-  background-color: #7c15dd4d;
-  /* Your desired hover color in dark mode */
-}
+/* Root Selection */
 
 :root {
   --white-color: #fff;
@@ -25,18 +6,31 @@ user-select: none;
   --grey-color: #707070;
   --grey-color-light: #aaa;
   --background: rgb(255, 255, 255);
-  --background-color-hover: rgba(30, 245, 2, 0.986);
-  --background-color-btn: #49a843;
   --background-color-li: #8000801c !important;
+  --background-color: #eaeaea;
+  --black-color: #000000;
+  --profile-dropdown-hover: #AA3EE2;
+  --secondary-color: #CB4F2B;
 }
 
-body {
-  transition: all 0.5s ease;
-  background-color: #eaeaea;
+* {
+  font-family: "Fira Sans", sans-serif;
 }
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  transition: all 0.5s ease;
+  background-color: var(--background-color);
+}
+
+/* Dark Mode */
 
 body.dark {
-  background-color: #333;
+  background-color: var(--white-color);
 }
 
 body.dark {
@@ -46,7 +40,10 @@ body.dark {
   --grey-color-light: #aaa;
 }
 
-/* navbar */
+
+
+/* NavBar  Styles */
+
 .navbar {
   position: fixed;
   top: 0;
@@ -76,61 +73,13 @@ img.DCKAPlOGO {
   position: absolute;
   left: 2rem;
 }
-.DCKAPlOGO:hover{
+
+.DCKAPlOGO:hover {
   cursor: pointer;
 }
+
 .navbar img {
   height: 35px;
-  object-fit: cover;
-}
-
-.search_bar {
-  height: 47px;
-  max-width: 464px;
-  width: 100%;
-  transition: border-radius 0.3s, border-color 0.3s;
-}
-
-.search_bar input:focus {
-  border-color: #AA3EE2;
-  outline: none;
-  border-radius: 20px;
-
-}
-
-.search_bar input {
-  height: 100%;
-  width: 76%;
-  border-radius: 20px;
-  font-size: 18px;
-  outline: none;
-  background-color: var(--white-color);
-  color: var(--grey-color);
-  border: 1px solid var(--grey-color-light);
-  padding: 0 20px;
-  position: relative;
-  left: -8rem;
-}
-
-i.fas.fa-search {
-  position: absolute;
-  top: 17px;
-  left: 46%;
-  margin-right: 1rem !important;
-  margin-right: 2px solid gray;
-  border-left: 1px solid #adadad;
-  height: 48%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;
-  color: #5448489e;
-}
-
-img.profile {
-  height: 40px !important;
-  width: 40px !important;
-  border-radius: 50%;
   object-fit: cover;
 }
 
@@ -146,9 +95,17 @@ img.profile {
   color: var(--grey-color);
 }
 
+/* Profile Icon Style */
 
+img.profile {
+  height: 40px !important;
+  width: 40px !important;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
-/* sidebar */
+/* SideBar Styles */
+
 .sidebar {
   background-color: var(--white-color);
   width: 224px;
@@ -229,22 +186,6 @@ ul.set_items {
 
 .sidebar.close .navlink {
   display: none;
-}
-
-.nav_link:hover {
-  color: #333;
-  background: var(--background-color-li);
-}
-
-
-/* Nav link Active state */
-
-
-
-
-.sidebar.close .nav_link:hover {
-  background: var(--background-color-li);
-  color: #333;
 }
 
 .submenu_item {
@@ -329,65 +270,20 @@ ul.set_items {
   display: none;
 }
 
-/* Dropdown Profile */
+/* Navlink Hover Stles */
 
-
-
-
-.profile_bar_list {
-  top: 77px;
-  width: 13%;
-  background: rgb(255 255 255 / 78%);
-  border-radius: 8px;
-  color: rgb(18, 22, 10);
-  position: absolute;
-  right: 5%;
-  display: none;
-  border: 1px solid lightgray;
-  cursor: pointer;
-  border-radius: 2px;
+.nav_link:hover {
+  color: #333;
+  background: var(--background-color-li);
 }
 
-.Drop_Down,
-.profile_down,
-.Course_Down,
-.profile_certicate,
-.log_out {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  text-align: center;
-  justify-content: space-between;
-  border-radius: 2px;
-  background-color: white;
 
+.sidebar.close .nav_link:hover {
+  background: var(--background-color-li);
+  color: #333;
 }
 
-.Drop_Down:hover,
-.profile_down:hover,
-.Course_Down:hover,
-.profile_certicate:hover,
-.log_out:hover {
-  background-color: #AA3EE2;
-  border-radius: 2px;
-}
-
-i.fa.fa-user,
-i.fa-solid.fa-book,
-i.fa-solid.fa-award,
-i.fa-solid.fa-right-from-bracket {
-  width: 50%;
-}
-
-p.profile-name {
-  width: 100%;
-  align-items: flex-start;
-  display: flex;
-  color: black;
-  font-size: 14px;
-}
-
-/* search bar design */
+/* Search bar Stlyes */
 
 .group {
   display: flex;
@@ -407,7 +303,7 @@ p.profile-name {
   border-radius: 8px;
   outline: none;
   background-color: #f3f3f4;
-  color: #0d0c22;
+  color: var(--black-color);
   transition: .3s ease;
 }
 
@@ -417,7 +313,7 @@ p.profile-name {
 
 .input.input:focus {
   outline: none;
-  border-color: #8000801c;
+  border-color: #80008036;
   background-color: #fff;
   box-shadow: 0 0 0 2px rgba(228, 133, 43, 0.897);
 }
@@ -431,13 +327,64 @@ p.profile-name {
 }
 
 
+/* Dropdown Profile  Styles*/
 
-/* Main Content */
+.profile_bar_list {
+  top: 77px;
+  width: 13%;
+  background: var(--background-color);
+  border-radius: 8px;
+  color: var(--black-color);
+  position: absolute;
+  right: 5%;
+  display: none;
+  border: 1px solid lightgray;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.Drop_Down,
+.profile_down,
+.Course_Down,
+.profile_certicate,
+.log_out {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  justify-content: space-between;
+  border-radius: 2px;
+  background-color: #ffffff;
+}
+
+.Drop_Down:hover,
+.profile_down:hover,
+.Course_Down:hover,
+.profile_certicate:hover,
+.log_out:hover {
+  background-color: var(--profile-dropdown-hover);
+  border-radius: 2px;
+}
+
+i.fa.fa-user,
+i.fa-solid.fa-book,
+i.fa-solid.fa-award,
+i.fa-solid.fa-right-from-bracket {
+  width: 50%;
+}
+
+p.profile-name {
+  width: 100%;
+  align-items: flex-start;
+  display: flex;
+  color: var(--black-color);
+  font-size: 14px;
+}
 
 
 
 
-/* Main Container */
+/* Roadmap main Container  styles*/
 #Main_Content {
   flex-grow: 1;
   padding: 0px;
@@ -457,11 +404,11 @@ h1 {
   max-width: 947px;
   margin: auto;
   padding: 20px;
-  border: 1px solid #810eff6b;
+  border: 1px solid rgb(207, 205, 205);
   border-radius: 5px;
   margin-top: 89px;
-  margin-left: 15rem;
-  background: white;
+  margin-left: 16rem;
+  background: #ffffff;
 }
 
 h1 {
@@ -481,7 +428,7 @@ h1 {
 
 }
 
-#navheading{
+#navheading {
   cursor: pointer;
 }
 
@@ -490,10 +437,11 @@ h1 {
   display: flex;
   padding: 12px;
   border-radius: 10px;
-  background: #CB4F2B;
+  background: var(--secondary-color);
   gap: 10%;
   box-shadow: 0px 4px 10px 0px #7b1f9933;
 }
+
 .step p {
   color: #666;
 }
@@ -502,7 +450,7 @@ h1 {
   list-style: none;
   padding: 17px;
   border-radius: 20px;
-  border: 1px solid lightgray;
+  border: 1px solid #d3d3d3;
 }
 
 .step .languages li {
@@ -513,9 +461,8 @@ h1 {
 
 ul.languages {
   width: 30%;
-  background: azure;
+  background: #ffffff;
 }
-
 
 .line-connector {
   position: absolute;
@@ -525,13 +472,17 @@ ul.languages {
   border-bottom: 4px solid transparent;
   background: #abababb5;
 }
-.line-connector, .step:nth-child(5) .line-connector, .step:nth-child(7) .line-connector {
-  left: 36.9rem;
+
+.line-connector,
+.step:nth-child(5) .line-connector,
+.step:nth-child(7) .line-connector {
+  left: 37.9rem;
 }
+
 .step:nth-child(4) .line-connector,
 .step:nth-child(6) .line-connector,
 .step:nth-child(8) .line-connector {
-  left: 66%;
+  left: 67%;
 }
 
 h2.html,
@@ -544,14 +495,16 @@ h2.Mysql {
   display: flex;
 }
 
-h2.Figma, h2.Css, h2.internet {
+h2.Figma,
+h2.Css,
+h2.internet {
   width: 15%;
   text-align: center;
   align-items: center;
   display: flex;
 }
 
-/* Hr Line */
+/* Hr Line  Styles*/
 .centered-hr {
   margin-left: auto;
   margin-right: auto;
@@ -559,7 +512,7 @@ h2.Figma, h2.Css, h2.internet {
   height: 1170px;
   position: absolute;
   top: 735px;
-  left: 56%;
+  left: 57%;
   transform: translate(-50%, -50%);
   background: #abababb5;
   border: none;
@@ -570,10 +523,6 @@ h2.Figma, h2.Css, h2.internet {
 .fa {
   font-size: 14px;
   cursor: pointer;
-}
-
-.tick-on {
-  color: green !important;
 }
 
 /* Classlist */
@@ -588,37 +537,22 @@ p.jobText {
   top: 124px;
 }
 
-.jobText {
-  position: absolute;
-  top: 126px;
-  left: 74%;
-  font-size: small;
-  background: #00800080;
-  padding: 5px;
-  border-radius: 4px;
-  color: black;
-  display: none;
-}
-
 .display {
   display: block;
-}
-
-p.profile-name {
-  width: 100%;
-  align-items: flex-start;
-  display: flex;
 }
 
 .fa-solid,
 .fas {
   font-weight: 900;
-  color: white;
+  color: #ffffff;
 }
 
-i.fa.fa-user, i.fa-solid.fa-book, i.fa-solid.fa-award, i.fa-solid.fa-right-from-bracket {
+i.fa.fa-user,
+i.fa-solid.fa-book,
+i.fa-solid.fa-award,
+i.fa-solid.fa-right-from-bracket {
   width: 50%;
-  color: black;
+  color: #000000;
 }
 
 p.Heading_p {
@@ -626,19 +560,17 @@ p.Heading_p {
   bottom: 186px;
   left: 0%;
   text-align: center;
-  /* font-family: 'FontAwesome'; */
   width: 100%;
   display: flex;
   justify-content: center;
-  /* cursor: pointer; */
   color: #0000009e;
 }
 
-#navheading:hover{
+#navheading:hover {
   box-shadow: 0px 4px 15px 1px #ab3ee288;
 }
 
-/* Effcets  for li checkbox*/
+/* Effcets for li checkbox Styles*/
 #checklist {
   --background: #E8E6F3;
   --text: #414856;
@@ -661,7 +593,6 @@ p.Heading_p {
 }
 
 #checklist label {
-
   position: relative;
   cursor: pointer;
   display: grid;
@@ -740,6 +671,8 @@ p.Heading_p {
   animation: firework 0.5s ease forwards 0.1s;
 }
 
+/* Keyframes for checkbox animations */
+
 @keyframes move {
   50% {
     padding-left: 8px;
@@ -765,6 +698,7 @@ p.Heading_p {
 }
 
 /* Adjusted CSS for checkbox animations */
+
 #checklist input[type="checkbox"]:checked::before {
   animation: check-01 0.4s ease forwards;
 }
@@ -774,6 +708,7 @@ p.Heading_p {
 }
 
 /* Adjusted Keyframes */
+
 @keyframes check-01 {
   0% {
     width: 4px;
@@ -826,8 +761,6 @@ p.Heading_p {
   }
 }
 
-
-
 @keyframes firework {
   0% {
     opacity: 1;
@@ -849,23 +782,27 @@ p.Heading_p {
 
 
 /* Width and background color of the scrollbar */
+
 ::-webkit-scrollbar {
   width: 8px;
-  background-color: #f5f5f5; 
+  background-color: #f5f5f5;
 }
 
 /* Track of the scrollbar */
+
 ::-webkit-scrollbar-track {
-  background-color: #f5f5f5; 
+  background-color: #f5f5f5;
 }
 
 /* Thumb of the scrollbar */
+
 ::-webkit-scrollbar-thumb {
-  background-color: #888; 
+  background-color: #888;
   border-radius: 0px;
 }
 
 /* On hover, transition the scrollbar thumb */
+
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #ab3ee286; 
+  background-color: #ab3ee286;
 }

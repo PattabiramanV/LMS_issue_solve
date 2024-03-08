@@ -1,3 +1,36 @@
+"use strict";
+
+// Firebase Store
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  getDoc,
+  setDoc,
+  doc,
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
+  authDomain: "dckap-lms-project.firebaseapp.com",
+  projectId: "dckap-lms-project",
+  storageBucket: "dckap-lms-project.appspot.com",
+  messagingSenderId: "1022626638467",
+  appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6",
+};
+
+const app = initializeApp(firebaseConfig);
+const database = getFirestore(app);
+var userDetailsString = localStorage.getItem("userdetails");
+var userDetails = JSON.parse(userDetailsString);
+let id = userDetails.user_id;
+console.log(id);
+
+// NavBar Collspse && Expand  Functionality
+
 const body = document.querySelector("body");
 const darkLight = document.querySelector("#darkLight");
 const sidebar = document.querySelector(".sidebar");
@@ -35,9 +68,9 @@ sidebar.addEventListener("mouseleave", () => {
 });
 
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
-Dckaplogo.addEventListener("click",()=>{
-  window.location.href='./index.html'
-})
+Dckaplogo.addEventListener("click", () => {
+  window.location.href = "./index.html";
+});
 
 // Function to toggle dark mode
 
@@ -56,7 +89,7 @@ if (storedDarkMode === "true") {
 }
 darkLight.addEventListener("click", toggleDarkMode);
 
-// Profile Dropdown Work
+// Profile Dropdown Functionality
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");
@@ -74,8 +107,6 @@ document.addEventListener("click", (event) => {
     profile_Dropdown.style.display = "none";
   }
 });
-
-// profile_drop
 
 let profile_page = document.querySelector(".profile_down");
 profile_page.addEventListener("click", () => {
@@ -99,7 +130,7 @@ logout.addEventListener("click", () => {
   windnameow.location.href = "./login.html";
 });
 
-// Cancel Btn Navigation
+// Cancel Btn Functionality
 
 let cancel_btn = document.querySelector(".cancel_btn");
 cancel_btn.addEventListener("click", (e) => {
@@ -111,35 +142,7 @@ cancel_btn.addEventListener("click", (e) => {
   }
 });
 
-
-// Firebase Store
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  getDoc,
-  setDoc,
-  doc,
-} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
-  authDomain: "dckap-lms-project.firebaseapp.com",
-  projectId: "dckap-lms-project",
-  storageBucket: "dckap-lms-project.appspot.com",
-  messagingSenderId: "1022626638467",
-  appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6",
-};
-
-const app = initializeApp(firebaseConfig);
-const database = getFirestore(app);
-var userDetailsString = localStorage.getItem("userdetails");
-var userDetails = JSON.parse(userDetailsString);
-let id = userDetails.user_id;
-console.log(id);
+// Profile Input Feilds store in Firebase
 
 let inputName = document.querySelector("#fullNameInput");
 let inputEmail = document.querySelector("#emailadd");
@@ -151,7 +154,8 @@ let Editbtn = document.querySelector(".Btn");
 
 Editbtn.addEventListener("click", function () {
   if (Editbtn.textContent.trim() === "Edit") {
-    Editbtn.innerHTML = "Save  <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='fill: white;transform: ;msFilter:;'><path d='M5 21h14a2 2 0 0 0 2-2V8l-5-5H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2zM7 5h4v2h2V5h2v4H7V5zm0 8h10v6H7v-6z'></path></svg>";
+    Editbtn.innerHTML =
+      "Save  <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='fill: white;transform: ;msFilter:;'><path d='M5 21h14a2 2 0 0 0 2-2V8l-5-5H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2zM7 5h4v2h2V5h2v4H7V5zm0 8h10v6H7v-6z'></path></svg>";
     inputName.disabled = false;
     inputgitUsername.disabled = false;
     inputbioInfo.disabled = false;
@@ -163,23 +167,20 @@ Editbtn.addEventListener("click", function () {
     inputgitUsername.disabled = true;
     inputbioInfo.disabled = true;
     inputlinkInfo.disabled = true;
-
-    // Save the input values to Firebase
     saveToFirebase(id);
   }
 });
 
 // Function to save input values to Firebase
 function saveToFirebase(id) {
-  const docRef = doc(database,'users',`${id}`)
+  const docRef = doc(database, "users", `${id}`);
 
-  let data_set= setDoc(
-    docRef,{
-      fullName: inputName.value,
-      gitUsername: inputgitUsername.value,
-      bioInfo: inputbioInfo.value,
-      linkedIn: inputlinkInfo.value,
-    })
+  let data_set = setDoc(docRef, {
+    fullName: inputName.value,
+    gitUsername: inputgitUsername.value,
+    bioInfo: inputbioInfo.value,
+    linkedIn: inputlinkInfo.value,
+  })
     .then(() => {
       console.log("Document successfully written!");
     })
@@ -188,9 +189,9 @@ function saveToFirebase(id) {
     });
 }
 
-
+// If the Page is load retreiving the data
 window.addEventListener("load", async () => {
-  const docRef = doc(database, 'users', `${id}`);
+  const docRef = doc(database, "users", `${id}`);
 
   try {
     const docSnap = await getDoc(docRef);
@@ -208,7 +209,6 @@ window.addEventListener("load", async () => {
   }
 });
 
-
 document.querySelector(".Country label").addEventListener("click", function () {
   document.getElementById("countrySelect").disabled = false;
 });
@@ -220,15 +220,15 @@ document
     console.log("Selected country:", selectedCountry);
   });
 
-// Fetch data into Local storage
+// Fetch data into Local storage Username && Useremail
 
-let UserDetailsdataname=userDetails.username;
-let UserEmaildata=userDetails.email;
+let UserDetailsdataname = userDetails.username;
+let UserEmaildata = userDetails.email;
 
-inputName.value=UserDetailsdataname
-inputEmail.value=UserEmaildata
+inputName.value = UserDetailsdataname;
+inputEmail.value = UserEmaildata;
 
-
+// profile Img Functionality
 
 const uploadButton = document.getElementById("uploadButton");
 const fileInput = document.getElementById("uploadInput");
@@ -250,7 +250,6 @@ fileInput.addEventListener("change", async function (event) {
       try {
         const img = document.createElement("img");
         img.src = e.target.result;
-   
 
         const profileImg = document.querySelector(".profile");
         profileImg.src = e.target.result;
@@ -262,12 +261,10 @@ fileInput.addEventListener("change", async function (event) {
         imageContainer.appendChild(img);
 
         // Upload image URL to Firestore
-        const docRef = doc(database, 'users_img', `${id}`);
+        const docRef = doc(database, "users_img", `${id}`);
         await setDoc(docRef, {
           imageURL: e.target.result,
         });
-
-   
       } catch (error) {
         console.error("Error uploading image and data: ", error);
         alert("Error uploading image and data. Please try again.");
@@ -282,16 +279,16 @@ fileInput.addEventListener("change", async function (event) {
 // Window load event listener
 window.addEventListener("load", async function () {
   const profileImg = document.querySelector(".profile");
-  const ProfileMainImg=this.document.querySelector(".profile_img")
+  const ProfileMainImg = this.document.querySelector(".profile_img");
 
   try {
-    const docRef = doc(database, 'users_img', `${id}`);
+    const docRef = doc(database, "users_img", `${id}`);
     const docSnapimg = await getDoc(docRef);
 
     if (docSnapimg.exists()) {
       const userDataimg = docSnapimg.data();
       profileImg.src = userDataimg.imageURL;
-      ProfileMainImg.src=userDataimg.imageURL
+      ProfileMainImg.src = userDataimg.imageURL;
     } else {
       console.log("The image is not found in Firestore.");
     }
@@ -300,4 +297,3 @@ window.addEventListener("load", async function () {
     alert("Error getting user image. Please try again.");
   }
 });
-

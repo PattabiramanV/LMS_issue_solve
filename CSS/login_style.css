@@ -34,7 +34,7 @@ user-select: none;
   margin: 20px 0;
 
 }
-.google_btn ,.btn_for_login{
+.btn_for_login{
   width: 100%;
   display: flex;
   justify-content: center;
@@ -48,7 +48,7 @@ user-select: none;
   margin: 40px;
   
 }
-.btn_for_login,#option{
+.btn_for_login{
   margin-bottom: 10px;
   font-family: "Fira Sans", sans-serif;
 
@@ -80,15 +80,10 @@ user-select: none;
   right: 6px;
 }
 .invalid_email{
-  /* color: red;
-  padding: 8px 0px ;
-  display: block; */
  visibility: hidden;
 }
 .invalid_password{
-  /* color: red;
-  padding: 8px 0px ;
-  display: block; */
+
   visibility: hidden;
 }
 
@@ -117,7 +112,7 @@ user-select: none;
   cursor: pointer;
   
 }
-/* ---------- */
+/* ----------loader---------- */
 .loading-overlay {
     position: fixed;
     top: 0;
@@ -145,7 +140,7 @@ user-select: none;
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-  /* -----forgot------ */
+  /* -----forgot---------- */
 
 
 .maincontainer3 {
@@ -153,7 +148,7 @@ user-select: none;
   width: 100%;
   padding: 10px;
   margin: 10px;
-  /* background-color: aquamarine; */
+
 }
 
 
@@ -162,7 +157,6 @@ width: 100%;
 display: flex;
 justify-content: center;
 margin-top: 50px;
-/* background-color: gray; */
 
 }
 #reset_form{
@@ -213,7 +207,6 @@ color: white;
 #Reset_Title
 {
 font-size: 18px;
-/* padding: 3px; */
 position: relative;
 top: 5px;
 }
@@ -230,8 +223,6 @@ max-width: 1440px;
 margin: 0;
 padding: 30px;
 font-family: "Fira Sans", sans-serif;
-
-
 }
 
 .mailbox{
@@ -279,7 +270,4 @@ font-family: "Fira Sans", sans-serif;
   top: 20px;
   left: 190px;
   font-family: "Fira Sans", sans-serif;
-
-
-
 }

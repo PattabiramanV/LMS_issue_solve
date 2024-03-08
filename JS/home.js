@@ -170,17 +170,18 @@ let find_language_unlock_module=get_data.data()[find_language+'_unlock_total_mod
 // -------------loginvalidate----------
 
 let signcontrols = document.querySelector(".login_parent");
-// let profile = document.querySelector(".profile");
+const darkLight = document.querySelector("#darkLight");
 
 // Check if userdetails exist in localStorage
 if(localStorage.getItem('userdetails')){
     // User details exist
     signcontrols.style.display = 'none'; // Hide the sign-up and login buttons
     profile.style.display = 'block'; // Show the profile icon
+    darkLight.style.display='block'
+
  // Add class to profile icon if needed
 } else {
-    // User details don't exist
-  // Show the sign-up and login buttons
+
     profile.style.display = 'none'; // Hide the profile icon
 }
 
@@ -235,15 +236,19 @@ profile_navigate.addEventListener("click",()=>{
 
 
 // Dark mode Theme
-const body = document.querySelector("body");
-const darkLight = document.querySelector("#darkLight");
-let Dckaplogo = document.querySelector(".DCKAPlOGO");
+let Dckaplogo = document.querySelectorAll(".DCKAPlOGO");
+
 function toggleDarkMode() {
-  const isDarkMode = body.classList.toggle("dark");
+
+const body = document.querySelector("body");
+  const isDarkMode = document.body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
-  Dckaplogo.src = body.classList.contains("dark")
+  Dckaplogo.forEach((logo)=>{
+    logo.src = document.body.classList.contains("dark")
     ? "./Assests/Dckapwhite.png"
     : "./Assests/Logodk.png";
+  })
+
   sessionStorage.setItem("darkMode", isDarkMode);
 }
 
@@ -252,3 +257,11 @@ if (storedDarkMode === "true") {
   toggleDarkMode();
 }
 darkLight.addEventListener("click", toggleDarkMode);
+
+
+
+// Home navigate to profile
+
+document.querySelector(".profile_img").addEventListener("click", function () {
+  localStorage.setItem("previous_location", window.location.href);
+});

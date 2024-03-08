@@ -11,7 +11,38 @@
     <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Hanuman:wght@100;300;400;700;900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kalam:wght@300;400;700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script src=" https://smtpjs.com/v3/smtp.js"></script>
 
+     <style>
+  .container {
+    width: 23%;
+    height: 309px;
+    /* display: flex; */
+    position: relative;
+    left: 460px;
+    top: 100px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    font-family: "Fira Sans", sans-serif;
+    /* font-size: 14px; */
+
+
+}
+
+    #otp_txt {
+      position: relative;
+      left: 6px;
+      top: 50px;
+      color: white;
+    }
+    p.otpSubheading {
+    position: relative;
+    top: 70px;
+    color: white;
+    
+}
+  </style>
+</head>
 <body>
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-spinner"></div>
@@ -40,7 +71,7 @@
                         <button id ="login_btn">Log in</button>
                         <h5 id="Not_exist">Dont have an account?<u id="backto_signup">Signup</u></h5>
                     </div>
-                    <div class="google_btn">
+                    <!-- <div class="google_btn">
                         <p id="option">Or</p>
                         <p id="contiue">
                             <svg id="google_icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" style="width: 28px;"
@@ -59,39 +90,39 @@
                                 </path>
                             </svg>
                         </p>
-                    </div>
+                    </div> -->
                 </form>
             </div>
             </div>
             <div class ="side_div_image">
-                <img id="logoimage" style="width: 550px;" src="./Assests/Sign in-pana.png">
+                <img id="logoimage" style="width: 550px;" src="./Assests/Tablet_login-pana.webp">
             </div>
         </div>
     </div>
-    <div class="maincontainer3" style="display: none;">
-        <div class="inner-reset_container">
-        <form id="reset_form">
-            <!-- <h3 id="Reset_Title">Reset your password</h3> -->
-            <div class="email">
-                <h4 id="mail">Email</h4>
-            <input type="email" id="reset_id" name="mail_reset" placeholder="Enter your email">
-            </div>
-            <div class="new_ps">
-                <h4 id="new_pass">New password</h4>
-                <input type="text" id="new" placeholder="Enter a password">
-
-            </div>
-            <div class="con_ps">
-                <h4 id="con_password">confirm password</h4>
-                <input type="text" id="confirm" placeholder="confirm your password">
-
-            </div>
-            <div class="Reset_btn">
-                 <button id="Reset_button">Reset</button>
-            </div>
-        </form>
+    <div class="maincontainer_foremail" style="display: none;">
+        <div class="mailbox">
+    <form id="forgot_emailform">
+        <div class="email">
+            <h4 id="mail">Email</h4>
+        <input type="email" id="reset_id" name="mail_reset" placeholder="Enter your email">
         </div>
+        <div class="Verify_btn">
+            <button id="verify_button">Verify</button>
+       </div>
+    </form>
+        </div>
+
     </div>
+    <div class="container" style="display:none; text-align: center; margin-top: 20px; background-color:#c84e2a">
+        <h4 id="otp_txt">Enter an OTP</h4>
+        <p class="otpSubheading">We have sent a verification code to your Email</p>
+    
+        <input type="number" id="otp_value" name="otp"
+          style="padding: 8px; margin: 5px; border-radius: 5px; border: 1px solid #ccc; position: relative; top: 80px; left: 50px;">
+        <button id="otp_btn"
+          style="padding: 8px 20px; margin: 5px; border: none; border-radius: 5px; background-color: white; color:black; cursor: pointer; position: relative; top: 140px ;left: -100px;">Next</button>
+      </div>
+
     <script src="./JS/login.js"type="module"></script>
 </body>
 </html>

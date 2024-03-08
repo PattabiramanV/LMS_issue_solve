@@ -130,6 +130,8 @@ var userDetailsString = localStorage.getItem("userdetails");
 var userDetails = JSON.parse(userDetailsString);
 let id = userDetails.user_id;
 console.log(id);
+let name = userDetails.username;
+console.log(name);
 
 // async function fetchQuizData(databaseName) {
 //   try {
@@ -473,17 +475,12 @@ if (certificate_get === "HTML_Overall_Quiz") {
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
     ctx.font = "30px HK Grotesk";
     ctx.fillStyle = "#ff914d";
-    ctx.fillText(name_input.value, 40, 176);
+    ctx.fillText(`${name}`, 40, 176);
   }
 
-  name_input.addEventListener("input", () => {
-    // const name_value = name_input.value
-    drawImage();
-  });
-
   downloadBtn.addEventListener("click", () => {
-    downloadBtn.href = canvas.toDataURL("image/jpg");
-    downloadBtn.download = "Certificate";
+    downloadBtn.href = canvas.toDataURL("image/png");
+    downloadBtn.download = "Certificate.png";
     // alert("Successfully downloaded");
     window.location.href = "./certificate.html";
   });
@@ -505,16 +502,12 @@ if (certificate_get === "HTML_Overall_Quiz") {
     ctx2.drawImage(image2, 0, 0, canvas2.width, canvas2.height);
     ctx2.font = "30px HK Grotesk";
     ctx2.fillStyle = "#ff914d";
-    ctx2.fillText(name_input2.value, 40, 176);
+    ctx2.fillText(`${name}`, 40, 176);
   }
 
-  name_input2.addEventListener("input", () => {
-    drawImage();
-  });
-
   downloadBtn2.addEventListener("click", () => {
-    downloadBtn2.href = canvas2.toDataURL("image/jpg");
-    downloadBtn2.download = "Certificate.jpg";
+    downloadBtn2.href = canvas2.toDataURL("image/png");
+    downloadBtn2.download = "Certificate.png";
     // alert("Successfully downloaded");
     window.location.href = "./certificate.html";
   });
@@ -538,16 +531,13 @@ else if (certificate_get === "JavaScript_Overall_Quiz") {
     ctx3.drawImage(image3, 0, 0, canvas3.width, canvas3.height);
     ctx3.font = "30px HK Grotesk";
     ctx3.fillStyle = "#ff914d";
-    ctx3.fillText(name_input3.value, 40, 176);
+    ctx3.fillText(`${name}`, 40, 176);
   }
 
-  name_input3.addEventListener("input", () => {
-    drawImage();
-  });
 
   downloadBtn3.addEventListener("click", () => {
-    downloadBtn3.href = canvas3.toDataURL("image/jpg");
-    downloadBtn3.download = "Certificate.jpg";
+    downloadBtn3.href = canvas3.toDataURL("image/png");
+    downloadBtn3.download = "Certificate.png";
     // alert("Successfully downloaded");
     window.location.href = "./certificate.html";
   });
@@ -570,21 +560,48 @@ else if (certificate_get === "MySql_Overall_Quiz") {
     ctx4.drawImage(image4, 0, 0, canvas4.width, canvas4.height);
     ctx4.font = "30px HK Grotesk";
     ctx4.fillStyle = "#ff914d";
-    ctx4.fillText(name_input4.value, 40, 176);
+    ctx4.fillText(`${name}`, 40, 176);
   }
 
-  name_input4.addEventListener("input", () => {
-    drawImage();
-  });
 
   downloadBtn4.addEventListener("click", () => {
-    downloadBtn4.href = canvas4.toDataURL("image/jpg");
-    downloadBtn4.download = "Certificate.jpg";
+    downloadBtn4.href = canvas4.toDataURL("image/png");
+    downloadBtn4.download = "Certificate.png";
     // alert("Successfully downloaded");
     window.location.href = "./certificate.html";
   });
-} else {
-  console.log("Site on the Work");
+
+
+} else if (certificate_get === "PHP_Overall_Quiz"){
+
+  const canvas5 = document.getElementById("canva");
+  const ctx5 = canvas5.getContext("2d");
+  const downloadBtn5 = document.getElementById("download_btn");
+
+  const image5 = new Image();
+  image5.src = "./Assests/without_username_php_certificate.png";
+  image5.className = "gen_cer";
+  image5.onload = () => {
+    drawImage();
+  };
+
+  function drawImage() {
+    ctx5.drawImage(image5, 0, 0, canvas5.width, canvas5.height);
+    ctx5.font = "30px HK Grotesk";
+    ctx5.fillStyle = "#ff914d";
+    ctx5.fillText(`${name}`, 40, 176);
+  }
+
+
+  downloadBtn5.addEventListener("click", () => {
+    downloadBtn5.href = canvas5.toDataURL("image/png");
+    downloadBtn5.download = "Certificate.png";
+    // alert("Successfully downloaded");
+    window.location.href = "./certificate.html";
+  });
+
+
+
 };
 
 

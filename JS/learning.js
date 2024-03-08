@@ -37,217 +37,46 @@ else{
 }
 
 
-// console.log(id);
 let all_learn_more_btn=document.querySelectorAll(".learn_more_btn");
 
 all_learn_more_btn.forEach((btn,index)=>{
 
+  
     btn.addEventListener("click",async()=>{
 
-      find_language=btn.parentElement.previousElementSibling.previousElementSibling.firstElementChild.lastElementChild.innerHTML;
+find_language=btn.parentElement.previousElementSibling.previousElementSibling.firstElementChild.lastElementChild.innerHTML;
+find_language =find_language[0]+find_language.slice(1,find_language.length).toLowerCase();
 
 let ref_data=doc(db,"Learning",`User=${id}`);
 let get_data= await getDoc(ref_data);
 let find_language_unlock_module=get_data.data()[find_language+'_unlock_total_module'];
-console.log(find_language_unlock_module);
+
  let data_set=await updateDoc(
     ref_data,{
         Find_Language_type:find_language,
         find_index:find_language_unlock_module
-        // Html_Complete_Module:0,
-        // Html_Total_Percentage:0,
-        // Css_Complete_Module:0,
-        // Css_Total_Percentage:0,
-        // Javascript_Complete_Module:0,
-        // Javascript_Total_Percentage:0,
-        // Mysql_Complete_Module:0,
-        // Mysql_Total_Percentage:0,
-        // user_unlock_total_module:0
+        
     }
 ).then(()=>{
-    // alert("sucessfully");
+    
 }).catch((err)=>{
     console.log(err);
 });
     window.location.href='learning_content.html';
-console.log(find_language_unlock_module!=0 ? find_language_unlock_module+1:find_language_unlock_module)
-
- 
 
     })
 });
 
 let all_percentage_show_tag=document.querySelectorAll("strong");
-// all_percentage_show_tag.forEach( async(percentage_tag)=>{
 
   let ref=doc(db,'Learning',`User=${id}`);
   let data_ref=await getDoc(ref);
 
-//   percentage_tag.innerHTML=data_ref.data().Html_Total_Percentage;
-
-// // })
 all_percentage_show_tag[0].innerHTML=data_ref.data().Html_Total_Percentage;
 all_percentage_show_tag[1].innerHTML=data_ref.data().Css_Total_Percentage;
 all_percentage_show_tag[2].innerHTML=data_ref.data().Javascript_Total_Percentage;
 all_percentage_show_tag[3].innerHTML=data_ref.data().Mysql_Total_Percentage;
 all_percentage_show_tag[4].innerText=data_ref.data().Php_Total_Percentage;
-
-
-// all_learn_more_btn[0].addEventListener("click",async(event)=>{
-
-//   console.log(event);
-   
-// })
-
-// let ref_data=collection(db,"Learning");
-// let get_data=await getDocs(ref_data);
-// console.log(get_data.size);
-
-let Quiz_object={
-
-
-HTML:{
-
-    headers:[
-    {
-        Question:'1.What is Full form of HTML?',
-        Options: ['Hyper Text Markup Language','Hyper Text Makeup Language',
-        'Hyper Text Mark Language','Hyper Test Markup Language'],
-        Answers:['Hyper Text Markup Language','<href>',
-        'It defines a header for the document.','<table>','<body>']
-    
-    },
-
-    {
-        Question:'2.Which tag is used to create a hyperlink in HTML?',
-        Options:['<link>','<a>','<href>','hyper']
-     
-    },
-    {
-        Question:`3.In HTML, what is the purpose of the &lt;head&gt; element?`,
-        Options:['It contains the main content of the document.','It defines a header for the document.',
-        'It provides metadata about the document.','It creates a navigation bar.' ]
- 
-    }
-    ],
-
-    form:[
-
-        {
-            Question:'1.What is Full form of HTML?',
-            Options: ['Hyper Text Markup Language','Hyper Text Makeup Language',
-            'Hyper Text Mark Language','Hyper Test Markup Language'],
-            Answers:['Hyper Text Markup Language','<href>',
-            'It defines a header for the document.','<table>','<body>']
-        
-        },
-    
-        {
-            Question:'2.Which tag is used to create a hyperlink in HTML?',
-            Options:['<link>','<a>','<href>','hyper']
-         
-        },
-        {
-            Question:`3.In HTML, what is the purpose of the &lt;head&gt; element?`,
-            Options:['It contains the main content of the document.','It defines a header for the document.',
-            'It provides metadata about the document.','It creates a navigation bar.' ]
-     
-        }
-    ]
-},
-
-CSS:{
-
-    felx:[
-        {
-            Question:'1.What is Full form of HTML?',
-            Options: ['Hyper Text Markup Language','Hyper Text Makeup Language',
-            'Hyper Text Mark Language','Hyper Test Markup Language'],
-            Answers:['Hyper Text Markup Language','<href>',
-            'It defines a header for the document.','<table>','<body>']
-        
-        },
-    
-        {
-            Question:'2.Which tag is used to create a hyperlink in HTML?',
-            Options:['<link>','<a>','<href>','hyper']
-         
-        },
-        {
-            Question:`3.In HTML, what is the purpose of the &lt;head&gt; element?`,
-            Options:['It contains the main content of the document.','It defines a header for the document.',
-            'It provides metadata about the document.','It creates a navigation bar.' ]
-     
-        }
-        ],
-    
-        Grid:[
-    
-            {
-                Question:'1.What is Full form of HTML?',
-                Options: ['Hyper Text Markup Language','Hyper Text Makeup Language',
-                'Hyper Text Mark Language','Hyper Test Markup Language'],
-                Answers:['Hyper Text Markup Language','<href>',
-                'It defines a header for the document.','<table>','<body>']
-            
-            },
-        
-            {
-                Question:'2.Which tag is used to create a hyperlink in HTML?',
-                Options:['<link>','<a>','<href>','hyper']
-             
-            },
-            {
-                Question:`3.In HTML, what is the purpose of the &lt;head&gt; element?`,
-                Options:['It contains the main content of the document.','It defines a header for the document.',
-                'It provides metadata about the document.','It creates a navigation bar.' ]
-         
-            }
-        ]
-
-
-
-}
-
-}
-
-
-
-
-
-
-
-// let left_side_bar=document.querySelectorAll(".navlink");
-
-// left_side_bar[0].addEventListener("click",()=>{
-  
-//   window.location.href='./index.html'
-// });
-
-// left_side_bar[1].addEventListener("click",()=>{
-
-//   window.location.href='./Learning.html  '
-// });
-// left_side_bar[2].addEventListener("click",()=>{
-
-//   window.location.href='./dashboard.html';
-// });
-// left_side_bar[3].addEventListener("click",()=>{
-
-//   window.location.href='./Roadmap.html';
-// });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -289,16 +118,16 @@ let Dckaplogo = document.querySelector(".DCKAPlOGO");
 Dckaplogo.addEventListener("click",()=>{
   window.location.href='./index.html'
 })
-let searchicon = document.querySelector(".fas");
+
 function toggleDarkMode() {
 
   const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
-  searchicon.style.color = isDarkMode ? "white" : "black";
+
  
   Dckaplogo.src = body.classList.contains("dark")
-  ? "./Assests/Dckapwhite.png"
-  : "./Assests/Logodk.png";
+    ? "./Assests/Dckapwhite.png"
+    : "./Assests/Logodk.png";
  
 
   sessionStorage.setItem("darkMode", isDarkMode);
@@ -395,5 +224,7 @@ window.addEventListener("load", async function () {
   }
 });
 
-
+document.querySelector(".profile_down").addEventListener("click", function () {
+  localStorage.setItem("previous_location", window.location.href);
+});
 

@@ -8,7 +8,7 @@
   --black:black;
   --primarycolor:#c84e2a;
   --profile-hover-color:#b27eccfd;
-  --Cancel-btn-color:#bb0a1e;
+  --Cancel-btn-color:#FF0000;
   --Cancel-btn-hover:#e40d26;
   --btn-hover-color:#e75c31;
   --input-border: 1px solid #acacac;
@@ -91,6 +91,9 @@ body.dark {
 img.DCKAPlOGO {
   position: absolute;
   left: 2rem;
+}
+.DCKAPlOGO:hover{
+  cursor: pointer;
 }
 
 .navbar img {
@@ -757,4 +760,27 @@ button:hover {
   }
 
 
+}
+
+
+/* Width and background color of the scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f5f5f5; 
+}
+
+/* Track of the scrollbar */
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5; 
+}
+
+/* Thumb of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 0px;
+}
+
+/* On hover, transition the scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ab3ee286; 
 }

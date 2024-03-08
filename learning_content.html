@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <title>LMS WEBSITE</title>
   <link rel="stylesheet" href="./CSS/learning_content.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Hanuman:wght@100;300;400;700;900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kalam:wght@300;400;700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -15,18 +18,18 @@
   <nav class="navbar">
     <div class="logo_item">
       <i class="bx bx-menu" id="sidebarOpen"></i>
-      <img src="Assests/Dckap Logo.png" alt="" class="DCKAPlOGO"></i>
+      <img src="./Assests/Logodk.png" alt="" class="DCKAPlOGO"></i>
     </div>
 
-    <div class="search_bar">
-      <input type="text" placeholder="Search" />
-      <i class="fas fa-search " id="search_icon"></i>
+    <div class="group">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
+      <input placeholder="Search" type="search" class="input">
     </div>
 
     <div class="navbar_content">
       <i class="bi bi-grid"></i>
       <i class='bx bx-sun' id="darkLight"></i>
-      <img src="Assests/236831.png" alt="" class="profile" />
+      <img src="./Assests/system-regular-8-account.gif" alt="" class="profile" />
     </div>
     <div class="profile_bar_list">
       <div class="profile_down">
@@ -38,6 +41,7 @@
         <P class="profile-name">My Courses</P>
       </div>
       <div class="profile_certicate">
+        
         <i class="fa-solid fa-award" class="profile-icon"></i>
         <P class="profile-name">certificate</P>
       </div>
@@ -53,27 +57,27 @@
     <div class="menu_content">
       <ul class="menu_items">
         <li class="item">
-          <div href="#" class="nav_link submenu_item">
+          <a href="./index.html" class="nav_link submenu_item">
             <span class="navlink_icon">
               <i class="bx bx-home-alt navlink"></i>
             </span>
             <!-- <span class="navlink">Home</span> -->
-          </div>
+          </a>
 
         </li>
         <li class="item">
-          <div href="#" class="nav_link submenu_item">
+          <a href="./Learning.html" class="nav_link submenu_item">
             <span class="navlink_icon">
               <i class="bx bx-grid-alt navlink" ></i>
             </span>
             <!-- <span class="navlink">learning</span> -->
-          </div>
+          </a>
         </li>
       </ul>
 
       <ul class="menu_items">
         <li class="item">
-          <a href="#" class="nav_link">
+          <a href="./dashboard.html" class="nav_link">
             <span class="navlink_icon">
               <i class="bx bxs-magic-wand navlink"></i>
             </span>
@@ -83,7 +87,7 @@
 
 
         <li class="item">
-          <a href="#" class="nav_link">
+          <a href="./Roadmap.html" class="nav_link">
             <span class="navlink_icon">
               <i class="bx bx-loader-circle navlink"></i>
             </span>
@@ -124,93 +128,33 @@
 
 <div class="bottom_learning_content_parent">
   <div class="left_heading_content">  
-    <!-- <div class="intoduction learnig_tile">
-        <p class="content_title">CSS Introduction</p>
-       
-    </div>
-    <div class="title_tag learnig_tile">
-        <p class="content_title">CSS Syntax</p>
-        <i class="fa-solid fa-lock"></i>
-    </div>
-    <div class="body_tag learnig_tile">
-        <p class="content_title">CSS Comments</p>
-        <i class="fa-solid fa-lock"></i>
-    </div>
-    <div class="heading_tag learnig_tile">
-        <p class="content_title">CSS Colors</p>
-        <i class="fa-solid fa-lock"></i>
-    </div>
-    <div class="hr_tag learnig_tile">
-        <p class="content_title">CSS Border</p>
-        <i class="fa-solid fa-lock"></i>
-    </div>
-    <div class="br_tag learnig_tile">
-        <p class="content_title">CSS Lists</p>
-        <i class="fa-solid fa-lock"></i>
-    </div>
-    <div class="p_tag learnig_tile">
-      <p class="content_title">CSS Tables</p>
-      <i class="fa-solid fa-lock"></i>
-    </div>
-    <div class="img_tag learnig_tile">
-      <p class="content_title">CSS Icons</p>
-      <i class="fa-solid fa-lock"></i>
-    </div>
-    <div class="img_tag learnig_tile">
-      <p class="content_title">CSS Fonts</p>
-      <i class="fa-solid fa-lock"></i>
-    </div>
-    <div class="img_tag learnig_tile">
-      <p class="content_title">CSS Position</p>
-      <i class="fa-solid fa-lock"></i>
-    </div>
-    <div class="img_tag learnig_tile">
-      <p class="content_title">CSS Padding</p>
-      <i class="fa-solid fa-lock"></i>
-    </div>
-    <div class="img_tag learnig_tile">
-      <p class="content_title">CSS  Display</p>
-      <i class="fa-solid fa-lock"></i>
-    </div>
-    <div class="img_tag learnig_tile">
-      <p class="content_title">CSS Margin</p>
-      <i class="fa-solid fa-lock"></i>
-    </div>
-    <div class="img_tag learnig_tile">
-      <p class="content_title">CSS Selectors</p>
-      <i class="fa-solid fa-lock"></i>
-    </div>
-    <div class="img_tag learnig_tile">
-      <p class="content_title">CSS Height/width</p>
-      <i class="fa-solid fa-lock"></i>
-    </div> -->
+
   </div>
 
   <div class="learning_right_laguage_details">
-    <!-- <h3 id="language_title">CSS Introduction</h3> -->
+    
   <div class="explain_berief_data">
     <div class="content_top">
-        <!-- <span>CSS</span>(Cascading Style Sheets) is a simply designed language intended to simplify the process of making web pages presentable. CSS allows you to apply styles to HTML documents. It describes how a webpage should look. It prescribes colors, fonts, spacing, etc. In short, you can make your website look however you want. CSS lets developers and designers define how it behaves, including how elements are positioned in the browser. <br><br>
-        HTML uses tags and CSS uses rulesets. CSS styles are applied to the HTML element using selectors. CSS is easy to learn and understand, but it provides powerful control over the presentation of an HTML document. -->
+        
     </div>
+
     <iframe width="560" height="315" src="https://www.youtube.com/embed/uOltiFI00rU?si=ZEB15983y8TNzgjw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
     <div class="bottom_content1">
-       <!-- <h2>Why CSS?</h2>
-       <li><strong>CSS saves time:</strong> You can write CSS once and reuse the same sheet in multiple HTML pages.</li>
-       <li><strong>Easy Maintenance:</strong> To make a global change simply change the style, and all elements in all &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the webpages will be updated automatically.
-       <li><strong>Search Engines:</strong> CSS is considered a clean coding technique, which means search engines won’t have to struggle to “read” its content.
-       <li><strong>Superior styles to HTML:</strong> CSS has a much wider array of attributes than HTML, so you can give a far better look to your HTML page in comparison to HTML attributes.
-       <li><strong>Offline Browsing:</strong> CSS can store web applications locally with the help of an offline cache. Using this we can view offline websites.
-    </div> -->
+      
   </div>
+
     <div class="bottom_two_btn">
-      <button class="quiz_btn">Excersize</button>
+      <!-- <button class="Previous_btn two_btn">Previous</button> -->
+      <button class="Exercise_btn two_btn">Exercise</button>
+      <!-- <button class="next_btn two_btn">Next</button> -->
+
     </div>
   </div>
 
 </div>
 
 </body>
-<script src="JS/learning_content.js" type="module"></script>
+<script src="./JS/learning_content.js" type="module"></script>
 
 </html>

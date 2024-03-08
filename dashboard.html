@@ -7,124 +7,122 @@
     <link rel="stylesheet" href="./CSS/dashboard.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Hanuman:wght@100;300;400;700;900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kalam:wght@300;400;700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-<!----------------------- navbar ------------------------>
+<!-------------------------------------- navbar ----------------------------------->
     <nav class="navbar">
         <div class="logo_item">
             <i class="bx bx-menu" id="sidebarOpen"></i>
-            <img src="./Assests/Dckap Logo.png" alt="" class="DCKAPlOGO"></i>
+            <img src="./Assests/Logodk.png" alt="" class="DCKAPlOGO"></i>
         </div>
-
-        <div class="search_bar">
-            <input type="text" placeholder="Search" />
-            <i class="fas fa-search"></i>
+        <div class="group">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
+            <input placeholder="Search" type="search" class="input">
         </div>
-
         <div class="navbar_content">
             <i class="bi bi-grid"></i>
             <i class='bx bx-sun' id="darkLight"></i>
-            <img src="./Assests/236831.png" alt="" class="profile" />
+            <img src="./Assests/system-regular-8-account.gif" alt="" class="profile" />
         </div>
         <div class="profile_bar_list">
             <div class="profile_down">
-              <i class="fa fa-user" aria-hidden="true" class="profile-icon"></i>
-              <P class="profile-name">profile</P>
+                <i class="fa fa-user" aria-hidden="true" class="profile-icon"></i>
+                <P class="profile-name">profile</P>
             </div>
             <div class="Course_Down">
-              <i class="fa-solid fa-book"></i>
-              <P class="profile-name">My Courses</P>
+                <i class="fa-solid fa-book"></i>
+                <P class="profile-name">My Courses</P>
             </div>
             <div class="profile_certicate">
-              <i class="fa-solid fa-award" class="profile-icon"></i>
-              <P class="profile-name">certificate</P>
+                <i class="fa-solid fa-award" class="profile-icon"></i>
+                <P class="profile-name">certificate</P>
             </div>
             <div class="log_out">
-              <i class="fa-solid fa-right-from-bracket" class="profile-icon"></i>
-              <P class="profile-name">Logout</P>
+                <i class="fa-solid fa-right-from-bracket" class="profile-icon"></i>
+                <P class="profile-name">Logout</P>
             </div>
-          </div>
+        </div>
     </nav>
 
-<!--------------------------- sidebar ----------------------->
+  <!------------------------------------------ sidebar -------------------------------------->
     <nav class="sidebar" style="display: flex;">
         <div class="menu_content">
             <ul class="menu_items">
                 <li class="item">
-                    <div href="#" class="nav_link submenu_item">
-                        <span class="navlink_icon">
-                            <i class="bx bx-home-alt"></i>
-                        </span>
-                        <span class="navlink">Home</span>
-                    </div>
-
+                <a href="./index.html" class="nav_link submenu_item">
+                    <span class="navlink_icon">
+                    <i class="bx bx-home-alt"></i>
+                    </span>
+                    <span class="navlink">Home</span>
+                </a>
                 </li>
                 <li class="item">
-                    <div href="#" class="nav_link submenu_item">
-                        <span class="navlink_icon">
-                            <i class="bx bx-grid-alt"></i>
-                        </span>
-                        <span class="navlink">learning</span>
-                    </div>
+                <a href="./Learning.html" class="nav_link submenu_item">
+                    <span class="navlink_icon">
+                    <i class="bx bx-grid-alt"></i>
+                    </span>
+                    <span class="navlink">Learning</span>
+                </a>
                 </li>
             </ul>
-
             <ul class="menu_items">
                 <li class="item">
-                    <a href="#" class="nav_link">
-                        <span class="navlink_icon">
-                            <i class="bx bxs-magic-wand"></i>
-                        </span>
-                        <span class="navlink">DashBoard</span>
-                    </a>
+                <a href="./dashboard.html" class="nav_link">
+                    <span class="navlink_icon">
+                    <i class="bx bxs-magic-wand"></i>
+                    </span>
+                    <span class="navlink">DashBoard</span>
+                </a>
                 </li>
                 <li class="item">
-                    <a href="#" class="nav_link">
-                        <span class="navlink_icon">
-                            <i class="bx bx-loader-circle"></i>
-                        </span>
-                        <span class="navlink">RoadMap</span>
-                    </a>
+                <a href="./Roadmap.html" class="nav_link">
+                    <span class="navlink_icon">
+                    <i class="bx bx-loader-circle"></i>
+                    </span>
+                    <span class="navlink">RoadMap</span>
+                </a>
                 </li>
             </ul>
             <ul class="set_items">
                 <li class="item">
-                    <a href="#" class="nav_link">
-                        <span class="navlink_icon">
-                            <i class="bx bx-cog"></i>
-                        </span>
-                        <span class="navlink">Setting</span>
-                    </a>
+                <a href="#" class="nav_link">
+                    <span class="navlink_icon">
+                    <i class="bx bx-cog"></i>
+                    </span>
+                    <span class="navlink">Settings</span>
+                </a>
                 </li>
             </ul>
-
             <div class="bottom_content">
                 <div class="bottom expand_sidebar">
                     <span> Expand</span>
-                    <i class='bx bx-log-in'></i>
+                    <i class='bx bx-expand-horizontal'></i>
                 </div>
                 <div class="bottom collapse_sidebar">
                     <span> Collapse</span>
-                    <i class='bx bx-log-out'></i>
+                    <i class='bx bx-expand-horizontal'></i>
                 </div>
             </div>
         </div>
     </nav>
     <!--------------------- Dashboard_profile ------------------>
-
     <div class="body">
         <div class="dashboard_profile">
-            <img src="./Assests/236831.png" alt="" class="dashboard_profile_img">
+            <div class="dashboard_profile_img">
+                <img src="./Assests/system-regular-8-account.gif" class="profile_img">
+            </div>
             <div class="dashboard_profile_content">
-                <p class="uname">Hello, <span class="user_name">Username</span></p>
+                <p class="username">Hello, <span class="u_name">Username</span></p>
                 <p class="dash">Dashboard</p>
             </div>
         </div>
-        <!----------------- Dashboard_content ------------------>
         <div class="dashboard_content">
             <div class="total_points totals">
                 <div class="points_img">
-                  <i class="fa-solid fa-record-vinyl icon"></i>
+                  <i class="fa-solid fa-record-vinyl icon2"></i>
                 </div>
                 <div class="point_content content">
                   <p class="con">Total Points</p>
@@ -133,7 +131,7 @@
             </div>
             <div class="total_quz totals">
                 <div class="quiz_img">
-                  <i class="fa-solid fa-record-vinyl icon"></i>
+                  <i class="fa-solid fa-record-vinyl icon2"></i>
                 </div>
                 <div class="quiz_content content">
                   <p class="con">Total Quiz</p>
@@ -142,7 +140,7 @@
             </div>
             <div class="total_star totals">
                 <div class="star_img">
-                  <i class="fa-solid fa-star icon"></i>
+                  <i class="fa-solid fa-star icon2"></i>
                 </div>
                 <div class="star_content content">
                   <p class="con">Total Stars</p>
@@ -150,85 +148,22 @@
                 </div>
             </div>
         </div>
-        <!--------------- Pie Chart ------------->
         <div class="pie_chart">
-            <h1>Pie Chart</h1>
-            <div class="btn">
-                <div class="html">
-                    <button class="pie_btn" id="html_btn">HTML</button>
-                </div>
-                <div class="css">
-                    <button class="pie_btn" id="css_btn">CSS</button>
-                </div>
-                <div class="js">
-                    <button class="pie_btn" id="js_btn">JavaScript</button>
-                </div>
-                <div class="mysql">
-                    <button class="pie_btn" id="mysql_btn">MySQL</button>
-                </div>
-            </div>
-        </div>
-        <!--------------- Display HTML Piechart ----------->
-
-        <div class="display_chart_html display_chart">
-            <span class="cross_html cross">&times;</span>
-            <h2 class="heading_chart_html heading_chart">HTML Pie Chart</h2>
-            <div class="programming_status_html programming_status">
-                <div class="chart_container_html chart_container">
-                    <canvas class="my_chart_html my_chart"></canvas>
-                </div>
-                <div class="details_html details">
-                    <ul></ul>
-                </div>
-            </div>
-        </div>
-
-        <!----------------- Display CSS piachart ----------------->
-
-        <div class="display_chart_css display_chart">
-            <span class="cross_css cross">&times;</span>
-            <h2 class="heading_chart_css heading_chart">CSS Pie Chart</h2>
-            <div class="programming_status_css programming_status">
-                <div class="chart_container_css chart_container">
-                    <canvas class="my_chart_css my_chart"></canvas>
-                </div>
-                <div class="details_css details">
-                    <ul></ul>
-                </div>
-            </div>
-        </div>
-
-        <!----------------- Display Javascript piachart ----------------->
-
-        <div class="display_chart_js display_chart">
-            <span class="cross_js cross">&times;</span>
-            <h2 class="heading_chart_js heading_chart">JavaScript Pie Chart</h2>
-            <div class="programming_status_js programming_status">
-                <div class="chart_container_js chart_container">
-                    <canvas class="my_chart_js my_chart"></canvas>
-                </div>
-                <div class="details_js details">
-                    <ul></ul>
-                </div>
-            </div>
-        </div>
-
-        <!----------------- Display MySQL piachart ----------------->
-        
-        <div class="display_chart_mysql display_chart">
-            <span class="cross_mysql cross">&times;</span>
-            <h2 class="heading_chart_mysql heading_chart">MySQL Pie Chart</h2>
-            <div class="programming_status_mysql programming_status">
-                <div class="chart_container_mysql chart_container">
-                    <canvas class="my_chart_mysql my_chart"></canvas>
-                </div>
-                <div class="details_mysql details">
-                    <ul></ul>
-                </div>
+            <!-- <h1 class="pie_chart_topic">Bar Chart</h1> -->
+            <!-- <div class="chart_btn"> -->
+                
+                <!-- <span id="tooltip_hcahrt">Click Me to get Vertical chart</span> -->
+                <!-- <button id="vertical_barchart" class="vertical_barchart">Horizontal Chart</button>
+                <span id="tooltip_hcahrt">Click Me to get horizontal chart</span>
+                <h1 class="pie_chart_topic">Vertical Chart</h1> -->
+                <!-- <button id="horizontal_barchart" class="horizontal_barchart">Horizontal Chart</button> -->
+            <!-- </div> -->
+            <div id="chart_container">
+                <canvas id="bar_chart" width="740" height="460"></canvas>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
     <script type="module" src="./JS/dashboard.js"></script>
 </body>
 </html>

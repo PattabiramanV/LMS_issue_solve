@@ -1,15 +1,31 @@
 /* Import Google font - Roboto */
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+:root {
+  --white-color: #fff;
+  --grey-color: #707070;
+  --grey-color-light: #aaa;
+  --background: #eaeaea;
+  --background-color-li: #8000801c !important;
+  --whitee-color:white;
+  --black:black;
+  --primarycolor:#c84e2a;
+  --profile-hover-color:#b27eccfd;
+  --Cancel-btn-color:#bb0a1e;
+  --Cancel-btn-hover:#e40d26;
+  --btn-hover-color:#e75c31;
+  --input-border: 1px solid #acacac;
+  --container-border: 1px solid #EAECF1;
+  --container-boxshadow:0px 10px 30px 3px rgba(81, 69, 158, 0.05);
+}
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
 body, html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   user-select: none;
-
+user-select: none;
 
 }
 :root {
@@ -26,7 +42,7 @@ body {
   /* background-color: #d0eaf1; */
   transition: all 0.5s ease;
   /* background-color: #c3eef0; */
-  background-color: #F1EAFF;
+  background-color:#eaeaea;
 }
 body.dark {
   background-color: #333;
@@ -40,6 +56,12 @@ body.dark {
 .dark{
   color: white;
 }
+.dark-mode .nav_link:hover {
+  color: #fffffff3;
+  background-color: #7c15dd4d;
+
+}
+
 
 /* navbar */
 .navbar {
@@ -68,47 +90,74 @@ img.DCKAPlOGO {
   position: absolute;
   left: 2rem;
 }
+.DCKAPlOGO:hover{
+  cursor: pointer;
+}
 .navbar img {
   height: 35px;
   object-fit: cover;
 }
-.search_bar {
-  height: 47px;
-  max-width: 430px;
-  width: 100%;
-}
-.search_bar input {
-  height: 100%;
-  width: 100%;
-  border-radius: 25px;
-  font-size: 18px;
-  outline: none;
-  background-color: var(--white-color);
-  color: var(--grey-color);
-  border: 1px solid var(--grey-color-light);
-  padding: 0 20px;
+.group {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
   position: relative;
-  left: -8rem;
+  max-width: 247px;
 }
-i.fas.fa-search {
+ 
+.group .input {
+  width: 100%;
+  height: 40px;
+  line-height: 28px;
+  padding: 0 1rem;
+  padding-left: 2.5rem;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f3f3f4;
+  color: #0d0c22;
+  transition: .3s ease;
+}
+ 
+ .input::placeholder {
+  color: #9e9ea7;
+ }
+ 
+ .group .input:focus, .group  input:hover {
+  outline: none;
+  border-color: #8000801c;
+  background-color: #fff;
+  box-shadow: 0 0 0 2px rgba(228, 133, 43, 0.897);
+ }
+ 
+ .icon {
   position: absolute;
-  top: -185%;
-  left: 52%;
-}
+  left: 1rem;
+  fill: #9e9ea7;
+  width: 1rem;
+  height: 1rem;
+ }
+ 
 .navbar_content {
   display: flex;
   align-items: center;
   column-gap: 25px;
+  position: relative;
+    left: 100px;
+}
+.navbar_content>* {
+  position: relative;
+  right: 26px;
 }
 .navbar_content i {
   cursor: pointer;
   font-size: 20px;
   color: var(--grey-color);
 }
-img.profile {
+/* img.profile {
   position: absolute;
-  left: 1468px;
-}
+  left: 1237px;
+} */
 /* sidebar */
 .sidebar {
   background-color: var(--white-color);
@@ -186,6 +235,7 @@ ul.set_items {
   background: var(--background-color-li);
   color: #333;
 }
+
 
 .submenu_item {
   cursor: pointer;
@@ -269,10 +319,11 @@ ul.set_items {
 }
 
 /* Profile DropDown */
+
 .profile_bar_list {
   top: 77px;
   width: 13%;
-  background: rgb(255 255 255 / 78%);
+  background: var(--whitee-color);
   border-radius: 8px;
   color: rgb(18, 22, 10);
   position: absolute;
@@ -280,6 +331,7 @@ ul.set_items {
   display: none;
   border: 1px solid lightgray;
   cursor: pointer;
+  border-radius: 2px;
 }
 
 .Drop_Down,
@@ -292,6 +344,9 @@ ul.set_items {
   width: 100%;
   text-align: center;
   justify-content: space-between;
+  border-radius: 2px;
+  background-color: var(--whitee-color);
+
 }
 
 .Drop_Down:hover,
@@ -299,13 +354,8 @@ ul.set_items {
 .Course_Down:hover,
 .profile_certicate:hover,
 .log_out:hover {
-  background-color: #ffffff1c;
-}
-
-p.profile-name {
-  width: 100%;
-  align-items: flex-start;
-  display: flex;
+  background-color:var(--profile-hover-color);
+  border-radius: 2px;
 }
 
 i.fa.fa-user,
@@ -315,12 +365,36 @@ i.fa-solid.fa-right-from-bracket {
   width: 50%;
 }
 
-.fa-solid, .fas {
-  font-weight: 600;
-  margin-top: 11%;
-  margin-right: 8%;
-  color: black;
+p.profile-name {
+  width: 100%;
+  align-items: flex-start;
+  display: flex;
+  font-weight: inherit;
+  color: var(--black);
+  font-size: 14px;
 }
+
+img.profile {
+  height: 40px !important;
+  width: 40px !important;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile_img {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.profile_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 /* Your Content paste here */
 
 
@@ -336,10 +410,10 @@ i.fa-solid.fa-right-from-bracket {
 }
 
 .left_heading_content {
-  width: 18%;
-  line-height: 75px;
+  width: 19%;
+  line-height: 50px;
   margin-top: -32px;
-  background-color: #F1EAFF;
+  background-color: #eaeaea;
   overflow: hidden scroll;
   padding-top: 20px;
   max-height: 35em;
@@ -393,6 +467,8 @@ i.fa-solid.fa-right-from-bracket {
   display: flex;
   justify-content: space-between;
   gap: 35px;
+  height: 58px;
+    align-items: baseline;
 }
 
 .explain_berief_data {
@@ -413,7 +489,7 @@ i.fa-solid.fa-right-from-bracket {
   width: 100%;
   margin: 0 auto;
   position: relative;
-    left: 100px;
+  
 }
 
 .bottom_two_btn button {
@@ -422,23 +498,34 @@ i.fa-solid.fa-right-from-bracket {
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0px 2px rgb(255, 255, 255);
-  background-color: rgb(168 47 41);
-  color: white;
+  background-color: #c84e2a;
+  color: #fff;
   font-size: 16px;
   font-weight: bolder;
   cursor: pointer;
-  /* padding: 2%; */
+ 
 }
 
 .bottom_two_btn button:hover{
 
-  background-color: rgba(168, 47, 41, 0.744);
+  background-color: #fff;
+  color:#c84e2a ;
   transform: scale(1.05);
-
-
+  border: 1px solid #c84f2aa2 ;
 
 }
 
+
+
+
+
+
+
+
+button.Exercise_btn, .next_btn {
+  position: relative;
+  left: 130px;
+}
 h3#language_title {
   margin: 0;
 }
@@ -458,8 +545,10 @@ a,iframe,button,.profile_round:hover{
   top: 26px;
   left: 34px;
 }
-
-
+.fa-solid, .fas {
+  font-weight: 900;
+  margin-right: 8%;
+}
 
 /*.......................................Top content......................*/
 
@@ -474,8 +563,22 @@ a,iframe,button,.profile_round:hover{
 .left_heding{
   color: rgb(121 172 120);
     font-weight: bolder;
+    display: flex;
+  justify-content: space-between;
+  gap: 35px;
+  height: 58px;
+    align-items: baseline;
 }
 
+.lock_remove_classlist{
+  color: #eaeaea;
+}
+
+.bottom_button{
+
+  display: flex;
+  justify-content: end;
+}
 
 /*....................................Content_classes...................*/
 
@@ -498,4 +601,25 @@ b {
 }
 
 
+/* Width and background color of the scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f5f5f5; 
+}
+
+/* Track of the scrollbar */
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5; 
+}
+
+/* Thumb of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 0px;
+}
+
+/* On hover, transition the scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ab3ee286; 
+}
 

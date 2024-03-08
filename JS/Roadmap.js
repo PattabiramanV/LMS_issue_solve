@@ -1,3 +1,11 @@
+if(localStorage.getItem("userdetails") == null){
+     window.location.href="./signup.html";
+     setTimeout(()=>{
+      window.location.href='./signup.html';
+    },2000);
+}
+
+"use strict";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
   getFirestore,
@@ -20,27 +28,21 @@ const firebaseConfig = {
   appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
 
+var userDetailsString = localStorage.getItem("userdetails");
+var userDetails = JSON.parse(userDetailsString);
+let id = userDetails.user_id;
+console.log(id);
+
 const body = document.querySelector("body");
-
 const darkLight = document.querySelector("#darkLight");
-
 const sidebar = document.querySelector(".sidebar");
-
-const submenuItems = document.querySelectorAll(".submenu_item");
-
 const sidebarOpen = document.querySelector("#sidebarOpen");
-
 const sidebarClose = document.querySelector(".collapse_sidebar");
-
 const sidebarExpand = document.querySelector(".expand_sidebar");
 sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
-
-let Navlink = document.querySelector(".nav_link");
-
 let content = document.querySelector(".menu_content");
 
 sidebarClose.addEventListener("click", () => {
@@ -70,18 +72,29 @@ sidebar.addEventListener("mouseleave", () => {
 });
 
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
-let searchicon = document.querySelector(".fas");
+Dckaplogo.addEventListener("click", () => {
+  window.location.href = "./index.html";
+});
 
-darkLight.addEventListener("click", () => {
-  body.classList.toggle("dark");
+// Function to toggle dark mode
+
+function toggleDarkMode() {
+  const isDarkMode = body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
-  searchicon.style.color = body.classList.contains("dark") ? "white" : "black";
   Dckaplogo.src = body.classList.contains("dark")
     ? "./Assests/Dckapwhite.png"
     : "./Assests/Logodk.png";
-});
+  sessionStorage.setItem("darkMode", isDarkMode);
+}
 
-// Profile
+const storedDarkMode = sessionStorage.getItem("darkMode");
+if (storedDarkMode === "true") {
+  toggleDarkMode();
+}
+
+darkLight.addEventListener("click", toggleDarkMode);
+
+// Profile DropDown Work
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");
@@ -99,8 +112,6 @@ document.addEventListener("click", (event) => {
     profile_Dropdown.style.display = "none";
   }
 });
-
-// profile_drop
 
 let profile_page = document.querySelector(".profile_down");
 profile_page.addEventListener("click", () => {
@@ -126,83 +137,138 @@ logout.addEventListener("click", () => {
 
 // Navigating into learning page
 
-let headingnavigate = document.querySelectorAll(".Heading_p");
+let headingnavigate = document.querySelectorAll("#navheading");
 console.log(headingnavigate);
 
-headingnavigate.forEach(async (links) => {
-  let ref = doc(database, "Learning", "0");
+headingnavigate.forEach(async (btn) => {
+  let ref = doc(database, "Learning", `User=${id}`);
   let get_data = await getDoc(ref);
   let find_language = 0;
+  
 
-  links.addEventListener("click", async () => {
-    if (links == headingnavigate[1]) {
+  btn.addEventListener("click", async (e) => {
+    if (btn == headingnavigate[0]) {
+      find_language = "";
+    } else if (btn == headingnavigate[1]) {
       find_language = "Html";
-    } else if (links == headingnavigate[2]) {
+    } else if (btn == headingnavigate[2]) {
       find_language = "Css";
+    } else if (btn === headingnavigate[3]) {
+      find_language = "Javascript";
+    } else if(btn===headingnavigate[5]){
+      find_language = "Mysql";
     }
-    await updateDoc(ref, {
+    else{
+         find_language="Php";
+    }
+    let find_language_unlock_module=get_data.data()[find_language+"_unlock_total_module"]
+    let data_get = await updateDoc(ref, {
       Find_Language_type: find_language,
+      find_index: find_language_unlock_module,
     });
     window.location.href = "./learning_content.html";
   });
 });
 
-// Import Firebase modules
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-// import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// // Your Firebase configuration
-// const firebaseConfig = {
-//     apiKey: "AIzaSyDB-XQdiHjT82q_r5MVNFgpyUsaU2WMvik",
-//     authDomain: "dckap-lms-project.firebaseapp.com",
-//     projectId: "dckap-lms-project",
-//     storageBucket: "dckap-lms-project.appspot.com",
-//     messagingSenderId: "1022626638467",
-//     appId: "1:1022626638467:web:2c8f79d5614281ac7b49b6"
-// };
+try {
+  const profileImg = document.querySelector(".profile");
+  const docRef = doc(database, 'users_img', `${id}`);
+  const docSnapimg = await getDoc(docRef);
 
-// // Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-// const db = getFirestore(app); // Corrected: getFirestore
+  if (docSnapimg.exists()) {
+      const userDataimg = docSnapimg.data();
+      profileImg.src = userDataimg.imageURL;
+  } else {
+      console.log("The image is not found in Firestore.");
+  }
+} catch (error) {
+  console.error("Error getting document:", error);
+  alert("Error getting user image. Please try again.");
+}
 
-// // Function to save checkbox state to Firebase
-// async function saveCheckboxState(id, checked) {
-//     try {
-//         await addDoc(collection(db, "checkboxes"), { id, checked }); // Corrected: addDoc and collection
-//         console.log("Checkbox state saved successfully!");
-//     } catch (error) {
-//         console.error("Error saving checkbox state: ", error);
-//     }
-// }
+window.addEventListener("load", async function () {
+  const profileImg = document.querySelector(".profile");
 
-// // Function to retrieve checkbox state from Firebase
-// async function getCheckboxState(id) {
-//   try {
-//       const querySnapshot = await getDocs(collection(db, "checkboxes")); // Query the collection
-//       querySnapshot.forEach(doc => {
-//           if (doc.id === id) {
-//               return doc.data().checked; // Return the value of 'checked' field from the document
-//           }
-//       });
-//       return false; // Return false if the document with the given ID is not found
-//   } catch (error) {
-//       console.error("Error getting checkbox state: ", error);
-//       return false;
-//   }
-// }
+  try {
+    const docRef = doc(database, 'users_img', `${id}`);
+    const docSnapimg = await getDoc(docRef);
 
-// // Add event listeners to checkboxes
-// window.addEventListener('load', async function() {
-//   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-//   checkboxes.forEach(async function(checkbox) {
-//       const id = checkbox.id;
-//       const isChecked = await getCheckboxState(id); // Retrieve checkbox state from Firebase
-//       checkbox.checked = isChecked; // Set checkbox state based on Firebase data
+    if (docSnapimg.exists()) {
+      const userDataimg = docSnapimg.data();
+      profileImg.src = userDataimg.imageURL;
+    } else {
+      console.log("The image is not found in Firestore.");
+    }
+  } catch (error) {
+    console.error("Error getting document:", error);
+    alert("Error getting user image. Please try again.");
+  }
+});
 
-//       // Add event listener for checkbox click
-//       checkbox.addEventListener('click', function() {
-//           saveCheckboxState(id, checkbox.checked); // Save checkbox state to Firebase on click
-//       });
 
+// // navlink active
+// const roadmapLink = document.getElementById('roadmap_link');
+
+
+// roadmapLink.addEventListener('click', function(event) {
+//   event.preventDefault();
+
+//   document.querySelectorAll('.nav_link').forEach(link => {
+//     link.classList.remove('active');
 //   });
+// })
+
+
+// // Get all elements with the class 'nav_link'
+// const navLinks = document.querySelectorAll('.nav_link');
+
+
+// navLinks.forEach(link => {
+//   link.addEventListener('click', function(event) {
+    
+//     event.preventDefault();
+
+
+//     navLinks.forEach(navLink => {
+//       navLink.classList.remove('active');
+//     });
+
+//     link.classList.add('active');
+//   });
+// });
+
+
+
+// Naviagatin to navlink
+
+
+// Get all elements with the class 'nav_link'
+// const navLinks = document.querySelectorAll('.nav_link');
+
+
+
+// Loop through each nav link
+// navLinks.forEach(link => {
+//   // Add click event listener to each nav link
+//   link.addEventListener('click', function(event) {
+//     // Prevent default link behavior
+//     event.preventDefault();
+
+//     // Remove 'active' class from all nav links
+//     navLinks.forEach(navLink => {
+//       navLink.classList.remove('active');
+//     });
+
+//     // Add 'active' class to the clicked link
+//     link.classList.add('active');
+//   });
+// });
+
+// // Get the "Roadmap" link element
+// const roadmapLink = document.getElementById('roadmap_link');
+
+// // Add click event listener to the "Roadmap" link
+// roadmapLink.addEventListener('click', function(event) {
+//       window.location.href='./Roadmap.html'
 // });

@@ -5,40 +5,27 @@ function signup_page() {
     document.getElementById('loadingOverlay').style.visibility = 'visible';
     setTimeout(() => {
         window.location.href = './signup.html';
-    }, 2000);
+    }, 1000);
 }
-
-let login = document.querySelector("#login_btn");
-
-login.addEventListener("click", (e) => {
-   e.preventDefault(e)
-     console.log("hi");
-    window.location.href = "index.html";
-});
-
 
 // ---------password icon--------
 let log_email=document.getElementById("log")
 let log_password=document.getElementById("log_pass")
 let login_button=document.getElementById("login_btn")
+let passEyeIcon = document.querySelector("#passIcon")
 
-let icon_eye=document.getElementById("icon_eyeforpassword")
-icon_eye.innerHTML=` <i id="icon_eye" class="fa-solid fa-eye-slash"></i>`
+  passEyeIcon.addEventListener("click",()=>{
+    if (log_password.type == "password") {
+      log_password.type = "text"
+      passEyeIcon.className = "fa-solid fa-eye"
 
+    }
+    else{
+      log_password.type = "password"
+      passEyeIcon.className = "fa-solid fa-eye-slash"
+    }
+  })
 
-icon_eye.addEventListener("click",changeicon)
- function changeicon()
-{
-if (log_password.type =='password') {
-    log_password.type='text'
-    icon_eye.innerHTML=` <i id="icon_eye" class="fa-solid fa-eye"></i>` 
-}
-else if (log_password.type =='text') {
-    log_password.type='password'
-    icon_eye.innerHTML=` <i id="icon_eye" class="fa-solid fa-eye-slash"></i>`
-    
-}
-}
 
 
 // -----login validation----
@@ -62,36 +49,170 @@ else if (log_password.type =='text') {
   const app = initializeApp(firebaseConfig);
 
 
-  import { getFirestore,getDocs,setDoc,doc,collection,getDoc,addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+  import { getFirestore,getDocs,setDoc,doc,collection,getDoc,addDoc,updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 
 let db=getFirestore(app);
 let getref=collection(db,"SignUp_details");
 let getdata =await  getDocs(getref);
-// let id=getdata.size;
+let id=getdata.size;
+// let userdetails=JSON.parse(localStorage.getItem("userdetails"))
+// console.log(userdetails);
 
 login_button.addEventListener("click",login_fun)
- function login_fun(event)
+ async function login_fun(event)
 
 { 
+  // console.log("asha");
+    let log_email_1=document.getElementById("log").value
+    let log_password_1=document.getElementById("log_pass").value
+    let invalid_mail=document.querySelector(".invalid_email")
+    let invalid_password=document.querySelector(".invalid_password")
+ 
       event.preventDefault()
-      getdata .forEach((record) => {
+      
+      if(log_email_1 == "")
+      {
+  
+        invalid_mail.style.color = "red";
+        invalid_mail.style.visibility="visible"
+        setTimeout(() => {
+          invalid_mail.style.visibility = "hidden";
+        }, 2000);
+         return;
+      }
+      if(log_password_1 == "")
+      {
+        invalid_password.style.color = "red";
+        invalid_password.style.visibility="visible"
+        setTimeout(() => {
+          invalid_password.style.visibility = "hidden";
+        }, 2000);
+         return;
+      }
+      
+        let email_data = localStorage.getItem("userdetails");
+        let email=JSON.parse(email_data);
+        let user_email=email.email;
+        let password=email.password;
+
+       if(log_email.value != user_email)
+       {
+        console.log("hi");
+        invalid_mail.innerHTML="Enter a valid email";
+        invalid_mail.style.color = "red";
+        invalid_mail.style.visibility="visible";
+        setTimeout(() => {
+          invalid_mail.style.visibility = "hidden";
+        }, 2000);
+      
+     
         
-        let email_data = record.data().email
-        let password_data = record.data().password
+       }
 
-        // console.log(email_data);
+         if(log_password.value != password)
+       {
+        console.log("bye");
+         
+        invalid_password.style.color = "red";
+        invalid_password.innerHTML="Enter a Valid password"
+        invalid_password.style.visibility="visible"
+        setTimeout(() => {
+          invalid_password.style.visibility = "hidden";
+        }, 2000);
+       
 
-        if(log_email.value == email_data && log_password.value==password_data )
+         return;
+       }
+        else if(log_email.value == user_email && log_password.value==password )
         {
-          // console.log("hi");
           document.getElementById('loadingOverlay').style.visibility = 'visible';
           setTimeout(() => {
               window.location.href = './index.html';
-          }, 2000);
+          }, 1000);
+
+       
+     
+          let ref_data=doc(db,"Learning",`User=${id}`);
+          let data_set=await setDoc(
+             ref_data,{
+                 Find_Language_type:0,
+                 find_index:0,
+                 Html_Complete_Module:0,
+                 Html_Total_Percentage:0,
+                 Css_Complete_Module:0,
+                 Css_Total_Percentage:0,
+                 Javascript_Complete_Module:0,
+                 Javascript_Total_Percentage:0,
+                 Mysql_Complete_Module:0,
+                 Mysql_Total_Percentage:0,
+                 Php_Complete_Module:0,
+                 Php_Total_Percentage:0,
+                 Html_unlock_total_module:0,
+                 Css_unlock_total_module:0,
+                 Javascript_unlock_total_module:0,
+                 Php_unlock_total_module:0,
+                 Mysql_unlock_total_module:0,
+             }
+         ).then(()=>{
+          
+         }).catch((err)=>{
+             console.log(err);
+         });
+
+          
+
+
         }
-      });
+       
+      // });
 }
+
+
+// ----------forgot-----
+let forgot_btn=document.querySelector("#forget")
+let verify_btn=document.querySelector("#verify_button")
+
+forgot_btn.addEventListener("click",()=>{
+
+ document.querySelector(".maincontainer_foremail").style.display="block";
+ document.querySelector(".maincontainer_2").style.display="none";
+    
+}
+)
+
+verify_btn.addEventListener("click",(event)=>{
+
+ event.preventDefault();
+ let mail_box=document.querySelector("#reset_id")
+ document.querySelector(".container").style.display="block";
+ document.querySelector(".maincontainer_foremail").style.display="none";
+ document.querySelector(".maincontainer_2").style.display="none";
+ let otp_random=Math.floor(Math.random()*100000);
+ console.log(otp_random);
+ let mail_msg= ` You recently requested to reset your password for your account. To complete the password reset process, please enter the following 
+         OTP : <b>${otp_random}</b>`
+         Email.send({
+           SecureToken : "3530e414-b30b-4087-819e-ce07fc9da7b5",
+           To : mail_box.value,
+           From : "dckaplms@gmail.com",
+           Subject : "Verify OTP",
+           Body : mail_msg
+       }).then(
+        //  message => alert(message)
+       ) 
+})
+
+let next_btn=document.querySelector("#otp_btn")
+
+next_btn.addEventListener("click",()=>{
+  document.getElementById('loadingOverlay').style.visibility = 'visible';
+  setTimeout(() => {
+ 
+  window.location.href = './Reset.html';
+  }, 1000);
+})
+
 
 
 

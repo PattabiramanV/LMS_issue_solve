@@ -11,25 +11,28 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="icon"  type="image/x-icon" href="./Assests/icons8-learning-50.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Hanuman:wght@100;300;400;700;900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kalam:wght@300;400;700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     
    <!-- navbar -->
-  <nav class="navbar">
+   <nav class="navbar">
     <div class="logo_item">
       <i class="bx bx-menu" id="sidebarOpen"></i>
-      <img src="./Assests/Dckap Logo.png" alt="" class="DCKAPlOGO"></i>
+      <img src="./Assests/Logodk.png" alt="" class="DCKAPlOGO"></i>
     </div>
 
-    <div class="search_bar">
-      <input type="text" placeholder="Search" />
-      <i class="fas fa-search"></i>
-    </div>
+    <div class="group">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
+        <input placeholder="Search" type="search" class="input">
+      </div>
 
     <div class="navbar_content">
       <i class="bi bi-grid"></i>
       <i class='bx bx-sun' id="darkLight"></i>
-      <img src="./Assests/236831.png" alt="" class="profile" />
+      <img src="./Assests/system-regular-8-account.gif" alt="" class="profile" />
     </div>
     <div class="profile_bar_list">
       <div class="profile_down">
@@ -50,81 +53,80 @@
       </div>
     </div>
   </nav>
+<!-- sidebar -->
+<nav class="sidebar" style="display: flex;">
+  <div class="menu_content">
+    <ul class="menu_items">
+      <li class="item">
+        <a href="./index.html" class="nav_link submenu_item">
+          <span class="navlink_icon">
+            <i class="bx bx-home-alt"></i>
+          </span>
+          <span class="navlink">Home</span>
+        </a>
 
-  <!-- sidebar -->
-  <nav class="sidebar" style="display: flex;">
-    <div class="menu_content">
-      <ul class="menu_items">
-        <li class="item">
-          <div href="#" class="nav_link submenu_item">
-            <span class="navlink_icon">
-              <i class="bx bx-home-alt"></i>
-            </span>
-            <span class="navlink">Home</span>
-          </div>
+      </li>
+      <li class="item">
+        <a href="./Learning.html" class="nav_link submenu_item">
+          <span class="navlink_icon">
+            <i class="bx bx-grid-alt"></i>
+          </span>
+          <span class="navlink">Learning</span>
+        </a>
+      </li>
+    </ul>
 
-        </li>
-        <li class="item">
-          <div href="#" class="nav_link submenu_item">
-            <span class="navlink_icon">
-              <i class="bx bx-grid-alt"></i>
-            </span>
-            <span class="navlink">learning</span>
-          </div>
-        </li>
-      </ul>
-
-      <ul class="menu_items">
-        <li class="item">
-          <a href="#" class="nav_link">
-            <span class="navlink_icon">
-              <i class="bx bxs-magic-wand"></i>
-            </span>
-            <span class="navlink">DashBoard</span>
-          </a>
-        </li>
+    <ul class="menu_items">
+      <li class="item">
+        <a href="./dashboard.html" class="nav_link">
+          <span class="navlink_icon">
+            <i class="bx bxs-magic-wand"></i>
+          </span>
+          <span class="navlink">DashBoard</span>
+        </a>
+      </li>
 
 
-        <li class="item">
-          <a href="#" class="nav_link">
-            <span class="navlink_icon">
-              <i class="bx bx-loader-circle"></i>
-            </span>
-            <span class="navlink">RoadMap</span>
-          </a>
-        </li>
-      </ul>
-      <ul class="set_items">
-        <li class="item">
-          <a href="#" class="nav_link">
-            <span class="navlink_icon">
-              <i class="bx bx-cog"></i>
-            </span>
-            <span class="navlink">Setting</span>
-          </a>
-        </li>
-      </ul>
+      <li class="item">
+        <a href="./Roadmap.html" class="nav_link">
+          <span class="navlink_icon">
+            <i class="bx bx-loader-circle"></i>
+          </span>
+          <span class="navlink">RoadMap</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="set_items">
+      <li class="item">
+        <a href="#" class="nav_link">
+          <span class="navlink_icon">
+            <i class="bx bx-cog"></i>
+          </span>
+          <span class="navlink">Settings</span>
+        </a>
+      </li>
+    </ul>
 
-      <div class="bottom_content">
-        <div class="bottom expand_sidebar">
-          <span> Expand</span>
-          <i class='bx bx-log-in'></i>
-        </div>
-        <div class="bottom collapse_sidebar">
-          <span> Collapse</span>
-          <i class='bx bx-log-out'></i>
-        </div>
+    <div class="bottom_content">
+      <div class="bottom expand_sidebar">
+        <span> Expand</span>
+        <i class='bx bx-expand-horizontal'></i>
+      </div>
+      <div class="bottom collapse_sidebar">
+        <span> Collapse</span>
+        <i class='bx bx-expand-horizontal'></i>
       </div>
     </div>
+  </div>
 
-  </nav>
+</nav>
 
   <!-- Your Content paste here -->
   
   <div class="bottom_content_quiz">
 
     <div class="quiz_1 question">
-       <h2>Excersize-<strong>1</strong></h2>
+       <h2>Exercise-<strong>1</strong></h2>
         <h3 id="Quiz_question">1.What  is Full form of HTML?</h3>
 
         <form class="options_4" name="radio_4_btn_form">
@@ -203,13 +205,13 @@
         <div class="top_thumsup_and_content">
  
          <div class="left_content">
-             <h1>Excersize Results</h1>
-             <p class="result_show_content">Sucessfully complete the excersize and you eligible for go the next module.</p>
-             <p class="result_show_content">Congralation you unlocked the first excersize.</p>
+             <h1>Exercise Results</h1>
+             <p class="result_show_content">Sucessfully complete the exercise and you eligible for go the next module.</p>
+             <p class="result_show_content">Congralation you unlocked the first exercise.</p>
             </div>
  
             <div class="right_thumsup">
-                <img src="./Assests/image 7.svg" alt="" id="thumsup_img">
+                <img src="./Assests/right_img.jpg" alt="" id="thumsup_img">
                 <!-- <i class="fa-thin fa-thumbs-up" style="color:#FFFFFF"></i> -->
             </div>
  
@@ -241,7 +243,7 @@
             
     
  
-<script src="JS/learning_quiz.js" type="module"></script>
+<script src="./JS/learning_quiz.js" type="module"></script>
 
 </body>
 </html>

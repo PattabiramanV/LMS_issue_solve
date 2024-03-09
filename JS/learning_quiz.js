@@ -32,6 +32,7 @@ sidebar.addEventListener("mouseleave", () => {
 });
 
 //............................Dark_Mode......................................//
+
 let Dckaplogo = document.querySelector(".DCKAPlOGO");
 Dckaplogo.addEventListener("click",()=>{
   window.location.href='./index.html'
@@ -59,7 +60,7 @@ darkLight.addEventListener("click", toggleDarkMode);
 
 
 
-// Profile.....................................................///
+// ........................................Profile...........................................///
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");
@@ -79,7 +80,7 @@ document.addEventListener("click", (event) => {
 });
 
 
-// profile_drop
+//.....................................profile_drop.............................//
 
 let profile_page = document.querySelector(".profile_down");
 profile_page.addEventListener("click", () => {
@@ -105,9 +106,7 @@ logout.addEventListener("click", () => {
 
 
 
-
-
-
+//............................Firebase import link............................//
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -130,11 +129,14 @@ const app = initializeApp(firebaseConfig);
 import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 let db=getFirestore(app);
+
+//.....................................localstorage get user id.................//
 var userDetailsString = localStorage.getItem("userdetails");
 
 var userDetails = JSON.parse(userDetailsString);
-let id=userDetails.user_id
+let id=userDetails.user_id;
 
+//...................................get data in the Firebase.....................// 
 
 let get_ref=doc(db,'Learning',`User=${id}`);
 let get_data= await getDoc(get_ref);
@@ -144,8 +146,10 @@ let find_language_percentage=get_data.data()[find_language+'_Total_Percentage'];
 let find_complete_module=get_data.data()[find_language + '_Complete_Module'];
 let find_language_unlock_module=get_data.data()[find_language+'_unlock_total_module'];
 
-async function quiz_mark_validate_Fun(){
-//  alert("come to db")
+
+//...................Quiz percentage store in the Firebase..........................//
+
+async function quiz_mark_percentage_store_firebase_Fun(){
 
   let ref=doc(db,`${find_language}_Content`,`0`);
   let data_ref=await getDoc(ref);
@@ -164,12 +168,16 @@ if(find_index==find_language_unlock_module){
   }
 
 }
+
+
+//.............................Get Quiz particular topic data in the firebase..............//
+
 let get_quiz=doc(db,`${find_language}_Quiz`,`${find_index}`)
 let get_quiz_obj=await getDoc(get_quiz);
 
 let Quiz_object=get_quiz_obj.data().Quiz_1  ;
 
-
+//..................................get Quiz element from html file.................//
 
 let quiz_options=document.querySelectorAll("label");
 let quiz_Question=document.getElementById("Quiz_question");
@@ -181,22 +189,34 @@ let all_radio_btn=form_radio_btn_4.radio_value_1;
 let Ex_no=document.querySelector("strong");
 Ex_no.innerHTML=find_index;
 
+//..........................get  Answer showpage element form html file.........//
+
+let total_mark=0;
+let main_quiz_div=document.querySelector('.bottom_content_quiz');
+let Quiz_result_div=document.querySelector(".Answer_show_page");
+let next_module_btn=document.querySelector("#next_module_btn");
+let retry_btn=document.querySelector("#retry_btn");
+let all_score_content=document.querySelectorAll(".score");
+
+let index = 0;
+let arr = [];
+
+
+
+Quiz_content_show_Fun();
+button_showing_Fun();
+//..................................Quiz next and previous btn function.......//
+
 next_btn.addEventListener("click",function(){ Quiz_change_Fun(this)});
 previous_btn.addEventListener("click",function(){ Quiz_change_Fun(this)});
-
-let index=0;
-
-let arr=[];
-Quiz_content_show_Fun();
 
 async function Quiz_change_Fun(value){
 
     radio_value_change_Fun();
    
-
 if(value.innerHTML=='Next'&& all_radio_btn.value!=''){
     index++;
-    // console.log(all_radio_btn.value);
+  
     document.querySelector(".Answer_show_page").classList.add("Answer_show_page_classlist")
     arr.push(all_radio_btn.value);
     form_radio_btn_4.reset();
@@ -217,23 +237,22 @@ arr.pop();
 
 Quiz_content_show_Fun();
 
-
-
 button_showing_Fun();
-
-
-
 
 }
 
+//.........................Quiz question and option change function............//
+
 function Quiz_content_show_Fun(){
-  // console.log(index);
+
   quiz_Question.innerHTML=Quiz_object[index].Question;
   quiz_options[0].innerText=Quiz_object[index].Options[0];
   quiz_options[1].innerText=Quiz_object[index].Options[1];
   quiz_options[2].innerText=Quiz_object[index].Options[2];
   quiz_options[3].innerText=Quiz_object[index].Options[3];
 }
+
+//...............................Button showing function in the Quiz div........//
 
 function button_showing_Fun(){
 
@@ -254,6 +273,8 @@ function button_showing_Fun(){
 
 };
 
+//...........................radio button value change function..................//
+
 function radio_value_change_Fun(){
 
     all_radio_btn[0].value=Quiz_object[index].Options[0];
@@ -263,14 +284,7 @@ function radio_value_change_Fun(){
 }
 
 
-
-let total_mark=0;
-let main_quiz_div=document.querySelector('.bottom_content_quiz');
-let Quiz_result_div=document.querySelector(".Answer_show_page");
-let next_module_btn=document.querySelector("#next_module_btn");
-let retry_btn=document.querySelector("#retry_btn");
-let all_score_content=document.querySelectorAll(".score");
-
+//.................................submit button function in the quiz......//
 submit_btn.addEventListener("click",()=>{
 
     radio_value_change_Fun();
@@ -301,6 +315,7 @@ form_radio_btn_4.reset();
 arr=[];
 validate_quiz_fun();
 
+
 });
 
 //............................Quiz_Answer_page................................//
@@ -312,7 +327,7 @@ function validate_quiz_fun(){
     Quiz_result_div.classList.add("Answer_show_page_classlist");
     main_quiz_div.classList.add("bootm_content_quiz_classlist");
 let all_P_tag=document.querySelectorAll(".result_show_content");
-console.log(all_P_tag);
+
     all_score_content[0].innerHTML=Quiz_object.length;
     all_score_content[1].innerHTML=total_mark;
     all_score_content[2].innerHTML=Math.floor(total_mark/Quiz_object.length*100);
@@ -335,11 +350,15 @@ console.log(all_P_tag);
     all_P_tag[0].innerHTML = 'Sucessfully complete the exercise and you eligible for go the next module.'
     all_P_tag[1].innerHTML = 'Congralation you unlocked the first exercise.'
 
-   quiz_mark_validate_Fun();
+   quiz_mark_percentage_store_firebase_Fun();
     }
 
 }
+
+//.................................Retry button function in the quiz......//
+
 retry_btn.addEventListener("click",()=>{
+
     index=0;
     arr=[];
      total_mark=0;
@@ -354,15 +373,18 @@ quiz_options[0].innerText=Quiz_object[index].Options[0];
 quiz_options[1].innerText=Quiz_object[index].Options[1];
 quiz_options[2].innerText=Quiz_object[index].Options[2];
 quiz_options[3].innerText=Quiz_object[index].Options[3];
-    // Quiz_change_Fun();
+ 
 button_showing_Fun()
 
 
 });
 
+//...............................next module button function in the quiz......//
 
 next_module_btn.addEventListener("click",async()=>{
-
+index=0;
+arr=[];
+  // SessionStorage_Data_Set_Fun(arr,index)
 if(find_index==find_language_unlock_module){
 
   find_language_unlock_module=find_language_unlock_module+1
@@ -380,7 +402,11 @@ if(find_index==find_language_unlock_module){
 });
 
 
-// Local storage get Img
+
+
+
+
+//........................... Local storage get profile Img.....................//
 
 
 try {
@@ -417,6 +443,3 @@ window.addEventListener("load", async function () {
     alert("Error getting user image. Please try again.");
   }
 });
-
-
-

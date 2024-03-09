@@ -1,4 +1,5 @@
 "use strict";
+//.............................Firebase get import link.........................//
 
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -21,15 +22,16 @@
   
 let db=getFirestore(app);
 
+//...............................localstorage get user id........................//
+
+
 var userDetailsString = localStorage.getItem("userdetails");
 
 var userDetails = JSON.parse(userDetailsString);
-let id=userDetails.user_id;
+let id = userDetails.user_id;
 
 
-//.....................................Content_JS...................................//
-
-      
+//....................................get element in the html file...................................//
 
 let all_heading_title=0;
 let left_heading_content=document.querySelector(".left_heading_content");
@@ -39,11 +41,12 @@ let iframe=document.querySelector("iframe");
 
 let bottom_content=document.querySelector(".bottom_content1");
 
-
-//.........................Left_Content_.........................//
-
+let Exercise_btn=document.querySelector(".Exercise_btn");
 
 
+
+
+//.........................get data in the firebase.........................//
 
 let get_ref=doc(db,'Learning',`User=${id}`);
 let get_data= await getDoc(get_ref);
@@ -59,11 +62,14 @@ let left_headings=get_content_obj.data().left_headings;
 
 let p_tag;
 let lock_icon;
-// console.log(user_unlock_total_module);
+
+//...................................Left_heading_showing_function............//
 heading_append_Fun(left_headings);
 
 function heading_append_Fun(arr){
+
   left_heading_content.innerHTML='';
+
   arr.forEach((value,index)=>{
 
     let content_heading_div=document.createElement("div")
@@ -98,7 +104,7 @@ all_heading_title=document.querySelectorAll(".content_title");
 }
 
 
-let Exercise_btn=document.querySelector(".Exercise_btn");
+//..................................Exercise btn showing fun....................//
 
 content_btn_Change_Fun()
 async function content_btn_Change_Fun(){
@@ -119,6 +125,8 @@ Exercise_btn.addEventListener("click",()=>{
 
     window.location.href='learning_quiz.html';
 })
+
+
 
 
 //........................Left_heading_clickevent...............................//
@@ -175,6 +183,8 @@ all_heading_title.forEach((title,index)=>{
    });
 
   });
+
+//........................Right_content_showing_function...............................//
 
 
 async function content_showing_fun(language,index){
@@ -252,7 +262,7 @@ darkLight.addEventListener("click", toggleDarkMode);
 
 
 
-// Profile..................................................................//
+// .............................................Profile............................//
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");
@@ -273,7 +283,7 @@ document.addEventListener("click", (event) => {
 
 
 
-// profile_drop
+//...................................profile_drop down........................//
 let profile_page = document.querySelector(".profile_down");
 profile_page.addEventListener("click", () => {
   window.location.href = "./profile.html";
@@ -297,12 +307,7 @@ logout.addEventListener("click", () => {
 });
 
 
-// profile img take in localstorage
 
-// const profileImg = document.querySelector(".profile");
-// profileImg.src = storedImageURL;
-
-// Retrieve imageURL from localStorage when the page loads
 
 try {
   const profileImg = document.querySelector(".profile");

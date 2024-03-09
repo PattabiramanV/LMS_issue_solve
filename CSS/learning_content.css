@@ -39,9 +39,7 @@ user-select: none;
   --background-color-li:  #8000801c !important;
 }
 body {
-  /* background-color: #d0eaf1; */
   transition: all 0.5s ease;
-  /* background-color: #c3eef0; */
   background-color:#eaeaea;
 }
 body.dark {
@@ -63,7 +61,7 @@ body.dark {
 }
 
 
-/* navbar */
+/*..............................top_navbar................................... */
 .navbar {
   position: fixed;
   top: 0;
@@ -154,11 +152,8 @@ img.DCKAPlOGO {
   font-size: 20px;
   color: var(--grey-color);
 }
-/* img.profile {
-  position: absolute;
-  left: 1237px;
-} */
-/* sidebar */
+
+/*..................................sidebar....................................*/
 .sidebar {
   background-color: var(--white-color);
   width: 85px;
@@ -318,7 +313,7 @@ ul.set_items {
   display: none;
 }
 
-/* Profile DropDown */
+/*...............................Profile DropDown................................ */
 
 .profile_bar_list {
   top: 77px;
@@ -395,7 +390,7 @@ img.profile {
   border-radius: 50%;
 }
 
-/* Your Content paste here */
+/*..........................learning left headings and right content................................. */
 
 
 .bottom_learning_content_parent {
@@ -517,11 +512,6 @@ img.profile {
 
 
 
-
-
-
-
-
 button.Exercise_btn, .next_btn {
   position: relative;
   left: 130px;
@@ -580,7 +570,7 @@ a,iframe,button,.profile_round:hover{
   justify-content: end;
 }
 
-/*....................................Content_classes...................*/
+/*....................................Right_Content_classes...................*/
 
 .red_color{
   color:red;
@@ -600,6 +590,7 @@ b {
   text-align: center;
 }
 
+/*.....................................Right_Scroll_bar.........................*/
 
 /* Width and background color of the scrollbar */
 ::-webkit-scrollbar {

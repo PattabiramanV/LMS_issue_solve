@@ -33,7 +33,6 @@ user-select: none;
 .dark-mode .nav_link:hover {
   color: #fffffff3;
   background-color: #7c15dd4d;
-  /* Your desired hover color in dark mode */
 }
 
 :root {
@@ -63,7 +62,7 @@ body.dark {
   --grey-color-light: #aaa;
 }
 
-/* navbar */
+/*............................................top_navbar........................*/
 .navbar {
   position: fixed;
   top: 0;
@@ -164,7 +163,7 @@ img.profile {
 
 
 
-/* sidebar */
+/*.............................................sidebar..........................*/
 .sidebar {
   background-color: var(--white-color);
   width: 224px;
@@ -338,7 +337,7 @@ ul.set_items {
   display: none;
 }
 
-/* Dropdown Profile */
+/*......................................Profile_Dropdown.........................*/
 
 
 .profile_bar_list {
@@ -416,7 +415,7 @@ img.profile {
   border-radius: 50%;
 }
 
-/* search bar design */
+/*...................................top_search_bar_design............................*/
 
 .group {
     display: flex;
@@ -460,76 +459,7 @@ img.profile {
    }
    
 
-/*......................................5_learning_card..........................*/
-/* 
-.tech_language_logo{
-
-    height: 40px;
-    width: 40px;
-}
-
-.top_content {
-    display: flex;
-    align-items: center;
-    width: 80%;
-    justify-content: space-around;
-}
-
-.learning_5_card>* {
-    width: 100%;
-    height: 140px;
-    background-color: rgba(204, 204, 204, 1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    border-radius: 10px;
-}
-
-button.learn_more_btn {
-    height: 32px;
-    width: 120px;
-    border: none;
-    border-radius: 4px;
-    background-color: rgba(170, 62, 226, 1);
-    font-size: 14px;
-    font-weight: bolder;
- 
-}
-
-.learning_5_card {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    width: 68%;
-    row-gap: 44px   ;
-    margin: 168px auto;
-    margin-left: 350px;
-    column-gap: 10px;
-}
-
-.learning_card:nth-child(4),
-.learning_card:nth-child(5){
-    position: relative;
-    left: 134px;
-}
-.bottom_2_card{
-  position: relative;
-  left: 160px;
-}
-
-.card_5 span {
-  font-size: 16px;
-  font-weight: 900;
-}
-button:hover{
-    cursor: pointer;
-}
-*/
-
-
-
-
+/*......................................learning_card_5..........................*/
 
 .card{
   max-width: 300px;
@@ -588,7 +518,9 @@ line-height: 36px;
   color: #c84e2a;
   background-color: #fafafa;
   border: 1px solid #c84f2aa2;
+  
   }
+  
   .middle_card_title{
   display: flex;
   justify-content: space-between;
@@ -637,7 +569,6 @@ border: 1px solid #c84f2a40;
 }
 
 .inner_card:hover{
-  /* border: 1px solid #c84f2a40; */
 border: 1px solid #fff;
   cursor: pointer;
 
@@ -651,7 +582,14 @@ border: 1px solid #fff;
   transition: 0.2s; 
 }
 
+.language_title {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  margin: 0;
+}
 
+/*................................Right_Scroll_bar.............................*/
 
 /* Width and background color of the scrollbar */
 ::-webkit-scrollbar {

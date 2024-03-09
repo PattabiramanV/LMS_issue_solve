@@ -17,18 +17,24 @@
 </head>
 <body>
     
-   <!-- navbar -->
-   <nav class="navbar">
+   <!--------------------------------------top_navbar----------------------->
+  <nav class="navbar">
     <div class="logo_item">
       <i class="bx bx-menu" id="sidebarOpen"></i>
       <img src="./Assests/Logodk.png" alt="" class="DCKAPlOGO"></i>
     </div>
-
+  
     <div class="group">
-        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
-        <input placeholder="Search" type="search" class="input">
-      </div>
-
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+        <g>
+          <path
+            d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+          </path>
+        </g>
+      </svg>
+      <input placeholder="Search" type="search" class="input">
+    </div>
+  
     <div class="navbar_content">
       <i class="bi bi-grid"></i>
       <i class='bx bx-sun' id="darkLight"></i>
@@ -53,7 +59,9 @@
       </div>
     </div>
   </nav>
-<!-- sidebar -->
+
+
+<!---------------------------------------------sidebar---------------------------->
 <nav class="sidebar" style="display: flex;">
   <div class="menu_content">
     <ul class="menu_items">
@@ -121,126 +129,80 @@
 
 </nav>
 
-  <!-- Your Content paste here -->
+  <!-------------------------------------------Exercise_Quiz_Div----------------->
   
   <div class="bottom_content_quiz">
-
+  
     <div class="quiz_1 question">
-       <h2>Exercise-<strong>1</strong></h2>
-        <h3 id="Quiz_question">1.What  is Full form of HTML?</h3>
-
-        <form class="options_4" name="radio_4_btn_form">
-
-            <input type="radio" id="radio_1" name="radio_value_1" value="Hyper Text Markup Language">
-            <label for="radio_1">Hyper Text Markup Language</label><br><br>
-
-            <input type="radio" id="radio_2" name="radio_value_1" value="Hyper Text Makeup Language">
-            <label for="radio_2">Hyper Text Makeup Language</label><br><br>
-
-            <input type="radio" id="radio_3" name="radio_value_1" value="Hyper Text Mark Language">
-            <label for="radio_3">Hyper Text Mark Language</label><br><br>
-
-            <input type="radio" id="radio_4" name="radio_value_1" value="Hyper Test Markup Language">
-            <label for="radio_4">Hyper Test Markup Language</label>
-
-        </form>
-
+      <h2>Exercise-<strong>1</strong></h2>
+      <h3 id="Quiz_question">1.What is Full form of HTML?</h3>
+  
+      <form class="options_4" name="radio_4_btn_form">
+  
+        <input type="radio" id="radio_1" name="radio_value_1" value="Hyper Text Markup Language">
+        <label for="radio_1">Hyper Text Markup Language</label><br><br>
+  
+        <input type="radio" id="radio_2" name="radio_value_1" value="Hyper Text Makeup Language">
+        <label for="radio_2">Hyper Text Makeup Language</label><br><br>
+  
+        <input type="radio" id="radio_3" name="radio_value_1" value="Hyper Text Mark Language">
+        <label for="radio_3">Hyper Text Mark Language</label><br><br>
+  
+        <input type="radio" id="radio_4" name="radio_value_1" value="Hyper Test Markup Language">
+        <label for="radio_4">Hyper Test Markup Language</label>
+  
+      </form>
+  
     </div>
-
-    <!-- <div class="quiz_2 question">
-
-        <h3>2.Which tag is used to create a hyperlink in HTML?</h3>
-
-        <div class="options_4">
-
-            <input type="radio" id="quiz_2_radio_1" name="radio_value_2" value="Hyper Text Markup Language">
-            <label for="quiz_2_radio_1">&lt;link&gt;</label><br><br>
-
-            <input type="radio" id="quiz_2_radio_2" name="radio_value_2" value="Hyper Text Makeup Language">
-            <label for="quiz_2_radio_2">&lt;a&gt;</label><br><br>
-
-            <input type="radio" id="quiz_2_radio_3" name="radio_value_2" value="Hyper Text Mark Language">
-            <label for="quiz_2_radio_3">&lt;href&gt;</label><br><br>
-
-            <input type="radio" id="quiz_2_radio_4" name="radio_value_2" value="Hyper Test Markup Language">
-            <label for="quiz_2_radio_4">hyper</label>
-
-        </div>
-    
-    </div> -->
-
-    <!-- <div class="quiz_3 question">
-
-        <h3>3.In HTML, what is the purpose of the &lt;head&gt; element?</h3>
-
-        <div class="options_4">
-
-            <input type="radio" id="quiz_3_radio_1" name="radio_value_3" value="Hyper Text Markup Language">
-            <label for="quiz_3_radio_1"> It contains the main content of the document.</label><br><br>
-
-            <input type="radio" id="quiz_3_radio_2" name="radio_value_3" value="Hyper Text Makeup Language">
-            <label for="quiz_3_radio_2"> It defines a header for the document.</label><br><br>
-
-            <input type="radio" id="quiz_3_radio_3" name="radio_value_3" value="Hyper Text Mark Language">
-            <label for="quiz_3_radio_3"> It provides metadata about the document.</label><br><br>
-
-            <input type="radio" id="quiz_3_radio_4" name="radio_value_3" value="Hyper Test Markup Language">
-            <label for="quiz_3_radio_4"> It creates a navigation bar.</label>
-
-        </div>
-    
-    </div> -->
-
-        <div class="bottom_quiz_btn">
-            <button class="previous_btn">Previous</button>
-            <button class="quiz_next_btn">Next</button>
-            <button class="quiz_sunmit_btn">Sumbit</button>
-
-        </div>
-
-       </div>
-    
-       <div class="Answer_show_page">
-
-        <div class="top_thumsup_and_content">
- 
-         <div class="left_content">
-             <h1>Exercise Results</h1>
-             <p class="result_show_content">Sucessfully complete the exercise and you eligible for go the next module.</p>
-             <p class="result_show_content">Congralation you unlocked the first exercise.</p>
-            </div>
- 
-            <div class="right_thumsup">
-                <img src="./Assests/right_img.jpg" alt="" id="thumsup_img">
-                <!-- <i class="fa-thin fa-thumbs-up" style="color:#FFFFFF"></i> -->
-            </div>
- 
-        </div>
-        <div class="bottom_score_board">
- 
-         <div class="total_points">
-             <span class="score">5</span>
-             <h5>Total Points</h5>
-         </div>
-         <div class="your_points">
-             <span class="score">4</span>
-             <h5>Your Points</h5>
-         </div>
-         <div class="your_score">
-            <strong> <span class="score">40</span>%</strong>
-             <h5>Your Score</h5>
-         </div>
-         <div class="two_btn">
-             <button id="next_module_btn">Next Module</button>
-             <button id="retry_btn">Retry</button>
- 
- 
-         </div>
- 
-        </div>
-             
-         </div>
-            
+  
+    <div class="bottom_quiz_btn">
+      <button class="previous_btn">Previous</button>
+      <button class="quiz_next_btn">Next</button>
+      <button class="quiz_sunmit_btn">Sumbit</button>
+    </div>
+  
+  </div>
+ <!--------------------------------Exercise_Quiz_Answer_Show_Page-----------------> 
+  <div class="Answer_show_page">
+  
+    <div class="top_thumsup_and_content">
+  
+      <div class="left_content">
+        <h1>Exercise Results</h1>
+        <p class="result_show_content">Sucessfully complete the exercise and you eligible for go the next module.</p>
+        <p class="result_show_content">Congralation you unlocked the first exercise.</p>
+      </div>
+  
+      <div class="right_thumsup">
+        <img src="./Assests/right_img.jpg" alt="" id="thumsup_img">
+        <!-- <i class="fa-thin fa-thumbs-up" style="color:#FFFFFF"></i> -->
+      </div>
+  
+    </div>
+    <div class="bottom_score_board">
+  
+      <div class="total_points">
+        <span class="score"></span>
+        <h5>Total Points</h5>
+      </div>
+      <div class="your_points">
+        <span class="score"></span>
+        <h5>Your Points</h5>
+      </div>
+      <div class="your_score">
+        <strong> <span class="score"></span>%</strong>
+        <h5>Your Score</h5>
+      </div>
+      <div class="two_btn">
+        <button id="next_module_btn">Next Module</button>
+        <button id="retry_btn">Retry</button>
+  
+  
+      </div>
+  
+    </div>
+  
+  </div>
     
  
 <script src="./JS/learning_quiz.js" type="module"></script>

@@ -1,5 +1,6 @@
 "use strict"
 
+//...........................Firebase_import_link.........................................//
 
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -21,62 +22,73 @@
   import { getFirestore, getDoc, getDocs, doc, setDoc, updateDoc, addDoc,  collection } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
   
 let db=getFirestore(app);
+
+
+//..............................assign_two_variables_for_data_handling.......//
 let find_language=0;
 let id=0;
-if(localStorage.getItem("userdetails")){
+
+
+//................................Check_Signup_in_the_localstorage...........//
+
+if (localStorage.getItem("userdetails")) {
   var userDetailsString = localStorage.getItem("userdetails");
   var userDetails = JSON.parse(userDetailsString);
-  id=userDetails.user_id;
+  id = userDetails.user_id;
 }
 
-else{
-  setTimeout(()=>{
-  window.location.href='./signup.html';
+else {
+  setTimeout(() => {
+    window.location.href = './signup.html';
 
-   } ,2000);
+  }, 2000);
 }
 
 
-let all_learn_more_btn=document.querySelectorAll(".learn_more_btn");
+//........................User_language_select and navigate_content_page.......//
 
-all_learn_more_btn.forEach((btn,index)=>{
+let all_get_started_btn = document.querySelectorAll(".learn_more_btn");
 
-  
-    btn.addEventListener("click",async()=>{
 
-find_language=btn.parentElement.previousElementSibling.previousElementSibling.firstElementChild.lastElementChild.innerHTML;
-find_language =find_language[0]+find_language.slice(1,find_language.length).toLowerCase();
+all_get_started_btn.forEach((btn, index) => {
 
-let ref_data=doc(db,"Learning",`User=${id}`);
-let get_data= await getDoc(ref_data);
-let find_language_unlock_module=get_data.data()[find_language+'_unlock_total_module'];
+  btn.addEventListener("click", async () => {
 
- let data_set=await updateDoc(
-    ref_data,{
-        Find_Language_type:find_language,
-        find_index:find_language_unlock_module
-        
+    find_language = btn.parentElement.previousElementSibling.previousElementSibling.firstElementChild.lastElementChild.innerHTML;
+    find_language = find_language[0] + find_language.slice(1, find_language.length).toLowerCase();
+
+    let ref_data = doc(db, "Learning", `User=${id}`);
+    let get_data = await getDoc(ref_data);
+    let find_language_unlock_module = get_data.data()[find_language + '_unlock_total_module'];
+
+    let data_set = await updateDoc(
+      ref_data, {
+      Find_Language_type: find_language,
+      find_index: find_language_unlock_module
+
     }
-).then(()=>{
-    
-}).catch((err)=>{
-    console.log(err);
+    ).then(() => {
+
+    }).catch((err) => {
+      console.log(err);
+    });
+    window.location.href = 'learning_content.html';
+
+  })
 });
-    window.location.href='learning_content.html';
 
-    })
-});
+//............................Percentage show in the learning card............//
 
-let all_percentage_show_tag=document.querySelectorAll("strong");
+let all_percentage_show_tag = document.querySelectorAll("strong");
 
-  let ref=doc(db,'Learning',`User=${id}`);
-  let data_ref=await getDoc(ref);
+let ref = doc(db, 'Learning', `User=${id}`);
+let data_ref = await getDoc(ref);
 
-all_percentage_show_tag[0].innerHTML=data_ref.data().Html_Total_Percentage;
-all_percentage_show_tag[1].innerHTML=data_ref.data().Css_Total_Percentage;
-all_percentage_show_tag[2].innerHTML=data_ref.data().Javascript_Total_Percentage;
-all_percentage_show_tag[3].innerHTML=data_ref.data().Mysql_Total_Percentage;
-all_percentage_show_tag[4].innerText=data_ref.data().Php_Total_Percentage;
+all_percentage_show_tag[0].innerHTML = data_ref.data().Html_Total_Percentage;
+all_percentage_show_tag[1].innerHTML = data_ref.data().Css_Total_Percentage;
+all_percentage_show_tag[2].innerHTML = data_ref.data().Javascript_Total_Percentage;
+all_percentage_show_tag[3].innerHTML = data_ref.data().Mysql_Total_Percentage;
+all_percentage_show_tag[4].innerText = data_ref.data().Php_Total_Percentage;
 
 
 
@@ -142,7 +154,7 @@ darkLight.addEventListener("click", toggleDarkMode);
 
 
 
-// Profile
+//..................................Profile...................................//
 
 let profile_Dropdown = document.querySelector(".profile_bar_list");
 let profile_navigate = document.querySelector(".profile");
@@ -162,7 +174,7 @@ document.addEventListener("click", (event) => {
 });
 
 
-// profile_drop
+//..........................................profile_dropdown....................//
 
 let profile_page = document.querySelector(".profile_down");
 profile_page.addEventListener("click", () => {
@@ -187,7 +199,7 @@ logout.addEventListener("click", () => {
 });
 
 
-// Local storage get data
+//.....................................Local storage get data......................//
 
 try {
   const profileImg = document.querySelector(".profile");

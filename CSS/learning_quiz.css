@@ -417,7 +417,7 @@ img.profile {
   border-radius: 50%;
 }
 
-  /*............................search bar design..............................*/
+  /*............................top_search_bar_design..............................*/
   
   .group {
       display: flex;
@@ -462,16 +462,13 @@ img.profile {
      
 
 
-/* Your Content paste here ....................................................*/
-
+/*.....................................Exerxise_Quiz_Div....................................................*/
 
 .bottom_content_quiz {
   padding: 16px 20px 20px 20px;
   width: 60%;
-  /* height: 345px; */
   max-height: 500px;
   margin: 174px auto 0px 350px;
-  /* text-align: center; */
   background-color:#fafafa;
   margin-top: 140px;
   border-radius: 10px;
@@ -479,9 +476,7 @@ img.profile {
   flex-direction: column;
   justify-content: space-between;
   gap: 30px;
-  
-  /* border: 1px solid #80808069; */
-border:   1px solid #c84f2a42;
+  border:   1px solid #c84f2a42;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -527,17 +522,11 @@ button:hover{
 }
 .bottom_content_quiz h2 {
   margin: 0;
-  /* display: inline-block; */
-  /* font-family: "Roboto"; */
   font-family: "Fira Sans", sans-serif;
   font-weight: bold;
   font-size: 30pt;
-  /* background: linear-gradient(to right, #f88418, #e99414, #fda155, #cea889, rgb(196, 127, 70) 80%, #ffa238b6 ); */
-  /* -webkit-text-fill-color: transparent; */
   background-clip: text;
-  /* -webkit-background-clip: text; */
   text-align: center;
-  /* margin: 10px 0px 0px 0px; */
   color: #c84e2a;
 }
 h3#Quiz_question {
@@ -560,7 +549,7 @@ form label{
   font-size: 38px;
 }
 
-/*........................................Quiz Result....................*/
+/*........................................Quiz Result_Div....................*/
 
 .Answer_show_page {
   width: 52%;
@@ -596,7 +585,6 @@ form label{
   text-align: center;
   border-radius: 50%;
   height: 157px;
-  /* background-color: darkgreen; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -647,7 +635,7 @@ form label{
    color: #c84e2a;
   background-color: #fff;
   border: 1px solid #c84f2aa2;
-  /* transform: scale(1.05); */
+
 }
 #retry_btn{
   display: none;
@@ -676,7 +664,7 @@ button:hover{
 strong{
   font-size: 20px;
 }
-/*...................classList..............*/
+/*.........................................  classList..........................*/
 .Answer_show_page_classlist{
 
   display: block;
@@ -699,6 +687,9 @@ gap: 20px;
 
 }
 
+
+
+/*................................Right_Scroll_bar.............................*/
 
 /* Width and background color of the scrollbar */
 ::-webkit-scrollbar {

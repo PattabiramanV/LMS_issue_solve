@@ -5,12 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> -->
     <link rel="stylesheet" href="./CSS/learning.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='//fonts.googleapis.com/icon?family=Material+Icons'> -->
     <link rel='stylesheet' href='//storage.googleapis.com/code.getmdl.io/1.0.1/material.teal-red.min.css'>
     <link rel="icon"  type="image/x-icon" href="./Assests/icons8-learning-50.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,17 +16,24 @@
     
 </head>
 <body>
+  <!---------------------------------top_navbar------------------------------------------>
   <nav class="navbar">
     <div class="logo_item">
       <i class="bx bx-menu" id="sidebarOpen"></i>
       <img src="./Assests/Logodk.png" alt="" class="DCKAPlOGO"></i>
     </div>
-
+  
     <div class="group">
-        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
-        <input placeholder="Search" type="search" class="input">
-      </div>
-
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+        <g>
+          <path
+            d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+          </path>
+        </g>
+      </svg>
+      <input placeholder="Search" type="search" class="input">
+    </div>
+  
     <div class="navbar_content">
       <i class="bi bi-grid"></i>
       <i class='bx bx-sun' id="darkLight"></i>
@@ -54,197 +58,203 @@
       </div>
     </div>
   </nav>
-<!-- sidebar -->
-<nav class="sidebar" style="display: flex;">
-  <div class="menu_content">
-    <ul class="menu_items">
-      <li class="item">
-        <a href="./index.html" class="nav_link submenu_item">
-          <span class="navlink_icon">
-            <i class="bx bx-home-alt"></i>
-          </span>
-          <span class="navlink">Home</span>
-        </a>
-
-      </li>
-      <li class="item">
-        <a href="./Learning.html" class="nav_link submenu_item learning_title">
-          <span class="navlink_icon">
-            <i class="bx bx-grid-alt"></i>
-          </span>
-          <span class="navlink learning_title">Learning</span>
-        </a>
-      </li>
-    </ul>
-
-    <ul class="menu_items">
-      <li class="item">
-        <a href="./dashboard.html" class="nav_link">
-          <span class="navlink_icon">
-            <i class="bx bxs-magic-wand"></i>
-          </span>
-          <span class="navlink">DashBoard</span>
-        </a>
-      </li>
-
-
-      <li class="item">
-        <a href="./Roadmap.html" class="nav_link">
-          <span class="navlink_icon">
-            <i class="bx bx-loader-circle"></i>
-          </span>
-          <span class="navlink">RoadMap</span>
-        </a>
-      </li>
-    </ul>
-    <ul class="set_items">
-      <li class="item">
-        <a href="#" class="nav_link">
-          <span class="navlink_icon">
-            <i class="bx bx-cog"></i>
-          </span>
-          <span class="navlink">Settings</span>
-        </a>
-      </li>
-    </ul>
-
-    <div class="bottom_content">
-      <div class="bottom expand_sidebar">
-        <span> Expand</span>
-        <i class='bx bx-expand-horizontal'></i>
-      </div>
-      <div class="bottom collapse_sidebar">
-        <span> Collapse</span>
-        <i class='bx bx-expand-horizontal'></i>
+  <!---------------------------------------------sidebar----------------------------->
+  <nav class="sidebar" style="display: flex;">
+    <div class="menu_content">
+      <ul class="menu_items">
+        <li class="item">
+          <a href="./index.html" class="nav_link submenu_item">
+            <span class="navlink_icon">
+              <i class="bx bx-home-alt"></i>
+            </span>
+            <span class="navlink">Home</span>
+          </a>
+  
+        </li>
+        <li class="item">
+          <a href="./Learning.html" class="nav_link submenu_item learning_title">
+            <span class="navlink_icon">
+              <i class="bx bx-grid-alt"></i>
+            </span>
+            <span class="navlink learning_title">Learning</span>
+          </a>
+        </li>
+      </ul>
+  
+      <ul class="menu_items">
+        <li class="item">
+          <a href="./dashboard.html" class="nav_link">
+            <span class="navlink_icon">
+              <i class="bx bxs-magic-wand"></i>
+            </span>
+            <span class="navlink">DashBoard</span>
+          </a>
+        </li>
+  
+  
+        <li class="item">
+          <a href="./Roadmap.html" class="nav_link">
+            <span class="navlink_icon">
+              <i class="bx bx-loader-circle"></i>
+            </span>
+            <span class="navlink">RoadMap</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="set_items">
+        <li class="item">
+          <a href="#" class="nav_link">
+            <span class="navlink_icon">
+              <i class="bx bx-cog"></i>
+            </span>
+            <span class="navlink">Settings</span>
+          </a>
+        </li>
+      </ul>
+  
+      <div class="bottom_content">
+        <div class="bottom expand_sidebar">
+          <span> Expand</span>
+          <i class='bx bx-expand-horizontal'></i>
+        </div>
+        <div class="bottom collapse_sidebar">
+          <span> Collapse</span>
+          <i class='bx bx-expand-horizontal'></i>
+        </div>
       </div>
     </div>
-  </div>
-
-</nav>
-<!-- Your Content paste here -->
+  
+  </nav>
+<!-------------------------------------Learning_Card_5---------------------------->
 <div class="card_5">
 
-  <div class="main_card"> 
+  <div class="main_card">
     <main>
-        <div class="card">
-            
-            <div class="inner_card">
-                <figure class="top_card_img_div">
-                  <img src="./Assests/Html_final.webp" alt="" >
+      <div class="card">
 
-                </figure>
-                <div class="middle_card_title ">
-                    <h1 class="mdl-card__title-text "> &nbsp;<section>HTML</section></h1>
-                   <span> <strong>0</strong>%</span>
-                </div>
-                <div class="middle_card_content">
-                    <p>HTML is the standard markup language for documents designed to be displayed in a web browser. </p>
-                </div>
-                <div class="bottom_btn_div">
-    <a  class=" learn_more_btn">Get Started</a>
-            </div>
+        <div class="inner_card">
+          <figure class="top_card_img_div">
+            <img src="./Assests/Html_final.webp" alt="">
+
+          </figure>
+          <div class="middle_card_title ">
+            <h1 class="language_title"> &nbsp;<section>HTML</section>
+            </h1>
+            <span> <strong>0</strong>%</span>
+          </div>
+          <div class="middle_card_content">
+            <p>HTML is the standard markup language for documents designed to be displayed in a web browser. </p>
+          </div>
+          <div class="bottom_btn_div">
+            <a class=" learn_more_btn">Get Started</a>
+          </div>
         </div>
+      </div>
+    </main>
+  </div>
+
+
+  <div class=" main_card">
+    <main>
+      <div class="card">
+
+        <div class="inner_card">
+          <figure class=" top_card_img_div">
+            <img src="./Assests/CSS-Tutorial.webp" alt="" />
+
+          </figure>
+          <div class="middle_card_title">
+            <h1 class="language_title"> &nbsp;<section>CSS</section>
+            </h1>
+            <span> <strong>0</strong>%</span>
+
+          </div>
+          <div class="middle_card_content">
+            <p>CSS is the language we use to style a Web page. What is CSS? CSS stands for Cascading Style Sheets.</p>
+          </div>
+          <div class=" bottom_btn_div">
+            <a class=" learn_more_btn">Get Started</a>
+          </div>
         </div>
     </main>
-</div>
+  </div>
 
-
-<div class=" main_card">
-  <main>
+  <div class=" main_card">
+    <main>
       <div class="card">
-          
-          <div class="inner_card">
-              <figure class=" top_card_img_div">
-                    <img src="./Assests/CSS-Tutorial.webp" alt="" />
 
-              </figure>
-              <div class="middle_card_title">
-                  <h1 class="mdl-card__title-text">  &nbsp;<section>CSS</section></h1>
-                  <span> <strong>0</strong>%</span>
-
-              </div>
-              <div class="middle_card_content">
-                  <p>CSS is the language we use to style a Web page. What is CSS? CSS stands for Cascading Style Sheets.</p>
-              </div>
-              <div class=" bottom_btn_div">
-  <a class=" learn_more_btn">Get Started</a>
-          </div>
-      </div>
-  </main>
-</div>
-
-<div class=" main_card">
-<main>
-    <div class="card">
-        
         <div class="inner_card">
-            <figure class="top_card_img_div">
-                <img src="./Assests/javascript _tutorial.webp" alt="" />
-            </figure>
-            <div class="middle_card_title">
-                <h1 class="mdl-card__title-text">  &nbsp;<section>Javascript</section></h1>
-                <span> <strong>0</strong>%</span>
-
-            </div>
-            <div class="middle_card_content">
-                <p>JavaScript is a scripting language that enables you to create dynamically updating content,and pretty much ...</p>
-            </div>
-            <div class="bottom_btn_div">
-<a   class=" learn_more_btn">Get Started</a>
-        </div>
-    </div>
-</main>
-</div>
-
-<div class=" main_card bottom_2_card">
-<main>
-  <div class="card">
-      
-      <div class="inner_card">
-          <figure class=" top_card_img_div">
-              <img src="./Assests/SQL2_Totorial.webp" alt="" />
-          </figure>
-          <div class="middle_card_title">
-              <h1 class="mdl-card__title-text">  &nbsp;<section>Mysql</section></h1>
-              <span> <strong>0</strong>%</span>
-
-          </div>
-          <div class="middle_card_content">
-              <p> Sql is a programming language for storing and processing information in a relational database.</p>
-          </div>
-          <div class=" bottom_btn_div">
-<a  class="  learn_more_btn">Get Started</a>
-      </div>
-  </div>
-</main>
-</div>
-
-
-<div class=" main_card bottom_2_card">
-<main>
-  <div class="card">
-      
-      <div class="inner_card">
           <figure class="top_card_img_div">
-              <img src="Assests/PHP-Tutorial.webp " alt="" />
+            <img src="./Assests/javascript _tutorial.webp" alt="" />
           </figure>
           <div class="middle_card_title">
-              <h1 class="mdl-card__title-text">  &nbsp;<section>PHP</section></h1>
-              <span> <strong>0</strong>%</span>
+            <h1 class="language_title"> &nbsp;<section>Javascript</section>
+            </h1>
+            <span> <strong>0</strong>%</span>
 
           </div>
           <div class="middle_card_content">
-              <p>PHP is a general-purpose scripting language geared towards web development. </p>
+            <p>JavaScript is a scripting language that enables you to create dynamically updating content,and pretty
+              much ...</p>
+          </div>
+          <div class="bottom_btn_div">
+            <a class=" learn_more_btn">Get Started</a>
+          </div>
+        </div>
+    </main>
+  </div>
+
+  <div class=" main_card bottom_2_card">
+    <main>
+      <div class="card">
+
+        <div class="inner_card">
+          <figure class=" top_card_img_div">
+            <img src="./Assests/SQL2_Totorial.webp" alt="" />
+          </figure>
+          <div class="middle_card_title">
+            <h1 class="language_title"> &nbsp;<section>Mysql</section>
+            </h1>
+            <span> <strong>0</strong>%</span>
+
+          </div>
+          <div class="middle_card_content">
+            <p> Sql is a programming language for storing and processing information in a relational database.</p>
           </div>
           <div class=" bottom_btn_div">
-<a class="learn_more_btn">Get Started</a>
-      </div>
+            <a class="  learn_more_btn">Get Started</a>
+          </div>
+        </div>
+    </main>
   </div>
-</main>
+
+
+  <div class=" main_card bottom_2_card">
+    <main>
+      <div class="card">
+
+        <div class="inner_card">
+          <figure class="top_card_img_div">
+            <img src="Assests/PHP-Tutorial.webp " alt="" />
+          </figure>
+          <div class="middle_card_title">
+            <h1 class="language_title"> &nbsp;<section>PHP</section>
+            </h1>
+            <span> <strong>0</strong>%</span>
+
+          </div>
+          <div class="middle_card_content">
+            <p>PHP is a general-purpose scripting language geared towards web development. </p>
+          </div>
+          <div class=" bottom_btn_div">
+            <a class="learn_more_btn">Get Started</a>
+          </div>
+        </div>
+    </main>
+  </div>
+
+
 </div>
-
-
-  </div>
 <script type="module" src="./JS/learning.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 "use strict"
 //------------------------------- fire_base -----------------------------------
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getFirestore, doc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 //------------ Your web app's Firebase configuration -------------------
 const firebaseConfig = {
@@ -18,14 +18,11 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); // Create a Firestore instance
 
 let id=0;
-let name;
 if(localStorage.getItem("userdetails"))
 {
   var userDetailsString = localStorage.getItem("userdetails");
   var userDetails = JSON.parse(userDetailsString);
   id=userDetails.user_id;
-  name = userDetails.username;
-  console.log(name);
 }
 else
 {
@@ -34,15 +31,12 @@ else
   } ,2000);
 }
 
-// ----------------- Username ---------------------
-
-let u_name = document.querySelector(".u_name");
 
 // ---------- Total points, Total quiz, total stars ------------------
 
 let Total_Quiz=document.querySelector('.Total_Quiz');
 let Total_Ponits = document.querySelector('.Total_Ponits');
-let Total_Stars = document.querySelector('.Total_Stars')
+let Total_Stars = document.querySelector('.Total_Stars');
 
 const getRef = doc(db, 'Learning', `User=${id}`);
 const getData = await getDoc(getRef);
@@ -55,7 +49,7 @@ let Css_Complete_Module = data.Css_Complete_Module;
 let Javascript_Complete_Module = data.Javascript_Complete_Module;
 let Mysql_Complete_Module = data.Mysql_Complete_Module;
 let Php_Complete_Module = data.Php_Complete_Module;
-let validate_Quiz = Html_Complete_Module + Css_Complete_Module + Javascript_Complete_Module + Mysql_Complete_Module + Php_Complete_Module;
+let validate_Quiz = Html_Complete_Module + Css_Complete_Module + Javascript_Complete_Module - Mysql_Complete_Module - Php_Complete_Module;
 
 console.log(validate_Quiz);
 
@@ -68,7 +62,6 @@ async function fetchDataAndUpdateHTML()
     Total_Stars.textContent = validate_Quiz * 5;
     localStorage.setItem('Total_Ponits', data.Html_Complete_Module);
 
-    u_name.textContent = name;
 
     // ------------ chart ---------------
 
@@ -96,18 +89,6 @@ async function fetchDataAndUpdateHTML()
       },
       options: {
         scales: {
-          yAxes: [{
-            ticks: {
-              min: 0,
-              max: 100,
-              stepSize: 10,
-            },
-            scaleLabel: {
-              display: false,
-              fontSize: 20,
-              labelString: "Percentage"
-            }
-          }],
           xAxes: [{
             ticks: {
               fontSize: 14
@@ -123,7 +104,7 @@ async function fetchDataAndUpdateHTML()
           display: false
         },
         title: {
-          display: true,
+          display: false,
           text: 'Tracking Completed Lessons'
         },
       }

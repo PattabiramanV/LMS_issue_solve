@@ -162,7 +162,7 @@ async function html_quiz_btn()
     else
     {
       document.querySelector(".html_lock").style.display = "block";
-      html_btn.classList.remove("class");
+      html_btn.classList.add("class");
     }
     html_btn.addEventListener("click", () => {
       if (Html_Complete_Percentage === 100) 
@@ -214,7 +214,7 @@ async function css_quiz_btn()
     else
     {
       document.querySelector(".css_lock").style.display = "block";
-      css_quiz.classList.remove("class");
+      css_quiz.classList.toggle("class");
     }
 
     css_quiz.addEventListener("click", () => {
@@ -222,7 +222,7 @@ async function css_quiz_btn()
       {
         localStorage.setItem('selectedQuiz', 'CSS_Overall_Quiz');
         localStorage.setItem('certificate_get', 'CSS_Overall_Quiz');
-        window.location.href = './OverallQuiz.html';
+        window.location.href = `./OverallQuiz.html`;
         document.querySelector(".css_lock").style.display = "none"; // Use querySelector or access the first element of the collection
       } 
       else if (Css_Complete_Percentage < 100) 
@@ -276,7 +276,7 @@ async function js_quiz_btn()
         window.location.href = './OverallQuiz.html';
         document.querySelector(".js_lock").style.display = "none"; // Use querySelector or access the first element of the collection
       } 
-      else if (Javascript_Complete_Percentage < 100) 
+      else if (Javascript_Complete_Percentage > 100) 
       {
         document.getElementById("js_error").style.display = "block";
         setInterval(() => {
@@ -328,8 +328,7 @@ async function mysql_quiz_btn()
       {
         localStorage.setItem('selectedQuiz', 'MySql_Overall_Quiz');
         localStorage.setItem('certificate_get', 'MySql_Overall_Quiz');
-        window.location.href = './OverallQuiz.html';
-        document.querySelector(".mysql_lock").style.display = "none"; // Use querySelector or access the first element of the collection
+        window.location.href = './OverallQuiz.html'; // Use querySelector or access the first element of the collection
       } 
       else if (Mysql_Complete_Percentage < 100) 
       {
@@ -341,7 +340,6 @@ async function mysql_quiz_btn()
     });
   } catch (error) {
     console.error("Error fetching and updating data:", error);
-    return 0;
   }
 }
 
@@ -377,8 +375,8 @@ async function php_quiz_btn()
     php_btn.addEventListener("click", () => {
       if (Php_Complete_Percentage === 100) 
       {
-        localStorage.setItem('selectedQuiz', 'PHP_Overall_Quiz');
-        localStorage.setItem('certificate_get', 'PHP_Overall_Quiz');
+        localStorage.getItem('selectedQuiz', 'PHP_Overall_Quiz');
+        localStorage.getItem('certificate_get', 'PHP_Overall_Quiz');
         window.location.href = './OverallQuiz.html';
         document.querySelector(".php_lock").style.display = "none"; // Use querySelector or access the first element of the collection
       } 

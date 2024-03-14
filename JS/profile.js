@@ -195,12 +195,11 @@ window.addEventListener("load", async () => {
 
   try {
     const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      const userData = docSnap.data();
+    if (docSnap) {
       inputName.value = userData.fullName;
-      inputgitUsername.value = userData.gitUsername;
-      inputbioInfo.value = userData.bioInfo;
-      inputlinkInfo.value = userData.linkedIn;
+      inputEmail.value = userData.email;
+      bioInfo.value = userData.email;
+      bioInfo.value = userData.bioInfo;
     } else {
       console.log("No such document!");
     }
@@ -251,19 +250,13 @@ fileInput.addEventListener("change", async function (event) {
         const img = document.createElement("img");
         img.src = e.target.result;
 
-        const profileImg = document.querySelector(".profile");
-        profileImg.src = e.target.result;
-        // Clear existing images
-        while (imageContainer.firstChild) {
-          imageContainer.removeChild(imageContainer.firstChild);
-        }
         // Append new image
         imageContainer.appendChild(img);
 
         // Upload image URL to Firestore
         const docRef = doc(database, "users_img", `${id}`);
         await setDoc(docRef, {
-          imageURL: e.target.result,
+          imageURL: docRef.target.result,
         });
       } catch (error) {
         console.error("Error uploading image and data: ", error);
@@ -271,8 +264,6 @@ fileInput.addEventListener("change", async function (event) {
       }
     };
 
-    // Read the file as data URL
-    reader.readAsDataURL(file);
   }
 });
 
@@ -285,10 +276,9 @@ window.addEventListener("load", async function () {
     const docRef = doc(database, "users_img", `${id}`);
     const docSnapimg = await getDoc(docRef);
 
-    if (docSnapimg.exists()) {
+    if (docSnapimg) {
       const userDataimg = docSnapimg.data();
       profileImg.src = userDataimg.imageURL;
-      ProfileMainImg.src = userDataimg.imageURL;
     } else {
       console.log("The image is not found in Firestore.");
     }

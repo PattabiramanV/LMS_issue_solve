@@ -193,27 +193,9 @@ try {
     if (userLearningData >= 1) {
       const completedCourseContainer = document.createElement("div");
       completedCourseContainer.classList.add("Progress_bar");
-      completedCourseContainer.innerHTML = `
-        <div class="progress_language">
-          <img src="./Assests/${language.toLowerCase()}.webp" alt="" class="enroll_img">
-        </div>
-        <hr>
-        <div class="progress_status">
-          <p class="enroll_language">${language}</p>
-          <div class="percentage">
-            <p class="progress">In Progress</p>
-            <span class="percentage_cal"></span>
-          </div>
-        </div>
-      `;
 
       // Append the completed course container to the DOM
       Progressbarconatiner.style.display = "block";
-      const completedCoursesContainer = document.querySelector(
-        ".progressing_bar .Progress_container"
-      );
-      completedCoursesContainer.appendChild(completedCourseContainer);
-      let listcourse = document.querySelector(".ListCourses");
       listcourse.style.marginTop = "0px";
     } else {
       console.log(`User's ${language}_Complete_Module is not greater than 1`);
@@ -224,11 +206,9 @@ try {
 
   let percentages = document.querySelectorAll(".percentage_cal");
   percentages.forEach((enroll_div, index) => {
-    let courcename =
-      enroll_div.parentElement.parentElement.firstElementChild.innerHTML;
-
+  if(enroll_div){
     if (courcename == "Html") {
-      percentages[index].innerHTML =
+      percentages[index].innerHTML 
         userData.data().Html_Total_Percentage + "%";
     }
     if (courcename == "Css") {
@@ -245,6 +225,7 @@ try {
       percentages[index].innerHTML =
         userData.data().Mysql_Total_Percentage + "%";
     }
+  }
   });
 } catch (error) {
   console.error("Error fetching user data:", error);

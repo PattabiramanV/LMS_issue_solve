@@ -180,7 +180,6 @@ async function initializeQuiz() {
     selectedQuiz === "MySql_Overall_Quiz"
   ) {
     allQuizData = await fetchQuizData(selectedQuiz);
-    allQuizData.sort((a, b) => a.questionId - b.questionId);
   } else {
     console.error("Invalid or missing selectedQuiz in localStorage");
     return;
@@ -291,8 +290,6 @@ async function initializeQuiz() {
       optionsElement.appendChild(option);
     }
 
-    quizContainer.innerHTML = "";
-    Quiz_div.innerHTML = "";
 
 
     quizContainer.appendChild(Quiz_div);

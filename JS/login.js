@@ -15,13 +15,13 @@ let login_button=document.getElementById("login_btn")
 let passEyeIcon = document.querySelector("#passIcon")
 
   passEyeIcon.addEventListener("click",()=>{
-    if (log_password.type == "password") {
-      log_password.type = "text"
+    if (log_password == "password") {
+      log_password = "text"
       passEyeIcon.className = "fa-solid fa-eye"
 
     }
     else{
-      log_password.type = "password"
+      log_password = "password"
       passEyeIcon.className = "fa-solid fa-eye-slash"
     }
   })

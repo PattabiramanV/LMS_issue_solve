@@ -189,7 +189,7 @@ let username_inputbox = document.getElementById("user").value;
             OTP : <b>${otp_random}</b>`
             Email.send({
               SecureToken : "3530e414-b30b-4087-819e-ce07fc9da7b5",
-              To : mail_id_inputbox.value,
+              To : mail_id_inputbox,
               From : "dckaplms@gmail.com",
               Subject : "Verify OTP",
               Body : mail_msg
@@ -259,25 +259,25 @@ let passEyeIcon = document.querySelector("#passIcon")
 let conEyeIcon = document.querySelector("#conIcon")
 
   passEyeIcon.addEventListener("click",()=>{
-    if (create_password.type == "password") {
-      create_password.type = "text"
+    if (create_password == "password") {
+      create_password = "text"
       passEyeIcon.className = "fa-solid fa-eye"
 
     }
     else{
-      create_password.type = "password"
+      create_password = "password"
       passEyeIcon.className = "fa-solid fa-eye-slash"
     }
   })
 
   conEyeIcon.addEventListener("click",()=>{
-    if (confirmPassword.type == "password") {
-      confirmPassword.type = "text"
+    if (confirmPassword == "password") {
+      confirmPassword = "text"
       conEyeIcon.className = "fa-solid fa-eye"
 
     }
     else{
-      confirmPassword.type = "password"
+      confirmPassword = "password"
       conEyeIcon.className = "fa-solid fa-eye-slash"
     }
   })

@@ -157,7 +157,7 @@ async function quiz_mark_percentage_store_firebase_Fun(){
 
 total_title=total_title.length-1;
 
-if(find_index==find_language_unlock_module){
+
 
   let get_data= await updateDoc(
    get_ref,{
@@ -165,7 +165,7 @@ if(find_index==find_language_unlock_module){
     [find_language+'_Complete_Module']:find_complete_module+1
    }
   )
-  }
+
 
 }
 
@@ -385,10 +385,10 @@ next_module_btn.addEventListener("click",async()=>{
 index=0;
 arr=[];
   // SessionStorage_Data_Set_Fun(arr,index)
-if(find_index==find_language_unlock_module){
+
 
   find_language_unlock_module=find_language_unlock_module+1
-  }
+
 
       let ref_data=doc(db,"Learning",`User=${id}`);
   

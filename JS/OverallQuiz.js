@@ -298,11 +298,7 @@ async function initializeQuiz() {
     Quiz_div.appendChild(options_Div);
 
 
-    if (currentQuestion > 0) {
-      backButton.style.display = "block";
-    } else {
-      backButton.style.display = "none";
-    }
+
   }
 
   function checkAnswer() {

@@ -226,7 +226,7 @@ if(value.innerHTML=='Next'&& all_radio_btn.value!=''){
 else if(index!=0 && value.innerHTML=='Previous'){
     
 index--;
-let value=arr[arr.length-1];
+let value=arr[arr.length];
 
 let pre_index=Quiz_object[index].Options.indexOf(value);
 
@@ -292,8 +292,8 @@ submit_btn.addEventListener("click",()=>{
         arr.push(all_radio_btn.value);
 
     }
-    console.log(arr);
-    console.log(Quiz_object[0].Answers);
+    // console.log(arr);
+    // console.log(Quiz_object[0].Answers);
 
 arr.forEach((user_choose_value)=>{
 
@@ -328,9 +328,9 @@ function validate_quiz_fun(){
     main_quiz_div.classList.add("bootm_content_quiz_classlist");
 let all_P_tag=document.querySelectorAll(".result_show_content");
 
-    all_score_content[0].innerHTML=Quiz_object.length;
-    all_score_content[1].innerHTML=total_mark;
-    all_score_content[2].innerHTML=Math.floor(total_mark/Quiz_object.length*100);
+    all_score_content[0].innerHTML;
+    all_score_content[1].innerHTML;
+    all_score_content[2].innerHTML;
 
   if (total_mark != Quiz_object.length) {
     next_module_btn.style.display = 'none';

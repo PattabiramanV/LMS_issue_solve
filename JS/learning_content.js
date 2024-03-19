@@ -113,10 +113,7 @@ async function content_btn_Change_Fun(){
   let get_data= await getDoc(get_ref);
   find_index=get_data.data().find_index;
 
-Exercise_btn.style.display='block';
-  if(find_index==0){
-    Exercise_btn.style.display='none';
-    }
+
     
   }
 

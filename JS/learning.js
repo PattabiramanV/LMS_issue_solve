@@ -84,11 +84,11 @@ let all_percentage_show_tag = document.querySelectorAll("strong");
 let ref = doc(db, 'Learning', `User=${id}`);
 let data_ref = await getDoc(ref);
 
-all_percentage_show_tag[0].innerHTML = data_ref.data().Html_Total_Percentage;
-all_percentage_show_tag[1].innerHTML = data_ref.data().Css_Total_Percentage;
-all_percentage_show_tag[2].innerHTML = data_ref.data().Javascript_Total_Percentage;
-all_percentage_show_tag[3].innerHTML = data_ref.data().Mysql_Total_Percentage;
-all_percentage_show_tag[4].innerText = data_ref.data().Php_Total_Percentage;
+all_percentage_show_tag[0].innerHTML; 
+all_percentage_show_tag[1].innerHTML; 
+all_percentage_show_tag[2].innerHTML ;
+all_percentage_show_tag[3].innerHTML ;
+all_percentage_show_tag[4].innerText;
 
 
 

@@ -240,7 +240,8 @@ async function initializeQuiz() {
   
   function displayQuestion() {
     let questionData = allQuizData[currentQuestion];
-    let questionId = questionData.questionId;
+      let questionId = questionData;
+
 
     let question_Div = document.createElement("div");
     question_Div.className = "question_div";
@@ -429,7 +430,6 @@ async function initializeQuiz() {
     showAnswerButton.style.display = "inline-block";
     marks.style.display = "block";
     score = Math.min(score, allQuizData.length);
-    marks.textContent = `You scored ${score} out of ${allQuizData.length} !`;
   }
 
   retrieveQuizState();

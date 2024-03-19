@@ -86,13 +86,7 @@ function toggleDarkMode() {
     Dckaplogo.src = body.classList.contains("dark")
       ? "./Assests/Dckapwhite.png"
       : "./Assests/Logodk.png";
-    sessionStorage.setItem("darkMode", isDarkMode);
   });
-}
-
-const storedDarkMode = sessionStorage.getItem("darkMode");
-if (storedDarkMode === "true") {
-  toggleDarkMode();
 }
 
 darkLight.addEventListener("click", toggleDarkMode);
@@ -206,26 +200,15 @@ try {
 
   let percentages = document.querySelectorAll(".percentage_cal");
   percentages.forEach((enroll_div, index) => {
-  if(enroll_div){
-    if (courcename == "Html") {
-      percentages[index].innerHTML 
-        userData.data().Html_Total_Percentage + "%";
+    if (enroll_div) {
+      if (courcename == "Html") {
+        percentages[index].innerHTML;
+      }
+      if (courcename == "Css") {
+      }
+      if (courcename == "Php") {
+      }
     }
-    if (courcename == "Css") {
-      percentages[index].innerHTML = userData.data().Css_Total_Percentage + "%";
-    }
-    if (courcename == "Php") {
-      percentages[index].innerHTML = userData.data().Php_Total_Percentage + "%";
-    }
-    if (courcename == "Javascript") {
-      percentages[index].innerHTML =
-        userData.data().Javascript_Total_Percentage + "%";
-    }
-    if (courcename == "Mysql") {
-      percentages[index].innerHTML =
-        userData.data().Mysql_Total_Percentage + "%";
-    }
-  }
   });
 } catch (error) {
   console.error("Error fetching user data:", error);

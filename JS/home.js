@@ -69,10 +69,6 @@ learning.addEventListener("click",()=>{
     window.location.href="./Learning.html";
 })
 
-
-
-
-
 navlogin.addEventListener("click",()=>{
      window.location.href='./login.html'
 })
@@ -82,7 +78,7 @@ navsign.addEventListener("click",()=>{
     window.location.href='./signup.html';
 
 
-   
+
 })
 
 
@@ -131,15 +127,9 @@ async  function language_change_Fun(){
 
   let ref = doc(database, "Learning", `User=${id}`);
   let get_data= await getDoc(ref);
-let find_language_unlock_module=get_data.data()[find_language+'_unlock_total_module'];
+  let find_language_unlock_module=get_data.data()[find_language+'_unlock_total_module'];
 
-  let set_data = await updateDoc(
-
-    ref,{
-      Find_Language_type:find_language,
-        find_index:find_language_unlock_module
-    }
-  )
+  
   window.location.href='./learning_content.html';
  }
 
@@ -154,8 +144,7 @@ const darkLight = document.querySelector("#darkLight");
 // Check if userdetails exist in localStorage
 if(localStorage.getItem('userdetails')){
     // User details exist
-    signcontrols.style.display = 'none'; 
-    profile.style.display = 'block'; 
+  
     darkLight.style.display='block'
 
 
@@ -222,11 +211,7 @@ function toggleDarkMode() {
 const body = document.querySelector("body");
   const isDarkMode = document.body.classList.toggle("dark");
   document.body.classList.toggle("dark-mode");
-  Dckaplogo.forEach((logo)=>{
-    logo.src = document.body.classList.contains("dark")
-    ? "./Assests/Dckapwhite.png"
-    : "./Assests/Logodk.png";
-  })
+  
 
   sessionStorage.setItem("darkMode", isDarkMode);
 }

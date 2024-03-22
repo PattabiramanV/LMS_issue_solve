@@ -185,8 +185,7 @@ let username_inputbox = document.getElementById("user").value;
  document.querySelector(".side_image").style.display="none"
     otp_random=Math.floor(Math.random()*100000);
     console.log(otp_random);
-    let mail_msg= `Hi ${username_inputbox} Welcome to our website,please verify your email by entering the otp mentioned below
-            OTP : <b>${otp_random}</b>`
+    
             Email.send({
               SecureToken : "3530e414-b30b-4087-819e-ce07fc9da7b5",
               To : mail_id_inputbox,
@@ -224,13 +223,7 @@ otp_btn.addEventListener("click", verified)
   if(otp_inputbox.value == otp_random)
   {
     let ref=doc(db,"SignUp_details",`${++id}`)
-    let userData = {
-      username: username.value,
-      email: email_box.value,
-      password: create_password.value,
-      confirmPassword:confirmPassword.value,
-      user_id:id
-  };
+    
      setDoc(ref, userData)
          .then(() => {
             //  alert("Account created successfully");
@@ -243,9 +236,7 @@ otp_btn.addEventListener("click", verified)
   setTimeout(() => {
     window.location.href = './login.html';
 }, 1000);
-localStorage.setItem('userdetails',JSON.stringify(userData))
-let storedlocaldata=localStorage.getItem('userData')
-let storedparseddata=JSON.parse(storedlocaldata)
+
      
   }
   else{
@@ -287,10 +278,5 @@ let exist_login = document.getElementById("underline_btn");
 
 exist_login.addEventListener("click", login_page);
 
-function login_page() {
-    document.getElementById('loadingOverlay').style.visibility = 'visible';
-    setTimeout(() => {
-        window.location.href = './login.html';
-    }, 2000);
-}
+
 
